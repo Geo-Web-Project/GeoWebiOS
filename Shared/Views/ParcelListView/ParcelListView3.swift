@@ -9,18 +9,11 @@ import SwiftUI
 
 struct ParcelListView3: View {
     @State private var selection: String = "Nearby"
+    @State private var isFormPresented: Bool = false
     @State private var isFilterPresented: Bool = false
 
     var body: some View {
         VStack(alignment: .leading) {
-            Picker("", selection: $selection) {
-                ForEach(["Nearby", "Saved"], id: \.self) {
-                    Text($0)
-                }
-            }
-            .pickerStyle(.segmented)
-            .padding()
-            
             List {
                 ParcelListItemView(hasWebContent: true, hasMediaGallery: true, hasARContent: true)
                 ParcelListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
@@ -33,9 +26,23 @@ struct ParcelListView3: View {
             .listRowSpacing(10)
         }
         .toolbar {
+            ToolbarItem(placement: .principal) {
+                Picker("", selection: $selection) {
+                    ForEach(["Nearby", "Saved"], id: \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding()
+            }
             ToolbarItem(placement: .primaryAction) {
-                Button(action: {}, label: {
+                Button(action: {
+                    isFormPresented = true
+                }, label: {
                     Image(systemName: "plus")
+                })
+                .sheet(isPresented: $isFormPresented, content: {
+                    AddWorldFormView(isPresented: $isFormPresented)
                 })
             }
             ToolbarItem(placement: .automatic) {

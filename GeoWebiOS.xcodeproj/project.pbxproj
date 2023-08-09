@@ -7,7 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C331C8F42A82EB81004B1238 /* AddWorldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */; };
+		C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */; };
+		C331C8FE2A82F03E004B1238 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8FD2A82F03E004B1238 /* ContentView.swift */; };
+		C331C9022A82F040004B1238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331C9012A82F040004B1238 /* Assets.xcassets */; };
+		C331C9052A82F040004B1238 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331C9042A82F040004B1238 /* Preview Assets.xcassets */; };
+		C331C90D2A82F082004B1238 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C90A2A82F082004B1238 /* Name.swift */; };
+		C331C90E2A82F082004B1238 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C90B2A82F082004B1238 /* Store.swift */; };
+		C331C90F2A82F082004B1238 /* TableId.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C90C2A82F082004B1238 /* TableId.swift */; };
+		C331C9122A82F0CB004B1238 /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = C331C9112A82F0CB004B1238 /* Web3 */; };
+		C331C9142A82F0CB004B1238 /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = C331C9132A82F0CB004B1238 /* Web3ContractABI */; };
+		C331C9162A82F0CB004B1238 /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C331C9152A82F0CB004B1238 /* Web3PromiseKit */; };
 		C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */ = {isa = PBXBuildFile; productRef = C33682922A79BA4C00CA5F43 /* SwiftGLTF */; };
+		C377A5032A82FCED003FB3EF /* SnapSyncSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377A5022A82FCED003FB3EF /* SnapSyncSystem.swift */; };
+		C377A5052A830896003FB3EF /* StoreSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377A5042A830896003FB3EF /* StoreSync.swift */; };
 		C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */; };
 		C3BAFAB62A81C28300CFDC84 /* MediaGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA952A81C28300CFDC84 /* MediaGalleryView.swift */; };
 		C3BAFAB72A81C28300CFDC84 /* ModelQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA962A81C28300CFDC84 /* ModelQLView.swift */; };
@@ -52,6 +65,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorldFormView.swift; sourceTree = "<group>"; };
+		C331C8F92A82F03E004B1238 /* GeoWebiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoWebiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoWebiOSApp.swift; sourceTree = "<group>"; };
+		C331C8FD2A82F03E004B1238 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C331C9012A82F040004B1238 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C331C9042A82F040004B1238 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C331C90A2A82F082004B1238 /* Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
+		C331C90B2A82F082004B1238 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		C331C90C2A82F082004B1238 /* TableId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableId.swift; sourceTree = "<group>"; };
+		C377A5022A82FCED003FB3EF /* SnapSyncSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapSyncSystem.swift; sourceTree = "<group>"; };
+		C377A5042A830896003FB3EF /* StoreSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSync.swift; sourceTree = "<group>"; };
 		C386B5782A7312BB008F6473 /* GeoWebiOSDesigns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoWebiOSDesigns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelSceneView.swift; sourceTree = "<group>"; };
 		C3BAFA952A81C28300CFDC84 /* MediaGalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaGalleryView.swift; sourceTree = "<group>"; };
@@ -86,6 +110,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C331C8F62A82F03E004B1238 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C331C9142A82F0CB004B1238 /* Web3ContractABI in Frameworks */,
+				C331C9162A82F0CB004B1238 /* Web3PromiseKit in Frameworks */,
+				C331C9122A82F0CB004B1238 /* Web3 in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C386B5752A7312BB008F6473 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,10 +131,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C331C8FA2A82F03E004B1238 /* GeoWebiOS */ = {
+			isa = PBXGroup;
+			children = (
+				C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */,
+				C331C8FD2A82F03E004B1238 /* ContentView.swift */,
+				C331C90B2A82F082004B1238 /* Store.swift */,
+				C377A5042A830896003FB3EF /* StoreSync.swift */,
+				C331C90C2A82F082004B1238 /* TableId.swift */,
+				C377A5012A82FC8A003FB3EF /* Systems */,
+				C331C9092A82F082004B1238 /* Tables */,
+				C331C9012A82F040004B1238 /* Assets.xcassets */,
+				C331C9032A82F040004B1238 /* Preview Content */,
+			);
+			path = GeoWebiOS;
+			sourceTree = "<group>";
+		};
+		C331C9032A82F040004B1238 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C331C9042A82F040004B1238 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C331C9092A82F082004B1238 /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				C331C90A2A82F082004B1238 /* Name.swift */,
+			);
+			path = Tables;
+			sourceTree = "<group>";
+		};
+		C377A5012A82FC8A003FB3EF /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				C377A5022A82FCED003FB3EF /* SnapSyncSystem.swift */,
+			);
+			path = Systems;
+			sourceTree = "<group>";
+		};
 		C386B56F2A7312BB008F6473 = {
 			isa = PBXGroup;
 			children = (
 				C3BAFACF2A81C2C600CFDC84 /* Shared */,
+				C331C8FA2A82F03E004B1238 /* GeoWebiOS */,
 				C3BAFA922A81C28300CFDC84 /* GeoWebiOSDesigns */,
 				C3EDAF902A7B148D00C80B0A /* Frameworks */,
 				C386B5792A7312BB008F6473 /* Products */,
@@ -111,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				C386B5782A7312BB008F6473 /* GeoWebiOSDesigns.app */,
+				C331C8F92A82F03E004B1238 /* GeoWebiOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -206,6 +282,7 @@
 				C3BAFAB32A81C28300CFDC84 /* ParcelListView.swift */,
 				C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */,
 				C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */,
+				C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */,
 			);
 			path = ParcelListView;
 			sourceTree = "<group>";
@@ -241,6 +318,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C331C8F82A82F03E004B1238 /* GeoWebiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C331C9062A82F040004B1238 /* Build configuration list for PBXNativeTarget "GeoWebiOS" */;
+			buildPhases = (
+				C331C8F52A82F03E004B1238 /* Sources */,
+				C331C8F62A82F03E004B1238 /* Frameworks */,
+				C331C8F72A82F03E004B1238 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeoWebiOS;
+			packageProductDependencies = (
+				C331C9112A82F0CB004B1238 /* Web3 */,
+				C331C9132A82F0CB004B1238 /* Web3ContractABI */,
+				C331C9152A82F0CB004B1238 /* Web3PromiseKit */,
+			);
+			productName = GeoWebiOS;
+			productReference = C331C8F92A82F03E004B1238 /* GeoWebiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		C386B5772A7312BB008F6473 /* GeoWebiOSDesigns */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C386B5862A7312BC008F6473 /* Build configuration list for PBXNativeTarget "GeoWebiOSDesigns" */;
@@ -272,6 +371,9 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					C331C8F82A82F03E004B1238 = {
+						CreatedOnToolsVersion = 15.0;
+					};
 					C386B5772A7312BB008F6473 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -288,17 +390,28 @@
 			mainGroup = C386B56F2A7312BB008F6473;
 			packageReferences = (
 				C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */,
+				C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */,
 			);
 			productRefGroup = C386B5792A7312BB008F6473 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				C331C8F82A82F03E004B1238 /* GeoWebiOS */,
 				C386B5772A7312BB008F6473 /* GeoWebiOSDesigns */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C331C8F72A82F03E004B1238 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C331C9052A82F040004B1238 /* Preview Assets.xcassets in Resources */,
+				C331C9022A82F040004B1238 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C386B5762A7312BB008F6473 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -313,6 +426,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C331C8F52A82F03E004B1238 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C331C90E2A82F082004B1238 /* Store.swift in Sources */,
+				C331C90F2A82F082004B1238 /* TableId.swift in Sources */,
+				C331C8FE2A82F03E004B1238 /* ContentView.swift in Sources */,
+				C331C90D2A82F082004B1238 /* Name.swift in Sources */,
+				C377A5052A830896003FB3EF /* StoreSync.swift in Sources */,
+				C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */,
+				C377A5032A82FCED003FB3EF /* SnapSyncSystem.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C386B5742A7312BB008F6473 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +466,7 @@
 				C3BAFAB72A81C28300CFDC84 /* ModelQLView.swift in Sources */,
 				C3BAFABD2A81C28300CFDC84 /* MediaGalleryCell.swift in Sources */,
 				C3BAFABF2A81C28300CFDC84 /* MediaGalleryCellVariant1.swift in Sources */,
+				C331C8F42A82EB81004B1238 /* AddWorldFormView.swift in Sources */,
 				C3BAFAC02A81C28300CFDC84 /* ParcelViewGridPreviewAll.swift in Sources */,
 				C3BAFAC22A81C28300CFDC84 /* MapViewCell.swift in Sources */,
 			);
@@ -347,6 +475,64 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		C331C9072A82F040004B1238 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GeoWebiOS/Preview Content\"";
+				DEVELOPMENT_TEAM = GYAS34R77H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.codyhatfield.GeoWebiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C331C9082A82F040004B1238 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GeoWebiOS/Preview Content\"";
+				DEVELOPMENT_TEAM = GYAS34R77H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.codyhatfield.GeoWebiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C386B5842A7312BC008F6473 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -488,7 +674,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = network.geoweb.GeoWebiOS;
+				PRODUCT_BUNDLE_IDENTIFIER = network.geoweb.GeoWebiOSDesigns;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -522,7 +708,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = network.geoweb.GeoWebiOS;
+				PRODUCT_BUNDLE_IDENTIFIER = network.geoweb.GeoWebiOSDesigns;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -537,6 +723,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C331C9062A82F040004B1238 /* Build configuration list for PBXNativeTarget "GeoWebiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C331C9072A82F040004B1238 /* Debug */,
+				C331C9082A82F040004B1238 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C386B5732A7312BB008F6473 /* Build configuration list for PBXProject "GeoWebiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -558,6 +753,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Boilertalk/Web3.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.4;
+			};
+		};
 		C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/schwa/SwiftGLTF.git";
@@ -569,6 +772,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C331C9112A82F0CB004B1238 /* Web3 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */;
+			productName = Web3;
+		};
+		C331C9132A82F0CB004B1238 /* Web3ContractABI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */;
+			productName = Web3ContractABI;
+		};
+		C331C9152A82F0CB004B1238 /* Web3PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */;
+			productName = Web3PromiseKit;
+		};
 		C33682922A79BA4C00CA5F43 /* SwiftGLTF */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */;
