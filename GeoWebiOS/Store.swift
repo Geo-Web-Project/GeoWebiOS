@@ -27,7 +27,8 @@ struct Store {
     }
     
     static let tables = [
-        Name.tableId.toHex(): Name.setField
+        Name.tableId.toHex(): Name.setField,
+        Url.tableId.toHex(): Url.setField
     ]
     
     static func handleStoreSetEvent(modelContext: ModelContext, address: EthereumAddress, event: [String: Any], blockNumber: EthereumQuantity) throws {

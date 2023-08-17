@@ -20,6 +20,7 @@
 		C331C9162A82F0CB004B1238 /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C331C9152A82F0CB004B1238 /* Web3PromiseKit */; };
 		C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */ = {isa = PBXBuildFile; productRef = C33682922A79BA4C00CA5F43 /* SwiftGLTF */; };
 		C374EAC62A8E968A00141446 /* WorldSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374EAC52A8E968A00141446 /* WorldSync.swift */; };
+		C374EAC82A8EA2B800141446 /* Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374EAC72A8EA2B800141446 /* Url.swift */; };
 		C377A5052A830896003FB3EF /* StoreSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377A5042A830896003FB3EF /* StoreSync.swift */; };
 		C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */; };
 		C3BAFAB62A81C28300CFDC84 /* MediaGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA952A81C28300CFDC84 /* MediaGalleryView.swift */; };
@@ -75,6 +76,7 @@
 		C331C90B2A82F082004B1238 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		C331C90C2A82F082004B1238 /* TableId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableId.swift; sourceTree = "<group>"; };
 		C374EAC52A8E968A00141446 /* WorldSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldSync.swift; sourceTree = "<group>"; };
+		C374EAC72A8EA2B800141446 /* Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Url.swift; sourceTree = "<group>"; };
 		C377A5042A830896003FB3EF /* StoreSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSync.swift; sourceTree = "<group>"; };
 		C386B5782A7312BB008F6473 /* GeoWebiOSDesigns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoWebiOSDesigns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelSceneView.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				C331C90A2A82F082004B1238 /* Name.swift */,
+				C374EAC72A8EA2B800141446 /* Url.swift */,
 			);
 			path = Tables;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				C377A5052A830896003FB3EF /* StoreSync.swift in Sources */,
 				C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */,
 				C374EAC62A8E968A00141446 /* WorldSync.swift in Sources */,
+				C374EAC82A8EA2B800141446 /* Url.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

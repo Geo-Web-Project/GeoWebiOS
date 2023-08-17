@@ -17,9 +17,15 @@ struct ContentView: View {
     private static let namePredicate = #Predicate<Name> { name in
         name.worldAddress == worldAddress
     }
+    private static let urlPredicate = #Predicate<Url> { url in
+        url.worldAddress == worldAddress
+    }
     
     @Query(filter: namePredicate)
     private var name: [Name]
+    
+    @Query(filter: urlPredicate)
+    private var url: [Url]
 
     var body: some View {
         VStack {
@@ -28,6 +34,12 @@ struct ContentView: View {
                     .font(.title)
             } else {
                 Text("No name found")
+            }
+            if let first = url.first {
+                Text(first.value)
+                    .font(.subheadline)
+            } else {
+                Text("No url found")
             }
         }.onAppear {
             let web3 = try! Web3(wsUrl: "ws://127.0.0.1:8545")
