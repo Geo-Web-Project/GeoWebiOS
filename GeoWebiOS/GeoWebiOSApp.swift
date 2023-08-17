@@ -14,6 +14,6 @@ struct GeoWebiOSApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: [Name.self])
+        .modelContainer(for: [WorldSync.self, Name.self])
     }
 }

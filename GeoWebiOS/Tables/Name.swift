@@ -39,9 +39,9 @@ final class Name {
             predicate: #Predicate { $0.worldAddress == addressStr }
         )
         let results = try modelContext.fetch(latestName)
-        let latestBlockNumber = results[0].lastUpdatedAtBlock
+        let latestBlockNumber = results.count > 0 ? results[0].lastUpdatedAtBlock : nil
         
-        if latestBlockNumber < blockNumber.quantity {
+        if latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity {
             modelContext.insert(Name(worldAddress: address, value: nativeValue, lastUpdatedAtBlock: UInt(blockNumber.quantity)))
         }
     }

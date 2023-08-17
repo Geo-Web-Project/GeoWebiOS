@@ -15,6 +15,7 @@ class StoreSync {
     private let modelContext: ModelContext
     private let web3: Web3
     private let worldAddress: EthereumAddress
+    private static let topics = [[try! EthereumData.string(ABI.encodeEventSignature(Store.StoreSetField))]]
     
     init(modelContext: ModelContext, web3: Web3, worldAddress: EthereumAddress) {
         self.modelContext = modelContext
@@ -22,16 +23,22 @@ class StoreSync {
         self.worldAddress = worldAddress
     }
     
-    func syncLogs() {
-        // 1. If no data, snap sync
-        let contractAddress = try! EthereumAddress(hex: "0x5FbDB2315678afecb367f032d93F642f64180aa3", eip55: true)
-        let contract = web3.eth.Contract(type: SnapSyncSystem.self, address: contractAddress)
-
+    func syncLogs() throws {
+        let addressStr = worldAddress.hex(eip55: true)
+        let lastBlockFetch = FetchDescriptor<WorldSync>(
+            predicate: #Predicate { $0.worldAddress == addressStr }
+        )
+        let results = try modelContext.fetch(lastBlockFetch)
+        let lastBlock = results.count > 0 ? results[0].lastBlock : nil
+        var fromBlock: EthereumQuantityTag = .earliest
+        if let lastBlock {
+            fromBlock = .block(BigUInt(lastBlock))
+        }
         firstly {
-            contract.getRecords(tableId: Data(hex: Name.tableId.toHex()), limit: 10, offset: 0).call()
-        }.done { outputs in
-            for record in outputs {
-                
+            web3.eth.getLogs(addresses: [worldAddress], topics: StoreSync.topics, fromBlock: fromBlock, toBlock: .latest)
+        }.done { logs in
+            for log in logs {
+                self.handleLog(log: log)
             }
         }.catch { error in
             print(error)
@@ -39,15 +46,23 @@ class StoreSync {
     }
     
     func subscribeToLogs() throws {
-        try web3.eth.subscribeToLogs(topics: [[EthereumData.string(ABI.encodeEventSignature(Store.StoreSetField))]]) {_ in } onEvent: { resp in
+        try web3.eth.subscribeToLogs(addresses: [worldAddress], topics: StoreSync.topics) {_ in } onEvent: { resp in
             if let res = resp.result {
-                do {
-                    let event = try ABIDecoder.decodeEvent(Store.StoreSetField, from: res)
-                    try Store.handleStoreSetEvent(modelContext: self.modelContext, address: res.address, event: event, blockNumber: res.blockNumber!)
-                } catch {
-                   print(error)
-                }
+                self.handleLog(log: res)
             }
+        }
+    }
+    
+    private func handleLog(log: EthereumLogObject) {
+        do {
+            // 1. Handle event
+            let event = try ABIDecoder.decodeEvent(Store.StoreSetField, from: log)
+            try Store.handleStoreSetEvent(modelContext: self.modelContext, address: log.address, event: event, blockNumber: log.blockNumber!)
+            
+            // 2. Mark block as synced
+            self.modelContext.insert(WorldSync(worldAddress: self.worldAddress, lastBlock: UInt(log.blockNumber!.quantity)))
+        } catch {
+           print(error)
         }
     }
 }

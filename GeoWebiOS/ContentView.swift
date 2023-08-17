@@ -37,7 +37,11 @@ struct ContentView: View {
             try! storeSync.subscribeToLogs()
             
             // 2. Sync logs
-            storeSync.syncLogs()
+            do {
+                try storeSync.syncLogs()
+            } catch {
+                print(error)
+            }
         }
     }
 }
