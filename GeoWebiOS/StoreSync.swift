@@ -15,8 +15,9 @@ class StoreSync {
     private let modelContext: ModelContext
     private let web3: Web3
     private let worldAddress: EthereumAddress
-    private static let topics = [[try! EthereumData.string(ABI.encodeEventSignature(Store.StoreSetField))]]
-    
+    private static let storeSetFieldTopic = try! EthereumData.string(ABI.encodeEventSignature(Store.StoreSetField))
+    private static let storeSetRecordTopic = try! EthereumData.string(ABI.encodeEventSignature(Store.StoreSetRecord))
+
     init(modelContext: ModelContext, web3: Web3, worldAddress: EthereumAddress) {
         self.modelContext = modelContext
         self.web3 = web3
@@ -35,7 +36,7 @@ class StoreSync {
             fromBlock = .block(BigUInt(lastBlock))
         }
         firstly {
-            web3.eth.getLogs(addresses: [worldAddress], topics: StoreSync.topics, fromBlock: fromBlock, toBlock: .latest)
+            web3.eth.getLogs(addresses: [worldAddress], topics: [[StoreSync.storeSetFieldTopic, StoreSync.storeSetRecordTopic]], fromBlock: fromBlock, toBlock: .latest)
         }.done { logs in
             for log in logs {
                 self.handleLog(log: log)
@@ -46,7 +47,7 @@ class StoreSync {
     }
     
     func subscribeToLogs() throws {
-        try web3.eth.subscribeToLogs(addresses: [worldAddress], topics: StoreSync.topics) {_ in } onEvent: { resp in
+        try web3.eth.subscribeToLogs(addresses: [worldAddress], topics: [[StoreSync.storeSetFieldTopic, StoreSync.storeSetRecordTopic]]) {_ in } onEvent: { resp in
             if let res = resp.result {
                 self.handleLog(log: res)
             }
@@ -56,9 +57,17 @@ class StoreSync {
     private func handleLog(log: EthereumLogObject) {
         do {
             // 1. Handle event
-            let event = try ABIDecoder.decodeEvent(Store.StoreSetField, from: log)
-            try Store.handleStoreSetEvent(modelContext: self.modelContext, address: log.address, event: event, blockNumber: log.blockNumber!)
-            
+            switch log.topics[0] {
+            case StoreSync.storeSetFieldTopic:
+                let event = try ABIDecoder.decodeEvent(Store.StoreSetField, from: log)
+                try Store.handleStoreSetFieldEvent(modelContext: self.modelContext, address: log.address, event: event, blockNumber: log.blockNumber!)
+            case StoreSync.storeSetRecordTopic:
+                let event = try ABIDecoder.decodeEvent(Store.StoreSetRecord, from: log)
+                try Store.handleStoreSetFieldEvent(modelContext: self.modelContext, address: log.address, event: event, blockNumber: log.blockNumber!)
+            default:
+                return
+            }
+
             // 2. Mark block as synced
             self.modelContext.insert(WorldSync(worldAddress: self.worldAddress, lastBlock: UInt(log.blockNumber!.quantity)))
         } catch {

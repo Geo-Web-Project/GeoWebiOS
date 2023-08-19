@@ -22,6 +22,8 @@
 		C374EAC62A8E968A00141446 /* WorldSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374EAC52A8E968A00141446 /* WorldSync.swift */; };
 		C374EAC82A8EA2B800141446 /* Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374EAC72A8EA2B800141446 /* Url.swift */; };
 		C377A5052A830896003FB3EF /* StoreSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377A5042A830896003FB3EF /* StoreSync.swift */; };
+		C3AC36882A8FF1F3008821A8 /* MediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC36872A8FF1F3008821A8 /* MediaObject.swift */; };
+		C3AC368B2A900C2D008821A8 /* ProtocolParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC368A2A900C2D008821A8 /* ProtocolParser.swift */; };
 		C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */; };
 		C3BAFAB62A81C28300CFDC84 /* MediaGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA952A81C28300CFDC84 /* MediaGalleryView.swift */; };
 		C3BAFAB72A81C28300CFDC84 /* ModelQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA962A81C28300CFDC84 /* ModelQLView.swift */; };
@@ -79,6 +81,8 @@
 		C374EAC72A8EA2B800141446 /* Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Url.swift; sourceTree = "<group>"; };
 		C377A5042A830896003FB3EF /* StoreSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSync.swift; sourceTree = "<group>"; };
 		C386B5782A7312BB008F6473 /* GeoWebiOSDesigns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoWebiOSDesigns.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3AC36872A8FF1F3008821A8 /* MediaObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObject.swift; sourceTree = "<group>"; };
+		C3AC368A2A900C2D008821A8 /* ProtocolParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolParser.swift; sourceTree = "<group>"; };
 		C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelSceneView.swift; sourceTree = "<group>"; };
 		C3BAFA952A81C28300CFDC84 /* MediaGalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaGalleryView.swift; sourceTree = "<group>"; };
 		C3BAFA962A81C28300CFDC84 /* ModelQLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelQLView.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				C331C90C2A82F082004B1238 /* TableId.swift */,
 				C377A5012A82FC8A003FB3EF /* Systems */,
 				C331C9092A82F082004B1238 /* Tables */,
+				C3AC36892A900C07008821A8 /* ProtocolParser */,
 				C374EAC42A8E966600141446 /* Metadata */,
 				C331C9012A82F040004B1238 /* Assets.xcassets */,
 				C331C9032A82F040004B1238 /* Preview Content */,
@@ -163,6 +168,7 @@
 			children = (
 				C331C90A2A82F082004B1238 /* Name.swift */,
 				C374EAC72A8EA2B800141446 /* Url.swift */,
+				C3AC36872A8FF1F3008821A8 /* MediaObject.swift */,
 			);
 			path = Tables;
 			sourceTree = "<group>";
@@ -200,6 +206,14 @@
 				C331C8F92A82F03E004B1238 /* GeoWebiOS.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C3AC36892A900C07008821A8 /* ProtocolParser */ = {
+			isa = PBXGroup;
+			children = (
+				C3AC368A2A900C2D008821A8 /* ProtocolParser.swift */,
+			);
+			path = ProtocolParser;
 			sourceTree = "<group>";
 		};
 		C3BAFA922A81C28300CFDC84 /* GeoWebiOSDesigns */ = {
@@ -447,7 +461,9 @@
 				C331C90D2A82F082004B1238 /* Name.swift in Sources */,
 				C377A5052A830896003FB3EF /* StoreSync.swift in Sources */,
 				C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */,
+				C3AC368B2A900C2D008821A8 /* ProtocolParser.swift in Sources */,
 				C374EAC62A8E968A00141446 /* WorldSync.swift in Sources */,
+				C3AC36882A8FF1F3008821A8 /* MediaObject.swift in Sources */,
 				C374EAC82A8EA2B800141446 /* Url.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

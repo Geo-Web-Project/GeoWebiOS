@@ -20,12 +20,18 @@ struct ContentView: View {
     private static let urlPredicate = #Predicate<Url> { url in
         url.worldAddress == worldAddress
     }
+    private static let mediaObjectPredicate = #Predicate<MediaObject> { mediaObject in
+        mediaObject.worldAddress == worldAddress
+    }
     
     @Query(filter: namePredicate)
     private var name: [Name]
     
     @Query(filter: urlPredicate)
     private var url: [Url]
+    
+    @Query(filter: mediaObjectPredicate)
+    private var mediaObjects: [MediaObject]
 
     var body: some View {
         VStack {
@@ -40,6 +46,15 @@ struct ContentView: View {
                     .font(.subheadline)
             } else {
                 Text("No url found")
+            }
+            Text("Media Objects: ") + Text("\(mediaObjects.count)")
+            
+            List(mediaObjects) { mediaObject in
+                Text("Name: \(mediaObject.name)")
+                Text("Content Hash: \(mediaObject.contentHash.debugDescription)")
+                Text("Content Size: \(mediaObject.contentSize)")
+                Text("Media Type: \(mediaObject.mediaType.rawValue)")
+                Text("Encoding Format: \(mediaObject.encodingFormat.rawValue)")
             }
         }.onAppear {
             let web3 = try! Web3(wsUrl: "ws://127.0.0.1:8545")

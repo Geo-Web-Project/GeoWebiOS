@@ -26,12 +26,22 @@ struct Store {
         return SolidityEvent(name: "StoreSetField", anonymous: false, inputs: inputs)
     }
     
+    static var StoreSetRecord: SolidityEvent {
+        let inputs: [SolidityEvent.Parameter] = [
+            SolidityEvent.Parameter(name: "table", type: .bytes(length: 32), indexed: false),
+            SolidityEvent.Parameter(name: "key", type: .array(type: .bytes(length: 32), length: nil), indexed: false),
+            SolidityEvent.Parameter(name: "data", type: .bytes(length: nil), indexed: false)
+        ]
+        return SolidityEvent(name: "StoreSetRecord", anonymous: false, inputs: inputs)
+    }
+    
     static let tables = [
         Name.tableId.toHex(): Name.setField,
-        Url.tableId.toHex(): Url.setField
+        Url.tableId.toHex(): Url.setField,
+        MediaObject.tableId.toHex(): MediaObject.setRecord
     ]
     
-    static func handleStoreSetEvent(modelContext: ModelContext, address: EthereumAddress, event: [String: Any], blockNumber: EthereumQuantity) throws {
+    static func handleStoreSetFieldEvent(modelContext: ModelContext, address: EthereumAddress, event: [String: Any], blockNumber: EthereumQuantity) throws {
         guard let tableId = event["table"] as? Data else { throw StoreError.invalidTableId }
         guard let tableFunc = tables[tableId.toHexString()] else { throw StoreError.unknownTableId }
         

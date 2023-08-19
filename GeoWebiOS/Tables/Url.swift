@@ -32,7 +32,7 @@ final class Url {
     
     static func setField(modelContext: ModelContext, address: EthereumAddress, values: [String: Any], blockNumber: EthereumQuantity) throws {
         guard let newValue = values["data"] as? Data else { throw SetFieldError.invalidData }
-        guard let nativeValue = String(data: newValue, encoding: .utf8) else { throw SetFieldError.invalidNativeValue }
+        guard let nativeValue = try ProtocolParser.decodeDynamicField(abiType: SolidityType.string, data: newValue.makeBytes()) as? String else { throw SetFieldError.invalidNativeValue }
         
         let addressStr = address.hex(eip55: true)
         let latestName = FetchDescriptor<Url>(
