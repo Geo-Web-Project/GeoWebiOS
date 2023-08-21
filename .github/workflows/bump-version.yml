@@ -12,7 +12,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: yanamura/ios-bump-version@v1
-        with:
       - name: update
         run: |
           git add .
