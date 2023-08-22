@@ -12,7 +12,9 @@ import SwiftData
 struct GeoWebiOSApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                ParcelView()
+            }
         }
         .modelContainer(for: [WorldSync.self, Name.self, Url.self, MediaObject.self])
     }

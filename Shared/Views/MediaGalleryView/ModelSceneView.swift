@@ -17,7 +17,7 @@ enum ModelType {
 struct ModelSceneView: View {
     var qLAvailable: Bool = false
     @State var scene: SCNScene? = nil
-    @State var isPresentingQL: Bool = false
+//    @State var isPresentingQL: Bool = false
     
     var body: some View {
         ZStack {
@@ -30,7 +30,7 @@ struct ModelSceneView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            isPresentingQL = true
+//                            isPresentingQL = true
                         }, label: {
                             Label("Expand", systemImage: "viewfinder").labelStyle(.iconOnly)
                         })
@@ -41,9 +41,9 @@ struct ModelSceneView: View {
                 }
             }
         }
-        .sheet(isPresented: $isPresentingQL) {
-            ModelQLView(url: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!))
-        }
+//        .sheet(isPresented: $isPresentingQL) {
+//            ModelQLView(url: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!))
+//        }
         .task {
             scene = SCNScene(named: "robot.usdz")!
         }
@@ -77,8 +77,4 @@ struct ClearSceneView: UIViewRepresentable {
 
 #Preview {
     ModelSceneView()
-}
-
-#Preview {
-    ModelSceneView(qLAvailable: true)
 }
