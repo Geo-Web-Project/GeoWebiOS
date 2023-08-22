@@ -16,12 +16,14 @@ enum ModelType {
 
 struct ModelSceneView: View {
     var qLAvailable: Bool = false
-    var modelType: ModelType = .usdz
+    @State var scene: SCNScene? = nil
     @State var isPresentingQL: Bool = false
     
     var body: some View {
         ZStack {
-            ClearSceneView(modelType: modelType)
+            if let scene = scene {
+                ClearSceneView(scene: SCNScene(named: "robot.usdz")!)
+            }
             if (qLAvailable) {
                 VStack {
                     Spacer()
@@ -42,6 +44,9 @@ struct ModelSceneView: View {
         .sheet(isPresented: $isPresentingQL) {
             ModelQLView(url: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!))
         }
+        .task {
+            scene = SCNScene(named: "robot.usdz")!
+        }
     }
 }
 
@@ -49,22 +54,23 @@ struct ClearSceneView: UIViewRepresentable {
     typealias UIViewType = SCNView
     typealias Context = UIViewRepresentableContext<ClearSceneView>
 
-    let modelType: ModelType
+    let scene: SCNScene
     
     func updateUIView(_ uiView: UIViewType, context: Context) {}
     func makeUIView(context: Context) -> UIViewType {
         let view = SCNView()
         view.backgroundColor = UIColor.clear
         view.autoenablesDefaultLighting = true
-        
-        if modelType == .usdz {
-            view.scene = SCNScene(named: "robot.usdz")!
-        } else  {
-            let url = Bundle.main.url(forResource: "buddha", withExtension: "glb")!
-            let container = try! Container(url: url)
-            view.scene = try! SceneKitGenerator(document: container.document).generateSCNScene()
-        }
-        
+        view.scene = scene
+//        
+//        if modelType == .usdz {
+//            view.scene = SCNScene(named: "robot.usdz")!
+//        } else  {
+//            let url = Bundle.main.url(forResource: "buddha", withExtension: "glb")!
+//            let container = try! Container(url: url)
+//            view.scene = try! SceneKitGenerator(document: container.document).generateSCNScene()
+//        }
+//        
         return view
     }
 }
