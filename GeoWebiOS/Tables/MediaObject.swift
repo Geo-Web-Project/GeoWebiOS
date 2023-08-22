@@ -38,7 +38,8 @@ final class MediaObject {
 
     static let tableId: TableId = TableId(namespace: "geoweb", name: "MediaObject")
     
-    @Attribute(.unique) var worldAddress: String
+    @Attribute(.unique) var key: Bytes
+    var worldAddress: String
     var name: String
     var mediaType: MediaObjectType
     var encodingFormat: MediaObjectEncodingFormat
@@ -46,7 +47,8 @@ final class MediaObject {
     var contentHash: Bytes
     var lastUpdatedAtBlock: UInt
     
-    init(worldAddress: EthereumAddress, name: String, mediaType: MediaObjectType, encodingFormat: MediaObjectEncodingFormat, contentSize: UInt64, contentHash: Bytes, lastUpdatedAtBlock: UInt) {
+    init(key: Bytes, worldAddress: EthereumAddress, name: String, mediaType: MediaObjectType, encodingFormat: MediaObjectEncodingFormat, contentSize: UInt64, contentHash: Bytes, lastUpdatedAtBlock: UInt) {
+        self.key = key
         self.worldAddress = worldAddress.hex(eip55: true)
         self.name = name
         self.mediaType = mediaType
@@ -58,6 +60,9 @@ final class MediaObject {
     
     static func setRecord(modelContext: ModelContext, address: EthereumAddress, values: [String: Any], blockNumber: EthereumQuantity) throws {
         guard let newValue = values["data"] as? Data else { throw SetFieldError.invalidData }
+        guard let keys = values["key"] as? [Data] else { throw SetFieldError.invalidData }
+        guard let key = try ProtocolParser.decodeStaticField(abiType: SolidityType.bytes(length: 32), data: keys[0].makeBytes()) as? Data else { throw SetFieldError.invalidNativeValue }
+
         
         /*
             contentSize: "uint64"
@@ -94,14 +99,15 @@ final class MediaObject {
         guard let contentHash = try ProtocolParser.decodeDynamicField(abiType: SolidityType.bytes(length: nil), data: contentHashData) as? Data else { throw SetFieldError.invalidNativeValue }
                 
         let addressStr = address.hex(eip55: true)
+        let keyBytes = key.makeBytes()
         let latest = FetchDescriptor<MediaObject>(
-            predicate: #Predicate { $0.worldAddress == addressStr }
+            predicate: #Predicate { $0.key == keyBytes && $0.worldAddress == addressStr }
         )
         let results = try modelContext.fetch(latest)
         let latestBlockNumber = results.count > 0 ? results[0].lastUpdatedAtBlock : nil
         
         if latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity {
-            modelContext.insert(MediaObject(worldAddress: address, name: name, mediaType: MediaObjectType(rawValue: mediaType)!, encodingFormat: MediaObjectEncodingFormat(rawValue: encodingFormat)!, contentSize: contentSize, contentHash: contentHash.makeBytes(), lastUpdatedAtBlock: UInt(blockNumber.quantity)))
+            modelContext.insert(MediaObject(key: keyBytes, worldAddress: address, name: name, mediaType: MediaObjectType(rawValue: mediaType)!, encodingFormat: MediaObjectEncodingFormat(rawValue: encodingFormat)!, contentSize: contentSize, contentHash: contentHash.makeBytes(), lastUpdatedAtBlock: UInt(blockNumber.quantity)))
         }
     }
 }
