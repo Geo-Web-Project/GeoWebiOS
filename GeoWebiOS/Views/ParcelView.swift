@@ -50,7 +50,7 @@ struct ParcelView: View {
                     MapViewCell()
                 }
                 
-//                MediaGalleryCell()
+                MediaGalleryCell(mediaObjects: mediaObjects)
                 
                 Spacer()
             }.padding()
@@ -101,8 +101,6 @@ struct ParcelView: View {
 #Preview {
     NavigationStack {
         ParcelView()
-            .modelContainer(for: Name.self, inMemory: true)
-            .modelContainer(for: Url.self, inMemory: true)
-            .modelContainer(for: MediaObject.self, inMemory: true)
+            .modelContainer(for: [WorldSync.self, Name.self, Url.self, MediaObject.self])
     }
 }

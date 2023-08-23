@@ -47,6 +47,8 @@ final class MediaObject {
     var contentHash: Bytes
     var lastUpdatedAtBlock: UInt
     
+    var contentUrl: URL?
+    
     init(key: Bytes, worldAddress: EthereumAddress, name: String, mediaType: MediaObjectType, encodingFormat: MediaObjectEncodingFormat, contentSize: UInt64, contentHash: Bytes, lastUpdatedAtBlock: UInt) {
         self.key = key
         self.worldAddress = worldAddress.hex(eip55: true)

@@ -15,6 +15,7 @@ enum ModelType {
 }
 
 struct ModelSceneView: View {
+    var modelURL: URL
     var qLAvailable: Bool = false
     @State var scene: SCNScene? = nil
 //    @State var isPresentingQL: Bool = false
@@ -22,7 +23,7 @@ struct ModelSceneView: View {
     var body: some View {
         ZStack {
             if let scene = scene {
-                ClearSceneView(scene: SCNScene(named: "robot.usdz")!)
+                ClearSceneView(scene: scene)
             }
             if (qLAvailable) {
                 VStack {
@@ -45,7 +46,7 @@ struct ModelSceneView: View {
 //            ModelQLView(url: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!))
 //        }
         .task {
-            scene = SCNScene(named: "robot.usdz")!
+            scene = try? SCNScene(url: modelURL)
         }
     }
 }
@@ -76,5 +77,5 @@ struct ClearSceneView: UIViewRepresentable {
 }
 
 #Preview {
-    ModelSceneView()
+    ModelSceneView(modelURL: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!))
 }

@@ -12,7 +12,8 @@ struct MediaGalleryView: View {
 
     var body: some View {
         TabView {
-            ModelSceneView(qLAvailable: true)
+            ModelSceneView(modelURL: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!),
+                           qLAvailable: true)
                 .padding(.bottom, 40)
             Image("sample-favicon")
                 .padding()
