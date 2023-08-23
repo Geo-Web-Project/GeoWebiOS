@@ -9,12 +9,15 @@ import Foundation
 import SwiftData
 import Web3
 import Web3ContractABI
+import VarInt
+import CID
+import Multicodec
 
 enum MediaObjectType: UInt8, Codable {
-    case Model3D
-    case Image
-    case Video
-    case Audio
+    case Image = 0
+    case Audio = 1
+    case Video = 2
+    case Model3D = 3
 }
 
 enum MediaObjectEncodingFormat: UInt8, Codable {
@@ -38,18 +41,39 @@ final class MediaObject {
 
     static let tableId: TableId = TableId(namespace: "geoweb", name: "MediaObject")
     
-    @Attribute(.unique) var key: Bytes
+    @Attribute(.unique) var key: Data
     var worldAddress: String
     var name: String
     var mediaType: MediaObjectType
     var encodingFormat: MediaObjectEncodingFormat
     var contentSize: UInt64
-    var contentHash: Bytes
+    var contentHash: Data
     var lastUpdatedAtBlock: UInt
     
-    var contentUrl: URL?
+    @Transient
+    var contentUrl: URL? {
+        let contentHashBytes = [UInt8](contentHash)
+        let lengthPrefix = uVarInt(contentHashBytes)
+        let recBytes = [UInt8](contentHashBytes.dropFirst(lengthPrefix.bytesRead))
+        
+        let cidVersion = uVarInt(recBytes)
+        let cidCodecBytes = [UInt8](recBytes.dropFirst(cidVersion.bytesRead))
+        let cidCodec = uVarInt(cidCodecBytes)
+
+        switch Codecs(rawValue: cidCodec.value) {
+        case .identity:
+            let rawBytes = cidCodecBytes.dropFirst(cidCodec.bytesRead)
+            return saveDataToTemporaryURL(data: Data(rawBytes))
+        default:
+            if let cid = try? CID(recBytes) {
+                return URL(stringLiteral: "https://w3s.link/ipfs/\(cid.toBaseEncodedString)")
+            } else {
+                return nil
+            }
+        }
+    }
     
-    init(key: Bytes, worldAddress: EthereumAddress, name: String, mediaType: MediaObjectType, encodingFormat: MediaObjectEncodingFormat, contentSize: UInt64, contentHash: Bytes, lastUpdatedAtBlock: UInt) {
+    init(key: Data, worldAddress: EthereumAddress, name: String, mediaType: MediaObjectType, encodingFormat: MediaObjectEncodingFormat, contentSize: UInt64, contentHash: Data, lastUpdatedAtBlock: UInt) {
         self.key = key
         self.worldAddress = worldAddress.hex(eip55: true)
         self.name = name
@@ -101,15 +125,64 @@ final class MediaObject {
         guard let contentHash = try ProtocolParser.decodeDynamicField(abiType: SolidityType.bytes(length: nil), data: contentHashData) as? Data else { throw SetFieldError.invalidNativeValue }
                 
         let addressStr = address.hex(eip55: true)
-        let keyBytes = key.makeBytes()
         let latest = FetchDescriptor<MediaObject>(
-            predicate: #Predicate { $0.key == keyBytes && $0.worldAddress == addressStr }
+            predicate: #Predicate { $0.key == key && $0.worldAddress == addressStr }
         )
         let results = try modelContext.fetch(latest)
         let latestBlockNumber = results.count > 0 ? results[0].lastUpdatedAtBlock : nil
         
         if latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity {
-            modelContext.insert(MediaObject(key: keyBytes, worldAddress: address, name: name, mediaType: MediaObjectType(rawValue: mediaType)!, encodingFormat: MediaObjectEncodingFormat(rawValue: encodingFormat)!, contentSize: contentSize, contentHash: contentHash.makeBytes(), lastUpdatedAtBlock: UInt(blockNumber.quantity)))
+            modelContext.insert(MediaObject(key: key, worldAddress: address, name: name, mediaType: MediaObjectType(rawValue: mediaType)!, encodingFormat: MediaObjectEncodingFormat(rawValue: encodingFormat)!, contentSize: contentSize, contentHash: contentHash, lastUpdatedAtBlock: UInt(blockNumber.quantity)))
         }
+    }
+            
+    private func saveDataToTemporaryURL(data: Data) -> URL? {
+        do {
+            // Create a temporary file URL
+            let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory())
+            let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString)
+            
+            // Write the data to the temporary file URL
+            try data.write(to: temporaryFileURL, options: .atomic)
+            
+            return temporaryFileURL
+        } catch {
+            print("Error saving data to temporary URL: \(error)")
+            return nil
+        }
+    }
+}
+
+class MediaObjectFixtures {
+    static var image: MediaObject {
+        let contentData = try! Data(contentsOf: Bundle.main.url(forResource: "sample-logo", withExtension: "png")!)
+        let contentHash = putUVarInt(0xe3) + (putUVarInt(0x01) + (putUVarInt(0x00) + contentData))
+
+        return MediaObject(
+            key: Data(),
+            worldAddress: try! EthereumAddress(hex: "0xc6916BE3968f43BEBDf6c20874fFDCE74adF1352", eip55: true),
+            name: "Example item",
+            mediaType: .Image,
+            encodingFormat: .Png,
+            contentSize: 10,
+            contentHash: contentHash,
+            lastUpdatedAtBlock: 0
+        )
+    }
+    
+    static var model: MediaObject {
+        let contentData = try! Data(contentsOf: Bundle.main.url(forResource: "robot", withExtension: "usdz")!)
+        let contentHash = putUVarInt(0xe3) + (putUVarInt(0x01) + (putUVarInt(0x00) + contentData))
+        
+        return MediaObject(
+            key: Data(),
+            worldAddress: try! EthereumAddress(hex: "0xc6916BE3968f43BEBDf6c20874fFDCE74adF1352", eip55: true),
+            name: "Example item",
+            mediaType: .Model3D,
+            encodingFormat: .Usdz,
+            contentSize: 10,
+            contentHash: contentHash,
+            lastUpdatedAtBlock: 0
+        )
     }
 }

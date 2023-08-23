@@ -35,6 +35,9 @@
 		C3753E8C2A95622C003175B5 /* MediaObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3753E8B2A95622C003175B5 /* MediaObjectView.swift */; };
 		C3753E8D2A95632F003175B5 /* robot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C3BAFAA72A81C28300CFDC84 /* robot.usdz */; };
 		C377A5052A830896003FB3EF /* StoreSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377A5042A830896003FB3EF /* StoreSync.swift */; };
+		C3982F672A96A2FC0089AF69 /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C3982F662A96A2FC0089AF69 /* VarInt */; };
+		C3982F6A2A96A3490089AF69 /* CID in Frameworks */ = {isa = PBXBuildFile; productRef = C3982F692A96A3490089AF69 /* CID */; };
+		C3982F6D2A96B8860089AF69 /* sample-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C3982F6B2A96B8720089AF69 /* sample-logo.png */; };
 		C3ABECD22A958E4C00C64510 /* sample-favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3ABECD12A958E4C00C64510 /* sample-favicon.png */; };
 		C3AC36882A8FF1F3008821A8 /* MediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC36872A8FF1F3008821A8 /* MediaObject.swift */; };
 		C3AC368B2A900C2D008821A8 /* ProtocolParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC368A2A900C2D008821A8 /* ProtocolParser.swift */; };
@@ -98,6 +101,7 @@
 		C3753E8B2A95622C003175B5 /* MediaObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObjectView.swift; sourceTree = "<group>"; };
 		C377A5042A830896003FB3EF /* StoreSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSync.swift; sourceTree = "<group>"; };
 		C386B5782A7312BB008F6473 /* GeoWebiOSDesigns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoWebiOSDesigns.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3982F6B2A96B8720089AF69 /* sample-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-logo.png"; sourceTree = "<group>"; };
 		C3ABECD12A958E4C00C64510 /* sample-favicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-favicon.png"; sourceTree = "<group>"; };
 		C3AC36872A8FF1F3008821A8 /* MediaObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObject.swift; sourceTree = "<group>"; };
 		C3AC368A2A900C2D008821A8 /* ProtocolParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolParser.swift; sourceTree = "<group>"; };
@@ -138,8 +142,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3982F672A96A2FC0089AF69 /* VarInt in Frameworks */,
 				C331C9142A82F0CB004B1238 /* Web3ContractABI in Frameworks */,
 				C331C9162A82F0CB004B1238 /* Web3PromiseKit in Frameworks */,
+				C3982F6A2A96A3490089AF69 /* CID in Frameworks */,
 				C331C9122A82F0CB004B1238 /* Web3 in Frameworks */,
 				C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */,
 			);
@@ -189,6 +195,7 @@
 		C331C9032A82F040004B1238 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				C3982F6B2A96B8720089AF69 /* sample-logo.png */,
 				C3ABECD12A958E4C00C64510 /* sample-favicon.png */,
 				C331C9042A82F040004B1238 /* Preview Assets.xcassets */,
 			);
@@ -393,6 +400,8 @@
 				C331C9132A82F0CB004B1238 /* Web3ContractABI */,
 				C331C9152A82F0CB004B1238 /* Web3PromiseKit */,
 				C308E7E22A94394900EEC111 /* SwiftGLTF */,
+				C3982F662A96A2FC0089AF69 /* VarInt */,
+				C3982F692A96A3490089AF69 /* CID */,
 			);
 			productName = GeoWebiOS;
 			productReference = C331C8F92A82F03E004B1238 /* GeoWebiOS.app */;
@@ -449,6 +458,8 @@
 			packageReferences = (
 				C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */,
 				C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */,
+				C3982F652A96A2FC0089AF69 /* XCRemoteSwiftPackageReference "swift-varint" */,
+				C3982F682A96A3490089AF69 /* XCRemoteSwiftPackageReference "swift-cid" */,
 			);
 			productRefGroup = C386B5792A7312BB008F6473 /* Products */;
 			projectDirPath = "";
@@ -465,6 +476,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3982F6D2A96B8860089AF69 /* sample-logo.png in Resources */,
 				C331C9052A82F040004B1238 /* Preview Assets.xcassets in Resources */,
 				C3ABECD22A958E4C00C64510 /* sample-favicon.png in Resources */,
 				C3753E8D2A95632F003175B5 /* robot.usdz in Resources */,
@@ -856,6 +868,22 @@
 				minimumVersion = 0.0.3;
 			};
 		};
+		C3982F652A96A2FC0089AF69 /* XCRemoteSwiftPackageReference "swift-varint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swift-libp2p/swift-varint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+		C3982F682A96A3490089AF69 /* XCRemoteSwiftPackageReference "swift-cid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swift-libp2p/swift-cid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -883,6 +911,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */;
 			productName = SwiftGLTF;
+		};
+		C3982F662A96A2FC0089AF69 /* VarInt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3982F652A96A2FC0089AF69 /* XCRemoteSwiftPackageReference "swift-varint" */;
+			productName = VarInt;
+		};
+		C3982F692A96A3490089AF69 /* CID */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3982F682A96A3490089AF69 /* XCRemoteSwiftPackageReference "swift-cid" */;
+			productName = CID;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

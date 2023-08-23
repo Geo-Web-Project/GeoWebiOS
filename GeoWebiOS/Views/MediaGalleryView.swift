@@ -43,19 +43,8 @@ struct MediaGalleryView: View {
 
 #Preview {
     let container = try! ModelContainer(for: MediaObject.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
-    let object = MediaObject(
-        key: "0x".makeBytes(),
-        worldAddress: try! EthereumAddress(hex: "0xc6916BE3968f43BEBDf6c20874fFDCE74adF1352", eip55: true),
-        name: "Example item",
-        mediaType: .Image,
-        encodingFormat: .Png,
-        contentSize: 10,
-        contentHash: "0x".makeBytes(),
-        lastUpdatedAtBlock: 0
-    )
-    object.contentUrl = URL(fileURLWithPath: Bundle.main.path(forResource: "sample-favicon", ofType: "png")!)
     
     return NavigationStack {
-        MediaGalleryView(mediaObjects: [object], isPresenting: Binding.constant(true))
+        MediaGalleryView(mediaObjects: [MediaObjectFixtures.image], isPresenting: Binding.constant(true))
     }
 }

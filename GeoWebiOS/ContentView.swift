@@ -12,7 +12,7 @@ import Web3
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
 
-    private static let worldAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+    private static let worldAddress = "0xC9968182E527306428b4801F80c124761C71FC52"
     
     private static let namePredicate = #Predicate<Name> { name in
         name.worldAddress == worldAddress
