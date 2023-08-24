@@ -17,6 +17,7 @@ struct MediaGalleryView: View {
         TabView {
             ForEach(mediaObjects) { mediaObject in
                 MediaObjectView(mediaObject: mediaObject)
+                    .padding(.bottom, 50)
             }
         }
         .navigationTitle("Media Gallery")
@@ -45,6 +46,6 @@ struct MediaGalleryView: View {
     let container = try! ModelContainer(for: MediaObject.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     
     return NavigationStack {
-        MediaGalleryView(mediaObjects: [MediaObjectFixtures.image], isPresenting: Binding.constant(true))
+        MediaGalleryView(mediaObjects: [MediaObjectFixtures.image, MediaObjectFixtures.image], isPresenting: Binding.constant(true))
     }
 }

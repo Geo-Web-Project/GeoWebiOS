@@ -8,6 +8,7 @@
 import SwiftUI
 import SceneKit
 import SwiftGLTF
+import QuickLook
 
 enum ModelType {
     case usdz
@@ -18,12 +19,15 @@ struct ModelSceneView: View {
     var modelURL: URL
     var qLAvailable: Bool = false
     @State var scene: SCNScene? = nil
-//    @State var isPresentingQL: Bool = false
+    @State var qlPreviewItem: QLPreviewItem? = nil
+    @State var isPresentingQL: Bool = false
     
     var body: some View {
         ZStack {
-            if let scene = scene {
+            if let scene {
                 ClearSceneView(scene: scene)
+            } else {
+                ProgressView()
             }
             if (qLAvailable) {
                 VStack {
@@ -31,7 +35,7 @@ struct ModelSceneView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-//                            isPresentingQL = true
+                            isPresentingQL = true
                         }, label: {
                             Label("Expand", systemImage: "viewfinder").labelStyle(.iconOnly)
                         })
@@ -42,11 +46,43 @@ struct ModelSceneView: View {
                 }
             }
         }
-//        .sheet(isPresented: $isPresentingQL) {
-//            ModelQLView(url: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!))
-//        }
+        .sheet(isPresented: $isPresentingQL) {
+            if let qlPreviewItem {
+                ModelQLView(qlPreviewItem: qlPreviewItem)
+            }
+        }
         .task {
-            scene = try? SCNScene(url: modelURL)
+            if modelURL.isFileURL {
+                // Load local file
+                scene = try? SCNScene(url: modelURL)
+                qlPreviewItem = modelURL as NSURL
+            } else {
+                // Load remote URL
+                let task = URLSession.shared.downloadTask(with: URLRequest(url: modelURL, cachePolicy: .returnCacheDataElseLoad)) { (url, response, error) in
+                    if let error {
+                        print(error)
+                        return
+                    }
+                    guard let url = url else { return }
+                    
+                    if let suggestedFilename = response?.suggestedFilename {
+                        let newUrl = url.deletingLastPathComponent().appending(path: suggestedFilename)
+                        
+                        // Rename with suggested name
+                        try? FileManager.default.moveItem(at: url, to: newUrl)
+                        
+                        scene = try? SCNScene(url: newUrl)
+                        qlPreviewItem = newUrl as NSURL
+                    } else {
+                        scene = try? SCNScene(url: url)
+                        qlPreviewItem = url as NSURL
+                    }
+                   
+                    
+                }
+                
+                task.resume()
+            }
         }
     }
 }

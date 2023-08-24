@@ -65,9 +65,18 @@ final class MediaObject {
             let rawBytes = cidCodecBytes.dropFirst(cidCodec.bytesRead)
             return saveDataToTemporaryURL(data: Data(rawBytes))
         default:
-            if let cid = try? CID(recBytes) {
-                return URL(stringLiteral: "https://w3s.link/ipfs/\(cid.toBaseEncodedString)")
-            } else {
+            do {
+                let cid = try CID(recBytes)
+                let ext = switch encodingFormat {
+                case .Usdz:
+                    ".usdz"
+                case .Png:
+                    ".png"
+                default:
+                    ""
+                }
+                return URL(stringLiteral: "https://w3s.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
+            } catch {
                 return nil
             }
         }

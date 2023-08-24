@@ -38,6 +38,7 @@
 		C3982F672A96A2FC0089AF69 /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C3982F662A96A2FC0089AF69 /* VarInt */; };
 		C3982F6A2A96A3490089AF69 /* CID in Frameworks */ = {isa = PBXBuildFile; productRef = C3982F692A96A3490089AF69 /* CID */; };
 		C3982F6D2A96B8860089AF69 /* sample-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C3982F6B2A96B8720089AF69 /* sample-logo.png */; };
+		C3982F6E2A96D3B40089AF69 /* ModelQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA962A81C28300CFDC84 /* ModelQLView.swift */; };
 		C3ABECD22A958E4C00C64510 /* sample-favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3ABECD12A958E4C00C64510 /* sample-favicon.png */; };
 		C3AC36882A8FF1F3008821A8 /* MediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC36872A8FF1F3008821A8 /* MediaObject.swift */; };
 		C3AC368B2A900C2D008821A8 /* ProtocolParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC368A2A900C2D008821A8 /* ProtocolParser.swift */; };
@@ -522,6 +523,7 @@
 				C308E7DB2A9438A800EEC111 /* WebViewCell.swift in Sources */,
 				C3753E8C2A95622C003175B5 /* MediaObjectView.swift in Sources */,
 				C3753E872A9558D5003175B5 /* MediaGalleryCell.swift in Sources */,
+				C3982F6E2A96D3B40089AF69 /* ModelQLView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,6 +25,7 @@ struct MediaGalleryCell: View {
                 TabView {
                     ForEach(mediaObjects) { mediaObject in
                         MediaObjectView(mediaObject: mediaObject)
+                            .padding(.bottom, 50)
                     }
                 }
                 .aspectRatio(1.0, contentMode: .fit)
@@ -42,7 +43,7 @@ struct MediaGalleryCell: View {
 #Preview {
     let container = try! ModelContainer(for: MediaObject.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
 
-    return MediaGalleryCell(mediaObjects: [MediaObjectFixtures.image])
+    return MediaGalleryCell(mediaObjects: [MediaObjectFixtures.image, MediaObjectFixtures.image])
         .padding()
         .modelContainer(container)
 }

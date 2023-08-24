@@ -11,7 +11,7 @@ import QuickLook
 import ARKit
 
 struct ModelQLView: UIViewControllerRepresentable {
-    let url: URL
+    let qlPreviewItem: QLPreviewItem
     
     func makeUIViewController(context: Context) -> QLPreviewController {
         let controller = QLPreviewController()
@@ -44,11 +44,11 @@ class ModelQLCoordinator: QLPreviewControllerDataSource {
         _ controller: QLPreviewController,
         previewItemAt index: Int
     ) -> QLPreviewItem {
-        return parent.url as NSURL
+        return parent.qlPreviewItem
     }
     
 }
 
 #Preview {
-    ModelQLView(url: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!))
+    ModelQLView(qlPreviewItem: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!) as NSURL)
 }

@@ -14,11 +14,13 @@ struct MediaObjectView: View {
     var mediaObject: MediaObject
 
     var body: some View {
-        switch (mediaObject.mediaType, mediaObject.contentUrl) {
-        case (_, let contentUrl) where contentUrl == nil:
-            ProgressView()
-        case (.Image, let contentUrl):
-            VStack {
+        VStack {
+            switch (mediaObject.mediaType, mediaObject.contentUrl) {
+            case (_, let contentUrl) where contentUrl == nil:
+                Spacer()
+                ProgressView()
+            case (.Image, let contentUrl):
+                Spacer()
                 AsyncImage(url: contentUrl!) { image in
                     image.resizable()
                 } placeholder: {
@@ -26,13 +28,16 @@ struct MediaObjectView: View {
                 }
                 .aspectRatio(contentMode: .fit)
                 .padding()
-                
-                Text(mediaObject.name)
+            case (.Model3D, let contentUrl):
+                Spacer()
+                ModelSceneView(modelURL: contentUrl!)
+            default:
+                Text("Unknown media object")
             }
-        case (.Model3D, let contentUrl):
-            ModelSceneView(modelURL: contentUrl!)
-        default:
-            Text("Unknown media object")
+            
+            Spacer()
+
+            Text(mediaObject.name)
         }
     }
 }
