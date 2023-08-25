@@ -29,6 +29,7 @@ enum MediaObjectEncodingFormat: UInt8, Codable {
     case Svg
     case Mpeg
     case Mp4
+    case Mp3
 }
 
 @Model
@@ -44,8 +45,8 @@ final class MediaObject {
     @Attribute(.unique) var key: Data
     var worldAddress: String
     var name: String
-    var mediaType: MediaObjectType
-    var encodingFormat: MediaObjectEncodingFormat
+    var mediaType: MediaObjectType?
+    var encodingFormat: MediaObjectEncodingFormat?
     var contentSize: UInt64
     var contentHash: Data
     var lastUpdatedAtBlock: UInt
@@ -63,7 +64,17 @@ final class MediaObject {
         switch Codecs(rawValue: cidCodec.value) {
         case .identity:
             let rawBytes = cidCodecBytes.dropFirst(cidCodec.bytesRead)
-            return saveDataToTemporaryURL(data: Data(rawBytes))
+            let ext = switch encodingFormat {
+            case .Mp4:
+                "mp4"
+            case .Usdz:
+                "usdz"
+            case .Mp3:
+                "mp3"
+            default:
+                ""
+            }
+            return saveDataToTemporaryURL(data: Data(rawBytes), ext: ext)
         default:
             do {
                 let cid = try CID(recBytes)
@@ -82,7 +93,7 @@ final class MediaObject {
         }
     }
     
-    init(key: Data, worldAddress: EthereumAddress, name: String, mediaType: MediaObjectType, encodingFormat: MediaObjectEncodingFormat, contentSize: UInt64, contentHash: Data, lastUpdatedAtBlock: UInt) {
+    init(key: Data, worldAddress: EthereumAddress, name: String, mediaType: MediaObjectType?, encodingFormat: MediaObjectEncodingFormat?, contentSize: UInt64, contentHash: Data, lastUpdatedAtBlock: UInt) {
         self.key = key
         self.worldAddress = worldAddress.hex(eip55: true)
         self.name = name
@@ -141,15 +152,15 @@ final class MediaObject {
         let latestBlockNumber = results.count > 0 ? results[0].lastUpdatedAtBlock : nil
         
         if latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity {
-            modelContext.insert(MediaObject(key: key, worldAddress: address, name: name, mediaType: MediaObjectType(rawValue: mediaType)!, encodingFormat: MediaObjectEncodingFormat(rawValue: encodingFormat)!, contentSize: contentSize, contentHash: contentHash, lastUpdatedAtBlock: UInt(blockNumber.quantity)))
+            modelContext.insert(MediaObject(key: key, worldAddress: address, name: name, mediaType: MediaObjectType(rawValue: mediaType), encodingFormat: MediaObjectEncodingFormat(rawValue: encodingFormat), contentSize: contentSize, contentHash: contentHash, lastUpdatedAtBlock: UInt(blockNumber.quantity)))
         }
     }
             
-    private func saveDataToTemporaryURL(data: Data) -> URL? {
+    private func saveDataToTemporaryURL(data: Data, ext: String) -> URL? {
         do {
             // Create a temporary file URL
             let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory())
-            let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString)
+            let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension(ext)
             
             // Write the data to the temporary file URL
             try data.write(to: temporaryFileURL, options: .atomic)
@@ -170,7 +181,7 @@ class MediaObjectFixtures {
         return MediaObject(
             key: Data(),
             worldAddress: try! EthereumAddress(hex: "0xc6916BE3968f43BEBDf6c20874fFDCE74adF1352", eip55: true),
-            name: "Example item",
+            name: "Example image",
             mediaType: .Image,
             encodingFormat: .Png,
             contentSize: 10,
@@ -186,9 +197,41 @@ class MediaObjectFixtures {
         return MediaObject(
             key: Data(),
             worldAddress: try! EthereumAddress(hex: "0xc6916BE3968f43BEBDf6c20874fFDCE74adF1352", eip55: true),
-            name: "Example item",
+            name: "Example model",
             mediaType: .Model3D,
             encodingFormat: .Usdz,
+            contentSize: 10,
+            contentHash: contentHash,
+            lastUpdatedAtBlock: 0
+        )
+    }
+    
+    static var video: MediaObject {
+        let contentData = try! Data(contentsOf: Bundle.main.url(forResource: "video", withExtension: "mp4")!)
+        let contentHash = putUVarInt(0xe3) + (putUVarInt(0x01) + (putUVarInt(0x00) + contentData))
+
+        return MediaObject(
+            key: Data(),
+            worldAddress: try! EthereumAddress(hex: "0xc6916BE3968f43BEBDf6c20874fFDCE74adF1352", eip55: true),
+            name: "Example video",
+            mediaType: .Video,
+            encodingFormat: .Mp4,
+            contentSize: 10,
+            contentHash: contentHash,
+            lastUpdatedAtBlock: 0
+        )
+    }
+    
+    static var audio: MediaObject {
+        let contentData = try! Data(contentsOf: Bundle.main.url(forResource: "audio", withExtension: "mp3")!)
+        let contentHash = putUVarInt(0xe3) + (putUVarInt(0x01) + (putUVarInt(0x00) + contentData))
+
+        return MediaObject(
+            key: Data(),
+            worldAddress: try! EthereumAddress(hex: "0xc6916BE3968f43BEBDf6c20874fFDCE74adF1352", eip55: true),
+            name: "Example audio",
+            mediaType: .Audio,
+            encodingFormat: .Mp3,
             contentSize: 10,
             contentHash: contentHash,
             lastUpdatedAtBlock: 0

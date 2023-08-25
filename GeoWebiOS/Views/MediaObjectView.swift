@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import Web3
 import CID
+import AVKit
 
 struct MediaObjectView: View {
     var mediaObject: MediaObject
@@ -19,6 +20,7 @@ struct MediaObjectView: View {
             case (_, let contentUrl) where contentUrl == nil:
                 Spacer()
                 ProgressView()
+                Spacer()
             case (.Image, let contentUrl):
                 Spacer()
                 AsyncImage(url: contentUrl!) { image in
@@ -28,15 +30,19 @@ struct MediaObjectView: View {
                 }
                 .aspectRatio(contentMode: .fit)
                 .padding()
+                Spacer()
             case (.Model3D, let contentUrl):
                 Spacer()
                 ModelSceneView(modelURL: contentUrl!)
+                Spacer()
+            case (.Video, let contentUrl):
+                AVObjectView(url: contentUrl!)
+            case (.Audio, let contentUrl):
+                AVObjectView(url: contentUrl!)
             default:
                 Text("Unknown media object")
             }
             
-            Spacer()
-
             Text(mediaObject.name)
         }
     }
@@ -52,4 +58,16 @@ struct MediaObjectView: View {
     let container = try! ModelContainer(for: MediaObject.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
 
     return MediaObjectView(mediaObject: MediaObjectFixtures.model)
+}
+
+#Preview {
+    let container = try! ModelContainer(for: MediaObject.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+
+    return MediaObjectView(mediaObject: MediaObjectFixtures.video)
+}
+
+#Preview {
+    let container = try! ModelContainer(for: MediaObject.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+
+    return MediaObjectView(mediaObject: MediaObjectFixtures.audio)
 }

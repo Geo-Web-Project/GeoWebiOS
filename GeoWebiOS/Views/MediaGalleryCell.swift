@@ -26,6 +26,7 @@ struct MediaGalleryCell: View {
                     ForEach(mediaObjects) { mediaObject in
                         MediaObjectView(mediaObject: mediaObject)
                             .padding(.bottom, 50)
+                            .disabled(true)
                     }
                 }
                 .aspectRatio(1.0, contentMode: .fit)

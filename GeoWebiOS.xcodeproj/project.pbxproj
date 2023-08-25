@@ -17,7 +17,6 @@
 		C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */ = {isa = PBXBuildFile; productRef = C308E7E22A94394900EEC111 /* SwiftGLTF */; };
 		C331C8F42A82EB81004B1238 /* AddWorldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */; };
 		C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */; };
-		C331C8FE2A82F03E004B1238 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8FD2A82F03E004B1238 /* ContentView.swift */; };
 		C331C9022A82F040004B1238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331C9012A82F040004B1238 /* Assets.xcassets */; };
 		C331C9052A82F040004B1238 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331C9042A82F040004B1238 /* Preview Assets.xcassets */; };
 		C331C90D2A82F082004B1238 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C90A2A82F082004B1238 /* Name.swift */; };
@@ -35,6 +34,12 @@
 		C3753E8C2A95622C003175B5 /* MediaObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3753E8B2A95622C003175B5 /* MediaObjectView.swift */; };
 		C3753E8D2A95632F003175B5 /* robot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C3BAFAA72A81C28300CFDC84 /* robot.usdz */; };
 		C377A5052A830896003FB3EF /* StoreSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377A5042A830896003FB3EF /* StoreSync.swift */; };
+		C39770A92A9950540052183D /* AVObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39770A82A9950540052183D /* AVObjectView.swift */; };
+		C39770AA2A9950540052183D /* AVObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39770A82A9950540052183D /* AVObjectView.swift */; };
+		C39770AC2A9950EC0052183D /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C39770AB2A9950EC0052183D /* video.mp4 */; };
+		C39770AD2A9950EC0052183D /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C39770AB2A9950EC0052183D /* video.mp4 */; };
+		C39770AF2A9952AD0052183D /* audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C39770AE2A9952AD0052183D /* audio.mp3 */; };
+		C39770B02A9952AD0052183D /* audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C39770AE2A9952AD0052183D /* audio.mp3 */; };
 		C3982F672A96A2FC0089AF69 /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C3982F662A96A2FC0089AF69 /* VarInt */; };
 		C3982F6A2A96A3490089AF69 /* CID in Frameworks */ = {isa = PBXBuildFile; productRef = C3982F692A96A3490089AF69 /* CID */; };
 		C3982F6D2A96B8860089AF69 /* sample-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C3982F6B2A96B8720089AF69 /* sample-logo.png */; };
@@ -89,7 +94,6 @@
 		C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorldFormView.swift; sourceTree = "<group>"; };
 		C331C8F92A82F03E004B1238 /* GeoWebiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoWebiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoWebiOSApp.swift; sourceTree = "<group>"; };
-		C331C8FD2A82F03E004B1238 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C331C9012A82F040004B1238 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C331C9042A82F040004B1238 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C331C90A2A82F082004B1238 /* Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
@@ -102,6 +106,9 @@
 		C3753E8B2A95622C003175B5 /* MediaObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObjectView.swift; sourceTree = "<group>"; };
 		C377A5042A830896003FB3EF /* StoreSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSync.swift; sourceTree = "<group>"; };
 		C386B5782A7312BB008F6473 /* GeoWebiOSDesigns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoWebiOSDesigns.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C39770A82A9950540052183D /* AVObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVObjectView.swift; sourceTree = "<group>"; };
+		C39770AB2A9950EC0052183D /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
+		C39770AE2A9952AD0052183D /* audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audio.mp3; sourceTree = "<group>"; };
 		C3982F6B2A96B8720089AF69 /* sample-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-logo.png"; sourceTree = "<group>"; };
 		C3ABECD12A958E4C00C64510 /* sample-favicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-favicon.png"; sourceTree = "<group>"; };
 		C3AC36872A8FF1F3008821A8 /* MediaObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObject.swift; sourceTree = "<group>"; };
@@ -178,7 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */,
-				C331C8FD2A82F03E004B1238 /* ContentView.swift */,
 				C331C90B2A82F082004B1238 /* Store.swift */,
 				C377A5042A830896003FB3EF /* StoreSync.swift */,
 				C331C90C2A82F082004B1238 /* TableId.swift */,
@@ -196,6 +202,8 @@
 		C331C9032A82F040004B1238 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				C39770AE2A9952AD0052183D /* audio.mp3 */,
+				C39770AB2A9950EC0052183D /* video.mp4 */,
 				C3982F6B2A96B8720089AF69 /* sample-logo.png */,
 				C3ABECD12A958E4C00C64510 /* sample-favicon.png */,
 				C331C9042A82F040004B1238 /* Preview Assets.xcassets */,
@@ -273,6 +281,7 @@
 				C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */,
 				C3BAFA952A81C28300CFDC84 /* MediaGalleryView.swift */,
 				C3BAFA962A81C28300CFDC84 /* ModelQLView.swift */,
+				C39770A82A9950540052183D /* AVObjectView.swift */,
 			);
 			path = MediaGalleryView;
 			sourceTree = "<group>";
@@ -478,7 +487,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3982F6D2A96B8860089AF69 /* sample-logo.png in Resources */,
+				C39770AC2A9950EC0052183D /* video.mp4 in Resources */,
 				C331C9052A82F040004B1238 /* Preview Assets.xcassets in Resources */,
+				C39770AF2A9952AD0052183D /* audio.mp3 in Resources */,
 				C3ABECD22A958E4C00C64510 /* sample-favicon.png in Resources */,
 				C3753E8D2A95632F003175B5 /* robot.usdz in Resources */,
 				C331C9022A82F040004B1238 /* Assets.xcassets in Resources */,
@@ -490,6 +501,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3BAFAC42A81C28300CFDC84 /* robot.usdz in Resources */,
+				C39770B02A9952AD0052183D /* audio.mp3 in Resources */,
+				C39770AD2A9950EC0052183D /* video.mp4 in Resources */,
 				C3BAFAB92A81C28300CFDC84 /* Preview Assets.xcassets in Resources */,
 				C3BAFAB82A81C28300CFDC84 /* Assets.xcassets in Resources */,
 				C3BAFABB2A81C28300CFDC84 /* buddha.glb in Resources */,
@@ -508,12 +521,12 @@
 				C331C90E2A82F082004B1238 /* Store.swift in Sources */,
 				C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */,
 				C331C90F2A82F082004B1238 /* TableId.swift in Sources */,
-				C331C8FE2A82F03E004B1238 /* ContentView.swift in Sources */,
 				C331C90D2A82F082004B1238 /* Name.swift in Sources */,
 				C3753E892A955E8C003175B5 /* MediaGalleryView.swift in Sources */,
 				C377A5052A830896003FB3EF /* StoreSync.swift in Sources */,
 				C308E7DC2A9438AB00EEC111 /* WebViewCellVariant2.swift in Sources */,
 				C308E7DE2A9438C200EEC111 /* FullMapView.swift in Sources */,
+				C39770A92A9950540052183D /* AVObjectView.swift in Sources */,
 				C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */,
 				C3AC368B2A900C2D008821A8 /* ProtocolParser.swift in Sources */,
 				C374EAC62A8E968A00141446 /* WorldSync.swift in Sources */,
@@ -531,6 +544,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C39770AA2A9950540052183D /* AVObjectView.swift in Sources */,
 				C3BAFAC32A81C28300CFDC84 /* MapViewCellVariant2.swift in Sources */,
 				C3BAFAC62A81C28300CFDC84 /* WebViewCellVariant3.swift in Sources */,
 				C3BAFACB2A81C28300CFDC84 /* FullMapView.swift in Sources */,

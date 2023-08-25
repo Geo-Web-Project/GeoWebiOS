@@ -12,7 +12,7 @@ import Web3
 struct ParcelView: View {
     @Environment(\.modelContext) private var modelContext
 
-    private static let worldAddress = "0xC9968182E527306428b4801F80c124761C71FC52"
+    private static let worldAddress = "0xeA45b8aE461c840c1B2965ffeDA5C2a11594E1c1"
     
     private static let namePredicate = #Predicate<Name> { name in
         name.worldAddress == worldAddress
