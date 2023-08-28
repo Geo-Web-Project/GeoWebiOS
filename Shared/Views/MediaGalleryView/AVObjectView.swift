@@ -12,20 +12,23 @@ struct AVObjectView: View {
     @State var url: URL
     @State var isPlaying: Bool = false
     @State var player: AVPlayer?
+    var showPlayButton: Bool = true
     
     var body: some View {
         VStack {
             if let player {
                 VideoPlayer(player: player)
                 
-                Button {
-                    isPlaying ? player.pause() : player.play()
-                    isPlaying.toggle()
-                    player.seek(to: .zero)
-                } label: {
-                    Image(systemName: isPlaying ? "stop.fill" : "play.fill")
-                        .padding()
-                        .font(.title)
+                if showPlayButton {
+                    Button {
+                        isPlaying ? player.pause() : player.play()
+                        isPlaying.toggle()
+                        player.seek(to: .zero)
+                    } label: {
+                        Image(systemName: isPlaying ? "stop.fill" : "play.fill")
+                            .padding()
+                            .font(.title)
+                    }
                 }
             }
         }
@@ -40,5 +43,5 @@ struct AVObjectView: View {
 }
 
 #Preview {
-    AVObjectView(url: Bundle.main.url(forResource: "audio", withExtension: "mp3")!)
+    AVObjectView(url: Bundle.main.url(forResource: "audio", withExtension: "mp3")!, showPlayButton: false)
 }

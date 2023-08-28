@@ -13,6 +13,7 @@ import AVKit
 
 struct MediaObjectView: View {
     var mediaObject: MediaObject
+    var showInteraction: Bool = true
 
     var body: some View {
         VStack {
@@ -36,9 +37,9 @@ struct MediaObjectView: View {
                 ModelSceneView(modelURL: contentUrl!)
                 Spacer()
             case (.Video, let contentUrl):
-                AVObjectView(url: contentUrl!)
+                AVObjectView(url: contentUrl!, showPlayButton: showInteraction)
             case (.Audio, let contentUrl):
-                AVObjectView(url: contentUrl!)
+                AVObjectView(url: contentUrl!, showPlayButton: showInteraction)
             default:
                 Text("Unknown media object")
             }
