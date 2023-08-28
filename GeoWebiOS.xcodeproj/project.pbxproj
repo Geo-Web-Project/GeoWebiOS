@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C300CAAA2A9D35D900ECE33A /* NIO in Frameworks */ = {isa = PBXBuildFile; productRef = C300CAA92A9D35D900ECE33A /* NIO */; };
+		C300CAAC2A9D35D900ECE33A /* NIOConcurrencyHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = C300CAAB2A9D35D900ECE33A /* NIOConcurrencyHelpers */; };
+		C300CAAE2A9D35D900ECE33A /* NIOCore in Frameworks */ = {isa = PBXBuildFile; productRef = C300CAAD2A9D35D900ECE33A /* NIOCore */; };
+		C300CAB02A9D35D900ECE33A /* NIOEmbedded in Frameworks */ = {isa = PBXBuildFile; productRef = C300CAAF2A9D35D900ECE33A /* NIOEmbedded */; };
+		C300CAB22A9D35D900ECE33A /* NIOFoundationCompat in Frameworks */ = {isa = PBXBuildFile; productRef = C300CAB12A9D35D900ECE33A /* NIOFoundationCompat */; };
 		C308E7D72A9437CB00EEC111 /* ParcelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C308E7D62A9437CB00EEC111 /* ParcelView.swift */; };
 		C308E7DA2A9438A300EEC111 /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAA52A81C28300CFDC84 /* MapViewCell.swift */; };
 		C308E7DB2A9438A800EEC111 /* WebViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAAC2A81C28300CFDC84 /* WebViewCell.swift */; };
@@ -151,11 +156,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3982F672A96A2FC0089AF69 /* VarInt in Frameworks */,
+				C300CAAC2A9D35D900ECE33A /* NIOConcurrencyHelpers in Frameworks */,
+				C300CAAA2A9D35D900ECE33A /* NIO in Frameworks */,
+				C300CAAE2A9D35D900ECE33A /* NIOCore in Frameworks */,
 				C331C9142A82F0CB004B1238 /* Web3ContractABI in Frameworks */,
 				C331C9162A82F0CB004B1238 /* Web3PromiseKit in Frameworks */,
 				C3982F6A2A96A3490089AF69 /* CID in Frameworks */,
+				C300CAB22A9D35D900ECE33A /* NIOFoundationCompat in Frameworks */,
 				C331C9122A82F0CB004B1238 /* Web3 in Frameworks */,
 				C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */,
+				C300CAB02A9D35D900ECE33A /* NIOEmbedded in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +422,11 @@
 				C308E7E22A94394900EEC111 /* SwiftGLTF */,
 				C3982F662A96A2FC0089AF69 /* VarInt */,
 				C3982F692A96A3490089AF69 /* CID */,
+				C300CAA92A9D35D900ECE33A /* NIO */,
+				C300CAAB2A9D35D900ECE33A /* NIOConcurrencyHelpers */,
+				C300CAAD2A9D35D900ECE33A /* NIOCore */,
+				C300CAAF2A9D35D900ECE33A /* NIOEmbedded */,
+				C300CAB12A9D35D900ECE33A /* NIOFoundationCompat */,
 			);
 			productName = GeoWebiOS;
 			productReference = C331C8F92A82F03E004B1238 /* GeoWebiOS.app */;
@@ -470,6 +485,7 @@
 				C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */,
 				C3982F652A96A2FC0089AF69 /* XCRemoteSwiftPackageReference "swift-varint" */,
 				C3982F682A96A3490089AF69 /* XCRemoteSwiftPackageReference "swift-cid" */,
+				C300CAA82A9D35D900ECE33A /* XCRemoteSwiftPackageReference "swift-nio" */,
 			);
 			productRefGroup = C386B5792A7312BB008F6473 /* Products */;
 			projectDirPath = "";
@@ -868,6 +884,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C300CAA82A9D35D900ECE33A /* XCRemoteSwiftPackageReference "swift-nio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-nio.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.57.0;
+			};
+		};
 		C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boilertalk/Web3.swift.git";
@@ -903,6 +927,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C300CAA92A9D35D900ECE33A /* NIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C300CAA82A9D35D900ECE33A /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIO;
+		};
+		C300CAAB2A9D35D900ECE33A /* NIOConcurrencyHelpers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C300CAA82A9D35D900ECE33A /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOConcurrencyHelpers;
+		};
+		C300CAAD2A9D35D900ECE33A /* NIOCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C300CAA82A9D35D900ECE33A /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOCore;
+		};
+		C300CAAF2A9D35D900ECE33A /* NIOEmbedded */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C300CAA82A9D35D900ECE33A /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOEmbedded;
+		};
+		C300CAB12A9D35D900ECE33A /* NIOFoundationCompat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C300CAA82A9D35D900ECE33A /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOFoundationCompat;
+		};
 		C308E7E22A94394900EEC111 /* SwiftGLTF */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */;
