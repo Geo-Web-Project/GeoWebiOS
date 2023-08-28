@@ -18,18 +18,18 @@ struct ParcelListView2: View {
                         isPresenting = false
                     }
                 }, label: {
-                    WorldListItemView(hasWebContent: true, hasMediaGallery: true, hasARContent: true)
+                    WorldListItemView1(hasWebContent: true, hasMediaGallery: true, hasARContent: true)
                     Image(systemName: "chevron.right")
                 })
                 .buttonStyle(.borderless)
                 .foregroundStyle(.primary)
                 
-                WorldListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
-                WorldListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
-                WorldListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
-                WorldListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
-                WorldListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
-                WorldListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
+                WorldListItemView1(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
+                WorldListItemView1(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
+                WorldListItemView1(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
+                WorldListItemView1(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
+                WorldListItemView1(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
+                WorldListItemView1(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
             }
             .navigationTitle("Parcels")
             .navigationBarTitleDisplayMode(.large)

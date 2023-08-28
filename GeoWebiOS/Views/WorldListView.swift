@@ -18,8 +18,14 @@ struct WorldListView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            List(savedWorlds) { world in
-                WorldListItemView(worldAddress: world.worldAddress)
+            NavigationStack {
+                List(savedWorlds) { world in
+                    NavigationLink(destination: {
+                        WorldView(worldAddress: world.worldAddress)
+                    }, label: {
+                        WorldListItemView(worldAddress: world.worldAddress)
+                    })
+                }
             }
         }
         .navigationTitle("Worlds")

@@ -20,6 +20,7 @@
 		C308E7DE2A9438C200EEC111 /* FullMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB02A81C28300CFDC84 /* FullMapView.swift */; };
 		C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */; };
 		C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */ = {isa = PBXBuildFile; productRef = C308E7E22A94394900EEC111 /* SwiftGLTF */; };
+		C31ABFD02A9D644100F3368C /* WorldListItemView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31ABFCF2A9D644100F3368C /* WorldListItemView1.swift */; };
 		C331C8F42A82EB81004B1238 /* AddWorldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */; };
 		C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */; };
 		C331C9022A82F040004B1238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331C9012A82F040004B1238 /* Assets.xcassets */; };
@@ -80,7 +81,6 @@
 		C3BAFACB2A81C28300CFDC84 /* FullMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB02A81C28300CFDC84 /* FullMapView.swift */; };
 		C3BAFACC2A81C28300CFDC84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB12A81C28300CFDC84 /* ContentView.swift */; };
 		C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB32A81C28300CFDC84 /* ParcelListView.swift */; };
-		C3BAFACE2A81C28300CFDC84 /* WorldListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB42A81C28300CFDC84 /* WorldListItemView.swift */; };
 		C3BAFAD22A81C73700CFDC84 /* ParcelListView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */; };
 		C3BAFAD42A81C90B00CFDC84 /* ParcelListView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */; };
 /* End PBXBuildFile section */
@@ -100,6 +100,7 @@
 
 /* Begin PBXFileReference section */
 		C308E7D62A9437CB00EEC111 /* WorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldView.swift; sourceTree = "<group>"; };
+		C31ABFCF2A9D644100F3368C /* WorldListItemView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListItemView1.swift; sourceTree = "<group>"; };
 		C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorldFormView.swift; sourceTree = "<group>"; };
 		C331C8F92A82F03E004B1238 /* GeoWebiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoWebiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoWebiOSApp.swift; sourceTree = "<group>"; };
@@ -191,6 +192,7 @@
 			children = (
 				C308E7D62A9437CB00EEC111 /* WorldView.swift */,
 				C35E31992A9D3EB300AA4743 /* WorldListView.swift */,
+				C3BAFAB42A81C28300CFDC84 /* WorldListItemView.swift */,
 				C3753E862A9558D5003175B5 /* MediaGalleryCell.swift */,
 				C3753E882A955E8C003175B5 /* MediaGalleryView.swift */,
 				C3753E8B2A95622C003175B5 /* MediaObjectView.swift */,
@@ -370,7 +372,7 @@
 		C3BAFAB22A81C28300CFDC84 /* WorldListView */ = {
 			isa = PBXGroup;
 			children = (
-				C3BAFAB42A81C28300CFDC84 /* WorldListItemView.swift */,
+				C31ABFCF2A9D644100F3368C /* WorldListItemView1.swift */,
 				C3BAFAB32A81C28300CFDC84 /* ParcelListView.swift */,
 				C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */,
 				C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */,
@@ -580,6 +582,7 @@
 				C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */,
 				C3BAFABE2A81C28300CFDC84 /* MediaGalleryCellVariant2.swift in Sources */,
 				C3BAFACC2A81C28300CFDC84 /* ContentView.swift in Sources */,
+				C31ABFD02A9D644100F3368C /* WorldListItemView1.swift in Sources */,
 				C3BAFABA2A81C28300CFDC84 /* GeoWebiOSDesignsApp.swift in Sources */,
 				C3BAFAD42A81C90B00CFDC84 /* ParcelListView3.swift in Sources */,
 				C3BAFAC82A81C28300CFDC84 /* WebViewCell.swift in Sources */,
@@ -588,7 +591,6 @@
 				C3BAFAD22A81C73700CFDC84 /* ParcelListView2.swift in Sources */,
 				C3BAFACA2A81C28300CFDC84 /* ParcelViewGridLarge.swift in Sources */,
 				C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */,
-				C3BAFACE2A81C28300CFDC84 /* WorldListItemView.swift in Sources */,
 				C3BAFAC52A81C28300CFDC84 /* WebViewCellVariant1.swift in Sources */,
 				C3BAFABC2A81C28300CFDC84 /* ParcelViewGridCompact.swift in Sources */,
 				C3753E8A2A955EDF003175B5 /* MediaGalleryView.swift in Sources */,

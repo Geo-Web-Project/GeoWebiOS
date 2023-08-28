@@ -15,7 +15,7 @@ struct ContentView: View {
                     NavigationLink(destination: ParcelViewGridCompact(isARAvailable: true)) {
                         Text("Compact")
                     }
-                    NavigationLink(destination: ParcelViewGridLarge(isARAvailable: true)) {
+                    NavigationLink(destination: ParcelViewGridLarge(isPresentingWorldView: Binding.constant(true), isARAvailable: true)) {
                         Text("Large")
                     }
                     NavigationLink(destination: ParcelViewGridPreviewAll()) {
@@ -23,11 +23,11 @@ struct ContentView: View {
                     }
                 }
                 Section("Parcel List View") {
-                    NavigationLink(destination: WorldListItemView(hasWebContent: true, hasMediaGallery: true, hasARContent: true)) {
+                    NavigationLink(destination: WorldListItemView1(hasWebContent: true, hasMediaGallery: true, hasARContent: true)) {
                         Text("Item")
                     }
                     NavigationLink(destination: {
-                        ParcelListView(isPresenting: Binding.constant(true))
+                        ParcelListView()
                     }) {
                         Text("List1")
                     }
@@ -46,7 +46,7 @@ struct ContentView: View {
                     NavigationLink(destination: EnterARButton()) {
                         Text("EnterARButton")
                     }
-                    NavigationLink(destination:             FullMapView(isPresenting: Binding.constant(true))) {
+                    NavigationLink(destination: FullMapView(isPresenting: Binding.constant(true))) {
                         Text("FullMapView")
                     }
                     NavigationLink(destination: MediaGalleryView(isPresenting: Binding.constant(true))) {
