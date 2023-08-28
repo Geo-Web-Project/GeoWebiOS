@@ -20,7 +20,7 @@ struct EnterARButton: View {
         .font(.title)
         .padding()
         .sheet(isPresented: $isPresentingAR) {
-            ModelQLView(url: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!))
+            ModelQLView(qlPreviewItem: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!) as NSURL)
         }
     }
 }
