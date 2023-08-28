@@ -12,7 +12,7 @@
 		C300CAAE2A9D35D900ECE33A /* NIOCore in Frameworks */ = {isa = PBXBuildFile; productRef = C300CAAD2A9D35D900ECE33A /* NIOCore */; };
 		C300CAB02A9D35D900ECE33A /* NIOEmbedded in Frameworks */ = {isa = PBXBuildFile; productRef = C300CAAF2A9D35D900ECE33A /* NIOEmbedded */; };
 		C300CAB22A9D35D900ECE33A /* NIOFoundationCompat in Frameworks */ = {isa = PBXBuildFile; productRef = C300CAB12A9D35D900ECE33A /* NIOFoundationCompat */; };
-		C308E7D72A9437CB00EEC111 /* ParcelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C308E7D62A9437CB00EEC111 /* ParcelView.swift */; };
+		C308E7D72A9437CB00EEC111 /* WorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C308E7D62A9437CB00EEC111 /* WorldView.swift */; };
 		C308E7DA2A9438A300EEC111 /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAA52A81C28300CFDC84 /* MapViewCell.swift */; };
 		C308E7DB2A9438A800EEC111 /* WebViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAAC2A81C28300CFDC84 /* WebViewCell.swift */; };
 		C308E7DC2A9438AB00EEC111 /* WebViewCellVariant2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAAB2A81C28300CFDC84 /* WebViewCellVariant2.swift */; };
@@ -31,6 +31,10 @@
 		C331C9142A82F0CB004B1238 /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = C331C9132A82F0CB004B1238 /* Web3ContractABI */; };
 		C331C9162A82F0CB004B1238 /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C331C9152A82F0CB004B1238 /* Web3PromiseKit */; };
 		C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */ = {isa = PBXBuildFile; productRef = C33682922A79BA4C00CA5F43 /* SwiftGLTF */; };
+		C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E31992A9D3EB300AA4743 /* WorldListView.swift */; };
+		C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */; };
+		C35E319D2A9D3FD600AA4743 /* SavedWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E319C2A9D3FD600AA4743 /* SavedWorld.swift */; };
+		C35E319E2A9D432600AA4743 /* WorldListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB42A81C28300CFDC84 /* WorldListItemView.swift */; };
 		C374EAC62A8E968A00141446 /* WorldSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374EAC52A8E968A00141446 /* WorldSync.swift */; };
 		C374EAC82A8EA2B800141446 /* Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374EAC72A8EA2B800141446 /* Url.swift */; };
 		C3753E872A9558D5003175B5 /* MediaGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3753E862A9558D5003175B5 /* MediaGalleryCell.swift */; };
@@ -76,7 +80,7 @@
 		C3BAFACB2A81C28300CFDC84 /* FullMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB02A81C28300CFDC84 /* FullMapView.swift */; };
 		C3BAFACC2A81C28300CFDC84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB12A81C28300CFDC84 /* ContentView.swift */; };
 		C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB32A81C28300CFDC84 /* ParcelListView.swift */; };
-		C3BAFACE2A81C28300CFDC84 /* ParcelListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB42A81C28300CFDC84 /* ParcelListItemView.swift */; };
+		C3BAFACE2A81C28300CFDC84 /* WorldListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB42A81C28300CFDC84 /* WorldListItemView.swift */; };
 		C3BAFAD22A81C73700CFDC84 /* ParcelListView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */; };
 		C3BAFAD42A81C90B00CFDC84 /* ParcelListView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */; };
 /* End PBXBuildFile section */
@@ -95,7 +99,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C308E7D62A9437CB00EEC111 /* ParcelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelView.swift; sourceTree = "<group>"; };
+		C308E7D62A9437CB00EEC111 /* WorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldView.swift; sourceTree = "<group>"; };
 		C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorldFormView.swift; sourceTree = "<group>"; };
 		C331C8F92A82F03E004B1238 /* GeoWebiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoWebiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoWebiOSApp.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 		C331C90A2A82F082004B1238 /* Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		C331C90B2A82F082004B1238 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		C331C90C2A82F082004B1238 /* TableId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableId.swift; sourceTree = "<group>"; };
+		C35E31992A9D3EB300AA4743 /* WorldListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListView.swift; sourceTree = "<group>"; };
+		C35E319C2A9D3FD600AA4743 /* SavedWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedWorld.swift; sourceTree = "<group>"; };
 		C374EAC52A8E968A00141446 /* WorldSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldSync.swift; sourceTree = "<group>"; };
 		C374EAC72A8EA2B800141446 /* Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Url.swift; sourceTree = "<group>"; };
 		C3753E862A9558D5003175B5 /* MediaGalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGalleryCell.swift; sourceTree = "<group>"; };
@@ -143,7 +149,7 @@
 		C3BAFAB02A81C28300CFDC84 /* FullMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullMapView.swift; sourceTree = "<group>"; };
 		C3BAFAB12A81C28300CFDC84 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C3BAFAB32A81C28300CFDC84 /* ParcelListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParcelListView.swift; sourceTree = "<group>"; };
-		C3BAFAB42A81C28300CFDC84 /* ParcelListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParcelListItemView.swift; sourceTree = "<group>"; };
+		C3BAFAB42A81C28300CFDC84 /* WorldListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldListItemView.swift; sourceTree = "<group>"; };
 		C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelListView2.swift; sourceTree = "<group>"; };
 		C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelListView3.swift; sourceTree = "<group>"; };
 		C3EDAF912A7B148D00C80B0A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -183,7 +189,8 @@
 		C308E7D92A94388E00EEC111 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C308E7D62A9437CB00EEC111 /* ParcelView.swift */,
+				C308E7D62A9437CB00EEC111 /* WorldView.swift */,
+				C35E31992A9D3EB300AA4743 /* WorldListView.swift */,
 				C3753E862A9558D5003175B5 /* MediaGalleryCell.swift */,
 				C3753E882A955E8C003175B5 /* MediaGalleryView.swift */,
 				C3753E8B2A95622C003175B5 /* MediaObjectView.swift */,
@@ -234,6 +241,7 @@
 		C374EAC42A8E966600141446 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				C35E319C2A9D3FD600AA4743 /* SavedWorld.swift */,
 				C374EAC52A8E968A00141446 /* WorldSync.swift */,
 			);
 			path = Metadata;
@@ -359,16 +367,16 @@
 			path = MapView;
 			sourceTree = "<group>";
 		};
-		C3BAFAB22A81C28300CFDC84 /* ParcelListView */ = {
+		C3BAFAB22A81C28300CFDC84 /* WorldListView */ = {
 			isa = PBXGroup;
 			children = (
-				C3BAFAB42A81C28300CFDC84 /* ParcelListItemView.swift */,
+				C3BAFAB42A81C28300CFDC84 /* WorldListItemView.swift */,
 				C3BAFAB32A81C28300CFDC84 /* ParcelListView.swift */,
 				C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */,
 				C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */,
 				C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */,
 			);
-			path = ParcelListView;
+			path = WorldListView;
 			sourceTree = "<group>";
 		};
 		C3BAFACF2A81C2C600CFDC84 /* Shared */ = {
@@ -383,7 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				C3BAFA9B2A81C28300CFDC84 /* ParcelView */,
-				C3BAFAB22A81C28300CFDC84 /* ParcelListView */,
+				C3BAFAB22A81C28300CFDC84 /* WorldListView */,
 				C3BAFA932A81C28300CFDC84 /* MediaGalleryView */,
 				C3BAFAAF2A81C28300CFDC84 /* MapView */,
 			);
@@ -533,7 +541,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C308E7DD2A9438B800EEC111 /* MapViewCellVariant2.swift in Sources */,
-				C308E7D72A9437CB00EEC111 /* ParcelView.swift in Sources */,
+				C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */,
+				C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */,
+				C35E319E2A9D432600AA4743 /* WorldListItemView.swift in Sources */,
+				C308E7D72A9437CB00EEC111 /* WorldView.swift in Sources */,
 				C331C90E2A82F082004B1238 /* Store.swift in Sources */,
 				C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */,
 				C331C90F2A82F082004B1238 /* TableId.swift in Sources */,
@@ -552,6 +563,7 @@
 				C308E7DB2A9438A800EEC111 /* WebViewCell.swift in Sources */,
 				C3753E8C2A95622C003175B5 /* MediaObjectView.swift in Sources */,
 				C3753E872A9558D5003175B5 /* MediaGalleryCell.swift in Sources */,
+				C35E319D2A9D3FD600AA4743 /* SavedWorld.swift in Sources */,
 				C3982F6E2A96D3B40089AF69 /* ModelQLView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,7 +588,7 @@
 				C3BAFAD22A81C73700CFDC84 /* ParcelListView2.swift in Sources */,
 				C3BAFACA2A81C28300CFDC84 /* ParcelViewGridLarge.swift in Sources */,
 				C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */,
-				C3BAFACE2A81C28300CFDC84 /* ParcelListItemView.swift in Sources */,
+				C3BAFACE2A81C28300CFDC84 /* WorldListItemView.swift in Sources */,
 				C3BAFAC52A81C28300CFDC84 /* WebViewCellVariant1.swift in Sources */,
 				C3BAFABC2A81C28300CFDC84 /* ParcelViewGridCompact.swift in Sources */,
 				C3753E8A2A955EDF003175B5 /* MediaGalleryView.swift in Sources */,

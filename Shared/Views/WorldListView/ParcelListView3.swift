@@ -15,13 +15,13 @@ struct ParcelListView3: View {
     var body: some View {
         VStack(alignment: .leading) {
             List {
-                ParcelListItemView(hasWebContent: true, hasMediaGallery: true, hasARContent: true)
-                ParcelListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
-                ParcelListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
-                ParcelListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
-                ParcelListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
-                ParcelListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
-                ParcelListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
+                WorldListItemView(hasWebContent: true, hasMediaGallery: true, hasARContent: true)
+                WorldListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
+                WorldListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
+                WorldListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
+                WorldListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
+                WorldListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
+                WorldListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
             }
             .listRowSpacing(10)
         }

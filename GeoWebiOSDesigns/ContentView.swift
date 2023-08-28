@@ -23,7 +23,7 @@ struct ContentView: View {
                     }
                 }
                 Section("Parcel List View") {
-                    NavigationLink(destination: ParcelListItemView(hasWebContent: true, hasMediaGallery: true, hasARContent: true)) {
+                    NavigationLink(destination: WorldListItemView(hasWebContent: true, hasMediaGallery: true, hasARContent: true)) {
                         Text("Item")
                     }
                     NavigationLink(destination: {

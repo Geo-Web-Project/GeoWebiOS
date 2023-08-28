@@ -1,5 +1,5 @@
 //
-//  ParcelView.swift
+//  WorldView.swift
 //  GeoWebiOS
 //
 //  Created by Cody Hatfield on 2023-08-21.
@@ -9,31 +9,41 @@ import SwiftUI
 import SwiftData
 import Web3
 
-struct ParcelView: View {
+struct WorldView: View {
+    @Environment(\.web3) var web3: Web3
     @Environment(\.modelContext) private var modelContext
 
-    private static let worldAddress = "0xeA45b8aE461c840c1B2965ffeDA5C2a11594E1c1"
+    var worldAddress: String
     
-    private static let namePredicate = #Predicate<Name> { name in
-        name.worldAddress == worldAddress
+    private var namePredicate: Predicate<Name> {
+        #Predicate<Name> { name in
+            name.worldAddress == worldAddress
+        }
     }
-    private static let urlPredicate = #Predicate<Url> { url in
-        url.worldAddress == worldAddress
+    private var urlPredicate: Predicate<Url> {
+        #Predicate<Url> { url in
+            url.worldAddress == worldAddress
+        }
     }
-    private static let mediaObjectPredicate = #Predicate<MediaObject> { mediaObject in
-        mediaObject.worldAddress == worldAddress
+    private var mediaObjectPredicate: Predicate<MediaObject> {
+        #Predicate<MediaObject> { mediaObject in
+            mediaObject.worldAddress == worldAddress
+        }
     }
     
-    @Query(filter: namePredicate)
-    private var name: [Name]
-    
-    @Query(filter: urlPredicate)
-    private var url: [Url]
-    
-    @Query(filter: mediaObjectPredicate)
-    private var mediaObjects: [MediaObject]
+    @Query private var name: [Name]
+    @Query private var url: [Url]
+    @Query private var mediaObjects: [MediaObject]
     
     @State private var isPresentingMapView = false
+    
+    init(worldAddress: String) {
+        self.worldAddress = worldAddress
+        
+        _name = Query(filter: namePredicate)
+        _url = Query(filter: urlPredicate)
+        _mediaObjects = Query(filter: mediaObjectPredicate)
+    }
     
     var body: some View {
         ScrollView {
@@ -78,12 +88,7 @@ struct ParcelView: View {
             FullMapView(isPresenting: $isPresentingMapView)
         }
         .onAppear {
-            guard let apiKey = ProcessInfo.processInfo.environment["ALCHEMY_API_KEY"] else {
-                return
-            }
-            
-            let web3 = try! Web3(wsUrl: "wss://opt-goerli.g.alchemy.com/v2/\(apiKey)")
-            let storeSync = StoreSync(modelContext: modelContext, web3: web3, worldAddress: EthereumAddress(hexString: ParcelView.worldAddress)!)
+            let storeSync = StoreSync(modelContext: modelContext, web3: web3, worldAddress: EthereumAddress(hexString: worldAddress)!)
             
             // 1. Start subscription to events
             try! storeSync.subscribeToLogs()
@@ -100,7 +105,7 @@ struct ParcelView: View {
 
 #Preview {
     NavigationStack {
-        ParcelView()
+        WorldView(worldAddress: "")
             .modelContainer(for: [WorldSync.self, Name.self, Url.self, MediaObject.self])
     }
 }

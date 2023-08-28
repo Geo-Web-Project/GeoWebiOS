@@ -21,7 +21,7 @@ final class Name {
     static let tableId: TableId = TableId(namespace: "geoweb", name: "Name")
     
     @Attribute(.unique) var worldAddress: String
-    var value: String
+    var value: String?
     var lastUpdatedAtBlock: UInt
     
     init(worldAddress: EthereumAddress, value: String, lastUpdatedAtBlock: UInt) {

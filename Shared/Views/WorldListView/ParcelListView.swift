@@ -20,25 +20,25 @@ struct ParcelListView: View {
                         ParcelViewGridLarge(isARAvailable: true)
                     }
                 }, label: {
-                    ParcelListItemView(hasWebContent: true, hasMediaGallery: true, hasARContent: true)
+                    WorldListItemView(hasWebContent: true, hasMediaGallery: true, hasARContent: true)
                 })
                 Button(action: {
                     withAnimation(.snappy(duration: 0.2)) {
                         isPresenting = false
                     }
                 }, label: {
-                    ParcelListItemView(hasWebContent: true, hasMediaGallery: true, hasARContent: true)
+                    WorldListItemView(hasWebContent: true, hasMediaGallery: true, hasARContent: true)
                     Image(systemName: "chevron.right")
                 })
                 .buttonStyle(.borderless)
                 .foregroundStyle(.primary)
                 
-                ParcelListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
-                ParcelListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
-                ParcelListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
-                ParcelListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
-                ParcelListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
-                ParcelListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
+                WorldListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
+                WorldListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
+                WorldListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
+                WorldListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
+                WorldListItemView(hasWebContent: false, hasMediaGallery: true, hasARContent: true)
+                WorldListItemView(hasWebContent: false, hasMediaGallery: false, hasARContent: true)
             }
             .navigationTitle("Parcels")
             .navigationBarTitleDisplayMode(.large)
