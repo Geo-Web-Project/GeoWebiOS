@@ -13,11 +13,19 @@ private struct Web3Key: EnvironmentKey {
     static let defaultValue: Web3 = try! Web3(wsUrl: "wss://opt-goerli.g.alchemy.com/v2/\(ProcessInfo.processInfo.environment["ALCHEMY_API_KEY"]!)")
 }
 
+private struct StoreSyncKey: EnvironmentKey {
+    static let defaultValue: StoreSync? = nil
+}
 
 extension EnvironmentValues {
     var web3: Web3 {
         get { self[Web3Key.self] }
         set { self[Web3Key.self] = newValue }
+    }
+    
+    var storeSync: StoreSync? {
+        get { self[StoreSyncKey.self] }
+        set { self[StoreSyncKey.self] = newValue }
     }
 }
 

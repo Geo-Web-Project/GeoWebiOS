@@ -15,6 +15,10 @@ struct WorldListView: View {
 
     @State private var isFormPresented: Bool = false
     @Query private var savedWorlds: [SavedWorld]
+    
+    private var storeSync: StoreSync {
+        StoreSync(modelContext: context, web3: web3)
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -37,7 +41,18 @@ struct WorldListView: View {
                     Image(systemName: "plus")
                 })
                 .sheet(isPresented: $isFormPresented, content: {
-                    AddWorldFormView(isPresented: $isFormPresented)
+                    AddWorldFormView(submit: {(_, worldAddress) in
+                        context.insert(
+                            SavedWorld(
+                                chainId: 420,
+                                worldAddress: EthereumAddress(hexString: worldAddress)!
+                            )
+                        )
+                        try? storeSync.syncLogs(worldAddress: EthereumAddress(hexString: worldAddress)!)
+                        isFormPresented = false
+                    }, cancel: {
+                        isFormPresented = false
+                    })
                 })
             }
         }
@@ -53,11 +68,9 @@ struct WorldListView: View {
                             worldAddress: worldAddress
                         )
                     )
-                    
-                    let storeSync = StoreSync(modelContext: context, web3: web3, worldAddress: worldAddress)
-                    
+                                        
                     do {
-                        try storeSync.syncLogs()
+                        try storeSync.syncLogs(worldAddress: worldAddress)
                     } catch {
                         print(error)
                     }
@@ -66,10 +79,8 @@ struct WorldListView: View {
                 for result in results {
                     // Sync state
                     if let worldAddress = EthereumAddress(hexString: result.worldAddress) {
-                        let storeSync = StoreSync(modelContext: context, web3: web3, worldAddress: worldAddress)
-                        
                         do {
-                            try storeSync.syncLogs()
+                            try storeSync.syncLogs(worldAddress: worldAddress)
                         } catch {
                             print(error)
                         }
@@ -77,6 +88,7 @@ struct WorldListView: View {
                 }
             }
         }
+        .environment(\.storeSync, storeSync)
     }
 }
 

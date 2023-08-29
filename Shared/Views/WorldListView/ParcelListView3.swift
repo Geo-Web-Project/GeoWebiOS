@@ -42,7 +42,7 @@ struct ParcelListView3: View {
                     Image(systemName: "plus")
                 })
                 .sheet(isPresented: $isFormPresented, content: {
-                    AddWorldFormView(isPresented: $isFormPresented)
+                    AddWorldFormView(submit: {(_, _) in }, cancel: {})
                 })
             }
             ToolbarItem(placement: .automatic) {

@@ -14,17 +14,15 @@ import Web3PromiseKit
 class StoreSync {
     private let modelContext: ModelContext
     private let web3: Web3
-    private let worldAddress: EthereumAddress
     private static let storeSetFieldTopic = try! EthereumData.string(ABI.encodeEventSignature(Store.StoreSetField))
     private static let storeSetRecordTopic = try! EthereumData.string(ABI.encodeEventSignature(Store.StoreSetRecord))
 
-    init(modelContext: ModelContext, web3: Web3, worldAddress: EthereumAddress) {
+    init(modelContext: ModelContext, web3: Web3) {
         self.modelContext = modelContext
         self.web3 = web3
-        self.worldAddress = worldAddress
     }
     
-    func syncLogs() throws {
+    func syncLogs(worldAddress: EthereumAddress) throws {
         let addressStr = worldAddress.hex(eip55: true)
         let lastBlockFetch = FetchDescriptor<WorldSync>(
             predicate: #Predicate { $0.worldAddress == addressStr }
@@ -46,7 +44,7 @@ class StoreSync {
         }
     }
     
-    func subscribeToLogs() throws {
+    func subscribeToLogs(worldAddress: EthereumAddress) throws {
         try web3.eth.subscribeToLogs(addresses: [worldAddress], topics: [[StoreSync.storeSetFieldTopic, StoreSync.storeSetRecordTopic]]) {_ in } onEvent: { resp in
             if let res = resp.result {
                 self.handleLog(log: res)
@@ -69,7 +67,7 @@ class StoreSync {
             }
 
             // 2. Mark block as synced
-            self.modelContext.insert(WorldSync(worldAddress: self.worldAddress, lastBlock: UInt(log.blockNumber!.quantity)))
+            self.modelContext.insert(WorldSync(worldAddress: log.address, lastBlock: UInt(log.blockNumber!.quantity)))
         } catch {
            print(error)
         }

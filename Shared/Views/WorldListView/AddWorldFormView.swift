@@ -8,34 +8,40 @@
 import SwiftUI
 
 struct AddWorldFormView: View {
-    @Binding var isPresented: Bool
+    var submit: (Int, String) -> Void
+    var cancel: () -> Void
     
-    @State private var rpcAddress: String = ""
+    private let chainId: String = "420"
     @State private var worldAddress: String = ""
     
     private var isReady: Bool {
-        rpcAddress.count > 0 && worldAddress.count > 0
+        worldAddress.count > 0
     }
     
     var body: some View {
         Form {
-            Section {
-                TextField(text: $rpcAddress, label: {
-                    Text("RPC Address")
+            Section("Chain ID") {
+                TextField(text: Binding.constant(chainId), label: {
+                    Text("Chain ID")
                 })
-                    .keyboardType(.numberPad)
-                
+                .disabled(true)
+                .keyboardType(.numberPad)
+            }
+            
+            Section("World Address") {
                 TextField(text: $worldAddress, label: {
-                    Text("World Address")
+                    Text("0x")
                 })
             }
             
             Section {
-                Button("Add World", action: {})
+                Button("Add World", action: {
+                    submit(Int(chainId)!, worldAddress)
+                })
                     .disabled(!isReady)
                 
                 Button("Cancel", action: {
-                    isPresented = false
+                    cancel()
                 })
                     .foregroundStyle(.red)
             }
@@ -44,5 +50,5 @@ struct AddWorldFormView: View {
 }
 
 #Preview {
-    AddWorldFormView(isPresented: Binding.constant(true))
+    AddWorldFormView(submit: { _, _ in }, cancel: {})
 }

@@ -10,7 +10,7 @@ import SwiftData
 import Web3
 
 struct WorldView: View {
-    @Environment(\.web3) var web3: Web3
+    @Environment(\.storeSync) var storeSync: StoreSync?
     @Environment(\.modelContext) private var modelContext
 
     var worldAddress: String
@@ -88,14 +88,12 @@ struct WorldView: View {
             FullMapView(isPresenting: $isPresentingMapView)
         }
         .onAppear {
-            let storeSync = StoreSync(modelContext: modelContext, web3: web3, worldAddress: EthereumAddress(hexString: worldAddress)!)
-            
             // 1. Start subscription to events
-            try! storeSync.subscribeToLogs()
+            try! storeSync?.subscribeToLogs(worldAddress: EthereumAddress(hexString: worldAddress)!)
             
             // 2. Sync logs
             do {
-                try storeSync.syncLogs()
+                try storeSync?.syncLogs(worldAddress: EthereumAddress(hexString: worldAddress)!)
             } catch {
                 print(error)
             }
