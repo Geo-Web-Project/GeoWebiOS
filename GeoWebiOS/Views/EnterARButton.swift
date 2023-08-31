@@ -21,8 +21,21 @@ struct EnterARButton: View {
         .buttonStyle(.borderedProminent)
         .font(.title)
         .padding()
-        .sheet(isPresented: $isPresentingAR) {
-            ARView(worldAddress: worldAddress)
+        .fullScreenCover(isPresented: $isPresentingAR) {
+            NavigationStack {
+                WorldARView(worldAddress: worldAddress)
+                    .toolbar {
+                        ToolbarItem {
+                            Button(action: {
+                                isPresentingAR = false
+                            }, label: {
+                                Image(systemName: "xmark")
+                            })
+                            .buttonStyle(.bordered)
+                            .buttonBorderShape(.circle)
+                        }
+                    }
+            }
         }
     }
 }

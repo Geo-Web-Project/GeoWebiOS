@@ -35,7 +35,7 @@
 		C34B352C2A9FEDCD0079A314 /* IsAnchorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B352B2A9FEDCD0079A314 /* IsAnchorComponent.swift */; };
 		C34B352F2A9FF2430079A314 /* Model3DComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B352E2A9FF2430079A314 /* Model3DComponent.swift */; };
 		C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35302A9FF3C20079A314 /* EnterARButton.swift */; };
-		C34B35332A9FF4300079A314 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35322A9FF4300079A314 /* ARView.swift */; };
+		C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35322A9FF4300079A314 /* WorldARView.swift */; };
 		C34B35352A9FF8410079A314 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35342A9FF8410079A314 /* PositionComponent.swift */; };
 		C34B35372AA00F7E0079A314 /* AnchorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35362AA00F7E0079A314 /* AnchorComponent.swift */; };
 		C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E31992A9D3EB300AA4743 /* WorldListView.swift */; };
@@ -118,7 +118,7 @@
 		C34B352B2A9FEDCD0079A314 /* IsAnchorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsAnchorComponent.swift; sourceTree = "<group>"; };
 		C34B352E2A9FF2430079A314 /* Model3DComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model3DComponent.swift; sourceTree = "<group>"; };
 		C34B35302A9FF3C20079A314 /* EnterARButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterARButton.swift; sourceTree = "<group>"; };
-		C34B35322A9FF4300079A314 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
+		C34B35322A9FF4300079A314 /* WorldARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldARView.swift; sourceTree = "<group>"; };
 		C34B35342A9FF8410079A314 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		C34B35362AA00F7E0079A314 /* AnchorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorComponent.swift; sourceTree = "<group>"; };
 		C35E31992A9D3EB300AA4743 /* WorldListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListView.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 				C3753E882A955E8C003175B5 /* MediaGalleryView.swift */,
 				C3753E8B2A95622C003175B5 /* MediaObjectView.swift */,
 				C34B35302A9FF3C20079A314 /* EnterARButton.swift */,
-				C34B35322A9FF4300079A314 /* ARView.swift */,
+				C34B35322A9FF4300079A314 /* WorldARView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -571,7 +571,7 @@
 				C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */,
 				C34B352F2A9FF2430079A314 /* Model3DComponent.swift in Sources */,
 				C331C90F2A82F082004B1238 /* TableId.swift in Sources */,
-				C34B35332A9FF4300079A314 /* ARView.swift in Sources */,
+				C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */,
 				C331C90D2A82F082004B1238 /* Name.swift in Sources */,
 				C3753E892A955E8C003175B5 /* MediaGalleryView.swift in Sources */,
 				C377A5052A830896003FB3EF /* StoreSync.swift in Sources */,
@@ -642,10 +642,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Geo Web";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera is used to enable augmented reality features.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to discover nearby parcels.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -678,10 +680,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Geo Web";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera is used to enable augmented reality features.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to discover nearby parcels.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (

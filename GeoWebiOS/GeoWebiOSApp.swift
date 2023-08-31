@@ -10,9 +10,9 @@ import SwiftData
 import Web3
 
 private struct Web3Key: EnvironmentKey {
-//    static let defaultValue: Web3 = try! Web3(wsUrl: "wss://opt-goerli.g.alchemy.com/v2/\(ProcessInfo.processInfo.environment["ALCHEMY_API_KEY"]!)")
     static let defaultValue: Task<Web3, Swift.Error> = Task.init {
-        try Web3(wsUrl: "ws://localhost:8545")
+//        try Web3(wsUrl: "ws://localhost:8545")
+        try Web3(wsUrl: "wss://opt-goerli.g.alchemy.com/v2/\(ProcessInfo.processInfo.environment["ALCHEMY_API_KEY"]!)")
     }
 }
 
