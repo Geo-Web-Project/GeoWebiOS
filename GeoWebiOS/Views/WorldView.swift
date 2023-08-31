@@ -10,7 +10,7 @@ import SwiftData
 import Web3
 
 struct WorldView: View {
-    @Environment(\.storeSync) var storeSync: StoreSync?
+    @Environment(\.storeSync) var storeSync: Task<StoreSync, Error>
     @Environment(\.modelContext) private var modelContext
 
     var worldAddress: String
@@ -30,11 +30,17 @@ struct WorldView: View {
             mediaObject.worldAddress == worldAddress
         }
     }
+    private var isAnchorPredicate: Predicate<IsAnchorComponent> {
+        #Predicate<IsAnchorComponent> { obj in
+            obj.worldAddress == worldAddress && obj.value == true
+        }
+    }
     
     @Query private var name: [Name]
     @Query private var url: [Url]
     @Query private var mediaObjects: [MediaObject]
-    
+    @Query private var isAnchorComponent: [IsAnchorComponent]
+
     @State private var isPresentingMapView = false
     
     init(worldAddress: String) {
@@ -43,14 +49,15 @@ struct WorldView: View {
         _name = Query(filter: namePredicate)
         _url = Query(filter: urlPredicate)
         _mediaObjects = Query(filter: mediaObjectPredicate)
+        _isAnchorComponent = Query(filter: isAnchorPredicate)
     }
     
     var body: some View {
         ScrollView {
             Grid {
-//                if (isARAvailable) {
-//                    EnterARButton()
-//                }
+                if isAnchorComponent.count > 0 {
+                    EnterARButton(worldAddress: worldAddress)
+                }
                 
                 GridRow {
                     if let url = url.first?.value {
@@ -87,13 +94,13 @@ struct WorldView: View {
         .fullScreenCover(isPresented: $isPresentingMapView) {
             FullMapView(isPresenting: $isPresentingMapView)
         }
-        .onAppear {
-            // 1. Start subscription to events
-            try! storeSync?.subscribeToLogs(worldAddress: EthereumAddress(hexString: worldAddress)!)
-            
-            // 2. Sync logs
+        .task {
             do {
-                try storeSync?.syncLogs(worldAddress: EthereumAddress(hexString: worldAddress)!)
+                // 1. Start subscription to events
+                try await storeSync.value.subscribeToLogs(worldAddress: EthereumAddress(hexString: worldAddress)!)
+                
+                // 2. Sync logs
+                try await storeSync.value.syncLogs(worldAddress: EthereumAddress(hexString: worldAddress)!)
             } catch {
                 print(error)
             }

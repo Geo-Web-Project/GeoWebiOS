@@ -74,7 +74,7 @@ final class MediaObject {
             default:
                 ""
             }
-            return saveDataToTemporaryURL(data: Data(rawBytes), ext: ext)
+            return Data(rawBytes).saveToTemporaryURL(ext: ext)
         default:
             do {
                 let cid = try CID(recBytes)
@@ -155,15 +155,17 @@ final class MediaObject {
             modelContext.insert(MediaObject(key: key, worldAddress: address, name: name, mediaType: MediaObjectType(rawValue: mediaType), encodingFormat: MediaObjectEncodingFormat(rawValue: encodingFormat), contentSize: contentSize, contentHash: contentHash, lastUpdatedAtBlock: UInt(blockNumber.quantity)))
         }
     }
-            
-    private func saveDataToTemporaryURL(data: Data, ext: String) -> URL? {
+}
+
+extension Data {
+    func saveToTemporaryURL(ext: String) -> URL? {
         do {
             // Create a temporary file URL
             let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory())
             let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension(ext)
             
             // Write the data to the temporary file URL
-            try data.write(to: temporaryFileURL, options: .atomic)
+            try self.write(to: temporaryFileURL, options: .atomic)
             
             return temporaryFileURL
         } catch {

@@ -32,6 +32,12 @@
 		C34B35262A9FB74B0079A314 /* NIOCore in Frameworks */ = {isa = PBXBuildFile; productRef = C34B35252A9FB74B0079A314 /* NIOCore */; };
 		C34B35282A9FB74B0079A314 /* NIOEmbedded in Frameworks */ = {isa = PBXBuildFile; productRef = C34B35272A9FB74B0079A314 /* NIOEmbedded */; };
 		C34B352A2A9FB74B0079A314 /* NIOFoundationCompat in Frameworks */ = {isa = PBXBuildFile; productRef = C34B35292A9FB74B0079A314 /* NIOFoundationCompat */; };
+		C34B352C2A9FEDCD0079A314 /* IsAnchorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B352B2A9FEDCD0079A314 /* IsAnchorComponent.swift */; };
+		C34B352F2A9FF2430079A314 /* Model3DComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B352E2A9FF2430079A314 /* Model3DComponent.swift */; };
+		C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35302A9FF3C20079A314 /* EnterARButton.swift */; };
+		C34B35332A9FF4300079A314 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35322A9FF4300079A314 /* ARView.swift */; };
+		C34B35352A9FF8410079A314 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35342A9FF8410079A314 /* PositionComponent.swift */; };
+		C34B35372AA00F7E0079A314 /* AnchorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35362AA00F7E0079A314 /* AnchorComponent.swift */; };
 		C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E31992A9D3EB300AA4743 /* WorldListView.swift */; };
 		C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */; };
 		C35E319D2A9D3FD600AA4743 /* SavedWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E319C2A9D3FD600AA4743 /* SavedWorld.swift */; };
@@ -109,6 +115,12 @@
 		C331C90A2A82F082004B1238 /* Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		C331C90B2A82F082004B1238 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		C331C90C2A82F082004B1238 /* TableId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableId.swift; sourceTree = "<group>"; };
+		C34B352B2A9FEDCD0079A314 /* IsAnchorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsAnchorComponent.swift; sourceTree = "<group>"; };
+		C34B352E2A9FF2430079A314 /* Model3DComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model3DComponent.swift; sourceTree = "<group>"; };
+		C34B35302A9FF3C20079A314 /* EnterARButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterARButton.swift; sourceTree = "<group>"; };
+		C34B35322A9FF4300079A314 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
+		C34B35342A9FF8410079A314 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
+		C34B35362AA00F7E0079A314 /* AnchorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorComponent.swift; sourceTree = "<group>"; };
 		C35E31992A9D3EB300AA4743 /* WorldListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListView.swift; sourceTree = "<group>"; };
 		C35E319C2A9D3FD600AA4743 /* SavedWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedWorld.swift; sourceTree = "<group>"; };
 		C374EAC52A8E968A00141446 /* WorldSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldSync.swift; sourceTree = "<group>"; };
@@ -196,6 +208,8 @@
 				C3753E862A9558D5003175B5 /* MediaGalleryCell.swift */,
 				C3753E882A955E8C003175B5 /* MediaGalleryView.swift */,
 				C3753E8B2A95622C003175B5 /* MediaObjectView.swift */,
+				C34B35302A9FF3C20079A314 /* EnterARButton.swift */,
+				C34B35322A9FF4300079A314 /* ARView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +250,10 @@
 				C331C90A2A82F082004B1238 /* Name.swift */,
 				C374EAC72A8EA2B800141446 /* Url.swift */,
 				C3AC36872A8FF1F3008821A8 /* MediaObject.swift */,
+				C34B352B2A9FEDCD0079A314 /* IsAnchorComponent.swift */,
+				C34B352E2A9FF2430079A314 /* Model3DComponent.swift */,
+				C34B35342A9FF8410079A314 /* PositionComponent.swift */,
+				C34B35362AA00F7E0079A314 /* AnchorComponent.swift */,
 			);
 			path = Tables;
 			sourceTree = "<group>";
@@ -544,18 +562,24 @@
 			files = (
 				C308E7DD2A9438B800EEC111 /* MapViewCellVariant2.swift in Sources */,
 				C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */,
+				C34B35372AA00F7E0079A314 /* AnchorComponent.swift in Sources */,
 				C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */,
+				C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */,
 				C35E319E2A9D432600AA4743 /* WorldListItemView.swift in Sources */,
 				C308E7D72A9437CB00EEC111 /* WorldView.swift in Sources */,
 				C331C90E2A82F082004B1238 /* Store.swift in Sources */,
 				C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */,
+				C34B352F2A9FF2430079A314 /* Model3DComponent.swift in Sources */,
 				C331C90F2A82F082004B1238 /* TableId.swift in Sources */,
+				C34B35332A9FF4300079A314 /* ARView.swift in Sources */,
 				C331C90D2A82F082004B1238 /* Name.swift in Sources */,
 				C3753E892A955E8C003175B5 /* MediaGalleryView.swift in Sources */,
 				C377A5052A830896003FB3EF /* StoreSync.swift in Sources */,
 				C308E7DC2A9438AB00EEC111 /* WebViewCellVariant2.swift in Sources */,
+				C34B352C2A9FEDCD0079A314 /* IsAnchorComponent.swift in Sources */,
 				C308E7DE2A9438C200EEC111 /* FullMapView.swift in Sources */,
 				C39770A92A9950540052183D /* AVObjectView.swift in Sources */,
+				C34B35352A9FF8410079A314 /* PositionComponent.swift in Sources */,
 				C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */,
 				C3AC368B2A900C2D008821A8 /* ProtocolParser.swift in Sources */,
 				C374EAC62A8E968A00141446 /* WorldSync.swift in Sources */,

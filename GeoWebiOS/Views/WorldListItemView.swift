@@ -27,18 +27,26 @@ struct WorldListItemView: View {
             mediaObject.worldAddress == worldAddress
         }
     }
+    private var isAnchorPredicate: Predicate<IsAnchorComponent> {
+        #Predicate<IsAnchorComponent> { obj in
+            obj.worldAddress == worldAddress && obj.value == true
+        }
+    }
     
     @Query private var name: [Name]
     @Query private var url: [Url]
     @Query private var mediaObjects: [MediaObject]
-    
+    @Query private var isAnchorComponent: [IsAnchorComponent]
+
     private var hasWebContent: Bool {
         url.count > 0
     }
     private var hasMediaGallery: Bool {
         mediaObjects.count > 0
     }
-    private var hasARContent: Bool = false
+    private var hasARContent: Bool {
+        isAnchorComponent.count > 0
+    }
     
     init(worldAddress: String) {
         self.worldAddress = worldAddress
@@ -46,6 +54,7 @@ struct WorldListItemView: View {
         _name = Query(filter: namePredicate)
         _url = Query(filter: urlPredicate)
         _mediaObjects = Query(filter: mediaObjectPredicate)
+        _isAnchorComponent = Query(filter: isAnchorPredicate)
     }
     
     var body: some View {

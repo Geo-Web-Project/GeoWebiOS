@@ -10,14 +10,17 @@ import SwiftData
 import Web3
 
 struct WorldListView: View {
-    @Environment(\.web3) var web3: Web3
+    @Environment(\.web3) var web3: Task<Web3, Error>
     @Environment(\.modelContext) private var context
 
     @State private var isFormPresented: Bool = false
     @Query private var savedWorlds: [SavedWorld]
     
-    private var storeSync: StoreSync {
-        StoreSync(modelContext: context, web3: web3)
+    private var storeSync: Task<StoreSync, Error> {
+        Task.init {
+            let web3 = try await web3.value
+            return StoreSync(modelContext: context, web3: web3)
+        }
     }
 
     var body: some View {
@@ -48,15 +51,18 @@ struct WorldListView: View {
                                 worldAddress: EthereumAddress(hexString: worldAddress)!
                             )
                         )
-                        try? storeSync.syncLogs(worldAddress: EthereumAddress(hexString: worldAddress)!)
                         isFormPresented = false
+                        
+                        Task.init {
+                            try? await storeSync.value.syncLogs(worldAddress: EthereumAddress(hexString: worldAddress)!)
+                        }
                     }, cancel: {
                         isFormPresented = false
                     })
                 })
             }
         }
-        .onAppear {
+        .task {
             let fetch = FetchDescriptor<SavedWorld>()
             if let results = try? context.fetch(fetch) {
                 if results.count == 0 {
@@ -70,7 +76,7 @@ struct WorldListView: View {
                     )
                                         
                     do {
-                        try storeSync.syncLogs(worldAddress: worldAddress)
+                        try await storeSync.value.syncLogs(worldAddress: worldAddress)
                     } catch {
                         print(error)
                     }
@@ -80,7 +86,7 @@ struct WorldListView: View {
                     // Sync state
                     if let worldAddress = EthereumAddress(hexString: result.worldAddress) {
                         do {
-                            try storeSync.syncLogs(worldAddress: worldAddress)
+                            try await storeSync.value.syncLogs(worldAddress: worldAddress)
                         } catch {
                             print(error)
                         }
