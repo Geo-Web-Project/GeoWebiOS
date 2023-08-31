@@ -923,7 +923,7 @@
 			repositoryURL = "https://github.com/apple/swift-nio.git";
 			requirement = {
 				kind = exactVersion;
-				version = 2.57.0;
+				version = 2.54.0;
 			};
 		};
 		C3982F652A96A2FC0089AF69 /* XCRemoteSwiftPackageReference "swift-varint" */ = {
