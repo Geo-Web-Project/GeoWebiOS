@@ -94,7 +94,7 @@ struct WorldView: View {
         .fullScreenCover(isPresented: $isPresentingMapView) {
             FullMapView(isPresenting: $isPresentingMapView)
         }
-        .task {
+        .task(priority: .background) {
             do {
                 // 1. Start subscription to events
                 try await storeSync.value.subscribeToLogs(worldAddress: EthereumAddress(hexString: worldAddress)!)

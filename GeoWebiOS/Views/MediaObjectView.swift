@@ -37,9 +37,13 @@ struct MediaObjectView: View {
                 ModelSceneView(modelURL: contentUrl!)
                 Spacer()
             case (.Video, let contentUrl):
+                Spacer()
                 AVObjectView(url: contentUrl!, showPlayButton: showInteraction)
+                Spacer()
             case (.Audio, let contentUrl):
+                Spacer()
                 AVObjectView(url: contentUrl!, showPlayButton: showInteraction)
+                Spacer()
             default:
                 Text("Unknown media object")
             }

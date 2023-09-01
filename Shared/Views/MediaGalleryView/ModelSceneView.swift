@@ -58,14 +58,10 @@ struct ModelSceneView: View {
                 qlPreviewItem = modelURL as NSURL
             } else {
                 // Load remote URL
-                let task = URLSession.shared.downloadTask(with: URLRequest(url: modelURL, cachePolicy: .returnCacheDataElseLoad)) { (url, response, error) in
-                    if let error {
-                        print(error)
-                        return
-                    }
-                    guard let url = url else { return }
+                do {
+                    let (url, response) = try await URLSession.shared.download(for: URLRequest(url: modelURL, cachePolicy: .returnCacheDataElseLoad))
                     
-                    if let suggestedFilename = response?.suggestedFilename {
+                    if let suggestedFilename = response.suggestedFilename {
                         let newUrl = url.deletingLastPathComponent().appending(path: suggestedFilename)
                         
                         // Rename with suggested name
@@ -77,11 +73,9 @@ struct ModelSceneView: View {
                         scene = try? SCNScene(url: url)
                         qlPreviewItem = url as NSURL
                     }
-                   
-                    
+                } catch {
+                    print(error)
                 }
-                
-                task.resume()
             }
         }
     }

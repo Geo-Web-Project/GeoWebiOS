@@ -83,6 +83,10 @@ final class MediaObject {
                     ".usdz"
                 case .Png:
                     ".png"
+                case .Mp3:
+                    ".mp3"
+                case .Mp4:
+                    ".mp4"
                 default:
                     ""
                 }
