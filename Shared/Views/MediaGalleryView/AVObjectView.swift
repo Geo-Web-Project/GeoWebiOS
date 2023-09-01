@@ -32,7 +32,7 @@ struct AVObjectView: View {
                 }
             }
         }
-        .onAppear {
+        .task {
             player = AVPlayer(url: url)
         }
     }

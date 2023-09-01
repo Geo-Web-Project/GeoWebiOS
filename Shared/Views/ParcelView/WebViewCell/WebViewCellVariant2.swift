@@ -52,11 +52,16 @@ private struct WebView: UIViewRepresentable {
     func makeUIView(context: Context) -> WKWebView {
         let view = WKWebView()
         view.isUserInteractionEnabled = false
+        Task {
+            view.load(request)
+        }
         return view
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.load(request)
+        Task {
+            uiView.load(request)
+        }
     }
 }
 
