@@ -42,7 +42,9 @@ struct Store {
         IsAnchorComponent.tableId.toHex(): IsAnchorComponent.setRecord,
         Model3DComponent.tableId.toHex(): Model3DComponent.setRecord,
         PositionComponent.tableId.toHex(): PositionComponent.setRecord,
-        AnchorComponent.tableId.toHex(): AnchorComponent.setRecord
+        AnchorComponent.tableId.toHex(): AnchorComponent.setRecord,
+        ScaleComponent.tableId.toHex(): ScaleComponent.setRecord,
+        OrientationComponent.tableId.toHex(): OrientationComponent.setRecord
     ]
     
     static func handleStoreSetFieldEvent(modelContext: ModelContext, address: EthereumAddress, event: [String: Any], blockNumber: EthereumQuantity) throws {

@@ -30,6 +30,18 @@ struct WorldARView: View {
         }
     }
     
+    private var scalePredicate: Predicate<ScaleComponent> {
+        #Predicate<ScaleComponent> { obj in
+            obj.worldAddress == worldAddress
+        }
+    }
+    
+    private var orientationPredicate: Predicate<OrientationComponent> {
+        #Predicate<OrientationComponent> { obj in
+            obj.worldAddress == worldAddress
+        }
+    }
+    
     private var anchorPredicate: Predicate<AnchorComponent> {
         #Predicate<AnchorComponent> { obj in
             obj.worldAddress == worldAddress
@@ -39,6 +51,8 @@ struct WorldARView: View {
     @Query private var isAnchorComponents: [IsAnchorComponent]
     @Query private var modelComponents: [Model3DComponent]
     @Query private var positionComponents: [PositionComponent]
+    @Query private var scaleComponents: [ScaleComponent]
+    @Query private var orientationComponents: [OrientationComponent]
     @Query private var anchorComponents: [AnchorComponent]
     @State private var modelRealityComponents: [String: ModelComponent] = [:]
     @State private var isReady: Bool = false
@@ -49,6 +63,8 @@ struct WorldARView: View {
         _isAnchorComponents = Query(filter: isAnchorPredicate)
         _modelComponents = Query(filter: model3DPredicate)
         _positionComponents = Query(filter: positionPredicate)
+        _scaleComponents = Query(filter: scalePredicate)
+        _orientationComponents = Query(filter: orientationPredicate)
         _anchorComponents = Query(filter: anchorPredicate)
     }
     
@@ -117,6 +133,8 @@ struct WorldARView: View {
                 isAnchorComponents: isAnchorComponents,
                 modelComponents: modelComponents,
                 positionComponents: positionComponents,
+                scaleComponents: scaleComponents,
+                orientationComponents: orientationComponents,
                 anchorComponents: anchorComponents,
                 modelRealityComponents: modelRealityComponents
             )
@@ -130,16 +148,25 @@ struct ARViewRepresentable: UIViewRepresentable {
     let isAnchorComponents: [IsAnchorComponent]
     let modelComponents: [Model3DComponent]
     let positionComponents: [PositionComponent]
+    let scaleComponents: [ScaleComponent]
+    let orientationComponents: [OrientationComponent]
     let anchorComponents: [AnchorComponent]
     let modelRealityComponents: [String: ModelComponent]
     
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
       
+        updateUIView(arView, context: context)
+                
+        return arView
+    }
+    
+    func updateUIView(_ arView: ARView, context: Context) {
         for isAnchorComponent in isAnchorComponents {
-            let anchorEntity = AnchorEntity()
-            anchorEntity.name = isAnchorComponent.key.toHexString()
-            arView.scene.anchors.append(anchorEntity)
+            let entity = arView.scene.findEntity(named: isAnchorComponent.key.toHexString()) as? AnchorEntity ?? AnchorEntity()
+            entity.name = isAnchorComponent.key.toHexString()
+            
+            arView.scene.anchors.append(entity)
         }
         
         for anchorComponent in anchorComponents {
@@ -154,8 +181,26 @@ struct ARViewRepresentable: UIViewRepresentable {
             let entity = arView.scene.findEntity(named: positionComponent.key.toHexString()) ?? Entity()
             entity.name = positionComponent.key.toHexString()
             
-            var transform = Transform()
-            transform.translation = SIMD3(x: Float(positionComponent.x), y: Float(positionComponent.y), z: Float(positionComponent.z))
+            var transform = entity.components.has(Transform.self) ? entity.transform : Transform()
+            transform.translation = SIMD3(x: positionComponent.x, y: positionComponent.y, z: positionComponent.z)
+            entity.components.set(transform)
+        }
+        
+        for scaleComponent in scaleComponents {
+            let entity = arView.scene.findEntity(named: scaleComponent.key.toHexString()) ?? Entity()
+            entity.name = scaleComponent.key.toHexString()
+            
+            var transform = entity.components.has(Transform.self) ? entity.transform : Transform()
+            transform.scale = SIMD3(x: scaleComponent.x, y: scaleComponent.y, z: scaleComponent.z)
+            entity.components.set(transform)
+        }
+        
+        for orientationComponent in orientationComponents {
+            let entity = arView.scene.findEntity(named: orientationComponent.key.toHexString()) ?? Entity()
+            entity.name = orientationComponent.key.toHexString()
+            
+            var transform = entity.components.has(Transform.self) ? entity.transform : Transform()
+            transform.rotation = simd_quatf(ix: orientationComponent.x, iy: orientationComponent.y, iz: orientationComponent.z, r: orientationComponent.w)
             entity.components.set(transform)
         }
         
@@ -166,19 +211,6 @@ struct ARViewRepresentable: UIViewRepresentable {
             let entity = arView.scene.findEntity(named: modelComponent.key.toHexString()) ?? Entity()
             entity.name = key
             entity.components.set(model)
-        }
-                
-        return arView
-    }
-    
-    func updateUIView(_ arView: ARView, context: Context) {
-        for isAnchorComponent in isAnchorComponents {
-            let existingEntity = arView.scene.findEntity(named: isAnchorComponent.key.toHexString())
-            if existingEntity == nil {
-                let anchorEntity = AnchorEntity()
-                anchorEntity.name = isAnchorComponent.key.toHexString()
-                arView.scene.anchors.append(anchorEntity)
-            }
         }
     }
 }

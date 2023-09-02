@@ -89,6 +89,8 @@
 		C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB32A81C28300CFDC84 /* ParcelListView.swift */; };
 		C3BAFAD22A81C73700CFDC84 /* ParcelListView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */; };
 		C3BAFAD42A81C90B00CFDC84 /* ParcelListView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */; };
+		C3EA6F912AA2AB9300E9B7BA /* ScaleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA6F902AA2AB9300E9B7BA /* ScaleComponent.swift */; };
+		C3EA6F952AA2AC3600E9B7BA /* OrientationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA6F942AA2AC3600E9B7BA /* OrientationComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -165,6 +167,8 @@
 		C3BAFAB42A81C28300CFDC84 /* WorldListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldListItemView.swift; sourceTree = "<group>"; };
 		C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelListView2.swift; sourceTree = "<group>"; };
 		C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelListView3.swift; sourceTree = "<group>"; };
+		C3EA6F902AA2AB9300E9B7BA /* ScaleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleComponent.swift; sourceTree = "<group>"; };
+		C3EA6F942AA2AC3600E9B7BA /* OrientationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationComponent.swift; sourceTree = "<group>"; };
 		C3EDAF912A7B148D00C80B0A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		C3EDAF932A7B148D00C80B0A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -253,6 +257,8 @@
 				C34B352B2A9FEDCD0079A314 /* IsAnchorComponent.swift */,
 				C34B352E2A9FF2430079A314 /* Model3DComponent.swift */,
 				C34B35342A9FF8410079A314 /* PositionComponent.swift */,
+				C3EA6F902AA2AB9300E9B7BA /* ScaleComponent.swift */,
+				C3EA6F942AA2AC3600E9B7BA /* OrientationComponent.swift */,
 				C34B35362AA00F7E0079A314 /* AnchorComponent.swift */,
 			);
 			path = Tables;
@@ -565,11 +571,13 @@
 				C34B35372AA00F7E0079A314 /* AnchorComponent.swift in Sources */,
 				C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */,
 				C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */,
+				C3EA6F952AA2AC3600E9B7BA /* OrientationComponent.swift in Sources */,
 				C35E319E2A9D432600AA4743 /* WorldListItemView.swift in Sources */,
 				C308E7D72A9437CB00EEC111 /* WorldView.swift in Sources */,
 				C331C90E2A82F082004B1238 /* Store.swift in Sources */,
 				C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */,
 				C34B352F2A9FF2430079A314 /* Model3DComponent.swift in Sources */,
+				C3EA6F912AA2AB9300E9B7BA /* ScaleComponent.swift in Sources */,
 				C331C90F2A82F082004B1238 /* TableId.swift in Sources */,
 				C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */,
 				C331C90D2A82F082004B1238 /* Name.swift in Sources */,

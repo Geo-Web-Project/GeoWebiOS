@@ -1,8 +1,8 @@
 //
-//  PositionComponent.swift
+//  OrientationComponent.swift
 //  GeoWebiOS
 //
-//  Created by Cody Hatfield on 2023-08-30.
+//  Created by Cody Hatfield on 2023-09-01.
 //
 
 import Foundation
@@ -14,28 +14,30 @@ import CID
 import Multicodec
 
 @Model
-final class PositionComponent {
+final class OrientationComponent {
     enum SetFieldError: Error {
         case invalidData
         case invalidNativeType
         case invalidNativeValue
     }
 
-    static let tableId: TableId = TableId(namespace: "geoweb", name: "PositionComponent")
+    static let tableId: TableId = TableId(namespace: "geoweb", name: "OrientationComponent")
     
     @Attribute(.unique) var key: Data
     var worldAddress: String
     var x: Float
     var y: Float
     var z: Float
+    var w: Float
     var lastUpdatedAtBlock: UInt
     
-    init(key: Data, worldAddress: EthereumAddress, x: Float, y: Float, z: Float, lastUpdatedAtBlock: UInt) {
+    init(key: Data, worldAddress: EthereumAddress, x: Float, y: Float, z: Float, w: Float, lastUpdatedAtBlock: UInt) {
         self.key = key
         self.worldAddress = worldAddress.hex(eip55: true)
         self.x = x
         self.y = y
         self.z = z
+        self.w = w
         self.lastUpdatedAtBlock = lastUpdatedAtBlock
     }
     
@@ -49,12 +51,14 @@ final class PositionComponent {
             x: "int256"
             y: "int256"
             z: "int256"
+            w: "int256
          */
         let dataBytes = newValue.makeBytes()
         let decodeLengths: [Int] = [
             Int(SolidityType.int256.decodeLength!),
             Int(SolidityType.int256.decodeLength!),
             Int(SolidityType.int256.decodeLength!),
+            Int(SolidityType.int256.decodeLength!)
         ]
         
         var bytesOffset = 0
@@ -64,13 +68,16 @@ final class PositionComponent {
         bytesOffset += yData.count
         let zData = Array(dataBytes[bytesOffset..<(bytesOffset+decodeLengths[2])])
         bytesOffset += zData.count
+        let wData = Array(dataBytes[bytesOffset..<(bytesOffset+decodeLengths[3])])
+        bytesOffset += wData.count
         
         guard let x = try ProtocolParser.decodeStaticField(abiType: SolidityType.int256, data: xData) as? BigInt else { throw SetFieldError.invalidNativeValue }
         guard let y = try ProtocolParser.decodeStaticField(abiType: SolidityType.int256, data: yData) as? BigInt else { throw SetFieldError.invalidNativeValue }
         guard let z = try ProtocolParser.decodeStaticField(abiType: SolidityType.int256, data: zData) as? BigInt else { throw SetFieldError.invalidNativeValue }
+        guard let w = try ProtocolParser.decodeStaticField(abiType: SolidityType.int256, data: wData) as? BigInt else { throw SetFieldError.invalidNativeValue }
                 
         let addressStr = address.hex(eip55: true)
-        let latest = FetchDescriptor<PositionComponent>(
+        let latest = FetchDescriptor<OrientationComponent>(
             predicate: #Predicate { $0.key == key && $0.worldAddress == addressStr }
         )
         let results = try modelContext.fetch(latest)
@@ -78,16 +85,16 @@ final class PositionComponent {
         
         if latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity {
             modelContext.insert(
-                PositionComponent(
+                OrientationComponent(
                     key: key,
                     worldAddress: address,
                     x: Float(x) / pow(10, 18),
                     y: Float(y) / pow(10, 18),
                     z: Float(z) / pow(10, 18),
+                    w: Float(w) / pow(10, 18),
                     lastUpdatedAtBlock: UInt(blockNumber.quantity)
                 )
             )
         }
     }
 }
-

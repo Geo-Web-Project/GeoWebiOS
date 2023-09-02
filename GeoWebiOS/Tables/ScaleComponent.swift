@@ -1,8 +1,8 @@
 //
-//  PositionComponent.swift
+//  ScaleComponent.swift
 //  GeoWebiOS
 //
-//  Created by Cody Hatfield on 2023-08-30.
+//  Created by Cody Hatfield on 2023-09-01.
 //
 
 import Foundation
@@ -14,14 +14,14 @@ import CID
 import Multicodec
 
 @Model
-final class PositionComponent {
+final class ScaleComponent {
     enum SetFieldError: Error {
         case invalidData
         case invalidNativeType
         case invalidNativeValue
     }
 
-    static let tableId: TableId = TableId(namespace: "geoweb", name: "PositionComponent")
+    static let tableId: TableId = TableId(namespace: "geoweb", name: "ScaleComponent")
     
     @Attribute(.unique) var key: Data
     var worldAddress: String
@@ -70,7 +70,7 @@ final class PositionComponent {
         guard let z = try ProtocolParser.decodeStaticField(abiType: SolidityType.int256, data: zData) as? BigInt else { throw SetFieldError.invalidNativeValue }
                 
         let addressStr = address.hex(eip55: true)
-        let latest = FetchDescriptor<PositionComponent>(
+        let latest = FetchDescriptor<ScaleComponent>(
             predicate: #Predicate { $0.key == key && $0.worldAddress == addressStr }
         )
         let results = try modelContext.fetch(latest)
@@ -78,7 +78,7 @@ final class PositionComponent {
         
         if latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity {
             modelContext.insert(
-                PositionComponent(
+                ScaleComponent(
                     key: key,
                     worldAddress: address,
                     x: Float(x) / pow(10, 18),

@@ -56,7 +56,9 @@ struct GeoWebiOSApp: App {
             IsAnchorComponent.self,
             Model3DComponent.self,
             PositionComponent.self,
-            AnchorComponent.self
+            AnchorComponent.self,
+            ScaleComponent.self,
+            OrientationComponent.self
         ])
     }
 }
