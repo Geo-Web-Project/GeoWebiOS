@@ -130,12 +130,8 @@ struct WorldARView: View {
                 }
         } else {
             ARViewRepresentable(
-                isAnchorComponents: isAnchorComponents,
+                arComponents: isAnchorComponents + anchorComponents + positionComponents + scaleComponents + orientationComponents,
                 modelComponents: modelComponents,
-                positionComponents: positionComponents,
-                scaleComponents: scaleComponents,
-                orientationComponents: orientationComponents,
-                anchorComponents: anchorComponents,
                 modelRealityComponents: modelRealityComponents
             )
             .ignoresSafeArea()
@@ -145,12 +141,8 @@ struct WorldARView: View {
 
 
 struct ARViewRepresentable: UIViewRepresentable {
-    let isAnchorComponents: [IsAnchorComponent]
+    let arComponents: [ARComponent]
     let modelComponents: [Model3DComponent]
-    let positionComponents: [PositionComponent]
-    let scaleComponents: [ScaleComponent]
-    let orientationComponents: [OrientationComponent]
-    let anchorComponents: [AnchorComponent]
     let modelRealityComponents: [String: ModelComponent]
     
     func makeUIView(context: Context) -> ARView {
@@ -162,48 +154,10 @@ struct ARViewRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ arView: ARView, context: Context) {
-        for isAnchorComponent in isAnchorComponents {
-            let entity = arView.scene.findEntity(named: isAnchorComponent.key.toHexString()) as? AnchorEntity ?? AnchorEntity()
-            entity.name = isAnchorComponent.key.toHexString()
-            
-            arView.scene.anchors.append(entity)
+        for arComponent in arComponents {
+            arComponent.updateARView(arView)
         }
-        
-        for anchorComponent in anchorComponents {
-            let entity = arView.scene.findEntity(named: anchorComponent.key.toHexString()) ?? Entity()
-            entity.name = anchorComponent.key.toHexString()
-        
-            let anchorEntity = arView.scene.findEntity(named: anchorComponent.anchor.toHexString())
-            anchorEntity?.addChild(entity)
-        }
-        
-        for positionComponent in positionComponents {
-            let entity = arView.scene.findEntity(named: positionComponent.key.toHexString()) ?? Entity()
-            entity.name = positionComponent.key.toHexString()
-            
-            var transform = entity.components.has(Transform.self) ? entity.transform : Transform()
-            transform.translation = SIMD3(x: positionComponent.x, y: positionComponent.y, z: positionComponent.z)
-            entity.components.set(transform)
-        }
-        
-        for scaleComponent in scaleComponents {
-            let entity = arView.scene.findEntity(named: scaleComponent.key.toHexString()) ?? Entity()
-            entity.name = scaleComponent.key.toHexString()
-            
-            var transform = entity.components.has(Transform.self) ? entity.transform : Transform()
-            transform.scale = SIMD3(x: scaleComponent.x, y: scaleComponent.y, z: scaleComponent.z)
-            entity.components.set(transform)
-        }
-        
-        for orientationComponent in orientationComponents {
-            let entity = arView.scene.findEntity(named: orientationComponent.key.toHexString()) ?? Entity()
-            entity.name = orientationComponent.key.toHexString()
-            
-            var transform = entity.components.has(Transform.self) ? entity.transform : Transform()
-            transform.rotation = simd_quatf(ix: orientationComponent.x, iy: orientationComponent.y, iz: orientationComponent.z, r: orientationComponent.w)
-            entity.components.set(transform)
-        }
-        
+
         for modelComponent in modelComponents {
             let key = modelComponent.key.toHexString()
             guard let model = modelRealityComponents[key] else { continue }

@@ -9,9 +9,10 @@ import Foundation
 import SwiftData
 import Web3
 import Web3ContractABI
+import RealityKit
 
 @Model
-final class IsAnchorComponent {
+final class IsAnchorComponent: ARComponent {
     enum SetFieldError: Error {
         case invalidData
         case invalidNativeType
@@ -30,6 +31,13 @@ final class IsAnchorComponent {
         self.worldAddress = worldAddress.hex(eip55: true)
         self.value = value
         self.lastUpdatedAtBlock = lastUpdatedAtBlock
+    }
+    
+    func updateARView(_ arView: ARView) {
+        let entity = arView.scene.findEntity(named: key.toHexString()) as? AnchorEntity ?? AnchorEntity()
+        entity.name = key.toHexString()
+        
+        arView.scene.anchors.append(entity)
     }
     
     static func setRecord(modelContext: ModelContext, address: EthereumAddress, values: [String: Any], blockNumber: EthereumQuantity) throws {

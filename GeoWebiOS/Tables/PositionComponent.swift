@@ -12,9 +12,10 @@ import Web3ContractABI
 import VarInt
 import CID
 import Multicodec
+import RealityKit
 
 @Model
-final class PositionComponent {
+final class PositionComponent: ARComponent {
     enum SetFieldError: Error {
         case invalidData
         case invalidNativeType
@@ -37,6 +38,15 @@ final class PositionComponent {
         self.y = y
         self.z = z
         self.lastUpdatedAtBlock = lastUpdatedAtBlock
+    }
+    
+    func updateARView(_ arView: ARView) {
+        let entity = arView.scene.findEntity(named: key.toHexString()) ?? Entity()
+        entity.name = key.toHexString()
+
+        var transform = entity.components.has(Transform.self) ? entity.transform : Transform()
+        transform.translation = SIMD3(x: x, y: y, z: z)
+        entity.components.set(transform)
     }
     
     static func setRecord(modelContext: ModelContext, address: EthereumAddress, values: [String: Any], blockNumber: EthereumQuantity) throws {
