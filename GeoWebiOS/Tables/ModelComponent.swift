@@ -1,8 +1,8 @@
 //
-//  TrackedImageComponent.swift
+//  ModelComponent.swift
 //  GeoWebiOS
 //
-//  Created by Cody Hatfield on 2023-09-04.
+//  Created by Cody Hatfield on 2023-08-30.
 //
 
 import Foundation
@@ -13,33 +13,31 @@ import VarInt
 import CID
 import Multicodec
 
-enum ImageEncodingFormat: UInt8, Codable {
-    case Jpeg
-    case Png
-    case Svg
+enum ModelEncodingFormat: UInt8, Codable {
+    case Glb
+    case Usdz
 }
 
 @Model
-final class TrackedImageComponent {
+final class ModelComponent {
     enum SetFieldError: Error {
         case invalidData
         case invalidNativeType
         case invalidNativeValue
     }
 
-    static let tableId: TableId = TableId(namespace: "geoweb", name: "TrackedImageComponent")
+    static let tableId: TableId = TableId(namespace: "geoweb", name: "ModelComponent")
     
     @Attribute(.unique) var worldKey: String
     var key: Data
     var worldAddress: String
-    var imageAsset: Data
-    var encodingFormat: ImageEncodingFormat
-    var imageWidthInMillimeters: UInt16
+    var encodingFormat: ModelEncodingFormat
+    var contentHash: Data
     var lastUpdatedAtBlock: UInt
     
     @Transient
-    var imageAssetUrl: URL? {
-        let contentHashBytes = [UInt8](imageAsset)
+    var contentHashUrl: URL? {
+        let contentHashBytes = [UInt8](contentHash)
         let lengthPrefix = uVarInt(contentHashBytes)
         let recBytes = [UInt8](contentHashBytes.dropFirst(lengthPrefix.bytesRead))
         
@@ -50,21 +48,16 @@ final class TrackedImageComponent {
         switch Codecs(rawValue: cidCodec.value) {
         case .identity:
             let rawBytes = cidCodecBytes.dropFirst(cidCodec.bytesRead)
-            let ext = switch encodingFormat {
-            default:
-                ""
-            }
+            let ext = "usdz"
             return Data(rawBytes).saveToTemporaryURL(ext: ext)
         default:
             do {
                 let cid = try CID(recBytes)
                 let ext = switch encodingFormat {
-                case .Png:
-                    ".png"
-                case .Jpeg:
-                    ".jpeg"
-                case .Svg:
-                    ".svg"
+                case .Glb:
+                    ".glb"
+                case .Usdz:
+                    ".usdz"
                 }
                 return URL(string: "https://w3s.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
             } catch {
@@ -73,12 +66,11 @@ final class TrackedImageComponent {
         }
     }
     
-    init(key: Data, worldAddress: EthereumAddress, imageAsset: Data, encodingFormat: ImageEncodingFormat, imageWidthInMillimeters: UInt16, lastUpdatedAtBlock: UInt) {
+    init(key: Data, worldAddress: EthereumAddress, encodingFormat: ModelEncodingFormat, contentHash: Data, lastUpdatedAtBlock: UInt) {
         self.key = key
         self.worldAddress = worldAddress.hex(eip55: true)
-        self.imageAsset = imageAsset
         self.encodingFormat = encodingFormat
-        self.imageWidthInMillimeters = imageWidthInMillimeters
+        self.contentHash = contentHash
         self.lastUpdatedAtBlock = lastUpdatedAtBlock
         
         self.worldKey = "\(worldAddress.hex(eip55: true))/\(key.toHexString())"
@@ -90,40 +82,35 @@ final class TrackedImageComponent {
         guard let key = try ProtocolParser.decodeStaticField(abiType: SolidityType.bytes(length: 32), data: keys[0].makeBytes()) as? Data else { throw SetFieldError.invalidNativeValue }
         
         /*
-            imageWidthInMillimeters: "uint32"
-            encodingFormat: "ImageEncodingFormat"
-            imageAsset: "bytes"
+            encodingFormat: "ModelEncodingFormat"
+            contentHash: "bytes"
          */
         let dataBytes = newValue.makeBytes()
         let decodeLengths: [Int] = [
-            Int(SolidityType.uint16.decodeLength!),
-            Int(SolidityType.uint8.decodeLength!)
+            Int(SolidityType.uint8.decodeLength!),
         ]
         
         var bytesOffset = 0
-        let imageWidthData = Array(dataBytes[bytesOffset..<decodeLengths[0]])
-        bytesOffset += imageWidthData.count
-        let encodingFormatData = Array(dataBytes[bytesOffset..<(bytesOffset+decodeLengths[1])])
+        let encodingFormatData = Array(dataBytes[bytesOffset..<(bytesOffset+decodeLengths[0])])
         bytesOffset += encodingFormatData.count
         
         let (_, fieldByteLengths) = try ProtocolParser.hexToPackedCounter(data: Array(dataBytes[bytesOffset..<(bytesOffset+32)]))
         bytesOffset += 32
-        let imageAssetData = Array(dataBytes[bytesOffset..<(bytesOffset+Int(fieldByteLengths[0]))])
+        let contentHashData = Array(dataBytes[bytesOffset..<(bytesOffset+Int(fieldByteLengths[0]))])
 
-        guard let imageWidth = try ProtocolParser.decodeStaticField(abiType: SolidityType.uint16, data: imageWidthData) as? UInt16 else { throw SetFieldError.invalidNativeValue }
         guard let encodingFormat = try ProtocolParser.decodeStaticField(abiType: SolidityType.uint8, data: encodingFormatData) as? UInt8 else { throw SetFieldError.invalidNativeValue }
-        guard let imageAsset = try ProtocolParser.decodeDynamicField(abiType: SolidityType.bytes(length: nil), data: imageAssetData) as? Data else { throw SetFieldError.invalidNativeValue }
-        
+        guard let contentHash = try ProtocolParser.decodeDynamicField(abiType: SolidityType.bytes(length: nil), data: contentHashData) as? Data else { throw SetFieldError.invalidNativeValue }
         
         let addressStr = address.hex(eip55: true)
-        let latestValue = FetchDescriptor<TrackedImageComponent>(
+        let latestValue = FetchDescriptor<ModelComponent>(
             predicate: #Predicate { $0.key == key && $0.worldAddress == addressStr }
         )
         let results = try modelContext.fetch(latestValue)
         let latestBlockNumber = results.count > 0 ? results[0].lastUpdatedAtBlock : nil
         
         if latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity {
-            modelContext.insert(TrackedImageComponent(key: key, worldAddress: address, imageAsset: imageAsset, encodingFormat: ImageEncodingFormat(rawValue: encodingFormat)!, imageWidthInMillimeters: imageWidth, lastUpdatedAtBlock: UInt(blockNumber.quantity)))
+            modelContext.insert(ModelComponent(key: key, worldAddress: address, encodingFormat: ModelEncodingFormat(rawValue: encodingFormat)!, contentHash: contentHash, lastUpdatedAtBlock: UInt(blockNumber.quantity)))
         }
     }
 }
+

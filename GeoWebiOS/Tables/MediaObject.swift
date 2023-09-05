@@ -42,7 +42,8 @@ final class MediaObject {
 
     static let tableId: TableId = TableId(namespace: "geoweb", name: "MediaObject")
     
-    @Attribute(.unique) var key: Data
+    @Attribute(.unique) var worldKey: String
+    var key: Data
     var worldAddress: String
     var name: String
     var mediaType: MediaObjectType?
@@ -69,6 +70,8 @@ final class MediaObject {
                 "mp4"
             case .Usdz:
                 "usdz"
+            case .Glb:
+                "glb"
             case .Mp3:
                 "mp3"
             default:
@@ -81,6 +84,8 @@ final class MediaObject {
                 let ext = switch encodingFormat {
                 case .Usdz:
                     ".usdz"
+                case .Glb:
+                    ".glb"
                 case .Png:
                     ".png"
                 case .Mp3:
@@ -90,7 +95,7 @@ final class MediaObject {
                 default:
                     ""
                 }
-                return URL(stringLiteral: "https://w3s.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
+                return URL(string: "https://w3s.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
             } catch {
                 return nil
             }
@@ -106,6 +111,8 @@ final class MediaObject {
         self.contentSize = contentSize
         self.contentHash = contentHash
         self.lastUpdatedAtBlock = lastUpdatedAtBlock
+        
+        self.worldKey = "\(worldAddress.hex(eip55: true))/\(key.toHexString())"
     }
     
     static func setRecord(modelContext: ModelContext, address: EthereumAddress, values: [String: Any], blockNumber: EthereumQuantity) throws {

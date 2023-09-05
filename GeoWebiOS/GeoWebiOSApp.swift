@@ -53,7 +53,7 @@ struct GeoWebiOSApp: App {
             Name.self,
             Url.self,
             MediaObject.self,
-            Model3DComponent.self,
+            ModelComponent.self,
             PositionComponent.self,
             AnchorComponent.self,
             ScaleComponent.self,

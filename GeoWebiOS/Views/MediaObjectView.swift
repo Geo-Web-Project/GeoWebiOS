@@ -32,9 +32,9 @@ struct MediaObjectView: View {
                 .aspectRatio(contentMode: .fit)
                 .padding()
                 Spacer()
-            case (.Model3D, let contentUrl):
+            case (.Model3D, _):
                 Spacer()
-                ModelSceneView(modelURL: contentUrl!)
+                ModelSceneView(mediaObject: mediaObject)
                 Spacer()
             case (.Video, let contentUrl):
                 Spacer()

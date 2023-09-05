@@ -39,7 +39,7 @@ struct Store {
         Name.tableId.toHex(): Name.setField,
         Url.tableId.toHex(): Url.setField,
         MediaObject.tableId.toHex(): MediaObject.setRecord,
-        Model3DComponent.tableId.toHex(): Model3DComponent.setRecord,
+        ModelComponent.tableId.toHex(): ModelComponent.setRecord,
         PositionComponent.tableId.toHex(): PositionComponent.setRecord,
         AnchorComponent.tableId.toHex(): AnchorComponent.setRecord,
         ScaleComponent.tableId.toHex(): ScaleComponent.setRecord,

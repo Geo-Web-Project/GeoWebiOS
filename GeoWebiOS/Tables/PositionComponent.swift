@@ -12,10 +12,9 @@ import Web3ContractABI
 import VarInt
 import CID
 import Multicodec
-import RealityKit
 
 @Model
-final class PositionComponent: ARComponent {
+final class PositionComponent {
     enum SetFieldError: Error {
         case invalidData
         case invalidNativeType
@@ -24,7 +23,8 @@ final class PositionComponent: ARComponent {
 
     static let tableId: TableId = TableId(namespace: "geoweb", name: "PositionComponent")
     
-    @Attribute(.unique) var key: Data
+    @Attribute(.unique) var worldKey: String
+    var key: Data
     var worldAddress: String
     var x: Float
     var y: Float
@@ -38,15 +38,8 @@ final class PositionComponent: ARComponent {
         self.y = y
         self.z = z
         self.lastUpdatedAtBlock = lastUpdatedAtBlock
-    }
-    
-    func updateARView(_ arView: ARView) {
-        let entity = arView.scene.findEntity(named: key.toHexString()) ?? Entity()
-        entity.name = key.toHexString()
         
-        var transform = entity.components[StartTransformComponent.self] as? StartTransformComponent ?? StartTransformComponent()
-        transform.translation = SIMD3(x: x, y: y, z: z)
-        entity.components.set(transform)
+        self.worldKey = "\(worldAddress.hex(eip55: true))/\(key.toHexString())"
     }
     
     static func setRecord(modelContext: ModelContext, address: EthereumAddress, values: [String: Any], blockNumber: EthereumQuantity) throws {

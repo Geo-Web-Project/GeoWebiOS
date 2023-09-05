@@ -9,12 +9,13 @@ import SwiftUI
 import SwiftData
 import RealityKit
 import ARKit
+import GLTFKit2
 
 struct WorldARView: View {
     var worldAddress: String
 
-    private var model3DPredicate: Predicate<Model3DComponent> {
-        #Predicate<Model3DComponent> { obj in
+    private var model3DPredicate: Predicate<ModelComponent> {
+        #Predicate<ModelComponent> { obj in
             obj.worldAddress == worldAddress
         }
     }
@@ -49,13 +50,13 @@ struct WorldARView: View {
         }
     }
     
-    @Query private var modelComponents: [Model3DComponent]
+    @Query private var modelComponents: [ModelComponent]
     @Query private var positionComponents: [PositionComponent]
     @Query private var scaleComponents: [ScaleComponent]
     @Query private var orientationComponents: [OrientationComponent]
     @Query private var anchorComponents: [AnchorComponent]
     @Query private var trackedImageComponents: [TrackedImageComponent]
-    @State private var modelRealityComponents: [String: ModelComponent] = [:]
+    @State private var modelRealityComponents: [String: Entity] = [:]
     @State private var trackedReferenceImages: [String: ARReferenceImage] = [:]
     @State private var isReady: Bool = false
     
@@ -80,7 +81,7 @@ struct WorldARView: View {
                     AnchorTransformComponent.registerComponent()
                     AnchorTransformSystem.registerSystem()
                     
-                    await withTaskGroup(of: (String, ARReferenceImage?).self) { taskGroup in
+                    trackedReferenceImages = await withTaskGroup(of: (String, ARReferenceImage?).self, returning: [String : ARReferenceImage].self) { taskGroup in
                         for trackedImageComponent in trackedImageComponents {
                             taskGroup.addTask {
                                 let key = trackedImageComponent.key.toHexString()
@@ -104,7 +105,7 @@ struct WorldARView: View {
                                             let newUrl = url.deletingLastPathComponent().appending(path: suggestedFilename)
                                             
                                             // Rename with suggested name
-                                            if !FileManager.default.fileExists(atURL: newUrl) {
+                                            if !FileManager.default.fileExists(atPath: newUrl.path()) {
                                                 try FileManager.default.moveItem(at: url, to: newUrl)
                                             }
                                             
@@ -130,46 +131,65 @@ struct WorldARView: View {
                             }
                         }
                         
-                        for await result in taskGroup {
-                            trackedReferenceImages[result.0] = result.1
+                        return await taskGroup.reduce(into: [:]) { prev, cur in
+                            if cur.1 != nil {
+                                prev[cur.0] = cur.1
+                            }
                         }
                     }
-                    
-                    await withTaskGroup(of: (String, ModelComponent?).self) { taskGroup in
+                                        
+                    modelRealityComponents = await withTaskGroup(of: (String, Entity?).self, returning: [String : Entity].self) { taskGroup in
                         for modelComponent in modelComponents {
                             taskGroup.addTask {
                                 let key = modelComponent.key.toHexString()
 
                                 do {
-                                    guard let usdzUrl = modelComponent.usdzUrl else { return (key, nil) }
+                                    guard let contentHashUrl = modelComponent.contentHashUrl else { return (key, nil) }
                                     
-                                    if usdzUrl.isFileURL {
+                                    if contentHashUrl.isFileURL {
                                         // Load local file
-                                        let modelEntity = try await Entity.loadModel(contentsOf: usdzUrl)
-                                        guard let model = await modelEntity.model else { return (key, nil) }
-                                        
-                                        return (key, model)
+                                        switch modelComponent.encodingFormat {
+                                        case .Glb:
+                                            let asset = try GLTFAsset(url: contentHashUrl)
+                                            guard let scene = asset.defaultScene else { return (key, nil) }
+                                            let entity = await MainActor.run {
+                                                GLTFRealityKitLoader.convert(scene: scene)
+                                            }
+                                            
+                                            return (key, entity)
+                                        case .Usdz:
+                                            let modelEntity = try await Entity.loadModel(contentsOf: contentHashUrl)
+                                            return (key, modelEntity)
+                                        }
                                     } else {
                                         // Load remote URL
-                                        let (url, response) = try await URLSession.shared.download(for: URLRequest(url: usdzUrl, cachePolicy: .returnCacheDataElseLoad))
+                                        let (url, response) = try await URLSession.shared.download(for: URLRequest(url: contentHashUrl, cachePolicy: .returnCacheDataElseLoad))
                                         
+                                        var contentUrl = url
                                         if let suggestedFilename = response.suggestedFilename {
                                             let newUrl = url.deletingLastPathComponent().appending(path: suggestedFilename)
                                             
                                             // Rename with suggested name
-                                            if !FileManager.default.fileExists(atURL: newUrl) {
+                                            if !FileManager.default.fileExists(atPath: newUrl.path()) {
                                                 try FileManager.default.moveItem(at: url, to: newUrl)
                                             }
                                             
-                                            let modelEntity = try await Entity.loadModel(contentsOf: newUrl)
-                                            guard let model = await modelEntity.model else { return (key, nil) }
+                                            contentUrl = newUrl
+                                        }
+                                        
+                                        switch modelComponent.encodingFormat {
+                                        case .Glb:
+                                            let asset = try GLTFAsset(url: contentUrl)
+                                            guard let scene = asset.defaultScene else { return (key, nil) }
+                                            let entity = await MainActor.run {
+                                                GLTFRealityKitLoader.convert(scene: scene)
+                                            }
+                                            return (key, entity)
+                                        case .Usdz:
+                                            let modelEntity = try await Entity.loadModel(contentsOf: contentUrl)
+//                                            guard let model = await modelEntity.model else { return (key, nil) }
                                             
-                                            return (key, model)
-                                        } else {
-                                            let modelEntity = try await Entity.loadModel(contentsOf: url)
-                                            guard let model = await modelEntity.model else { return (key, nil) }
-                                            
-                                            return (key, model)
+                                            return (key, modelEntity)
                                         }
                                     }
                                 } catch {
@@ -179,10 +199,13 @@ struct WorldARView: View {
                             }
                         }
                         
-                        for await result in taskGroup {
-                            modelRealityComponents[result.0] = result.1
+                        return await taskGroup.reduce(into: [:]) { prev, cur in
+                            if cur.1 != nil {
+                                prev[cur.0] = cur.1
+                            }
                         }
                     }
+                
                     
                     isReady = true
                 }
@@ -204,9 +227,9 @@ struct ARViewRepresentable: UIViewRepresentable {
     var arView = ARView(frame: .zero)
     
     let arComponents: [ARComponent]
-    let modelComponents: [Model3DComponent]
+    let modelComponents: [ModelComponent]
     let trackedImageComponents: [TrackedImageComponent]
-    let modelRealityComponents: [String: ModelComponent]
+    let modelRealityComponents: [String: Entity]
     let trackedReferenceImages: [String: ARReferenceImage]
     
     func makeUIView(context: Context) -> ARView {
@@ -237,7 +260,7 @@ struct ARViewRepresentable: UIViewRepresentable {
             
             let entity = arView.scene.findEntity(named: key) ?? Entity()
             entity.name = key
-            entity.components.set(model)
+            entity.addChild(model)
         }
     }
     
@@ -277,6 +300,54 @@ class ARViewCoordinator: NSObject, ARSessionDelegate {
                 parent.arView.scene.addAnchor(entity)
             }
         }
+    }
+}
+
+extension PositionComponent: ARComponent {
+    func updateARView(_ arView: ARView) {
+        let entity = arView.scene.findEntity(named: key.toHexString()) ?? Entity()
+        entity.name = key.toHexString()
+        
+        var transform = entity.components[StartTransformComponent.self] as? StartTransformComponent ?? StartTransformComponent()
+        transform.translation = SIMD3(x: x, y: y, z: z)
+        entity.components.set(transform)
+    }
+}
+
+extension ScaleComponent: ARComponent {
+    func updateARView(_ arView: ARView) {
+        let entity = arView.scene.findEntity(named: key.toHexString()) ?? Entity()
+        entity.name = key.toHexString()
+
+        var transform = entity.components[StartTransformComponent.self] as? StartTransformComponent ?? StartTransformComponent()
+        transform.scale = SIMD3(x: x, y: y, z: z)
+        entity.components.set(transform)
+    }
+}
+
+extension OrientationComponent: ARComponent {
+    func updateARView(_ arView: ARView) {
+        let entity = arView.scene.findEntity(named: key.toHexString()) ?? Entity()
+        entity.name = key.toHexString()
+        
+        var transform = entity.components[StartTransformComponent.self] as? StartTransformComponent ?? StartTransformComponent()
+        transform.orientation = simd_quatf(ix: x, iy: y, iz: z, r: w)
+        entity.components.set(transform)
+    }
+}
+
+extension AnchorComponent: ARComponent {
+    func updateARView(_ arView: ARView) {
+        let entity = arView.scene.findEntity(named: key.toHexString()) ?? Entity()
+        entity.name = key.toHexString()
+        
+        entity.components.set(AnchorTransformComponent(
+            anchor: anchor.toHexString()
+        ))
+        entity.isEnabled = false
+        
+        let anchorEntity = arView.scene.findEntity(named: "default")
+        anchorEntity?.addChild(entity)
     }
 }
 

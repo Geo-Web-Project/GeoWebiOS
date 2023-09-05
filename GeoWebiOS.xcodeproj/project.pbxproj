@@ -15,6 +15,8 @@
 		C308E7DE2A9438C200EEC111 /* FullMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB02A81C28300CFDC84 /* FullMapView.swift */; };
 		C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */; };
 		C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */ = {isa = PBXBuildFile; productRef = C308E7E22A94394900EEC111 /* SwiftGLTF */; };
+		C317177C2AA7E83800D695B3 /* GLTFKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C317177A2AA7E83000D695B3 /* GLTFKit2.framework */; };
+		C317177D2AA7E83800D695B3 /* GLTFKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C317177A2AA7E83000D695B3 /* GLTFKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C31ABFD02A9D644100F3368C /* WorldListItemView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31ABFCF2A9D644100F3368C /* WorldListItemView1.swift */; };
 		C331C8F42A82EB81004B1238 /* AddWorldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */; };
 		C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */; };
@@ -27,7 +29,7 @@
 		C331C9142A82F0CB004B1238 /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = C331C9132A82F0CB004B1238 /* Web3ContractABI */; };
 		C331C9162A82F0CB004B1238 /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C331C9152A82F0CB004B1238 /* Web3PromiseKit */; };
 		C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */ = {isa = PBXBuildFile; productRef = C33682922A79BA4C00CA5F43 /* SwiftGLTF */; };
-		C34B352F2A9FF2430079A314 /* Model3DComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B352E2A9FF2430079A314 /* Model3DComponent.swift */; };
+		C34B352F2A9FF2430079A314 /* ModelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B352E2A9FF2430079A314 /* ModelComponent.swift */; };
 		C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35302A9FF3C20079A314 /* EnterARButton.swift */; };
 		C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35322A9FF4300079A314 /* WorldARView.swift */; };
 		C34B35352A9FF8410079A314 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35342A9FF8410079A314 /* PositionComponent.swift */; };
@@ -91,6 +93,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		C317177E2AA7E83800D695B3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C317177D2AA7E83800D695B3 /* GLTFKit2.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3EDAF9F2A7B148F00C80B0A /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -105,6 +118,7 @@
 
 /* Begin PBXFileReference section */
 		C308E7D62A9437CB00EEC111 /* WorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldView.swift; sourceTree = "<group>"; };
+		C317177A2AA7E83000D695B3 /* GLTFKit2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GLTFKit2.framework; sourceTree = "<group>"; };
 		C31ABFCF2A9D644100F3368C /* WorldListItemView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListItemView1.swift; sourceTree = "<group>"; };
 		C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorldFormView.swift; sourceTree = "<group>"; };
 		C331C8F92A82F03E004B1238 /* GeoWebiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoWebiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,7 +128,7 @@
 		C331C90A2A82F082004B1238 /* Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		C331C90B2A82F082004B1238 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		C331C90C2A82F082004B1238 /* TableId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableId.swift; sourceTree = "<group>"; };
-		C34B352E2A9FF2430079A314 /* Model3DComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model3DComponent.swift; sourceTree = "<group>"; };
+		C34B352E2A9FF2430079A314 /* ModelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelComponent.swift; sourceTree = "<group>"; };
 		C34B35302A9FF3C20079A314 /* EnterARButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterARButton.swift; sourceTree = "<group>"; };
 		C34B35322A9FF4300079A314 /* WorldARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldARView.swift; sourceTree = "<group>"; };
 		C34B35342A9FF8410079A314 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
@@ -177,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C317177C2AA7E83800D695B3 /* GLTFKit2.framework in Frameworks */,
 				C3982F672A96A2FC0089AF69 /* VarInt in Frameworks */,
 				C331C9142A82F0CB004B1238 /* Web3ContractABI in Frameworks */,
 				C331C9162A82F0CB004B1238 /* Web3PromiseKit in Frameworks */,
@@ -248,7 +263,7 @@
 				C331C90A2A82F082004B1238 /* Name.swift */,
 				C374EAC72A8EA2B800141446 /* Url.swift */,
 				C3AC36872A8FF1F3008821A8 /* MediaObject.swift */,
-				C34B352E2A9FF2430079A314 /* Model3DComponent.swift */,
+				C34B352E2A9FF2430079A314 /* ModelComponent.swift */,
 				C34B35342A9FF8410079A314 /* PositionComponent.swift */,
 				C3EA6F902AA2AB9300E9B7BA /* ScaleComponent.swift */,
 				C3EA6F942AA2AC3600E9B7BA /* OrientationComponent.swift */,
@@ -423,6 +438,7 @@
 		C3EDAF902A7B148D00C80B0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C317177A2AA7E83000D695B3 /* GLTFKit2.framework */,
 				C3EDAF912A7B148D00C80B0A /* WidgetKit.framework */,
 				C3EDAF932A7B148D00C80B0A /* SwiftUI.framework */,
 			);
@@ -439,6 +455,7 @@
 				C331C8F52A82F03E004B1238 /* Sources */,
 				C331C8F62A82F03E004B1238 /* Frameworks */,
 				C331C8F72A82F03E004B1238 /* Resources */,
+				C317177E2AA7E83800D695B3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -566,7 +583,7 @@
 				C308E7D72A9437CB00EEC111 /* WorldView.swift in Sources */,
 				C331C90E2A82F082004B1238 /* Store.swift in Sources */,
 				C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */,
-				C34B352F2A9FF2430079A314 /* Model3DComponent.swift in Sources */,
+				C34B352F2A9FF2430079A314 /* ModelComponent.swift in Sources */,
 				C3EA6F912AA2AB9300E9B7BA /* ScaleComponent.swift in Sources */,
 				C331C90F2A82F082004B1238 /* TableId.swift in Sources */,
 				C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */,
@@ -640,6 +657,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GeoWebiOS/Preview Content\"";
 				DEVELOPMENT_TEAM = GYAS34R77H;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Geo Web";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera is used to enable augmented reality features.";
@@ -678,6 +699,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GeoWebiOS/Preview Content\"";
 				DEVELOPMENT_TEAM = GYAS34R77H;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Geo Web";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera is used to enable augmented reality features.";
