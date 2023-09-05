@@ -67,7 +67,7 @@ struct WorldListView: View {
             if let results = try? context.fetch(fetch) {
                 if results.count == 0 {
                     // Insert default world
-                    let worldAddress = try! EthereumAddress(hex: "0x30e56065584A006E7a0f1b4C489466768100647a", eip55: true)
+                    let worldAddress = try! EthereumAddress(hex: "0xC1758cf401A7e2e7e9Ac39729f79E78E0f577B8e", eip55: true)
                     context.insert(
                         SavedWorld(
                             chainId: 420,

@@ -30,16 +30,16 @@ struct WorldView: View {
             mediaObject.worldAddress == worldAddress
         }
     }
-    private var isAnchorPredicate: Predicate<IsAnchorComponent> {
-        #Predicate<IsAnchorComponent> { obj in
-            obj.worldAddress == worldAddress && obj.value == true
+    private var anchorPredicate: Predicate<AnchorComponent> {
+        #Predicate<AnchorComponent> { anchorComponent in
+            anchorComponent.worldAddress == worldAddress
         }
     }
     
     @Query private var name: [Name]
     @Query private var url: [Url]
     @Query private var mediaObjects: [MediaObject]
-    @Query private var isAnchorComponent: [IsAnchorComponent]
+    @Query private var anchorComponent: [AnchorComponent]
 
     @State private var isPresentingMapView = false
     
@@ -49,13 +49,13 @@ struct WorldView: View {
         _name = Query(filter: namePredicate)
         _url = Query(filter: urlPredicate)
         _mediaObjects = Query(filter: mediaObjectPredicate)
-        _isAnchorComponent = Query(filter: isAnchorPredicate)
+        _anchorComponent = Query(filter: anchorPredicate)
     }
     
     var body: some View {
         ScrollView {
             Grid {
-                if isAnchorComponent.count > 0 {
+                if anchorComponent.count > 0 {
                     EnterARButton(worldAddress: worldAddress)
                 }
                 

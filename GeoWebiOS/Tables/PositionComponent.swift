@@ -43,8 +43,8 @@ final class PositionComponent: ARComponent {
     func updateARView(_ arView: ARView) {
         let entity = arView.scene.findEntity(named: key.toHexString()) ?? Entity()
         entity.name = key.toHexString()
-
-        var transform = entity.components.has(Transform.self) ? entity.transform : Transform()
+        
+        var transform = entity.components[StartTransformComponent.self] as? StartTransformComponent ?? StartTransformComponent()
         transform.translation = SIMD3(x: x, y: y, z: z)
         entity.components.set(transform)
     }
@@ -56,15 +56,15 @@ final class PositionComponent: ARComponent {
 
         
         /*
-            x: "int256"
-            y: "int256"
-            z: "int256"
+            x: "int16"
+            y: "int16"
+            z: "int16"
          */
         let dataBytes = newValue.makeBytes()
         let decodeLengths: [Int] = [
-            Int(SolidityType.int256.decodeLength!),
-            Int(SolidityType.int256.decodeLength!),
-            Int(SolidityType.int256.decodeLength!),
+            Int(SolidityType.int16.decodeLength!),
+            Int(SolidityType.int16.decodeLength!),
+            Int(SolidityType.int16.decodeLength!),
         ]
         
         var bytesOffset = 0
@@ -75,9 +75,9 @@ final class PositionComponent: ARComponent {
         let zData = Array(dataBytes[bytesOffset..<(bytesOffset+decodeLengths[2])])
         bytesOffset += zData.count
         
-        guard let x = try ProtocolParser.decodeStaticField(abiType: SolidityType.int256, data: xData) as? BigInt else { throw SetFieldError.invalidNativeValue }
-        guard let y = try ProtocolParser.decodeStaticField(abiType: SolidityType.int256, data: yData) as? BigInt else { throw SetFieldError.invalidNativeValue }
-        guard let z = try ProtocolParser.decodeStaticField(abiType: SolidityType.int256, data: zData) as? BigInt else { throw SetFieldError.invalidNativeValue }
+        guard let x = try ProtocolParser.decodeStaticField(abiType: SolidityType.int16, data: xData) as? Int16 else { throw SetFieldError.invalidNativeValue }
+        guard let y = try ProtocolParser.decodeStaticField(abiType: SolidityType.int16, data: yData) as? Int16 else { throw SetFieldError.invalidNativeValue }
+        guard let z = try ProtocolParser.decodeStaticField(abiType: SolidityType.int16, data: zData) as? Int16 else { throw SetFieldError.invalidNativeValue }
                 
         let addressStr = address.hex(eip55: true)
         let latest = FetchDescriptor<PositionComponent>(
@@ -91,9 +91,9 @@ final class PositionComponent: ARComponent {
                 PositionComponent(
                     key: key,
                     worldAddress: address,
-                    x: Float(x) / pow(10, 18),
-                    y: Float(y) / pow(10, 18),
-                    z: Float(z) / pow(10, 18),
+                    x: Float(x) / 1000,
+                    y: Float(y) / 1000,
+                    z: Float(z) / 1000,
                     lastUpdatedAtBlock: UInt(blockNumber.quantity)
                 )
             )

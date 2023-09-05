@@ -39,8 +39,13 @@ final class AnchorComponent: ARComponent {
     func updateARView(_ arView: ARView) {
         let entity = arView.scene.findEntity(named: key.toHexString()) ?? Entity()
         entity.name = key.toHexString()
-    
-        let anchorEntity = arView.scene.findEntity(named: anchor.toHexString())
+        
+        entity.components.set(AnchorTransformComponent(
+            anchor: anchor.toHexString()
+        ))
+        entity.isEnabled = false
+        
+        let anchorEntity = arView.scene.findEntity(named: "default")
         anchorEntity?.addChild(entity)
     }
     
