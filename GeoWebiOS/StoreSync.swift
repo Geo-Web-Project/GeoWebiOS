@@ -9,7 +9,6 @@ import Foundation
 import SwiftData
 import Web3
 import Web3ContractABI
-import Web3PromiseKit
 
 class StoreSync {
     private let modelContext: ModelContext
@@ -22,7 +21,7 @@ class StoreSync {
         self.web3 = web3
     }
     
-    func syncLogs(worldAddress: EthereumAddress) throws {
+    func syncLogs(worldAddress: EthereumAddress) async throws {
         let addressStr = worldAddress.hex(eip55: true)
         let lastBlockFetch = FetchDescriptor<WorldSync>(
             predicate: #Predicate { $0.worldAddress == addressStr }
@@ -33,14 +32,20 @@ class StoreSync {
         if let lastBlock {
             fromBlock = .block(BigUInt(lastBlock))
         }
-        firstly {
-            web3.eth.getLogs(addresses: [worldAddress], topics: [[StoreSync.storeSetFieldTopic, StoreSync.storeSetRecordTopic]], fromBlock: fromBlock, toBlock: .latest)
-        }.done { logs in
-            for log in logs {
-                self.handleLog(log: log)
-            }
-        }.catch { error in
-            print(error)
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            web3.eth.getLogs(addresses: [worldAddress], topics: [[StoreSync.storeSetFieldTopic, StoreSync.storeSetRecordTopic]], fromBlock: fromBlock, toBlock: .latest, response: { resp in
+                if let error = resp.error {
+                    return continuation.resume(throwing: error)
+                }
+                guard let logs = resp.result else { return continuation.resume() }
+                
+                for log in logs {
+                    self.handleLog(log: log)
+                }
+                
+                return continuation.resume()
+            })
         }
     }
     
