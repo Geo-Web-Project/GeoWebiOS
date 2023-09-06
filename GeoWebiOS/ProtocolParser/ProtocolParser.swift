@@ -81,9 +81,10 @@ class ProtocolParser {
     static func hexToPackedCounter(data: Bytes) throws -> (UInt64, [UInt64]) {
         guard data.count == 32 else { throw ParserError.invalidPackedCounter }
     
-        guard let totalByteLength = try decodeStaticField(abiType: .uint56, data: Array(data[0..<7])) as? UInt64 else { throw ParserError.invalidPackedCounter }
-        guard let fieldByteLengths = try decodeDynamicField(abiType: .array(type: .uint40, length: nil), data: Array(data[7...])) as? [UInt64] else { throw ParserError.invalidPackedCounter }
-                
+        guard let totalByteLength = try decodeStaticField(abiType: .uint56, data: Array(data[(32-7)...])) as? UInt64 else { throw ParserError.invalidPackedCounter }
+        guard let reverseFieldByteLengths = try decodeDynamicField(abiType: .array(type: .uint40, length: nil), data: Array(data[0..<(32-7)])) as? [UInt64] else { throw ParserError.invalidPackedCounter }
+        
+        let fieldByteLengths = Array(reverseFieldByteLengths.reversed())
         let summedLength = fieldByteLengths.reduce(0, +)
         guard summedLength == totalByteLength else { throw ParserError.packedCounterLengthMismatchError }
         
