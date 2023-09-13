@@ -7,7 +7,7 @@
 
 import SwiftUI
 import SceneKit
-import SwiftGLTF
+import GLTFKit2
 import QuickLook
 
 enum ModelType {
@@ -16,7 +16,7 @@ enum ModelType {
 }
 
 struct ModelSceneView: View {
-    var modelURL: URL
+    var mediaObject: MediaObject
     var qLAvailable: Bool = false
     @State var scene: SCNScene? = nil
     @State var qlPreviewItem: QLPreviewItem? = nil
@@ -52,36 +52,51 @@ struct ModelSceneView: View {
             }
         }
         .task {
-            if modelURL.isFileURL {
+            guard let contentUrl = mediaObject.contentUrl else { return }
+            if contentUrl.isFileURL {
                 // Load local file
-                scene = try? SCNScene(url: modelURL)
-                qlPreviewItem = modelURL as NSURL
+                
+                switch mediaObject.encodingFormat {
+                case .Glb:
+                    let asset = try! GLTFAsset(url: contentUrl)
+                    scene = SCNScene(gltfAsset: asset)
+                    qlPreviewItem = contentUrl as NSURL
+                case .Usdz:
+                    scene = try? SCNScene(url: contentUrl)
+                    qlPreviewItem = contentUrl as NSURL
+                default:
+                    return
+                }
+                
             } else {
                 // Load remote URL
-                let task = URLSession.shared.downloadTask(with: URLRequest(url: modelURL, cachePolicy: .returnCacheDataElseLoad)) { (url, response, error) in
-                    if let error {
-                        print(error)
-                        return
-                    }
-                    guard let url = url else { return }
+                do {
+                    let (url, response) = try await URLSession.shared.download(for: URLRequest(url: contentUrl, cachePolicy: .returnCacheDataElseLoad))
                     
-                    if let suggestedFilename = response?.suggestedFilename {
+                    var tmpUrl = url
+                    if let suggestedFilename = response.suggestedFilename {
                         let newUrl = url.deletingLastPathComponent().appending(path: suggestedFilename)
                         
                         // Rename with suggested name
                         try? FileManager.default.moveItem(at: url, to: newUrl)
                         
-                        scene = try? SCNScene(url: newUrl)
-                        qlPreviewItem = newUrl as NSURL
-                    } else {
-                        scene = try? SCNScene(url: url)
-                        qlPreviewItem = url as NSURL
+                        tmpUrl = newUrl
                     }
-                   
                     
+                    switch mediaObject.encodingFormat {
+                    case .Glb:
+                        let asset = try! GLTFAsset(url: tmpUrl)
+                        scene = SCNScene(gltfAsset: asset)
+                        qlPreviewItem = tmpUrl as NSURL
+                    case .Usdz:
+                        scene = try? SCNScene(url: tmpUrl)
+                        qlPreviewItem = tmpUrl as NSURL
+                    default:
+                        return
+                    }
+                } catch {
+                    print(error)
                 }
-                
-                task.resume()
             }
         }
     }
@@ -112,6 +127,6 @@ struct ClearSceneView: UIViewRepresentable {
     }
 }
 
-#Preview {
-    ModelSceneView(modelURL: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!))
-}
+//#Preview {
+//    ModelSceneView(modelURL: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!))
+//}

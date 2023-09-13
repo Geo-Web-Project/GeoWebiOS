@@ -32,14 +32,18 @@ struct MediaObjectView: View {
                 .aspectRatio(contentMode: .fit)
                 .padding()
                 Spacer()
-            case (.Model3D, let contentUrl):
+            case (.Model3D, _):
                 Spacer()
-                ModelSceneView(modelURL: contentUrl!)
+                ModelSceneView(mediaObject: mediaObject)
                 Spacer()
             case (.Video, let contentUrl):
+                Spacer()
                 AVObjectView(url: contentUrl!, showPlayButton: showInteraction)
+                Spacer()
             case (.Audio, let contentUrl):
+                Spacer()
                 AVObjectView(url: contentUrl!, showPlayButton: showInteraction)
+                Spacer()
             default:
                 Text("Unknown media object")
             }

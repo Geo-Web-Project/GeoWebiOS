@@ -30,10 +30,28 @@ struct AVObjectView: View {
                             .font(.title)
                     }
                 }
+            } else {
+                ProgressView()
             }
         }
         .task {
-            player = AVPlayer(url: url)
+            do {
+                let (url, response) = try await URLSession.shared.download(for: URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad))
+                                
+                if let suggestedFilename = response.suggestedFilename {
+                    let newUrl = url.deletingLastPathComponent().appending(path: suggestedFilename)
+                    
+                    // Rename with suggested name
+                    try? FileManager.default.moveItem(at: url, to: newUrl)
+                    
+                    player = AVPlayer(url: newUrl)
+
+                } else {
+                    player = AVPlayer(url: url)
+                }
+            } catch {
+                print(error)
+            }
         }
     }
 }

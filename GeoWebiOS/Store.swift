@@ -38,7 +38,13 @@ struct Store {
     static let tables = [
         Name.tableId.toHex(): Name.setField,
         Url.tableId.toHex(): Url.setField,
-        MediaObject.tableId.toHex(): MediaObject.setRecord
+        MediaObject.tableId.toHex(): MediaObject.setRecord,
+        ModelComponent.tableId.toHex(): ModelComponent.setRecord,
+        PositionComponent.tableId.toHex(): PositionComponent.setRecord,
+        AnchorComponent.tableId.toHex(): AnchorComponent.setRecord,
+        ScaleComponent.tableId.toHex(): ScaleComponent.setRecord,
+        OrientationComponent.tableId.toHex(): OrientationComponent.setRecord,
+        TrackedImageComponent.tableId.toHex(): TrackedImageComponent.setRecord
     ]
     
     static func handleStoreSetFieldEvent(modelContext: ModelContext, address: EthereumAddress, event: [String: Any], blockNumber: EthereumQuantity) throws {

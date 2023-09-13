@@ -42,7 +42,8 @@ final class MediaObject {
 
     static let tableId: TableId = TableId(namespace: "geoweb", name: "MediaObject")
     
-    @Attribute(.unique) var key: Data
+    @Attribute(.unique) var worldKey: String
+    var key: Data
     var worldAddress: String
     var name: String
     var mediaType: MediaObjectType?
@@ -69,24 +70,32 @@ final class MediaObject {
                 "mp4"
             case .Usdz:
                 "usdz"
+            case .Glb:
+                "glb"
             case .Mp3:
                 "mp3"
             default:
                 ""
             }
-            return saveDataToTemporaryURL(data: Data(rawBytes), ext: ext)
+            return Data(rawBytes).saveToTemporaryURL(ext: ext)
         default:
             do {
                 let cid = try CID(recBytes)
                 let ext = switch encodingFormat {
                 case .Usdz:
                     ".usdz"
+                case .Glb:
+                    ".glb"
                 case .Png:
                     ".png"
+                case .Mp3:
+                    ".mp3"
+                case .Mp4:
+                    ".mp4"
                 default:
                     ""
                 }
-                return URL(stringLiteral: "https://w3s.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
+                return URL(string: "https://w3s.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
             } catch {
                 return nil
             }
@@ -102,6 +111,8 @@ final class MediaObject {
         self.contentSize = contentSize
         self.contentHash = contentHash
         self.lastUpdatedAtBlock = lastUpdatedAtBlock
+        
+        self.worldKey = "\(worldAddress.hex(eip55: true))/\(key.toHexString())"
     }
     
     static func setRecord(modelContext: ModelContext, address: EthereumAddress, values: [String: Any], blockNumber: EthereumQuantity) throws {
@@ -155,15 +166,17 @@ final class MediaObject {
             modelContext.insert(MediaObject(key: key, worldAddress: address, name: name, mediaType: MediaObjectType(rawValue: mediaType), encodingFormat: MediaObjectEncodingFormat(rawValue: encodingFormat), contentSize: contentSize, contentHash: contentHash, lastUpdatedAtBlock: UInt(blockNumber.quantity)))
         }
     }
-            
-    private func saveDataToTemporaryURL(data: Data, ext: String) -> URL? {
+}
+
+extension Data {
+    func saveToTemporaryURL(ext: String) -> URL? {
         do {
             // Create a temporary file URL
             let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory())
             let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension(ext)
             
             // Write the data to the temporary file URL
-            try data.write(to: temporaryFileURL, options: .atomic)
+            try self.write(to: temporaryFileURL, options: .atomic)
             
             return temporaryFileURL
         } catch {
