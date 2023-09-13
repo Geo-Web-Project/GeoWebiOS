@@ -128,7 +128,6 @@
 		C331C90A2A82F082004B1238 /* Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		C331C90B2A82F082004B1238 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		C331C90C2A82F082004B1238 /* TableId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableId.swift; sourceTree = "<group>"; };
-		C3323DAD2AB2183E002993F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C34B352E2A9FF2430079A314 /* ModelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelComponent.swift; sourceTree = "<group>"; };
 		C34B35302A9FF3C20079A314 /* EnterARButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterARButton.swift; sourceTree = "<group>"; };
 		C34B35322A9FF4300079A314 /* WorldARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldARView.swift; sourceTree = "<group>"; };
@@ -231,7 +230,6 @@
 		C331C8FA2A82F03E004B1238 /* GeoWebiOS */ = {
 			isa = PBXGroup;
 			children = (
-				C3323DAD2AB2183E002993F3 /* Info.plist */,
 				C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */,
 				C331C90B2A82F082004B1238 /* Store.swift */,
 				C377A5042A830896003FB3EF /* StoreSync.swift */,
@@ -458,7 +456,6 @@
 				C331C8F62A82F03E004B1238 /* Frameworks */,
 				C331C8F72A82F03E004B1238 /* Resources */,
 				C317177E2AA7E83800D695B3 /* Embed Frameworks */,
-				C3323DAC2AB21809002993F3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -571,26 +568,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		C3323DAC2AB21809002993F3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "plutil -replace ALCHEMY_API_KEY -string $ALCHEMY_API_KEY Info.plist\nplutil -p Info.plist\n\nexit 0\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		C331C8F52A82F03E004B1238 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -673,10 +650,11 @@
 		C331C9072A82F040004B1238 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALCHEMY_API_KEY = Y4RuzHDAmcqDnO6iqLcfwDzmbTk4xHob;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"GeoWebiOS/Preview Content\"";
 				DEVELOPMENT_TEAM = GYAS34R77H;
 				ENABLE_PREVIEWS = YES;
@@ -716,10 +694,11 @@
 		C331C9082A82F040004B1238 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALCHEMY_API_KEY = Y4RuzHDAmcqDnO6iqLcfwDzmbTk4xHob;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"GeoWebiOS/Preview Content\"";
 				DEVELOPMENT_TEAM = GYAS34R77H;
 				ENABLE_PREVIEWS = YES;
