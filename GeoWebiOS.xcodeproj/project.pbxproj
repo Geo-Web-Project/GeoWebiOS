@@ -41,6 +41,8 @@
 		C35A33672AB3637E007A163D /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C35A33662AB3637E007A163D /* VarInt */; };
 		C35A33702AB364BB007A163D /* sample-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C3982F6B2A96B8720089AF69 /* sample-logo.png */; };
 		C35A33712AB364C0007A163D /* sample-favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3ABECD12A958E4C00C64510 /* sample-favicon.png */; };
+		C35A33742AB384E6007A163D /* ImageCaptureARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33732AB384E6007A163D /* ImageCaptureARView.swift */; };
+		C35A33752AB384E6007A163D /* ImageCaptureARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33732AB384E6007A163D /* ImageCaptureARView.swift */; };
 		C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E31992A9D3EB300AA4743 /* WorldListView.swift */; };
 		C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */; };
 		C35E319D2A9D3FD600AA4743 /* SavedWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E319C2A9D3FD600AA4743 /* SavedWorld.swift */; };
@@ -152,6 +154,7 @@
 		C34B35342A9FF8410079A314 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		C34B35362AA00F7E0079A314 /* AnchorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorComponent.swift; sourceTree = "<group>"; };
 		C35A33632AB360DF007A163D /* IMediaObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMediaObject.swift; sourceTree = "<group>"; };
+		C35A33732AB384E6007A163D /* ImageCaptureARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCaptureARView.swift; sourceTree = "<group>"; };
 		C35E31992A9D3EB300AA4743 /* WorldListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListView.swift; sourceTree = "<group>"; };
 		C35E319C2A9D3FD600AA4743 /* SavedWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedWorld.swift; sourceTree = "<group>"; };
 		C374EAC52A8E968A00141446 /* WorldSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldSync.swift; sourceTree = "<group>"; };
@@ -301,6 +304,14 @@
 				C35A33632AB360DF007A163D /* IMediaObject.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C35A33722AB384D1007A163D /* ARViews */ = {
+			isa = PBXGroup;
+			children = (
+				C35A33732AB384E6007A163D /* ImageCaptureARView.swift */,
+			);
+			path = ARViews;
 			sourceTree = "<group>";
 		};
 		C374EAC42A8E966600141446 /* Metadata */ = {
@@ -457,6 +468,7 @@
 		C3BAFAD02A81C2CD00CFDC84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C35A33722AB384D1007A163D /* ARViews */,
 				C3BAFA9B2A81C28300CFDC84 /* ParcelView */,
 				C3BAFAB22A81C28300CFDC84 /* WorldListView */,
 				C3BAFA932A81C28300CFDC84 /* MediaGalleryView */,
@@ -612,6 +624,7 @@
 				C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */,
 				C34B35372AA00F7E0079A314 /* AnchorComponent.swift in Sources */,
 				C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */,
+				C35A33742AB384E6007A163D /* ImageCaptureARView.swift in Sources */,
 				C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */,
 				C3EA6F952AA2AC3600E9B7BA /* OrientationComponent.swift in Sources */,
 				C35E319E2A9D432600AA4743 /* WorldListItemView.swift in Sources */,
@@ -674,6 +687,7 @@
 				C3BAFAB72A81C28300CFDC84 /* ModelQLView.swift in Sources */,
 				C3BAFABD2A81C28300CFDC84 /* MediaGalleryCell.swift in Sources */,
 				C3BAFABF2A81C28300CFDC84 /* MediaGalleryCellVariant1.swift in Sources */,
+				C35A33752AB384E6007A163D /* ImageCaptureARView.swift in Sources */,
 				C331C8F42A82EB81004B1238 /* AddWorldFormView.swift in Sources */,
 				C3BAFAC02A81C28300CFDC84 /* ParcelViewGridPreviewAll.swift in Sources */,
 				C3BAFAC22A81C28300CFDC84 /* MapViewCell.swift in Sources */,
@@ -906,6 +920,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Geo Web Designs";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera is used to enable augmented reality features.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to discover nearby parcels.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -946,6 +961,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Geo Web Designs";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera is used to enable augmented reality features.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to discover nearby parcels.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

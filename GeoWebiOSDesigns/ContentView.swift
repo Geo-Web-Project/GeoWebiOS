@@ -53,6 +53,12 @@ struct ContentView: View {
                         Text("MediaGalleryView")
                     }
                 }
+                
+                Section("ARViews") {
+                    NavigationLink(destination: ImageCaptureARView()) {
+                        Text("ImageCaptureARView")
+                    }
+                }
             }
         }
     }
