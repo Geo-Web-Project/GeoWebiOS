@@ -20,7 +20,7 @@ struct MediaGalleryCellVariant2: View {
                 .textCase(.uppercase)
             ) {
                 TabView {
-                    ModelSceneView(modelURL: URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!))
+                    ModelSceneView(mediaObject: StubMediaObjectFixtures.image)
                         .padding(.bottom, 40)
                     
                     Image("sample-favicon")

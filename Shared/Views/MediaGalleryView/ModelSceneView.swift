@@ -16,7 +16,7 @@ enum ModelType {
 }
 
 struct ModelSceneView: View {
-    var mediaObject: MediaObject
+    var mediaObject: IMediaObject
     var qLAvailable: Bool = false
     @State var scene: SCNScene? = nil
     @State var qlPreviewItem: QLPreviewItem? = nil

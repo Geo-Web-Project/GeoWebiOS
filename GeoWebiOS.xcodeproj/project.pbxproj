@@ -34,6 +34,13 @@
 		C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35322A9FF4300079A314 /* WorldARView.swift */; };
 		C34B35352A9FF8410079A314 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35342A9FF8410079A314 /* PositionComponent.swift */; };
 		C34B35372AA00F7E0079A314 /* AnchorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35362AA00F7E0079A314 /* AnchorComponent.swift */; };
+		C35A335F2AB35B83007A163D /* GLTFKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C317177A2AA7E83000D695B3 /* GLTFKit2.framework */; };
+		C35A33602AB35B83007A163D /* GLTFKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C317177A2AA7E83000D695B3 /* GLTFKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C35A33642AB360DF007A163D /* IMediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33632AB360DF007A163D /* IMediaObject.swift */; };
+		C35A33652AB360FA007A163D /* IMediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33632AB360DF007A163D /* IMediaObject.swift */; };
+		C35A33672AB3637E007A163D /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C35A33662AB3637E007A163D /* VarInt */; };
+		C35A33702AB364BB007A163D /* sample-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C3982F6B2A96B8720089AF69 /* sample-logo.png */; };
+		C35A33712AB364C0007A163D /* sample-favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3ABECD12A958E4C00C64510 /* sample-favicon.png */; };
 		C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E31992A9D3EB300AA4743 /* WorldListView.swift */; };
 		C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */; };
 		C35E319D2A9D3FD600AA4743 /* SavedWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E319C2A9D3FD600AA4743 /* SavedWorld.swift */; };
@@ -104,6 +111,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C35A33612AB35B83007A163D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C35A33602AB35B83007A163D /* GLTFKit2.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3EDAF9F2A7B148F00C80B0A /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,6 +151,7 @@
 		C34B35322A9FF4300079A314 /* WorldARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldARView.swift; sourceTree = "<group>"; };
 		C34B35342A9FF8410079A314 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		C34B35362AA00F7E0079A314 /* AnchorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorComponent.swift; sourceTree = "<group>"; };
+		C35A33632AB360DF007A163D /* IMediaObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMediaObject.swift; sourceTree = "<group>"; };
 		C35E31992A9D3EB300AA4743 /* WorldListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListView.swift; sourceTree = "<group>"; };
 		C35E319C2A9D3FD600AA4743 /* SavedWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedWorld.swift; sourceTree = "<group>"; };
 		C374EAC52A8E968A00141446 /* WorldSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldSync.swift; sourceTree = "<group>"; };
@@ -205,7 +224,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C35A33672AB3637E007A163D /* VarInt in Frameworks */,
 				C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */,
+				C35A335F2AB35B83007A163D /* GLTFKit2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +293,14 @@
 				C3F94F892AA64C5B0051B484 /* ARComponent.swift */,
 			);
 			path = Tables;
+			sourceTree = "<group>";
+		};
+		C35A33622AB360C0007A163D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C35A33632AB360DF007A163D /* IMediaObject.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C374EAC42A8E966600141446 /* Metadata */ = {
@@ -419,6 +448,7 @@
 		C3BAFACF2A81C2C600CFDC84 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C35A33622AB360C0007A163D /* Models */,
 				C3BAFAD02A81C2CD00CFDC84 /* Views */,
 			);
 			path = Shared;
@@ -482,6 +512,7 @@
 				C386B5752A7312BB008F6473 /* Frameworks */,
 				C386B5762A7312BB008F6473 /* Resources */,
 				C3EDAF9F2A7B148F00C80B0A /* Embed Foundation Extensions */,
+				C35A33612AB35B83007A163D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -490,6 +521,7 @@
 			name = GeoWebiOSDesigns;
 			packageProductDependencies = (
 				C33682922A79BA4C00CA5F43 /* SwiftGLTF */,
+				C35A33662AB3637E007A163D /* VarInt */,
 			);
 			productName = HubbleDesigns;
 			productReference = C386B5782A7312BB008F6473 /* GeoWebiOSDesigns.app */;
@@ -559,9 +591,11 @@
 			files = (
 				C3BAFAC42A81C28300CFDC84 /* robot.usdz in Resources */,
 				C39770B02A9952AD0052183D /* audio.mp3 in Resources */,
+				C35A33712AB364C0007A163D /* sample-favicon.png in Resources */,
 				C39770AD2A9950EC0052183D /* video.mp4 in Resources */,
 				C3BAFAB92A81C28300CFDC84 /* Preview Assets.xcassets in Resources */,
 				C3BAFAB82A81C28300CFDC84 /* Assets.xcassets in Resources */,
+				C35A33702AB364BB007A163D /* sample-logo.png in Resources */,
 				C3BAFABB2A81C28300CFDC84 /* buddha.glb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,6 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C308E7DD2A9438B800EEC111 /* MapViewCellVariant2.swift in Sources */,
+				C35A33642AB360DF007A163D /* IMediaObject.swift in Sources */,
 				C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */,
 				C34B35372AA00F7E0079A314 /* AnchorComponent.swift in Sources */,
 				C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */,
@@ -625,6 +660,7 @@
 				C3BAFACC2A81C28300CFDC84 /* ContentView.swift in Sources */,
 				C31ABFD02A9D644100F3368C /* WorldListItemView1.swift in Sources */,
 				C3BAFABA2A81C28300CFDC84 /* GeoWebiOSDesignsApp.swift in Sources */,
+				C35A33652AB360FA007A163D /* IMediaObject.swift in Sources */,
 				C3BAFAD42A81C90B00CFDC84 /* ParcelListView3.swift in Sources */,
 				C3BAFAC82A81C28300CFDC84 /* WebViewCell.swift in Sources */,
 				C3BAFAC72A81C28300CFDC84 /* WebViewCellVariant2.swift in Sources */,
@@ -864,6 +900,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GeoWebiOSDesigns/Preview Content\"";
 				DEVELOPMENT_TEAM = GYAS34R77H;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Geo Web Designs";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to discover nearby parcels.";
@@ -900,6 +940,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GeoWebiOSDesigns/Preview Content\"";
 				DEVELOPMENT_TEAM = GYAS34R77H;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Geo Web Designs";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to discover nearby parcels.";
@@ -1018,6 +1062,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */;
 			productName = SwiftGLTF;
+		};
+		C35A33662AB3637E007A163D /* VarInt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3982F652A96A2FC0089AF69 /* XCRemoteSwiftPackageReference "swift-varint" */;
+			productName = VarInt;
 		};
 		C3982F662A96A2FC0089AF69 /* VarInt */ = {
 			isa = XCSwiftPackageProductDependency;

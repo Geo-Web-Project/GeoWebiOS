@@ -13,27 +13,8 @@ import VarInt
 import CID
 import Multicodec
 
-enum MediaObjectType: UInt8, Codable {
-    case Image = 0
-    case Audio = 1
-    case Video = 2
-    case Model3D = 3
-}
-
-enum MediaObjectEncodingFormat: UInt8, Codable {
-    case Glb
-    case Usdz
-    case Gif
-    case Jpeg
-    case Png
-    case Svg
-    case Mpeg
-    case Mp4
-    case Mp3
-}
-
 @Model
-final class MediaObject {
+final class MediaObject: IMediaObject {
     enum SetFieldError: Error {
         case invalidData
         case invalidNativeType
