@@ -55,8 +55,11 @@ struct ContentView: View {
                 }
                 
                 Section("ARViews") {
-                    NavigationLink(destination: ImageCaptureARView()) {
-                        Text("ImageCaptureARView")
+//                    NavigationLink(destination: ImageCaptureARView()) {
+//                        Text("ImageCaptureARView")
+//                    }
+                    NavigationLink(destination: GeoPublishARView()) {
+                        Text("GeoPublishARView")
                     }
                 }
             }

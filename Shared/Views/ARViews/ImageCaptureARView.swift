@@ -48,7 +48,7 @@ struct ImageCaptureARView: View {
 }
 
 
-struct ARViewRepresentable: UIViewRepresentable {
+private struct ARViewRepresentable: UIViewRepresentable {
     let arView: ARView
     
     func makeUIView(context: Context) -> ARView {
@@ -72,7 +72,7 @@ struct ARViewRepresentable: UIViewRepresentable {
     }
 }
 
-class ARViewCoordinator: NSObject, ARSessionDelegate {
+private class ARViewCoordinator: NSObject, ARSessionDelegate {
     let parent: ARViewRepresentable
     
     init(_ parent: ARViewRepresentable) {
