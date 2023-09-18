@@ -62,38 +62,38 @@ struct WorldListView: View {
                 })
             }
         }
-        .task(priority: .background) {
-            let fetch = FetchDescriptor<SavedWorld>()
-            if let results = try? context.fetch(fetch) {
-                if results.count == 0 {
-                    // Insert default world
-                    let worldAddress = try! EthereumAddress(hex: "0x5D59444Be22c322F0fe0076DaD760962213Ff9F2", eip55: true)
-                    context.insert(
-                        SavedWorld(
-                            chainId: 420,
-                            worldAddress: worldAddress
-                        )
-                    )
-                                        
-                    do {
-                        try await storeSync.value.syncLogs(worldAddress: worldAddress)
-                    } catch {
-                        print(error)
-                    }
-                }
-                
-                for result in results {
-                    // Sync state
-                    if let worldAddress = EthereumAddress(hexString: result.worldAddress) {
-                        do {
-                            try await storeSync.value.syncLogs(worldAddress: worldAddress)
-                        } catch {
-                            print(error)
-                        }
-                    }
-                }
-            }
-        }
+//        .task(priority: .background) {
+//            let fetch = FetchDescriptor<SavedWorld>()
+//            if let results = try? context.fetch(fetch) {
+//                if results.count == 0 {
+//                    // Insert default world
+//                    let worldAddress = try! EthereumAddress(hex: "0x5D59444Be22c322F0fe0076DaD760962213Ff9F2", eip55: true)
+//                    context.insert(
+//                        SavedWorld(
+//                            chainId: 420,
+//                            worldAddress: worldAddress
+//                        )
+//                    )
+//                                        
+//                    do {
+//                        try await storeSync.value.syncLogs(worldAddress: worldAddress)
+//                    } catch {
+//                        print(error)
+//                    }
+//                }
+//                
+//                for result in results {
+//                    // Sync state
+//                    if let worldAddress = EthereumAddress(hexString: result.worldAddress) {
+//                        do {
+//                            try await storeSync.value.syncLogs(worldAddress: worldAddress)
+//                        } catch {
+//                            print(error)
+//                        }
+//                    }
+//                }
+//            }
+//        }
         .environment(\.storeSync, storeSync)
     }
 }

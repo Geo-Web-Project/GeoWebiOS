@@ -15,9 +15,11 @@
 		C308E7DE2A9438C200EEC111 /* FullMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB02A81C28300CFDC84 /* FullMapView.swift */; };
 		C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */; };
 		C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */ = {isa = PBXBuildFile; productRef = C308E7E22A94394900EEC111 /* SwiftGLTF */; };
-		C317177C2AA7E83800D695B3 /* GLTFKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C317177A2AA7E83000D695B3 /* GLTFKit2.framework */; };
-		C317177D2AA7E83800D695B3 /* GLTFKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C317177A2AA7E83000D695B3 /* GLTFKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C31ABFD02A9D644100F3368C /* WorldListItemView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31ABFCF2A9D644100F3368C /* WorldListItemView1.swift */; };
+		C31D00B62AB8EC2300AC0CA4 /* GLTFKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31D00B52AB8EC1100AC0CA4 /* GLTFKit2.framework */; };
+		C31D00B72AB8EC2300AC0CA4 /* GLTFKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C31D00B52AB8EC1100AC0CA4 /* GLTFKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C31D00B82AB8EC2900AC0CA4 /* GLTFKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31D00B52AB8EC1100AC0CA4 /* GLTFKit2.framework */; };
+		C31D00B92AB8EC2900AC0CA4 /* GLTFKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C31D00B52AB8EC1100AC0CA4 /* GLTFKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C331C8F42A82EB81004B1238 /* AddWorldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */; };
 		C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */; };
 		C331C9022A82F040004B1238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331C9012A82F040004B1238 /* Assets.xcassets */; };
@@ -34,8 +36,6 @@
 		C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35322A9FF4300079A314 /* WorldARView.swift */; };
 		C34B35352A9FF8410079A314 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35342A9FF8410079A314 /* PositionComponent.swift */; };
 		C34B35372AA00F7E0079A314 /* AnchorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35362AA00F7E0079A314 /* AnchorComponent.swift */; };
-		C35A335F2AB35B83007A163D /* GLTFKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C317177A2AA7E83000D695B3 /* GLTFKit2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		C35A33602AB35B83007A163D /* GLTFKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C317177A2AA7E83000D695B3 /* GLTFKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C35A33642AB360DF007A163D /* IMediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33632AB360DF007A163D /* IMediaObject.swift */; };
 		C35A33652AB360FA007A163D /* IMediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33632AB360DF007A163D /* IMediaObject.swift */; };
 		C35A33672AB3637E007A163D /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C35A33662AB3637E007A163D /* VarInt */; };
@@ -101,6 +101,16 @@
 		C3F94F8E2AA6A3020051B484 /* AnchorTransformSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F94F8D2AA6A3020051B484 /* AnchorTransformSystem.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C31D00B42AB8EC1100AC0CA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C31D00B02AB8EC1100AC0CA4 /* GLTFKit2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 834FF1C425C27938001887C2;
+			remoteInfo = GLTFKit2;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		C317177E2AA7E83800D695B3 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -108,7 +118,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C317177D2AA7E83800D695B3 /* GLTFKit2.framework in Embed Frameworks */,
+				C31D00B72AB8EC2300AC0CA4 /* GLTFKit2.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,7 +129,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C35A33602AB35B83007A163D /* GLTFKit2.framework in Embed Frameworks */,
+				C31D00B92AB8EC2900AC0CA4 /* GLTFKit2.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,8 +148,8 @@
 
 /* Begin PBXFileReference section */
 		C308E7D62A9437CB00EEC111 /* WorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldView.swift; sourceTree = "<group>"; };
-		C317177A2AA7E83000D695B3 /* GLTFKit2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GLTFKit2.framework; sourceTree = "<group>"; };
 		C31ABFCF2A9D644100F3368C /* WorldListItemView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListItemView1.swift; sourceTree = "<group>"; };
+		C31D00B02AB8EC1100AC0CA4 /* GLTFKit2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLTFKit2.xcodeproj; path = GLTFKit2/GLTFKit2/GLTFKit2.xcodeproj; sourceTree = "<group>"; };
 		C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorldFormView.swift; sourceTree = "<group>"; };
 		C331C8F92A82F03E004B1238 /* GeoWebiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoWebiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoWebiOSApp.swift; sourceTree = "<group>"; };
@@ -215,7 +225,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C317177C2AA7E83800D695B3 /* GLTFKit2.framework in Frameworks */,
+				C31D00B62AB8EC2300AC0CA4 /* GLTFKit2.framework in Frameworks */,
 				C3982F672A96A2FC0089AF69 /* VarInt in Frameworks */,
 				C331C9142A82F0CB004B1238 /* Web3ContractABI in Frameworks */,
 				C331C9162A82F0CB004B1238 /* Web3PromiseKit in Frameworks */,
@@ -231,7 +241,7 @@
 			files = (
 				C35A33672AB3637E007A163D /* VarInt in Frameworks */,
 				C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */,
-				C35A335F2AB35B83007A163D /* GLTFKit2.framework in Frameworks */,
+				C31D00B82AB8EC2900AC0CA4 /* GLTFKit2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +261,14 @@
 				C34B35322A9FF4300079A314 /* WorldARView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C31D00B12AB8EC1100AC0CA4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C31D00B52AB8EC1100AC0CA4 /* GLTFKit2.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		C331C8FA2A82F03E004B1238 /* GeoWebiOS */ = {
@@ -337,6 +355,7 @@
 		C386B56F2A7312BB008F6473 = {
 			isa = PBXGroup;
 			children = (
+				C31D00B02AB8EC1100AC0CA4 /* GLTFKit2.xcodeproj */,
 				C3BAFACF2A81C2C600CFDC84 /* Shared */,
 				C331C8FA2A82F03E004B1238 /* GeoWebiOS */,
 				C3BAFA922A81C28300CFDC84 /* GeoWebiOSDesigns */,
@@ -484,7 +503,6 @@
 		C3EDAF902A7B148D00C80B0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C317177A2AA7E83000D695B3 /* GLTFKit2.framework */,
 				C3EDAF912A7B148D00C80B0A /* WidgetKit.framework */,
 				C3EDAF932A7B148D00C80B0A /* SwiftUI.framework */,
 			);
@@ -578,6 +596,12 @@
 			);
 			productRefGroup = C386B5792A7312BB008F6473 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C31D00B12AB8EC1100AC0CA4 /* Products */;
+					ProjectRef = C31D00B02AB8EC1100AC0CA4 /* GLTFKit2.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C331C8F82A82F03E004B1238 /* GeoWebiOS */,
@@ -585,6 +609,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C31D00B52AB8EC1100AC0CA4 /* GLTFKit2.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GLTFKit2.framework;
+			remoteRef = C31D00B42AB8EC1100AC0CA4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C331C8F72A82F03E004B1238 /* Resources */ = {
