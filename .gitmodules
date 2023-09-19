@@ -1,0 +1,3 @@
+[submodule "GLTFKit2"]
+	path = GLTFKit2
+	url = https://github.com/warrenm/GLTFKit2.git
