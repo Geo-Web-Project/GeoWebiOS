@@ -530,7 +530,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C331C9062A82F040004B1238 /* Build configuration list for PBXNativeTarget "GeoWebiOS" */;
 			buildPhases = (
-				C306FCCB2ABA205F003D2754 /* ShellScript */,
 				C331C8F52A82F03E004B1238 /* Sources */,
 				C331C8F62A82F03E004B1238 /* Frameworks */,
 				C331C8F72A82F03E004B1238 /* Resources */,
@@ -668,26 +667,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		C306FCCB2ABA205F003D2754 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "git submodule init\ngit submodule update\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C331C8F52A82F03E004B1238 /* Sources */ = {
