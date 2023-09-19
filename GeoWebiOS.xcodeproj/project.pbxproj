@@ -102,6 +102,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C306FCC62ABA176E003D2754 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C31D00B02AB8EC1100AC0CA4 /* GLTFKit2.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 834FF1C325C27938001887C2;
+			remoteInfo = GLTFKit2;
+		};
+		C306FCC82ABA1772003D2754 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C31D00B02AB8EC1100AC0CA4 /* GLTFKit2.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 834FF1C325C27938001887C2;
+			remoteInfo = GLTFKit2;
+		};
 		C31D00B42AB8EC1100AC0CA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C31D00B02AB8EC1100AC0CA4 /* GLTFKit2.xcodeproj */;
@@ -524,6 +538,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C306FCC72ABA176E003D2754 /* PBXTargetDependency */,
 			);
 			name = GeoWebiOS;
 			packageProductDependencies = (
@@ -551,6 +566,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C306FCC92ABA1772003D2754 /* PBXTargetDependency */,
 			);
 			name = GeoWebiOSDesigns;
 			packageProductDependencies = (
@@ -733,6 +749,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C306FCC72ABA176E003D2754 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GLTFKit2;
+			targetProxy = C306FCC62ABA176E003D2754 /* PBXContainerItemProxy */;
+		};
+		C306FCC92ABA1772003D2754 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GLTFKit2;
+			targetProxy = C306FCC82ABA1772003D2754 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C331C9072A82F040004B1238 /* Debug */ = {
