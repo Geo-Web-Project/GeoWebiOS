@@ -609,6 +609,7 @@
 				C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */,
 				C3982F652A96A2FC0089AF69 /* XCRemoteSwiftPackageReference "swift-varint" */,
 				C3982F682A96A3490089AF69 /* XCRemoteSwiftPackageReference "swift-cid" */,
+				C306FCCA2ABA1D58003D2754 /* XCRemoteSwiftPackageReference "GLTFKit2" */,
 			);
 			productRefGroup = C386B5792A7312BB008F6473 /* Products */;
 			projectDirPath = "";
@@ -1091,6 +1092,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C306FCCA2ABA1D58003D2754 /* XCRemoteSwiftPackageReference "GLTFKit2" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:warrenm/GLTFKit2.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boilertalk/Web3.swift.git";
