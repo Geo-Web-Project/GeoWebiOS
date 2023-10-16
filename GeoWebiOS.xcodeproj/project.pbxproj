@@ -20,6 +20,8 @@
 		C31D00B72AB8EC2300AC0CA4 /* GLTFKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C31D00B52AB8EC1100AC0CA4 /* GLTFKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C31D00B82AB8EC2900AC0CA4 /* GLTFKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31D00B52AB8EC1100AC0CA4 /* GLTFKit2.framework */; };
 		C31D00B92AB8EC2900AC0CA4 /* GLTFKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C31D00B52AB8EC1100AC0CA4 /* GLTFKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C31E0AC12AC4E2A100051DFF /* ImageTargetARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31E0AC02AC4E2A100051DFF /* ImageTargetARView.swift */; };
+		C31E0AC22AC4EBE400051DFF /* AnchorTransformSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F94F8D2AA6A3020051B484 /* AnchorTransformSystem.swift */; };
 		C331C8F42A82EB81004B1238 /* AddWorldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */; };
 		C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */; };
 		C331C9022A82F040004B1238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331C9012A82F040004B1238 /* Assets.xcassets */; };
@@ -164,6 +166,7 @@
 		C308E7D62A9437CB00EEC111 /* WorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldView.swift; sourceTree = "<group>"; };
 		C31ABFCF2A9D644100F3368C /* WorldListItemView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListItemView1.swift; sourceTree = "<group>"; };
 		C31D00B02AB8EC1100AC0CA4 /* GLTFKit2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLTFKit2.xcodeproj; path = GLTFKit2/GLTFKit2/GLTFKit2.xcodeproj; sourceTree = "<group>"; };
+		C31E0AC02AC4E2A100051DFF /* ImageTargetARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTargetARView.swift; sourceTree = "<group>"; };
 		C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorldFormView.swift; sourceTree = "<group>"; };
 		C331C8F92A82F03E004B1238 /* GeoWebiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoWebiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoWebiOSApp.swift; sourceTree = "<group>"; };
@@ -345,6 +348,7 @@
 			children = (
 				C35A33732AB384E6007A163D /* ImageCaptureARView.swift */,
 				C35A33762AB4615D007A163D /* GeoPublishARView.swift */,
+				C31E0AC02AC4E2A100051DFF /* ImageTargetARView.swift */,
 			);
 			path = ARViews;
 			sourceTree = "<group>";
@@ -722,6 +726,7 @@
 				C3BAFAC62A81C28300CFDC84 /* WebViewCellVariant3.swift in Sources */,
 				C3BAFACB2A81C28300CFDC84 /* FullMapView.swift in Sources */,
 				C3BAFAC92A81C28300CFDC84 /* EnterARButton.swift in Sources */,
+				C31E0AC22AC4EBE400051DFF /* AnchorTransformSystem.swift in Sources */,
 				C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */,
 				C3BAFABE2A81C28300CFDC84 /* MediaGalleryCellVariant2.swift in Sources */,
 				C3BAFACC2A81C28300CFDC84 /* ContentView.swift in Sources */,
@@ -736,6 +741,7 @@
 				C3BAFACA2A81C28300CFDC84 /* ParcelViewGridLarge.swift in Sources */,
 				C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */,
 				C3BAFAC52A81C28300CFDC84 /* WebViewCellVariant1.swift in Sources */,
+				C31E0AC12AC4E2A100051DFF /* ImageTargetARView.swift in Sources */,
 				C3BAFABC2A81C28300CFDC84 /* ParcelViewGridCompact.swift in Sources */,
 				C3753E8A2A955EDF003175B5 /* MediaGalleryView.swift in Sources */,
 				C3BAFAB72A81C28300CFDC84 /* ModelQLView.swift in Sources */,
