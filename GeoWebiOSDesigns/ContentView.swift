@@ -21,6 +21,9 @@ struct ContentView: View {
                     NavigationLink(destination: ParcelViewGridPreviewAll()) {
                         Text("All")
                     }
+                    NavigationLink(destination: ParcelViewInfo()) {
+                        Text("Info")
+                    }
                 }
                 Section("Parcel List View") {
                     NavigationLink(destination: WorldListItemView1(hasWebContent: true, hasMediaGallery: true, hasARContent: true)) {
