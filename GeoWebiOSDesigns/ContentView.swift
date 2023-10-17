@@ -23,6 +23,7 @@ struct ContentView: View {
                     }
                     NavigationLink(destination: ParcelViewInfo()) {
                         Text("Info")
+                            .fontWeight(.bold)
                     }
                 }
                 Section("Parcel List View") {
@@ -43,6 +44,12 @@ struct ContentView: View {
                         ParcelListView3()
                     }) {
                         Text("List3")
+                    }
+                    NavigationLink(destination: {
+                        AugmentListView()
+                    }) {
+                        Text("AugmentListView")
+                            .fontWeight(.bold)
                     }
                 }
                 Section("Components") {

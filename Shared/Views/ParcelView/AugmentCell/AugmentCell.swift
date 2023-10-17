@@ -16,13 +16,14 @@ struct AugmentCell: View {
                 VStack(alignment: .leading) {
                     Text("Buddha")
                         .font(.headline)
-                    Text("Model")
+                    Text("Image")
                         .font(.subheadline)
                 }
                 .fontWeight(.semibold)
             }
         ) {
-            ModelSceneView(mediaObject: StubMediaObjectFixtures.model)
+            Image("sample-favicon")
+                .padding()
                 .frame(minHeight: 150)
         }
     }

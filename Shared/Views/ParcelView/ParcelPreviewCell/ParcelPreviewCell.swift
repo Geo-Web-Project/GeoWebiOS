@@ -24,9 +24,6 @@ struct ParcelPreviewCell: View {
         ) {
             ZStack {
                 TabView {
-                    ModelSceneView(mediaObject: StubMediaObjectFixtures.image)
-                        .padding(.bottom, 40)
-                    
                     Image("sample-favicon")
                         .padding()
                     
