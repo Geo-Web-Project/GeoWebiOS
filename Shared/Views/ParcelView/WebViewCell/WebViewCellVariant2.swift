@@ -34,6 +34,7 @@ struct WebViewCellVariant2: View {
                 WebView(request: URLRequest(url: URL(string: uri)!) )
             }
         })
+        .foregroundStyle(.primary)
         .sheet(isPresented: $isPresentingWebView) {
             SafariWebView(url: URL(string: uri)!)
                 .ignoresSafeArea()

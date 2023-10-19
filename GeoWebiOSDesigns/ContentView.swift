@@ -52,6 +52,22 @@ struct ContentView: View {
                             .fontWeight(.bold)
                     }
                 }
+                
+                Section("AugmentCell") {
+                    NavigationLink(destination: AugmentCellVariant1()) {
+                        Text("AugmentCellVariant1")
+                            .fontWeight(.bold)
+                    }
+                    NavigationLink(destination: AugmentCellVariant2()) {
+                        Text("AugmentCellVariant2")
+                            .fontWeight(.bold)
+                    }
+                    NavigationLink(destination: AugmentCellVariant3()) {
+                        Text("AugmentCellVariant3")
+                            .fontWeight(.bold)
+                    }
+                }
+                
                 Section("Components") {
                     NavigationLink(destination: EnterARButton()) {
                         Text("EnterARButton")

@@ -16,6 +16,10 @@ struct AugmentListView: View {
                 .listRowSeparator(.hidden)
             ParcelPreviewCell()
                 .listRowSeparator(.hidden)
+            AugmentCellVariant2()
+                .listRowSeparator(.hidden)
+            AugmentCellVariant3()
+                .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
         .navigationTitle("Nearby")

@@ -9,23 +9,7 @@ import SwiftUI
 
 struct AugmentCell: View {
     var body: some View {
-        GroupBox(label:
-            HStack {
-                Image(systemName: "photo.on.rectangle.angled")
-                    .imageScale(.large)
-                VStack(alignment: .leading) {
-                    Text("Buddha")
-                        .font(.headline)
-                    Text("Image")
-                        .font(.subheadline)
-                }
-                .fontWeight(.semibold)
-            }
-        ) {
-            Image("sample-favicon")
-                .padding()
-                .frame(minHeight: 150)
-        }
+        AugmentCellVariant1()
     }
 }
 

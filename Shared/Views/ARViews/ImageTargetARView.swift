@@ -188,7 +188,7 @@ class PlaneTestSystem : System {
             guard let planeEntity = context.scene.findEntity(named: "plane") else { return }
                         
             let startTranslation = SIMD3<Float>(x: 0, y: 0.0, z: 1.0)
-            let startOrientation = simd_quatf(vector: simd_float4(x: 0.0, y: 0.0, z: 0.0, w: 1.0))
+//            let startOrientation = simd_quatf(vector: simd_float4(x: 0.0, y: 0.0, z: 0.0, w: 1.0))
                         
             let newTranslation = SIMD3<Float>(
                 imageEntity.anchor?.anchoring.target.translation?.x ?? 0.0,

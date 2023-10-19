@@ -17,7 +17,7 @@ struct ParcelMetadataView: View {
     ]
     
     var body: some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .center) {
             Map {
                 MapPolygon(coordinates: coors)
                     .foregroundStyle(
@@ -26,16 +26,13 @@ struct ParcelMetadataView: View {
                     )
             }
             .disabled(true)
-            .aspectRatio(1.25, contentMode: .fit)
-            .frame(width: 100)
-            .padding()
-            
+            .frame(width: 125, height: 100)
+                        
             VStack(alignment: .leading){
-                Text("For Sale Price: 0.005 ETHx")
+                Text("Price: 0.005 ETHx")
                 Text("Parcel ID: 0x1f")
                 Text("Licensee: 0xef13f....2342")
             }
-            .padding(.top)
             
             Spacer()
         }
@@ -44,4 +41,5 @@ struct ParcelMetadataView: View {
 
 #Preview {
     ParcelMetadataView()
+        .padding()
 }

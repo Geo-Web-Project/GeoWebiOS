@@ -96,6 +96,9 @@
 		C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB32A81C28300CFDC84 /* ParcelListView.swift */; };
 		C3BAFAD22A81C73700CFDC84 /* ParcelListView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */; };
 		C3BAFAD42A81C90B00CFDC84 /* ParcelListView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */; };
+		C3D9FDC02AE0CC3800DEC3BD /* AugmentCellVariant2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9FDBF2AE0CC3800DEC3BD /* AugmentCellVariant2.swift */; };
+		C3D9FDC22AE0CC4E00DEC3BD /* AugmentCellVariant1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9FDC12AE0CC4E00DEC3BD /* AugmentCellVariant1.swift */; };
+		C3D9FDC42AE0CD6300DEC3BD /* AugmentCellVariant3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9FDC32AE0CD6300DEC3BD /* AugmentCellVariant3.swift */; };
 		C3EA6F912AA2AB9300E9B7BA /* ScaleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA6F902AA2AB9300E9B7BA /* ScaleComponent.swift */; };
 		C3EA6F952AA2AC3600E9B7BA /* OrientationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA6F942AA2AC3600E9B7BA /* OrientationComponent.swift */; };
 		C3F94F8A2AA64C5B0051B484 /* ARComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F94F892AA64C5B0051B484 /* ARComponent.swift */; };
@@ -233,6 +236,9 @@
 		C3BAFAB42A81C28300CFDC84 /* WorldListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldListItemView.swift; sourceTree = "<group>"; };
 		C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelListView2.swift; sourceTree = "<group>"; };
 		C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelListView3.swift; sourceTree = "<group>"; };
+		C3D9FDBF2AE0CC3800DEC3BD /* AugmentCellVariant2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentCellVariant2.swift; sourceTree = "<group>"; };
+		C3D9FDC12AE0CC4E00DEC3BD /* AugmentCellVariant1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentCellVariant1.swift; sourceTree = "<group>"; };
+		C3D9FDC32AE0CD6300DEC3BD /* AugmentCellVariant3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentCellVariant3.swift; sourceTree = "<group>"; };
 		C3EA6F902AA2AB9300E9B7BA /* ScaleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleComponent.swift; sourceTree = "<group>"; };
 		C3EA6F942AA2AC3600E9B7BA /* OrientationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationComponent.swift; sourceTree = "<group>"; };
 		C3EDAF912A7B148D00C80B0A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -554,6 +560,9 @@
 			isa = PBXGroup;
 			children = (
 				C3F9DB1B2ADE0003007EDDD6 /* AugmentCell.swift */,
+				C3D9FDC12AE0CC4E00DEC3BD /* AugmentCellVariant1.swift */,
+				C3D9FDBF2AE0CC3800DEC3BD /* AugmentCellVariant2.swift */,
+				C3D9FDC32AE0CD6300DEC3BD /* AugmentCellVariant3.swift */,
 			);
 			path = AugmentCell;
 			sourceTree = "<group>";
@@ -779,11 +788,14 @@
 				C3BAFAC82A81C28300CFDC84 /* WebViewCell.swift in Sources */,
 				C3BAFAC72A81C28300CFDC84 /* WebViewCellVariant2.swift in Sources */,
 				C3BAFAC12A81C28300CFDC84 /* MapViewCellVariant1.swift in Sources */,
+				C3D9FDC42AE0CD6300DEC3BD /* AugmentCellVariant3.swift in Sources */,
 				C3BAFAD22A81C73700CFDC84 /* ParcelListView2.swift in Sources */,
 				C3BAFACA2A81C28300CFDC84 /* ParcelViewGridLarge.swift in Sources */,
 				C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */,
 				C3BAFAC52A81C28300CFDC84 /* WebViewCellVariant1.swift in Sources */,
 				C31E0AC12AC4E2A100051DFF /* ImageTargetARView.swift in Sources */,
+				C3D9FDC22AE0CC4E00DEC3BD /* AugmentCellVariant1.swift in Sources */,
+				C3D9FDC02AE0CC3800DEC3BD /* AugmentCellVariant2.swift in Sources */,
 				C3F9DB192ADDFAF4007EDDD6 /* ParcelMetadataView.swift in Sources */,
 				C3BAFABC2A81C28300CFDC84 /* ParcelViewGridCompact.swift in Sources */,
 				C3753E8A2A955EDF003175B5 /* MediaGalleryView.swift in Sources */,

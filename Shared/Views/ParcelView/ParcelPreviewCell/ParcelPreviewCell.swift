@@ -18,6 +18,7 @@ struct ParcelPreviewCell: View {
                         .font(.headline)
                     Text("https://geoweb.network")
                         .font(.subheadline)
+                        .tint(.secondary)
                 }
                 .fontWeight(.semibold)
             }
