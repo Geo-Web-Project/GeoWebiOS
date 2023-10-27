@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import Web3
+import SwiftMUD
 
 private struct Web3Key: EnvironmentKey {
     static let defaultValue: Task<Web3, Swift.Error> = Task.detached {
@@ -43,22 +44,13 @@ struct GeoWebiOSApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                WorldListView()
+                ParcelView(parcelId: 320)
             }
         }
         .environment(\.web3, Web3Key.defaultValue)
         .modelContainer(for: [
-            SavedWorld.self,
-            WorldSync.self,
-            Name.self,
-            Url.self,
-            MediaObject.self,
-            ModelComponent.self,
-            PositionComponent.self,
-            AnchorComponent.self,
-            ScaleComponent.self,
-            OrientationComponent.self,
-            TrackedImageComponent.self
+            World.self,
+            NameCom.self
         ])
     }
 }
