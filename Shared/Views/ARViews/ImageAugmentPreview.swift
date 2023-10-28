@@ -31,6 +31,7 @@ struct ImageAugmentPreview: View {
             }
             .onDisappear {
                 cancellable?.cancel()
+                arView.session.pause()
             }
     }
 }

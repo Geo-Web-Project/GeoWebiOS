@@ -23,7 +23,6 @@ struct ContentView: View {
                     }
                     NavigationLink(destination: ParcelViewInfo()) {
                         Text("Info")
-                            .fontWeight(.bold)
                     }
                 }
                 Section("Parcel List View") {
@@ -49,22 +48,18 @@ struct ContentView: View {
                         AugmentListView()
                     }) {
                         Text("AugmentListView")
-                            .fontWeight(.bold)
                     }
                 }
                 
                 Section("AugmentCell") {
                     NavigationLink(destination: AugmentCellVariant1()) {
                         Text("AugmentCellVariant1")
-                            .fontWeight(.bold)
                     }
                     NavigationLink(destination: AugmentCellVariant2()) {
                         Text("AugmentCellVariant2")
-                            .fontWeight(.bold)
                     }
                     NavigationLink(destination: AugmentCellVariant3()) {
                         Text("AugmentCellVariant3")
-                            .fontWeight(.bold)
                     }
                 }
                 
@@ -89,9 +84,11 @@ struct ContentView: View {
 //                    }
 //                    NavigationLink(destination: ModelAugmentPreview()) {
 //                        Text("ModelAugmentPreview")
+//                            .fontWeight(.bold)
 //                    }
                     NavigationLink(destination: ImageAugmentPreview()) {
                         Text("ImageAugmentPreview")
+                            .fontWeight(.bold)
                     }
                 }
             }

@@ -14,9 +14,13 @@ struct AugmentInputViewRepresentable: UIViewRepresentable {
     let inputComponents: [[Component.Type]]
 
     func makeUIView(context: Context) -> ARView {
-        AugmentInputSystem.registerSystem()
         AugmentInputComponent.registerComponent()
+        ImageCom.registerComponent()
+        ModelCom.registerComponent()
+        
+        AugmentInputSystem.registerSystem()
         FramedImageSystem.registerSystem()
+        GLBModelSystem.registerSystem()
         
         arView.automaticallyConfigureSession = false
         arView.session.delegate = context.coordinator

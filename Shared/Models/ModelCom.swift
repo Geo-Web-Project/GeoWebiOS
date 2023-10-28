@@ -1,5 +1,5 @@
 //
-//  ImageCom.swift
+//  ModelCom.swift
 //  GeoWebiOS
 //
 //  Created by Cody Hatfield on 2023-10-27.
@@ -11,18 +11,16 @@ import VarInt
 import CID
 import Multicodec
 
-enum ImageEncodingFormat: UInt8, Codable {
-    case Jpeg
-    case Png
-    case Svg
+enum ModelEncodingFormat: UInt8, Codable {
+    case Glb
+    case Usdz
 }
 
-class ImageCom: Component {
-    var physicalWidthInMillimeters: UInt64
+class ModelCom: Component {
     var contentHash: Data
-    var encodingFormat: ImageEncodingFormat
+    var encodingFormat: ModelEncodingFormat
     
-    lazy var imageAssetUrl: URL? = {
+    lazy var contentUrl: URL? = {
         let contentHashBytes = [UInt8](contentHash)
         let lengthPrefix = uVarInt(contentHashBytes)
         let recBytes = [UInt8](contentHashBytes.dropFirst(lengthPrefix.bytesRead))
@@ -35,20 +33,20 @@ class ImageCom: Component {
         case .identity:
             let rawBytes = cidCodecBytes.dropFirst(cidCodec.bytesRead)
             let ext = switch encodingFormat {
-            default:
-                ""
+            case .Glb:
+                ".glb"
+            case .Usdz:
+                ".usdz"
             }
             return Data(rawBytes).saveToTemporaryURL(ext: ext)
         default:
             do {
                 let cid = try CID(recBytes)
                 let ext = switch encodingFormat {
-                case .Png:
-                    ".png"
-                case .Jpeg:
-                    ".jpeg"
-                case .Svg:
-                    ".svg"
+                case .Glb:
+                    ".glb"
+                case .Usdz:
+                    ".usdz"
                 }
                 return URL(string: "https://dweb.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
             } catch {
@@ -57,8 +55,7 @@ class ImageCom: Component {
         }
     }()
     
-    init(physicalWidthInMillimeters: UInt64, contentHash: Data, encodingFormat: ImageEncodingFormat) {
-        self.physicalWidthInMillimeters = physicalWidthInMillimeters
+    init(contentHash: Data, encodingFormat: ModelEncodingFormat) {
         self.contentHash = contentHash
         self.encodingFormat = encodingFormat
     }

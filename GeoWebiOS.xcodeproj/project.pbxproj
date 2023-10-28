@@ -101,6 +101,10 @@
 		C3EBACC22AEC870800D0695F /* Data+SaveTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACC12AEC870800D0695F /* Data+SaveTemp.swift */; };
 		C3EBACC32AEC870800D0695F /* Data+SaveTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACC12AEC870800D0695F /* Data+SaveTemp.swift */; };
 		C3EBACC52AEC8BE200D0695F /* CID in Frameworks */ = {isa = PBXBuildFile; productRef = C3EBACC42AEC8BE200D0695F /* CID */; };
+		C3EBACC72AEC8F5F00D0695F /* GLBModelSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACC62AEC8F5F00D0695F /* GLBModelSystem.swift */; };
+		C3EBACC82AEC8F5F00D0695F /* GLBModelSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACC62AEC8F5F00D0695F /* GLBModelSystem.swift */; };
+		C3EBACCA2AEC8F9000D0695F /* ModelCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACC92AEC8F9000D0695F /* ModelCom.swift */; };
+		C3EBACCB2AEC8F9000D0695F /* ModelCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACC92AEC8F9000D0695F /* ModelCom.swift */; };
 		C3F050902AE35100007FCC56 /* SwiftMUD in Frameworks */ = {isa = PBXBuildFile; productRef = C3F0508F2AE35100007FCC56 /* SwiftMUD */; };
 		C3F94F8E2AA6A3020051B484 /* AnchorTransformSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F94F8D2AA6A3020051B484 /* AnchorTransformSystem.swift */; };
 		C3F9DB162ADDF8C8007EDDD6 /* ParcelViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F9DB152ADDF8C8007EDDD6 /* ParcelViewInfo.swift */; };
@@ -234,6 +238,8 @@
 		C3EBACBB2AEC7B9900D0695F /* FramedImageSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedImageSystem.swift; sourceTree = "<group>"; };
 		C3EBACBE2AEC7BE000D0695F /* ImageCom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCom.swift; sourceTree = "<group>"; };
 		C3EBACC12AEC870800D0695F /* Data+SaveTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+SaveTemp.swift"; sourceTree = "<group>"; };
+		C3EBACC62AEC8F5F00D0695F /* GLBModelSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLBModelSystem.swift; sourceTree = "<group>"; };
+		C3EBACC92AEC8F9000D0695F /* ModelCom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCom.swift; sourceTree = "<group>"; };
 		C3EDAF912A7B148D00C80B0A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		C3EDAF932A7B148D00C80B0A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		C3F94F8D2AA6A3020051B484 /* AnchorTransformSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorTransformSystem.swift; sourceTree = "<group>"; };
@@ -335,6 +341,7 @@
 			children = (
 				C35A33632AB360DF007A163D /* IMediaObject.swift */,
 				C3EBACBE2AEC7BE000D0695F /* ImageCom.swift */,
+				C3EBACC92AEC8F9000D0695F /* ModelCom.swift */,
 				C3EBACC12AEC870800D0695F /* Data+SaveTemp.swift */,
 			);
 			path = Models;
@@ -512,6 +519,7 @@
 			children = (
 				C3EBACB82AEC78D800D0695F /* AugmentInputSystem.swift */,
 				C3EBACBB2AEC7B9900D0695F /* FramedImageSystem.swift */,
+				C3EBACC62AEC8F5F00D0695F /* GLBModelSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -710,12 +718,14 @@
 				C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */,
 				C3EBACBF2AEC7BE000D0695F /* ImageCom.swift in Sources */,
 				C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */,
+				C3EBACCA2AEC8F9000D0695F /* ModelCom.swift in Sources */,
 				C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */,
 				C35E319E2A9D432600AA4743 /* WorldListItemView.swift in Sources */,
 				C308E7D72A9437CB00EEC111 /* ParcelView.swift in Sources */,
 				C3EBACC22AEC870800D0695F /* Data+SaveTemp.swift in Sources */,
 				C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */,
 				C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */,
+				C3EBACC72AEC8F5F00D0695F /* GLBModelSystem.swift in Sources */,
 				C3EBACBC2AEC7B9900D0695F /* FramedImageSystem.swift in Sources */,
 				C331C90D2A82F082004B1238 /* NameCom.swift in Sources */,
 				C3753E892A955E8C003175B5 /* MediaGalleryView.swift in Sources */,
@@ -744,8 +754,10 @@
 				C35A33772AB4615D007A163D /* GeoPublishARView.swift in Sources */,
 				C3BAFAC32A81C28300CFDC84 /* MapViewCellVariant2.swift in Sources */,
 				C3BAFAC62A81C28300CFDC84 /* WebViewCellVariant3.swift in Sources */,
+				C3EBACC82AEC8F5F00D0695F /* GLBModelSystem.swift in Sources */,
 				C3BAFACB2A81C28300CFDC84 /* FullMapView.swift in Sources */,
 				C3BAFAC92A81C28300CFDC84 /* EnterARButton.swift in Sources */,
+				C3EBACCB2AEC8F9000D0695F /* ModelCom.swift in Sources */,
 				C31E0AC22AC4EBE400051DFF /* AnchorTransformSystem.swift in Sources */,
 				C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */,
 				C3BAFABE2A81C28300CFDC84 /* MediaGalleryCellVariant2.swift in Sources */,
