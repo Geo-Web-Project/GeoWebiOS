@@ -190,13 +190,13 @@ class PlaneTestSystem : System {
             let startTranslation = SIMD3<Float>(x: 0, y: 0.0, z: 1.0)
 //            let startOrientation = simd_quatf(vector: simd_float4(x: 0.0, y: 0.0, z: 0.0, w: 1.0))
                         
-            let newTranslation = SIMD3<Float>(
-                imageEntity.anchor?.anchoring.target.translation?.x ?? 0.0,
-                planeEntity.anchor?.anchoring.target.translation?.y ?? 0.0,
-                imageEntity.anchor?.anchoring.target.translation?.z ?? 0.0
-            )
-            
-            print(newTranslation)
+//            let newTranslation = SIMD3<Float>(
+//                imageEntity.anchor?.anchoring.target.translation?.x ?? 0.0,
+//                planeEntity.anchor?.anchoring.target.translation?.y ?? 0.0,
+//                imageEntity.anchor?.anchoring.target.translation?.z ?? 0.0
+//            )
+//            
+//            print(newTranslation)
                         
 //            let newRotation = simd_quatf(vector: simd_float4(
 //                x: imageEntity.anchor?.anchoring.target.orientation?.vector.x ?? 0.0,
@@ -208,7 +208,7 @@ class PlaneTestSystem : System {
 //            let finalRotation = simd_mul(newRotation, startOrientation)
 //            
 //            entity.transform.rotation = simd_quatf(vector: simd_float4(x: finalRotation.vector.x, y: 0.0, z: 0.0, w: 1.0))
-            entity.transform.translation = newTranslation + simd_act(entity.transform.rotation, startTranslation)
+//            entity.transform.translation = newTranslation + simd_act(entity.transform.rotation, startTranslation)
 //            entity.transform.rotation = simd_mul(newRotation, simd_quatf(vector: simd_float4(x: 0.0, y: 0.0, z: 0.0, w: 1.0)))
 //            entity.transform.translation = newTranslation + simd_act(entity.transform.rotation, SIMD3<Float>(x: 0, y: 0, z: 0))
             entity.isEnabled = true
