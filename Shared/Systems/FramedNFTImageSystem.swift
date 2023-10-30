@@ -1,27 +1,31 @@
 //
-//  FramedImageSystem.swift
+//  FramedNFTImageSystem.swift
 //  GeoWebiOS
 //
-//  Created by Cody Hatfield on 2023-10-27.
+//  Created by Cody Hatfield on 2023-10-29.
 //
 
 import RealityKit
+import Foundation
+import VarInt
 
 /*
- * FramedImageSystem
- * - Renders ImageCom on a frame
+ * FramedNFTImageSystem
+ * - Renders NFTCom on a frame if it is an image
  */
-class FramedImageSystem : System {
-    private static let query = EntityQuery(where: .has(ImageCom.self))
+class FramedNFTImageSystem : System {
+    private static let query = EntityQuery(where: .has(NFTCom.self))
     
     required init(scene: Scene) {}
 
     func update(context: SceneUpdateContext) {
-        context.scene.performQuery(Self.query).forEach { entity in
+        context.scene.performQuery(Self.query).forEach { entity in            
+            guard let nftCom = entity.components[NFTCom.self] as? NFTCom else { return }
             guard let imageCom = entity.components[ImageCom.self] as? ImageCom else { return }
-            guard let imageAssetUrl = imageCom.contentUrl else { return }
             
-            let texture = try! TextureResource.load(contentsOf: imageAssetUrl)
+            guard let assetUrl = nftCom.contentUrl else { return }
+            
+            let texture = try! TextureResource.load(contentsOf: assetUrl)
             var material = PhysicallyBasedMaterial()
             material.baseColor.texture = MaterialParameters.Texture(texture)
             

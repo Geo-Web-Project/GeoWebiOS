@@ -17,7 +17,7 @@ struct ImageAugmentPreview: View {
     @State var cancellable: Cancellable? = nil
 
     var body: some View {
-        AugmentInputViewRepresentable(arView: arView, inputComponents: [[Transform.self]])
+        AugmentInputViewRepresentable(arView: arView, inputComponents: [[PositionCom.self]])
             .onAppear {
                 cancellable = arView.scene.subscribe(to: SceneEvents.Update.self) { event in
                     guard let entity = event.scene.findEntity(named: "0") else { return }

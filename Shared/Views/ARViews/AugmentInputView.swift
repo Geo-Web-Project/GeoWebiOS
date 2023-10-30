@@ -17,9 +17,11 @@ struct AugmentInputViewRepresentable: UIViewRepresentable {
         AugmentInputComponent.registerComponent()
         ImageCom.registerComponent()
         ModelCom.registerComponent()
+        NFTCom.registerComponent()
         
         AugmentInputSystem.registerSystem()
         FramedImageSystem.registerSystem()
+        FramedNFTImageSystem.registerSystem()
         GLBModelSystem.registerSystem()
         
         arView.automaticallyConfigureSession = false
@@ -33,7 +35,7 @@ struct AugmentInputViewRepresentable: UIViewRepresentable {
 
         for (i, inputTypes) in inputComponents.enumerated() {
             let entity = Entity()
-            entity.name = "\(i)"
+            entity.name = "\(i+1)"
             entity.components.set(
                 AugmentInputComponent(inputTypes: inputTypes)
             )

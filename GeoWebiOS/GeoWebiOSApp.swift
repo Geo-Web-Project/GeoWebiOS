@@ -41,16 +41,35 @@ extension EnvironmentValues {
 
 @main
 struct GeoWebiOSApp: App {
+    @State private var augmentAddrStr: String = ""
+    @State private var isPresenting = false
+
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                ParcelView(parcelId: 320)
-            }
+//            NavigationStack {
+//                ParcelView(parcelId: 320)
+//            }
+            VStack {
+                TextField("Augment Address", text: $augmentAddrStr)
+                    .textFieldStyle(.roundedBorder)
+                    .padding(.vertical)
+                Button(action: {
+                    if (try? EthereumAddress(hex: augmentAddrStr, eip55: false)) != nil {
+                        isPresenting = true
+                    }
+                }, label: {
+                    Text("Preview Augment")
+                })
+            }.padding()
+            .fullScreenCover(isPresented: $isPresenting, content: {
+                AugmentPreviewView(augmentAddress: try! EthereumAddress(hex: augmentAddrStr, eip55: false))
+            })
         }
         .environment(\.web3, Web3Key.defaultValue)
         .modelContainer(for: [
             World.self,
-            NameCom.self
-        ])
+            ImageCom.self,
+            NFTCom.self
+        ], inMemory: true)
     }
 }

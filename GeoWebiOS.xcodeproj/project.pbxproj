@@ -27,9 +27,16 @@
 		C331C9022A82F040004B1238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331C9012A82F040004B1238 /* Assets.xcassets */; };
 		C331C9052A82F040004B1238 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331C9042A82F040004B1238 /* Preview Assets.xcassets */; };
 		C331C90D2A82F082004B1238 /* NameCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C90A2A82F082004B1238 /* NameCom.swift */; };
-		C331C9122A82F0CB004B1238 /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = C331C9112A82F0CB004B1238 /* Web3 */; };
-		C331C9142A82F0CB004B1238 /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = C331C9132A82F0CB004B1238 /* Web3ContractABI */; };
-		C331C9162A82F0CB004B1238 /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C331C9152A82F0CB004B1238 /* Web3PromiseKit */; };
+		C33544332AEDCDD9007FFD1B /* SwiftMUD in Frameworks */ = {isa = PBXBuildFile; productRef = C33544322AEDCDD9007FFD1B /* SwiftMUD */; };
+		C33544352AEF2BD4007FFD1B /* AccessManagementSystemContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33544342AEF2BD4007FFD1B /* AccessManagementSystemContract.swift */; };
+		C335443F2AEF40B2007FFD1B /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = C335443E2AEF40B2007FFD1B /* Web3 */; };
+		C33544412AEF40B2007FFD1B /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = C33544402AEF40B2007FFD1B /* Web3ContractABI */; };
+		C33544432AEF40B2007FFD1B /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C33544422AEF40B2007FFD1B /* Web3PromiseKit */; };
+		C33544462AEF4171007FFD1B /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C33544452AEF4171007FFD1B /* VarInt */; };
+		C33544492AEF41A9007FFD1B /* CID in Frameworks */ = {isa = PBXBuildFile; productRef = C33544482AEF41A9007FFD1B /* CID */; };
+		C335444B2AEF4C3C007FFD1B /* NFTCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335444A2AEF4C3C007FFD1B /* NFTCom.swift */; };
+		C335444D2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335444C2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift */; };
+		C335444E2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335444C2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift */; };
 		C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */ = {isa = PBXBuildFile; productRef = C33682922A79BA4C00CA5F43 /* SwiftGLTF */; };
 		C3386F312AEC593900720F7A /* AugmentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3386F2C2AEC32BC00720F7A /* AugmentInputView.swift */; };
 		C3386F322AEC593B00720F7A /* AugmentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3386F2C2AEC32BC00720F7A /* AugmentInputView.swift */; };
@@ -39,7 +46,6 @@
 		C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35322A9FF4300079A314 /* WorldARView.swift */; };
 		C35A33642AB360DF007A163D /* IMediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33632AB360DF007A163D /* IMediaObject.swift */; };
 		C35A33652AB360FA007A163D /* IMediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33632AB360DF007A163D /* IMediaObject.swift */; };
-		C35A33672AB3637E007A163D /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C35A33662AB3637E007A163D /* VarInt */; };
 		C35A33702AB364BB007A163D /* sample-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C3982F6B2A96B8720089AF69 /* sample-logo.png */; };
 		C35A33712AB364C0007A163D /* sample-favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3ABECD12A958E4C00C64510 /* sample-favicon.png */; };
 		C35A33752AB384E6007A163D /* ImageCaptureARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33732AB384E6007A163D /* ImageCaptureARView.swift */; };
@@ -58,8 +64,6 @@
 		C39770AD2A9950EC0052183D /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C39770AB2A9950EC0052183D /* video.mp4 */; };
 		C39770AF2A9952AD0052183D /* audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C39770AE2A9952AD0052183D /* audio.mp3 */; };
 		C39770B02A9952AD0052183D /* audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C39770AE2A9952AD0052183D /* audio.mp3 */; };
-		C3982F672A96A2FC0089AF69 /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C3982F662A96A2FC0089AF69 /* VarInt */; };
-		C3982F6A2A96A3490089AF69 /* CID in Frameworks */ = {isa = PBXBuildFile; productRef = C3982F692A96A3490089AF69 /* CID */; };
 		C3982F6D2A96B8860089AF69 /* sample-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C3982F6B2A96B8720089AF69 /* sample-logo.png */; };
 		C3982F6E2A96D3B40089AF69 /* ModelQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA962A81C28300CFDC84 /* ModelQLView.swift */; };
 		C3ABECD22A958E4C00C64510 /* sample-favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3ABECD12A958E4C00C64510 /* sample-favicon.png */; };
@@ -100,11 +104,15 @@
 		C3EBACC02AEC7BE000D0695F /* ImageCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACBE2AEC7BE000D0695F /* ImageCom.swift */; };
 		C3EBACC22AEC870800D0695F /* Data+SaveTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACC12AEC870800D0695F /* Data+SaveTemp.swift */; };
 		C3EBACC32AEC870800D0695F /* Data+SaveTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACC12AEC870800D0695F /* Data+SaveTemp.swift */; };
-		C3EBACC52AEC8BE200D0695F /* CID in Frameworks */ = {isa = PBXBuildFile; productRef = C3EBACC42AEC8BE200D0695F /* CID */; };
 		C3EBACC72AEC8F5F00D0695F /* GLBModelSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACC62AEC8F5F00D0695F /* GLBModelSystem.swift */; };
 		C3EBACC82AEC8F5F00D0695F /* GLBModelSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACC62AEC8F5F00D0695F /* GLBModelSystem.swift */; };
 		C3EBACCA2AEC8F9000D0695F /* ModelCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACC92AEC8F9000D0695F /* ModelCom.swift */; };
 		C3EBACCB2AEC8F9000D0695F /* ModelCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACC92AEC8F9000D0695F /* ModelCom.swift */; };
+		C3EBACD12AEDA88A00D0695F /* AugmentPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACD02AEDA88A00D0695F /* AugmentPreviewView.swift */; };
+		C3EBACD42AEDA99700D0695F /* AugmentContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACD32AEDA99700D0695F /* AugmentContract.swift */; };
+		C3EBACD62AEDAF8900D0695F /* PositionCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACD52AEDAF8900D0695F /* PositionCom.swift */; };
+		C3EBACD72AEDAF8900D0695F /* PositionCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACD52AEDAF8900D0695F /* PositionCom.swift */; };
+		C3EBACDB2AEDC53E00D0695F /* AugmentInstallationSystemContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACDA2AEDC53E00D0695F /* AugmentInstallationSystemContract.swift */; };
 		C3F050902AE35100007FCC56 /* SwiftMUD in Frameworks */ = {isa = PBXBuildFile; productRef = C3F0508F2AE35100007FCC56 /* SwiftMUD */; };
 		C3F94F8E2AA6A3020051B484 /* AnchorTransformSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F94F8D2AA6A3020051B484 /* AnchorTransformSystem.swift */; };
 		C3F9DB162ADDF8C8007EDDD6 /* ParcelViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F9DB152ADDF8C8007EDDD6 /* ParcelViewInfo.swift */; };
@@ -184,6 +192,9 @@
 		C331C9012A82F040004B1238 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C331C9042A82F040004B1238 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C331C90A2A82F082004B1238 /* NameCom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCom.swift; sourceTree = "<group>"; };
+		C33544342AEF2BD4007FFD1B /* AccessManagementSystemContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessManagementSystemContract.swift; sourceTree = "<group>"; };
+		C335444A2AEF4C3C007FFD1B /* NFTCom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTCom.swift; sourceTree = "<group>"; };
+		C335444C2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedNFTImageSystem.swift; sourceTree = "<group>"; };
 		C3386F2C2AEC32BC00720F7A /* AugmentInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentInputView.swift; sourceTree = "<group>"; };
 		C3386F332AEC62D300720F7A /* ModelAugmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAugmentPreview.swift; sourceTree = "<group>"; };
 		C3386F352AEC68B600720F7A /* ImageAugmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAugmentPreview.swift; sourceTree = "<group>"; };
@@ -240,6 +251,10 @@
 		C3EBACC12AEC870800D0695F /* Data+SaveTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+SaveTemp.swift"; sourceTree = "<group>"; };
 		C3EBACC62AEC8F5F00D0695F /* GLBModelSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLBModelSystem.swift; sourceTree = "<group>"; };
 		C3EBACC92AEC8F9000D0695F /* ModelCom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCom.swift; sourceTree = "<group>"; };
+		C3EBACD02AEDA88A00D0695F /* AugmentPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentPreviewView.swift; sourceTree = "<group>"; };
+		C3EBACD32AEDA99700D0695F /* AugmentContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentContract.swift; sourceTree = "<group>"; };
+		C3EBACD52AEDAF8900D0695F /* PositionCom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCom.swift; sourceTree = "<group>"; };
+		C3EBACDA2AEDC53E00D0695F /* AugmentInstallationSystemContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentInstallationSystemContract.swift; sourceTree = "<group>"; };
 		C3EDAF912A7B148D00C80B0A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		C3EDAF932A7B148D00C80B0A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		C3F94F8D2AA6A3020051B484 /* AnchorTransformSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorTransformSystem.swift; sourceTree = "<group>"; };
@@ -256,13 +271,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C31D00B62AB8EC2300AC0CA4 /* GLTFKit2.framework in Frameworks */,
-				C3982F672A96A2FC0089AF69 /* VarInt in Frameworks */,
-				C331C9142A82F0CB004B1238 /* Web3ContractABI in Frameworks */,
+				C335443F2AEF40B2007FFD1B /* Web3 in Frameworks */,
 				C3F050902AE35100007FCC56 /* SwiftMUD in Frameworks */,
-				C331C9162A82F0CB004B1238 /* Web3PromiseKit in Frameworks */,
-				C3982F6A2A96A3490089AF69 /* CID in Frameworks */,
-				C331C9122A82F0CB004B1238 /* Web3 in Frameworks */,
+				C33544492AEF41A9007FFD1B /* CID in Frameworks */,
 				C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */,
+				C33544462AEF4171007FFD1B /* VarInt in Frameworks */,
+				C33544432AEF40B2007FFD1B /* Web3PromiseKit in Frameworks */,
+				C33544412AEF40B2007FFD1B /* Web3ContractABI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,10 +285,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C35A33672AB3637E007A163D /* VarInt in Frameworks */,
 				C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */,
+				C33544332AEDCDD9007FFD1B /* SwiftMUD in Frameworks */,
 				C31D00B82AB8EC2900AC0CA4 /* GLTFKit2.framework in Frameworks */,
-				C3EBACC52AEC8BE200D0695F /* CID in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +305,7 @@
 				C3753E8B2A95622C003175B5 /* MediaObjectView.swift */,
 				C34B35302A9FF3C20079A314 /* EnterARButton.swift */,
 				C34B35322A9FF4300079A314 /* WorldARView.swift */,
+				C3EBACD02AEDA88A00D0695F /* AugmentPreviewView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -309,6 +324,7 @@
 				C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */,
 				C308E7D92A94388E00EEC111 /* Views */,
 				C377A5012A82FC8A003FB3EF /* Systems */,
+				C3EBACD22AEDA98300D0695F /* Contracts */,
 				C331C9092A82F082004B1238 /* Tables */,
 				C331C9012A82F040004B1238 /* Assets.xcassets */,
 				C331C9032A82F040004B1238 /* Preview Content */,
@@ -341,7 +357,9 @@
 			children = (
 				C35A33632AB360DF007A163D /* IMediaObject.swift */,
 				C3EBACBE2AEC7BE000D0695F /* ImageCom.swift */,
+				C335444A2AEF4C3C007FFD1B /* NFTCom.swift */,
 				C3EBACC92AEC8F9000D0695F /* ModelCom.swift */,
+				C3EBACD52AEDAF8900D0695F /* PositionCom.swift */,
 				C3EBACC12AEC870800D0695F /* Data+SaveTemp.swift */,
 			);
 			path = Models;
@@ -519,9 +537,20 @@
 			children = (
 				C3EBACB82AEC78D800D0695F /* AugmentInputSystem.swift */,
 				C3EBACBB2AEC7B9900D0695F /* FramedImageSystem.swift */,
+				C335444C2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift */,
 				C3EBACC62AEC8F5F00D0695F /* GLBModelSystem.swift */,
 			);
 			path = Systems;
+			sourceTree = "<group>";
+		};
+		C3EBACD22AEDA98300D0695F /* Contracts */ = {
+			isa = PBXGroup;
+			children = (
+				C3EBACD32AEDA99700D0695F /* AugmentContract.swift */,
+				C3EBACDA2AEDC53E00D0695F /* AugmentInstallationSystemContract.swift */,
+				C33544342AEF2BD4007FFD1B /* AccessManagementSystemContract.swift */,
+			);
+			path = Contracts;
 			sourceTree = "<group>";
 		};
 		C3EDAF902A7B148D00C80B0A /* Frameworks */ = {
@@ -579,13 +608,13 @@
 			);
 			name = GeoWebiOS;
 			packageProductDependencies = (
-				C331C9112A82F0CB004B1238 /* Web3 */,
-				C331C9132A82F0CB004B1238 /* Web3ContractABI */,
-				C331C9152A82F0CB004B1238 /* Web3PromiseKit */,
 				C308E7E22A94394900EEC111 /* SwiftGLTF */,
-				C3982F662A96A2FC0089AF69 /* VarInt */,
-				C3982F692A96A3490089AF69 /* CID */,
 				C3F0508F2AE35100007FCC56 /* SwiftMUD */,
+				C335443E2AEF40B2007FFD1B /* Web3 */,
+				C33544402AEF40B2007FFD1B /* Web3ContractABI */,
+				C33544422AEF40B2007FFD1B /* Web3PromiseKit */,
+				C33544452AEF4171007FFD1B /* VarInt */,
+				C33544482AEF41A9007FFD1B /* CID */,
 			);
 			productName = GeoWebiOS;
 			productReference = C331C8F92A82F03E004B1238 /* GeoWebiOS.app */;
@@ -609,8 +638,7 @@
 			name = GeoWebiOSDesigns;
 			packageProductDependencies = (
 				C33682922A79BA4C00CA5F43 /* SwiftGLTF */,
-				C35A33662AB3637E007A163D /* VarInt */,
-				C3EBACC42AEC8BE200D0695F /* CID */,
+				C33544322AEDCDD9007FFD1B /* SwiftMUD */,
 			);
 			productName = HubbleDesigns;
 			productReference = C386B5782A7312BB008F6473 /* GeoWebiOSDesigns.app */;
@@ -645,10 +673,10 @@
 			mainGroup = C386B56F2A7312BB008F6473;
 			packageReferences = (
 				C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */,
-				C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */,
-				C3982F652A96A2FC0089AF69 /* XCRemoteSwiftPackageReference "swift-varint" */,
-				C3982F682A96A3490089AF69 /* XCRemoteSwiftPackageReference "swift-cid" */,
 				C359E0822AE34C4400CBFAA0 /* XCRemoteSwiftPackageReference "swift-mud" */,
+				C335443D2AEF40B2007FFD1B /* XCRemoteSwiftPackageReference "Web3" */,
+				C33544442AEF4171007FFD1B /* XCRemoteSwiftPackageReference "swift-varint" */,
+				C33544472AEF41A9007FFD1B /* XCRemoteSwiftPackageReference "swift-cid" */,
 			);
 			productRefGroup = C386B5792A7312BB008F6473 /* Products */;
 			projectDirPath = "";
@@ -718,22 +746,28 @@
 				C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */,
 				C3EBACBF2AEC7BE000D0695F /* ImageCom.swift in Sources */,
 				C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */,
+				C3EBACDB2AEDC53E00D0695F /* AugmentInstallationSystemContract.swift in Sources */,
 				C3EBACCA2AEC8F9000D0695F /* ModelCom.swift in Sources */,
 				C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */,
 				C35E319E2A9D432600AA4743 /* WorldListItemView.swift in Sources */,
+				C3EBACD12AEDA88A00D0695F /* AugmentPreviewView.swift in Sources */,
+				C335444B2AEF4C3C007FFD1B /* NFTCom.swift in Sources */,
 				C308E7D72A9437CB00EEC111 /* ParcelView.swift in Sources */,
 				C3EBACC22AEC870800D0695F /* Data+SaveTemp.swift in Sources */,
 				C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */,
 				C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */,
 				C3EBACC72AEC8F5F00D0695F /* GLBModelSystem.swift in Sources */,
 				C3EBACBC2AEC7B9900D0695F /* FramedImageSystem.swift in Sources */,
+				C335444D2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift in Sources */,
 				C331C90D2A82F082004B1238 /* NameCom.swift in Sources */,
 				C3753E892A955E8C003175B5 /* MediaGalleryView.swift in Sources */,
 				C308E7DC2A9438AB00EEC111 /* WebViewCellVariant2.swift in Sources */,
+				C33544352AEF2BD4007FFD1B /* AccessManagementSystemContract.swift in Sources */,
 				C308E7DE2A9438C200EEC111 /* FullMapView.swift in Sources */,
 				C39770A92A9950540052183D /* AVObjectView.swift in Sources */,
 				C3F94F8E2AA6A3020051B484 /* AnchorTransformSystem.swift in Sources */,
 				C3EBACB92AEC78D800D0695F /* AugmentInputSystem.swift in Sources */,
+				C3EBACD62AEDAF8900D0695F /* PositionCom.swift in Sources */,
 				C3386F322AEC593B00720F7A /* AugmentInputView.swift in Sources */,
 				C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */,
 				C308E7DA2A9438A300EEC111 /* MapViewCell.swift in Sources */,
@@ -741,6 +775,7 @@
 				C3753E8C2A95622C003175B5 /* MediaObjectView.swift in Sources */,
 				C3753E872A9558D5003175B5 /* MediaGalleryCell.swift in Sources */,
 				C3982F6E2A96D3B40089AF69 /* ModelQLView.swift in Sources */,
+				C3EBACD42AEDA99700D0695F /* AugmentContract.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,9 +815,11 @@
 				C3BAFAC52A81C28300CFDC84 /* WebViewCellVariant1.swift in Sources */,
 				C3386F312AEC593900720F7A /* AugmentInputView.swift in Sources */,
 				C3EBACBD2AEC7B9900D0695F /* FramedImageSystem.swift in Sources */,
+				C335444E2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift in Sources */,
 				C31E0AC12AC4E2A100051DFF /* ImageTargetARView.swift in Sources */,
 				C3D9FDC22AE0CC4E00DEC3BD /* AugmentCellVariant1.swift in Sources */,
 				C3D9FDC02AE0CC3800DEC3BD /* AugmentCellVariant2.swift in Sources */,
+				C3EBACD72AEDAF8900D0695F /* PositionCom.swift in Sources */,
 				C3F9DB192ADDFAF4007EDDD6 /* ParcelMetadataView.swift in Sources */,
 				C3BAFABC2A81C28300CFDC84 /* ParcelViewGridCompact.swift in Sources */,
 				C3753E8A2A955EDF003175B5 /* MediaGalleryView.swift in Sources */,
@@ -1142,12 +1179,28 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */ = {
+		C335443D2AEF40B2007FFD1B /* XCRemoteSwiftPackageReference "Web3" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Boilertalk/Web3.swift.git";
+			repositoryURL = "https://github.com/Geo-Web-Project/Web3.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		C33544442AEF4171007FFD1B /* XCRemoteSwiftPackageReference "swift-varint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swift-libp2p/swift-varint";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.8.4;
+				minimumVersion = 0.0.1;
+			};
+		};
+		C33544472AEF41A9007FFD1B /* XCRemoteSwiftPackageReference "swift-cid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swift-libp2p/swift-cid.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
 			};
 		};
 		C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */ = {
@@ -1162,24 +1215,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Geo-Web-Project/swift-mud";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
-		C3982F652A96A2FC0089AF69 /* XCRemoteSwiftPackageReference "swift-varint" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swift-libp2p/swift-varint";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
-		C3982F682A96A3490089AF69 /* XCRemoteSwiftPackageReference "swift-cid" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swift-libp2p/swift-cid";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.3;
+				kind = exactVersion;
+				version = 0.1.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1190,45 +1227,40 @@
 			package = C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */;
 			productName = SwiftGLTF;
 		};
-		C331C9112A82F0CB004B1238 /* Web3 */ = {
+		C33544322AEDCDD9007FFD1B /* SwiftMUD */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */;
+			package = C359E0822AE34C4400CBFAA0 /* XCRemoteSwiftPackageReference "swift-mud" */;
+			productName = SwiftMUD;
+		};
+		C335443E2AEF40B2007FFD1B /* Web3 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C335443D2AEF40B2007FFD1B /* XCRemoteSwiftPackageReference "Web3" */;
 			productName = Web3;
 		};
-		C331C9132A82F0CB004B1238 /* Web3ContractABI */ = {
+		C33544402AEF40B2007FFD1B /* Web3ContractABI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */;
+			package = C335443D2AEF40B2007FFD1B /* XCRemoteSwiftPackageReference "Web3" */;
 			productName = Web3ContractABI;
 		};
-		C331C9152A82F0CB004B1238 /* Web3PromiseKit */ = {
+		C33544422AEF40B2007FFD1B /* Web3PromiseKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C331C9102A82F0CB004B1238 /* XCRemoteSwiftPackageReference "Web3.swift" */;
+			package = C335443D2AEF40B2007FFD1B /* XCRemoteSwiftPackageReference "Web3" */;
 			productName = Web3PromiseKit;
+		};
+		C33544452AEF4171007FFD1B /* VarInt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C33544442AEF4171007FFD1B /* XCRemoteSwiftPackageReference "swift-varint" */;
+			productName = VarInt;
+		};
+		C33544482AEF41A9007FFD1B /* CID */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C33544472AEF41A9007FFD1B /* XCRemoteSwiftPackageReference "swift-cid" */;
+			productName = CID;
 		};
 		C33682922A79BA4C00CA5F43 /* SwiftGLTF */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */;
 			productName = SwiftGLTF;
-		};
-		C35A33662AB3637E007A163D /* VarInt */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C3982F652A96A2FC0089AF69 /* XCRemoteSwiftPackageReference "swift-varint" */;
-			productName = VarInt;
-		};
-		C3982F662A96A2FC0089AF69 /* VarInt */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C3982F652A96A2FC0089AF69 /* XCRemoteSwiftPackageReference "swift-varint" */;
-			productName = VarInt;
-		};
-		C3982F692A96A3490089AF69 /* CID */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C3982F682A96A3490089AF69 /* XCRemoteSwiftPackageReference "swift-cid" */;
-			productName = CID;
-		};
-		C3EBACC42AEC8BE200D0695F /* CID */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C3982F682A96A3490089AF69 /* XCRemoteSwiftPackageReference "swift-cid" */;
-			productName = CID;
 		};
 		C3F0508F2AE35100007FCC56 /* SwiftMUD */ = {
 			isa = XCSwiftPackageProductDependency;

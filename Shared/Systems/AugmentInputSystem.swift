@@ -21,7 +21,7 @@ class AugmentInputSystem : System {
             guard let augmentInput = entity.components[AugmentInputComponent.self] as? AugmentInputComponent else { return }
             
             for inputType in augmentInput.inputTypes {
-                if inputType == Transform.self {
+                if inputType == PositionCom.self {
                     // Fixed position
                     entity.transform.translation = SIMD3(x: 0, y: 0, z: -1)
                 }

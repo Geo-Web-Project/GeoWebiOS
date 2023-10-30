@@ -93,7 +93,7 @@
     {
       "identity" : "swift-cid",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/swift-libp2p/swift-cid",
+      "location" : "https://github.com/swift-libp2p/swift-cid.git",
       "state" : {
         "revision" : "b6b54fc371815eaad55e5b2169605b25541841f1",
         "version" : "0.0.3"
@@ -122,8 +122,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Geo-Web-Project/swift-mud",
       "state" : {
-        "revision" : "7a870cf453813abe477793048d5dfbf14e3cfe2c",
-        "version" : "0.1.4"
+        "revision" : "321769b90450a0962246bdefbbfa4017fef63b1a",
+        "version" : "0.1.6"
       }
     },
     {
@@ -228,10 +228,10 @@
     {
       "identity" : "web3.swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Boilertalk/Web3.swift.git",
+      "location" : "https://github.com/Geo-Web-Project/Web3.swift",
       "state" : {
-        "revision" : "808d6c70daa10186d0084f44b3dfa2b8d4c88789",
-        "version" : "0.8.4"
+        "branch" : "master",
+        "revision" : "6489d1e8b8a27a0f19f815756c4c8b510589b4fc"
       }
     },
     {
