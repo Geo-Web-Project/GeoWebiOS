@@ -49,17 +49,17 @@ struct GeoWebiOSApp: App {
 //                ParcelView(parcelId: 320)
 //            }
             TabView {
-                WorldCameraView()
-                    .modelContainer(for: [
-                        World.self,
-                        PositionCom.self,
-                        ModelCom.self,
-                        ImageCom.self,
-                        NFTCom.self
-                    ])
-                    .tabItem {
-                        Label("World", systemImage: "camera.aperture")
-                    }
+//                WorldCameraView()
+//                    .modelContainer(for: [
+//                        World.self,
+//                        PositionCom.self,
+//                        ModelCom.self,
+//                        ImageCom.self,
+//                        NFTCom.self
+//                    ])
+//                    .tabItem {
+//                        Label("World", systemImage: "camera.aperture")
+//                    }
                 NavigationStack {
                     VStack {
                         TextField("Augment Address", text: $augmentAddrStr)
