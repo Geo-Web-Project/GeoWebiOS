@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import Web3
+import SwiftMUD
 
 private struct Web3Key: EnvironmentKey {
     static let defaultValue: Task<Web3, Swift.Error> = Task.detached {
@@ -40,25 +41,52 @@ extension EnvironmentValues {
 
 @main
 struct GeoWebiOSApp: App {
+    @State private var augmentAddrStr: String = ""
+
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                WorldListView()
+//            NavigationStack {
+//                ParcelView(parcelId: 320)
+//            }
+            TabView {
+                WorldCameraView()
+                    .modelContainer(for: [
+                        World.self,
+                        PositionCom.self,
+                        ModelCom.self,
+                        ImageCom.self,
+                        NFTCom.self
+                    ])
+                    .tabItem {
+                        Label("World", systemImage: "camera.aperture")
+                    }
+                NavigationStack {
+                    VStack {
+                        TextField("Augment Address", text: $augmentAddrStr)
+                            .textFieldStyle(.roundedBorder)
+                            .padding(.vertical)
+                        NavigationLink {
+                            if (try? EthereumAddress(hex: augmentAddrStr, eip55: false)) != nil {
+                                AugmentPreviewView(augmentAddress: try! EthereumAddress(hex: augmentAddrStr, eip55: false))
+                            }
+                        } label: {
+                            Text("Preview Augment")
+                        }
+                    }.padding()
+                }
+                .modelContainer(for: [
+                    World.self,
+                    PositionCom.self,
+                    ModelCom.self,
+                    ImageCom.self,
+                    NFTCom.self
+                ], inMemory: true)
+                .tabItem {
+                    Label("AW Hack", systemImage: "camera")
+                }
             }
+            
         }
         .environment(\.web3, Web3Key.defaultValue)
-        .modelContainer(for: [
-            SavedWorld.self,
-            WorldSync.self,
-            Name.self,
-            Url.self,
-            MediaObject.self,
-            ModelComponent.self,
-            PositionComponent.self,
-            AnchorComponent.self,
-            ScaleComponent.self,
-            OrientationComponent.self,
-            TrackedImageComponent.self
-        ])
     }
 }

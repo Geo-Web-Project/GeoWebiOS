@@ -21,6 +21,9 @@ struct ContentView: View {
                     NavigationLink(destination: ParcelViewGridPreviewAll()) {
                         Text("All")
                     }
+                    NavigationLink(destination: ParcelViewInfo()) {
+                        Text("Info")
+                    }
                 }
                 Section("Parcel List View") {
                     NavigationLink(destination: WorldListItemView1(hasWebContent: true, hasMediaGallery: true, hasARContent: true)) {
@@ -41,7 +44,25 @@ struct ContentView: View {
                     }) {
                         Text("List3")
                     }
+                    NavigationLink(destination: {
+                        AugmentListView()
+                    }) {
+                        Text("AugmentListView")
+                    }
                 }
+                
+                Section("AugmentCell") {
+                    NavigationLink(destination: AugmentCellVariant1()) {
+                        Text("AugmentCellVariant1")
+                    }
+                    NavigationLink(destination: AugmentCellVariant2()) {
+                        Text("AugmentCellVariant2")
+                    }
+                    NavigationLink(destination: AugmentCellVariant3()) {
+                        Text("AugmentCellVariant3")
+                    }
+                }
+                
                 Section("Components") {
                     NavigationLink(destination: EnterARButton()) {
                         Text("EnterARButton")
@@ -58,8 +79,16 @@ struct ContentView: View {
 //                    NavigationLink(destination: ImageCaptureARView()) {
 //                        Text("ImageCaptureARView")
 //                    }
-                    NavigationLink(destination: GeoPublishARView()) {
-                        Text("GeoPublishARView")
+//                    NavigationLink(destination: GeoPublishARView()) {
+//                        Text("GeoPublishARView")
+//                    }
+//                    NavigationLink(destination: ModelAugmentPreview()) {
+//                        Text("ModelAugmentPreview")
+//                            .fontWeight(.bold)
+//                    }
+                    NavigationLink(destination: ImageAugmentPreview()) {
+                        Text("ImageAugmentPreview")
+                            .fontWeight(.bold)
                     }
                 }
             }

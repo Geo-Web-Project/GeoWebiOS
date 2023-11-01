@@ -25,19 +25,16 @@ struct WebViewCellVariant2: View {
                     },
                     icon: {
                         Image(systemName: "safari")
-                        Image("sample-favicon")
-                            .resizable()
-                            .frame(width: 16, height: 16)
-                            .aspectRatio(1.0, contentMode: .fit)
+                            .imageScale(.large)
                     }
                 )
-                .font(.caption)
+                .font(.subheadline)
                 .bold()
             ) {
                 WebView(request: URLRequest(url: URL(string: uri)!) )
             }
         })
-        .aspectRatio(1.0, contentMode: .fit)
+        .foregroundStyle(.primary)
         .sheet(isPresented: $isPresentingWebView) {
             SafariWebView(url: URL(string: uri)!)
                 .ignoresSafeArea()
@@ -85,5 +82,11 @@ private struct SafariWebView: UIViewControllerRepresentable {
 #Preview {
     WebViewCellVariant2(uri: "https://immersive-web.github.io")
         .frame(width: 200, height: 200)
+        .padding()
+}
+
+#Preview {
+    WebViewCellVariant2(uri: "https://immersive-web.github.io")
+        .frame(width: 300, height: 150)
         .padding()
 }
