@@ -48,26 +48,45 @@ struct GeoWebiOSApp: App {
 //            NavigationStack {
 //                ParcelView(parcelId: 320)
 //            }
-            NavigationStack {
-                VStack {
-                    TextField("Augment Address", text: $augmentAddrStr)
-                        .textFieldStyle(.roundedBorder)
-                        .padding(.vertical)
-                    NavigationLink {
-                        if (try? EthereumAddress(hex: augmentAddrStr, eip55: false)) != nil {
-                            AugmentPreviewView(augmentAddress: try! EthereumAddress(hex: augmentAddrStr, eip55: false))
-                        }
-                    } label: {
-                        Text("Preview Augment")
+            TabView {
+                WorldCameraView()
+                    .modelContainer(for: [
+                        World.self,
+                        PositionCom.self,
+                        ModelCom.self,
+                        ImageCom.self,
+                        NFTCom.self
+                    ])
+                    .tabItem {
+                        Label("World", systemImage: "camera.aperture")
                     }
-                }.padding()
+                NavigationStack {
+                    VStack {
+                        TextField("Augment Address", text: $augmentAddrStr)
+                            .textFieldStyle(.roundedBorder)
+                            .padding(.vertical)
+                        NavigationLink {
+                            if (try? EthereumAddress(hex: augmentAddrStr, eip55: false)) != nil {
+                                AugmentPreviewView(augmentAddress: try! EthereumAddress(hex: augmentAddrStr, eip55: false))
+                            }
+                        } label: {
+                            Text("Preview Augment")
+                        }
+                    }.padding()
+                }
+                .modelContainer(for: [
+                    World.self,
+                    PositionCom.self,
+                    ModelCom.self,
+                    ImageCom.self,
+                    NFTCom.self
+                ], inMemory: true)
+                .tabItem {
+                    Label("AW Hack", systemImage: "camera")
+                }
             }
+            
         }
         .environment(\.web3, Web3Key.defaultValue)
-        .modelContainer(for: [
-            World.self,
-            ImageCom.self,
-            NFTCom.self
-        ], inMemory: true)
     }
 }

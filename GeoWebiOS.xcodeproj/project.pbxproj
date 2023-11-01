@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C308E7D72A9437CB00EEC111 /* ParcelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C308E7D62A9437CB00EEC111 /* ParcelView.swift */; };
+		C308E7D72A9437CB00EEC111 /* WorldCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C308E7D62A9437CB00EEC111 /* WorldCameraView.swift */; };
 		C308E7DA2A9438A300EEC111 /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAA52A81C28300CFDC84 /* MapViewCell.swift */; };
 		C308E7DB2A9438A800EEC111 /* WebViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAAC2A81C28300CFDC84 /* WebViewCell.swift */; };
 		C308E7DC2A9438AB00EEC111 /* WebViewCellVariant2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAAB2A81C28300CFDC84 /* WebViewCellVariant2.swift */; };
@@ -38,8 +38,8 @@
 		C335444D2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335444C2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift */; };
 		C335444E2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335444C2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift */; };
 		C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */ = {isa = PBXBuildFile; productRef = C33682922A79BA4C00CA5F43 /* SwiftGLTF */; };
-		C3386F312AEC593900720F7A /* AugmentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3386F2C2AEC32BC00720F7A /* AugmentInputView.swift */; };
-		C3386F322AEC593B00720F7A /* AugmentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3386F2C2AEC32BC00720F7A /* AugmentInputView.swift */; };
+		C3386F312AEC593900720F7A /* AugmentCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3386F2C2AEC32BC00720F7A /* AugmentCameraView.swift */; };
+		C3386F322AEC593B00720F7A /* AugmentCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3386F2C2AEC32BC00720F7A /* AugmentCameraView.swift */; };
 		C3386F342AEC62D300720F7A /* ModelAugmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3386F332AEC62D300720F7A /* ModelAugmentPreview.swift */; };
 		C3386F362AEC68B600720F7A /* ImageAugmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3386F352AEC68B600720F7A /* ImageAugmentPreview.swift */; };
 		C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35302A9FF3C20079A314 /* EnterARButton.swift */; };
@@ -182,7 +182,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C308E7D62A9437CB00EEC111 /* ParcelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelView.swift; sourceTree = "<group>"; };
+		C308E7D62A9437CB00EEC111 /* WorldCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldCameraView.swift; sourceTree = "<group>"; };
 		C31ABFCF2A9D644100F3368C /* WorldListItemView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListItemView1.swift; sourceTree = "<group>"; };
 		C31D00B02AB8EC1100AC0CA4 /* GLTFKit2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLTFKit2.xcodeproj; path = GLTFKit2/GLTFKit2/GLTFKit2.xcodeproj; sourceTree = "<group>"; };
 		C31E0AC02AC4E2A100051DFF /* ImageTargetARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTargetARView.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 		C33544342AEF2BD4007FFD1B /* AccessManagementSystemContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessManagementSystemContract.swift; sourceTree = "<group>"; };
 		C335444A2AEF4C3C007FFD1B /* NFTCom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTCom.swift; sourceTree = "<group>"; };
 		C335444C2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedNFTImageSystem.swift; sourceTree = "<group>"; };
-		C3386F2C2AEC32BC00720F7A /* AugmentInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentInputView.swift; sourceTree = "<group>"; };
+		C3386F2C2AEC32BC00720F7A /* AugmentCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentCameraView.swift; sourceTree = "<group>"; };
 		C3386F332AEC62D300720F7A /* ModelAugmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAugmentPreview.swift; sourceTree = "<group>"; };
 		C3386F352AEC68B600720F7A /* ImageAugmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAugmentPreview.swift; sourceTree = "<group>"; };
 		C34B35302A9FF3C20079A314 /* EnterARButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterARButton.swift; sourceTree = "<group>"; };
@@ -297,7 +297,7 @@
 		C308E7D92A94388E00EEC111 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C308E7D62A9437CB00EEC111 /* ParcelView.swift */,
+				C308E7D62A9437CB00EEC111 /* WorldCameraView.swift */,
 				C35E31992A9D3EB300AA4743 /* WorldListView.swift */,
 				C3BAFAB42A81C28300CFDC84 /* WorldListItemView.swift */,
 				C3753E862A9558D5003175B5 /* MediaGalleryCell.swift */,
@@ -368,10 +368,10 @@
 		C35A33722AB384D1007A163D /* ARViews */ = {
 			isa = PBXGroup;
 			children = (
+				C3386F2C2AEC32BC00720F7A /* AugmentCameraView.swift */,
 				C35A33732AB384E6007A163D /* ImageCaptureARView.swift */,
 				C35A33762AB4615D007A163D /* GeoPublishARView.swift */,
 				C31E0AC02AC4E2A100051DFF /* ImageTargetARView.swift */,
-				C3386F2C2AEC32BC00720F7A /* AugmentInputView.swift */,
 				C3386F332AEC62D300720F7A /* ModelAugmentPreview.swift */,
 				C3386F352AEC68B600720F7A /* ImageAugmentPreview.swift */,
 			);
@@ -752,7 +752,7 @@
 				C35E319E2A9D432600AA4743 /* WorldListItemView.swift in Sources */,
 				C3EBACD12AEDA88A00D0695F /* AugmentPreviewView.swift in Sources */,
 				C335444B2AEF4C3C007FFD1B /* NFTCom.swift in Sources */,
-				C308E7D72A9437CB00EEC111 /* ParcelView.swift in Sources */,
+				C308E7D72A9437CB00EEC111 /* WorldCameraView.swift in Sources */,
 				C3EBACC22AEC870800D0695F /* Data+SaveTemp.swift in Sources */,
 				C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */,
 				C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */,
@@ -768,7 +768,7 @@
 				C3F94F8E2AA6A3020051B484 /* AnchorTransformSystem.swift in Sources */,
 				C3EBACB92AEC78D800D0695F /* AugmentInputSystem.swift in Sources */,
 				C3EBACD62AEDAF8900D0695F /* PositionCom.swift in Sources */,
-				C3386F322AEC593B00720F7A /* AugmentInputView.swift in Sources */,
+				C3386F322AEC593B00720F7A /* AugmentCameraView.swift in Sources */,
 				C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */,
 				C308E7DA2A9438A300EEC111 /* MapViewCell.swift in Sources */,
 				C308E7DB2A9438A800EEC111 /* WebViewCell.swift in Sources */,
@@ -813,7 +813,7 @@
 				C3BAFACA2A81C28300CFDC84 /* ParcelViewGridLarge.swift in Sources */,
 				C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */,
 				C3BAFAC52A81C28300CFDC84 /* WebViewCellVariant1.swift in Sources */,
-				C3386F312AEC593900720F7A /* AugmentInputView.swift in Sources */,
+				C3386F312AEC593900720F7A /* AugmentCameraView.swift in Sources */,
 				C3EBACBD2AEC7B9900D0695F /* FramedImageSystem.swift in Sources */,
 				C335444E2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift in Sources */,
 				C31E0AC12AC4E2A100051DFF /* ImageTargetARView.swift in Sources */,

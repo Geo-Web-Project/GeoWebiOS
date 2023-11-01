@@ -1,5 +1,5 @@
 //
-//  AugmentInputView.swift
+//  AugmentCameraView.swift
 //  GeoWebiOS
 //
 //  Created by Cody Hatfield on 2023-10-27.
@@ -9,7 +9,7 @@ import SwiftUI
 import RealityKit
 import ARKit
 
-struct AugmentInputViewRepresentable: UIViewRepresentable {
+struct AugmentCameraViewRepresentable: UIViewRepresentable {
     let arView: ARView
     let inputComponents: [[Component.Type]]
 
@@ -18,6 +18,7 @@ struct AugmentInputViewRepresentable: UIViewRepresentable {
         ImageCom.registerComponent()
         ModelCom.registerComponent()
         NFTCom.registerComponent()
+        PositionCom.registerComponent()
         
         AugmentInputSystem.registerSystem()
         FramedImageSystem.registerSystem()
@@ -49,15 +50,15 @@ struct AugmentInputViewRepresentable: UIViewRepresentable {
     
     func updateUIView(_ arView: ARView, context: Context) {}
     
-    func makeCoordinator() -> AugmentInputViewCoordinator {
-        AugmentInputViewCoordinator(self)
+    func makeCoordinator() -> AugmentCameraViewCoordinator {
+        AugmentCameraViewCoordinator(self)
     }
 }
 
-class AugmentInputViewCoordinator: NSObject, ARSessionDelegate {
-    let parent: AugmentInputViewRepresentable
+class AugmentCameraViewCoordinator: NSObject, ARSessionDelegate {
+    let parent: AugmentCameraViewRepresentable
     
-    init(_ parent: AugmentInputViewRepresentable) {
+    init(_ parent: AugmentCameraViewRepresentable) {
         self.parent = parent
     }
 }

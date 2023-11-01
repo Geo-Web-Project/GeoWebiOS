@@ -24,6 +24,8 @@ class AugmentInputSystem : System {
                 if inputType == PositionCom.self {
                     // Fixed position
                     entity.transform.translation = SIMD3(x: 0, y: 0, z: -1)
+                    
+                    entity.isEnabled = true
                 }
             }
         }

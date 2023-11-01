@@ -45,47 +45,47 @@ struct AugmentPreviewView: View {
 
     var body: some View {
         if let overrideLogs, let inputComponentTypes {
-        AugmentInputViewRepresentable(arView: arView, inputComponents: inputComponentTypes)
-            .task {
-                Task {
-                    do {
-                        let storeSync = try await storeSync.value
-                        
-                        try await Task.sleep(nanoseconds: 4_000_000_000)
+            AugmentCameraViewRepresentable(arView: arView, inputComponents: inputComponentTypes)
+                .task {
+                    Task {
+                        do {
+                            let storeSync = try await storeSync.value
+                            
+                            try await Task.sleep(nanoseconds: 4_000_000_000)
 
-                        let chainId = try await storeSync.getChainId()
-                        cancellable = arView.scene.subscribe(to: SceneEvents.Update.self) { event in
-                            guard let nftComs = try? context.fetch(FetchDescriptor<NFTCom>()) else { return }
-                            guard let imageComs = try? context.fetch(FetchDescriptor<ImageCom>()) else { return }
-                                                        
-                            overrideLogs.forEach { log in
-                                storeSync.handleLog(chainId: chainId, log: log)
-                            }
-                            
-                            for com in nftComs {
-                                guard let i = UInt(hexString: com.key.toHexString()) else { continue }
-                                guard let entity = event.scene.findEntity(named: "\(i)") else { continue }
+                            let chainId = try await storeSync.getChainId()
+                            cancellable = arView.scene.subscribe(to: SceneEvents.Update.self) { event in
+                                guard let nftComs = try? context.fetch(FetchDescriptor<NFTCom>()) else { return }
+                                guard let imageComs = try? context.fetch(FetchDescriptor<ImageCom>()) else { return }
+                                                            
+                                overrideLogs.forEach { log in
+                                    storeSync.handleLog(chainId: chainId, log: log)
+                                }
                                 
-                                entity.components.set(com)
+                                for com in nftComs {
+                                    guard let i = UInt(hexString: com.key.toHexString()) else { continue }
+                                    guard let entity = event.scene.findEntity(named: "\(i)") else { continue }
+                                    
+                                    entity.components.set(com)
+                                    
+                                }
                                 
+                                for com in imageComs {
+                                    guard let i = UInt(hexString: com.key.toHexString()) else { continue }
+                                    guard let entity = event.scene.findEntity(named: "\(i)") else { continue }
+                                    
+                                    entity.components.set(com)
+                                }
                             }
-                            
-                            for com in imageComs {
-                                guard let i = UInt(hexString: com.key.toHexString()) else { continue }
-                                guard let entity = event.scene.findEntity(named: "\(i)") else { continue }
-                                
-                                entity.components.set(com)
-                            }
+                        } catch {
+                            print(error)
                         }
-                    } catch {
-                        print(error)
                     }
                 }
-            }
-            .onDisappear {
-                cancellable?.cancel()
-                arView.session.pause()
-            }
+                .onDisappear {
+                    cancellable?.cancel()
+                    arView.session.pause()
+                }
         } else {
             Text("Loading...")
                 .task {
