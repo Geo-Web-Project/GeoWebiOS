@@ -27,6 +27,7 @@ struct AugmentCameraViewRepresentable: UIViewRepresentable {
         
         arView.automaticallyConfigureSession = false
         arView.session.delegate = context.coordinator
+        arView.environment.sceneUnderstanding.options.insert(.occlusion)
         
         let configuration = ARWorldTrackingConfiguration()
         if ARWorldTrackingConfiguration.supportsFrameSemantics(.personSegmentationWithDepth) {
