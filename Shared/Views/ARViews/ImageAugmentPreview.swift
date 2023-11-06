@@ -17,15 +17,15 @@ struct ImageAugmentPreview: View {
     @State var cancellable: Cancellable? = nil
 
     var body: some View {
-        AugmentCameraViewRepresentable(arView: arView, inputComponents: [[PositionCom.self]])
+        AugmentCameraViewRepresentable(arView: arView, inputComponents: [[PositionCom.self]], overlayText: Binding.constant(""))
             .onAppear {
                 cancellable = arView.scene.subscribe(to: SceneEvents.Update.self) { event in
-                    guard let entity = event.scene.findEntity(named: "0") else { return }
+                    guard let entity = event.scene.findEntity(named: "1") else { return }
                                     
                     let contentHash = putUVarInt(0xe3) + (putUVarInt(0x01) + (putUVarInt(0x00) + imageData))
                     
                     entity.components.set(
-                        ImageCom(physicalWidthInMillimeters: 500, contentHash: contentHash, encodingFormat: .Png)
+                        ImageCom(uniqueKey: "0", lastUpdatedAtBlock: 0, key: Data("0".makeBytes()), encodingFormat: .Png, physicalWidthInMillimeters: 500, contentHash: contentHash)
                     )
                 }
             }

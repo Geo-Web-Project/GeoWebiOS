@@ -10,23 +10,30 @@ import RealityKit
 import GLTFKit2
 import VarInt
 import Combine
+import SwiftData
 
 struct ModelAugmentPreview: View {
+    @Environment(\.modelContext) private var context: ModelContext
+
     private let arView: ARView = ARView(frame: .zero)
-    private let contentHash: Data = putUVarInt(0xe3) + (putUVarInt(0x01) + (putUVarInt(0x00) + (try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "buddha", ofType: "glb")!)))))
+    private let contentHash: Data = putUVarInt(0xe3) + (putUVarInt(0x01) + (putUVarInt(0x00) + (try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "geoweb", ofType: "glb")!)))))
 
     @State var cancellable: Cancellable? = nil
 
     var body: some View {
-        AugmentInputViewRepresentable(arView: arView, inputComponents: [[Transform.self]])
+        AugmentCameraViewRepresentable(arView: arView, inputComponents: [[PositionCom.self]], overlayText: Binding.constant(""))
             .onAppear {
                 cancellable = arView.scene.subscribe(to: SceneEvents.Update.self) { event in
-                    guard let entity = event.scene.findEntity(named: "0") else { return }
-                                
-                    print("SET CONTENT")
-                    entity.components.set(
-                        ModelCom(contentHash: contentHash, encodingFormat: .Glb)
-                    )
+                    guard let entity = event.scene.findEntity(named: "1") else { return }
+                    
+                    let modelComs = try? context.fetch(FetchDescriptor<ModelCom>())
+                    if let modelComs, modelComs.isEmpty {
+                        let modelCom = ModelCom(uniqueKey: "1", lastUpdatedAtBlock: 0, key: Data("0".makeBytes()), contentHash: contentHash, encodingFormat: .Glb)
+                        context.insert(modelCom)
+                        entity.components.set(
+                            modelCom
+                        )
+                    }
                     
                     cancellable?.cancel()
                 }

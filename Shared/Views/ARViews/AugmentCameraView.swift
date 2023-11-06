@@ -12,6 +12,7 @@ import ARKit
 struct AugmentCameraViewRepresentable: UIViewRepresentable {
     let arView: ARView
     let inputComponents: [[Component.Type]]
+    @Binding var overlayText: String
 
     func makeUIView(context: Context) -> ARView {
         AugmentInputComponent.registerComponent()
@@ -30,11 +31,15 @@ struct AugmentCameraViewRepresentable: UIViewRepresentable {
         arView.environment.sceneUnderstanding.options.insert(.occlusion)
         
         let configuration = ARWorldTrackingConfiguration()
+//        let configuration = ARGeoTrackingConfiguration()
         if ARWorldTrackingConfiguration.supportsFrameSemantics(.personSegmentationWithDepth) {
             configuration.frameSemantics.insert(.personSegmentationWithDepth)
         }
         if ARWorldTrackingConfiguration.supportsFrameSemantics(.sceneDepth) {
             configuration.frameSemantics.insert(.sceneDepth)
+        }
+        if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
+            configuration.sceneReconstruction = .mesh
         }
         arView.session.run(configuration)
                 
@@ -49,6 +54,13 @@ struct AugmentCameraViewRepresentable: UIViewRepresentable {
             )
             anchor.addChild(entity)
         }
+        
+//        let geoAnchor = ARGeoAnchor(coordinate: CLLocationCoordinate2D(latitude: 51.484662, longitude: -0.109287), altitude: 20)
+//        let geoAnchorEntity = AnchorEntity(anchor: geoAnchor)
+//        geoAnchorEntity.name = "geo"
+//        arView.scene.addAnchor(geoAnchorEntity)
+//        
+//        arView.session.add(anchor: geoAnchor)
 
         arView.scene.addAnchor(anchor)
                               
@@ -68,4 +80,25 @@ class AugmentCameraViewCoordinator: NSObject, ARSessionDelegate {
     init(_ parent: AugmentCameraViewRepresentable) {
         self.parent = parent
     }
+    
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        if let geoTrackingStatus = frame.geoTrackingStatus {
+            self.parent.overlayText = "\(geoTrackingStatus.accuracy)"
+        }
+    }
 }
+
+struct CoachingOverlayView: UIViewRepresentable {
+    let arView: ARView
+    
+    func makeUIView(context: Context) -> ARCoachingOverlayView {
+        let coachingOverlayView = ARCoachingOverlayView()
+        coachingOverlayView.session = arView.session
+        coachingOverlayView.goal = .geoTracking
+                              
+        return coachingOverlayView
+    }
+    
+    func updateUIView(_ view: ARCoachingOverlayView, context: Context) {}
+}
+

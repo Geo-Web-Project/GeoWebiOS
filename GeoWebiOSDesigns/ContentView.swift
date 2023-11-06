@@ -82,12 +82,24 @@ struct ContentView: View {
 //                    NavigationLink(destination: GeoPublishARView()) {
 //                        Text("GeoPublishARView")
 //                    }
-//                    NavigationLink(destination: ModelAugmentPreview()) {
+//                    NavigationLink(destination: ModelAugmentPreview()
+//                        .modelContainer(for: [
+//                            PositionCom.self,
+//                            ModelCom.self,
+//                        ], inMemory: true)) {
 //                        Text("ModelAugmentPreview")
 //                            .fontWeight(.bold)
 //                    }
-                    NavigationLink(destination: ImageAugmentPreview()) {
-                        Text("ImageAugmentPreview")
+//                    NavigationLink(destination: ImageAugmentPreview()) {
+//                        Text("ImageAugmentPreview")
+//                            .fontWeight(.bold)
+//                    }
+                    NavigationLink(destination: GeoModelAugmentPreview()
+                        .modelContainer(for: [
+                            PositionCom.self,
+                            ModelCom.self,
+                        ], inMemory: true)) {
+                        Text("GeoModelAugmentPreview")
                             .fontWeight(.bold)
                     }
                 }

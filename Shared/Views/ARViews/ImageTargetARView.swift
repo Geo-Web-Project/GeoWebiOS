@@ -162,19 +162,19 @@ private class ARViewCoordinator: NSObject, ARSessionDelegate {
 //    }
 }
 
-private struct CoachingOverlayView: UIViewRepresentable {
-    let arView: ARView
-    
-    func makeUIView(context: Context) -> ARCoachingOverlayView {
-        let coachingOverlayView = ARCoachingOverlayView()
-        coachingOverlayView.session = arView.session
-        coachingOverlayView.goal = .horizontalPlane
-                              
-        return coachingOverlayView
-    }
-    
-    func updateUIView(_ view: ARCoachingOverlayView, context: Context) {}
-}
+//private struct CoachingOverlayView: UIViewRepresentable {
+//    let arView: ARView
+//    
+//    func makeUIView(context: Context) -> ARCoachingOverlayView {
+//        let coachingOverlayView = ARCoachingOverlayView()
+//        coachingOverlayView.session = arView.session
+//        coachingOverlayView.goal = .horizontalPlane
+//                              
+//        return coachingOverlayView
+//    }
+//    
+//    func updateUIView(_ view: ARCoachingOverlayView, context: Context) {}
+//}
 
 class PlaneTestSystem : System {
     private static let query = EntityQuery(where: .has(ModelComponent.self))

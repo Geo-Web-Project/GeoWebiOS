@@ -44,6 +44,11 @@
 		C3386F362AEC68B600720F7A /* ImageAugmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3386F352AEC68B600720F7A /* ImageAugmentPreview.swift */; };
 		C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35302A9FF3C20079A314 /* EnterARButton.swift */; };
 		C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35322A9FF4300079A314 /* WorldARView.swift */; };
+		C3552C462AF7E32100E0BC45 /* NFTCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335444A2AEF4C3C007FFD1B /* NFTCom.swift */; };
+		C3552C482AF7E38B00E0BC45 /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C3552C472AF7E38B00E0BC45 /* VarInt */; };
+		C3552C4A2AF7E3A100E0BC45 /* CID in Frameworks */ = {isa = PBXBuildFile; productRef = C3552C492AF7E3A100E0BC45 /* CID */; };
+		C3552C4C2AF7EADC00E0BC45 /* geoweb.glb in Resources */ = {isa = PBXBuildFile; fileRef = C3552C4B2AF7EADC00E0BC45 /* geoweb.glb */; };
+		C3552C4E2AF7EFE600E0BC45 /* GeoModelAugmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3552C4D2AF7EFE600E0BC45 /* GeoModelAugmentView.swift */; };
 		C35A33642AB360DF007A163D /* IMediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33632AB360DF007A163D /* IMediaObject.swift */; };
 		C35A33652AB360FA007A163D /* IMediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33632AB360DF007A163D /* IMediaObject.swift */; };
 		C35A33702AB364BB007A163D /* sample-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C3982F6B2A96B8720089AF69 /* sample-logo.png */; };
@@ -200,6 +205,8 @@
 		C3386F352AEC68B600720F7A /* ImageAugmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAugmentPreview.swift; sourceTree = "<group>"; };
 		C34B35302A9FF3C20079A314 /* EnterARButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterARButton.swift; sourceTree = "<group>"; };
 		C34B35322A9FF4300079A314 /* WorldARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldARView.swift; sourceTree = "<group>"; };
+		C3552C4B2AF7EADC00E0BC45 /* geoweb.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = geoweb.glb; sourceTree = "<group>"; };
+		C3552C4D2AF7EFE600E0BC45 /* GeoModelAugmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoModelAugmentView.swift; sourceTree = "<group>"; };
 		C35A33632AB360DF007A163D /* IMediaObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMediaObject.swift; sourceTree = "<group>"; };
 		C35A33732AB384E6007A163D /* ImageCaptureARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCaptureARView.swift; sourceTree = "<group>"; };
 		C35A33762AB4615D007A163D /* GeoPublishARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPublishARView.swift; sourceTree = "<group>"; };
@@ -287,7 +294,9 @@
 			files = (
 				C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */,
 				C33544332AEDCDD9007FFD1B /* SwiftMUD in Frameworks */,
+				C3552C482AF7E38B00E0BC45 /* VarInt in Frameworks */,
 				C31D00B82AB8EC2900AC0CA4 /* GLTFKit2.framework in Frameworks */,
+				C3552C4A2AF7E3A100E0BC45 /* CID in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +382,7 @@
 				C35A33762AB4615D007A163D /* GeoPublishARView.swift */,
 				C31E0AC02AC4E2A100051DFF /* ImageTargetARView.swift */,
 				C3386F332AEC62D300720F7A /* ModelAugmentPreview.swift */,
+				C3552C4D2AF7EFE600E0BC45 /* GeoModelAugmentView.swift */,
 				C3386F352AEC68B600720F7A /* ImageAugmentPreview.swift */,
 			);
 			path = ARViews;
@@ -441,6 +451,7 @@
 		C3BAFA9B2A81C28300CFDC84 /* ParcelView */ = {
 			isa = PBXGroup;
 			children = (
+				C3552C4B2AF7EADC00E0BC45 /* geoweb.glb */,
 				C3BAFA9C2A81C28300CFDC84 /* buddha.glb */,
 				C3BAFA9D2A81C28300CFDC84 /* ParcelViewGridCompact.swift */,
 				C3F9DB152ADDF8C8007EDDD6 /* ParcelViewInfo.swift */,
@@ -639,6 +650,8 @@
 			packageProductDependencies = (
 				C33682922A79BA4C00CA5F43 /* SwiftGLTF */,
 				C33544322AEDCDD9007FFD1B /* SwiftMUD */,
+				C3552C472AF7E38B00E0BC45 /* VarInt */,
+				C3552C492AF7E3A100E0BC45 /* CID */,
 			);
 			productName = HubbleDesigns;
 			productReference = C386B5782A7312BB008F6473 /* GeoWebiOSDesigns.app */;
@@ -725,6 +738,7 @@
 			files = (
 				C3BAFAC42A81C28300CFDC84 /* robot.usdz in Resources */,
 				C39770B02A9952AD0052183D /* audio.mp3 in Resources */,
+				C3552C4C2AF7EADC00E0BC45 /* geoweb.glb in Resources */,
 				C35A33712AB364C0007A163D /* sample-favicon.png in Resources */,
 				C39770AD2A9950EC0052183D /* video.mp4 in Resources */,
 				C3BAFAB92A81C28300CFDC84 /* Preview Assets.xcassets in Resources */,
@@ -791,8 +805,10 @@
 				C3BAFAC62A81C28300CFDC84 /* WebViewCellVariant3.swift in Sources */,
 				C3EBACC82AEC8F5F00D0695F /* GLBModelSystem.swift in Sources */,
 				C3BAFACB2A81C28300CFDC84 /* FullMapView.swift in Sources */,
+				C3552C4E2AF7EFE600E0BC45 /* GeoModelAugmentView.swift in Sources */,
 				C3BAFAC92A81C28300CFDC84 /* EnterARButton.swift in Sources */,
 				C3EBACCB2AEC8F9000D0695F /* ModelCom.swift in Sources */,
+				C3552C462AF7E32100E0BC45 /* NFTCom.swift in Sources */,
 				C31E0AC22AC4EBE400051DFF /* AnchorTransformSystem.swift in Sources */,
 				C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */,
 				C3BAFABE2A81C28300CFDC84 /* MediaGalleryCellVariant2.swift in Sources */,
@@ -1261,6 +1277,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */;
 			productName = SwiftGLTF;
+		};
+		C3552C472AF7E38B00E0BC45 /* VarInt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C33544442AEF4171007FFD1B /* XCRemoteSwiftPackageReference "swift-varint" */;
+			productName = VarInt;
+		};
+		C3552C492AF7E3A100E0BC45 /* CID */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C33544472AEF41A9007FFD1B /* XCRemoteSwiftPackageReference "swift-cid" */;
+			productName = CID;
 		};
 		C3F0508F2AE35100007FCC56 /* SwiftMUD */ = {
 			isa = XCSwiftPackageProductDependency;

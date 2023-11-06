@@ -121,16 +121,16 @@ private class ARViewCoordinator: NSObject, ARSessionDelegate {
     }
 }
 
-private struct CoachingOverlayView: UIViewRepresentable {
-    let arView: ARView
-    
-    func makeUIView(context: Context) -> ARCoachingOverlayView {
-        let coachingOverlayView = ARCoachingOverlayView()
-        coachingOverlayView.session = arView.session
-        coachingOverlayView.goal = .geoTracking
-                              
-        return coachingOverlayView
-    }
-    
-    func updateUIView(_ view: ARCoachingOverlayView, context: Context) {}
-}
+//private struct CoachingOverlayView: UIViewRepresentable {
+//    let arView: ARView
+//    
+//    func makeUIView(context: Context) -> ARCoachingOverlayView {
+//        let coachingOverlayView = ARCoachingOverlayView()
+//        coachingOverlayView.session = arView.session
+//        coachingOverlayView.goal = .geoTracking
+//                              
+//        return coachingOverlayView
+//    }
+//    
+//    func updateUIView(_ view: ARCoachingOverlayView, context: Context) {}
+//}

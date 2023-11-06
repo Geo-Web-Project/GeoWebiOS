@@ -30,24 +30,38 @@ final class ModelCom: Component, Record {
 
     var key: Data
     
-    var contentHash: Data? {
-        didSet {
-            guard let contentHash = contentHash else {
-                contentUrl = nil
-                return
-            }
-            
-            let contentHashBytes = [UInt8](contentHash)
-            let lengthPrefix = uVarInt(contentHashBytes)
-            let recBytes = [UInt8](contentHashBytes.dropFirst(lengthPrefix.bytesRead))
-            
-            let cidVersion = uVarInt(recBytes)
-            let cidCodecBytes = [UInt8](recBytes.dropFirst(cidVersion.bytesRead))
-            let cidCodec = uVarInt(cidCodecBytes)
+    var contentHash: Data?
+    var encodingFormat: ModelEncodingFormat?
+    
+    @Transient
+    lazy var contentUrl: URL? = {
+        guard let contentHash = contentHash else {
+            return nil
+        }
+        
+        let contentHashBytes = [UInt8](contentHash)
+        let lengthPrefix = uVarInt(contentHashBytes)
+        let recBytes = [UInt8](contentHashBytes.dropFirst(lengthPrefix.bytesRead))
+        
+        let cidVersion = uVarInt(recBytes)
+        let cidCodecBytes = [UInt8](recBytes.dropFirst(cidVersion.bytesRead))
+        let cidCodec = uVarInt(cidCodecBytes)
 
-            switch Codecs(rawValue: cidCodec.value) {
-            case .identity:
-                let rawBytes = cidCodecBytes.dropFirst(cidCodec.bytesRead)
+        switch Codecs(rawValue: cidCodec.value) {
+        case .identity:
+            let rawBytes = cidCodecBytes.dropFirst(cidCodec.bytesRead)
+            let ext = switch encodingFormat {
+            case .Glb:
+                ".glb"
+            case .Usdz:
+                ".usdz"
+            default:
+                ""
+            }
+            return Data(rawBytes).saveToTemporaryURL(ext: ext)
+        default:
+            do {
+                let cid = try CID(recBytes)
                 let ext = switch encodingFormat {
                 case .Glb:
                     ".glb"
@@ -56,29 +70,12 @@ final class ModelCom: Component, Record {
                 default:
                     ""
                 }
-                contentUrl = Data(rawBytes).saveToTemporaryURL(ext: ext)
-            default:
-                do {
-                    let cid = try CID(recBytes)
-                    let ext = switch encodingFormat {
-                    case .Glb:
-                        ".glb"
-                    case .Usdz:
-                        ".usdz"
-                    default:
-                        ""
-                    }
-                    contentUrl = URL(string: "https://dweb.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
-                } catch {
-                    contentUrl = nil
-                }
+                return URL(string: "https://dweb.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
+            } catch {
+                return nil
             }
         }
-    }
-    var encodingFormat: ModelEncodingFormat?
-    
-    @Transient
-    var contentUrl: URL?
+    }()
     
     init(uniqueKey: String, lastUpdatedAtBlock: UInt, key: Data, contentHash: Data, encodingFormat: ModelEncodingFormat) {
         self.uniqueKey = uniqueKey
