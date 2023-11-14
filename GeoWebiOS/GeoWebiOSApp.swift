@@ -57,6 +57,8 @@ struct GeoWebiOSApp: App {
     let container = try! ModelContainer(
         for: World.self,
             PositionCom.self,
+            OrientationCom.self,
+            ScaleCom.self,
             ModelCom.self,
             ImageCom.self
     )

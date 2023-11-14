@@ -27,6 +27,8 @@ struct WorldCameraView: View {
             store.registerRecordType(tableName: "ImageCom", handler: ImageCom.self)
             store.registerRecordType(tableName: "ModelCom", handler: ModelCom.self)
             store.registerRecordType(tableName: "PositionCom", handler: PositionCom.self)
+            store.registerRecordType(tableName: "OrientationCom", handler: OrientationCom.self)
+            store.registerRecordType(tableName: "ScaleCom", handler: ScaleCom.self)
 //            store.registerRecordType(tableName: "NFTCom", handler: NFTCom.self)
             return StoreSync(web3: web3, store: store)
         }
@@ -50,6 +52,8 @@ struct WorldCameraView: View {
                         //                    try await storeSync.value.subscribeToLogs(worldAddress: EthereumAddress(hexString: worldAddress)!, namespace: namespace)
                         
                         let positionComs = try await storeActor?.fetchPositionComs() ?? []
+                        let orientationComs = try await storeActor?.fetchOrientationComs() ?? []
+                        let scaleComs = try await storeActor?.fetchScaleComs() ?? []
                         let modelComs = try await storeActor?.fetchModelComs() ?? []
 //                        let nftComs = try modelContext.fetch(FetchDescriptor<NFTCom>())
                         let imageComs = try await storeActor?.fetchImageComs() ?? []
@@ -65,10 +69,10 @@ struct WorldCameraView: View {
                             anchor.addChild(entity)
                             
                             if let geohash = com.geohash {
-                                let l = CLLocationCoordinate2D(geohash: geohash)
+                                let altitudeMillimeters = Double(com.h ?? 0)
                                 let geoAnchor = ARGeoAnchor(
                                     coordinate: CLLocationCoordinate2D(geohash: geohash),
-                                    altitude: CLLocationDistance(com.h ?? 0)
+                                    altitude: altitudeMillimeters / 1000
                                 )
                                 arView.session.add(anchor: geoAnchor)
                                 
@@ -76,6 +80,16 @@ struct WorldCameraView: View {
                                 geoAnchorEntity.name = "geo-\(entity.name)"
                                 arView.scene.addAnchor(geoAnchorEntity)
                             }
+                        }
+                        
+                        for com in orientationComs {
+                            guard let entity = arView.scene.findEntity(named: com.key.toHexString()) else { continue }
+                            entity.components.set(com)
+                        }
+                        
+                        for com in scaleComs {
+                            guard let entity = arView.scene.findEntity(named: com.key.toHexString()) else { continue }
+                            entity.components.set(com)
                         }
                         
                         for com in modelComs {

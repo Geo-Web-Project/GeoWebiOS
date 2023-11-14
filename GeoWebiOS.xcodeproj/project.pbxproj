@@ -76,6 +76,10 @@
 		C3A41CEF2AFF40E2008E0BFC /* USDZModelSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A41CED2AFF40E2008E0BFC /* USDZModelSystem.swift */; };
 		C3ABECD22A958E4C00C64510 /* sample-favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3ABECD12A958E4C00C64510 /* sample-favicon.png */; };
 		C3B65E962B03F70C00909CA2 /* Geohash in Frameworks */ = {isa = PBXBuildFile; productRef = C3B65E952B03F70C00909CA2 /* Geohash */; };
+		C3B65E982B04002D00909CA2 /* OrientationCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B65E972B04002D00909CA2 /* OrientationCom.swift */; };
+		C3B65E992B04002D00909CA2 /* OrientationCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B65E972B04002D00909CA2 /* OrientationCom.swift */; };
+		C3B65E9E2B04090E00909CA2 /* ScaleCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B65E9D2B04090E00909CA2 /* ScaleCom.swift */; };
+		C3B65E9F2B04090E00909CA2 /* ScaleCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B65E9D2B04090E00909CA2 /* ScaleCom.swift */; };
 		C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */; };
 		C3BAFAB72A81C28300CFDC84 /* ModelQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA962A81C28300CFDC84 /* ModelQLView.swift */; };
 		C3BAFAB82A81C28300CFDC84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3BAFA972A81C28300CFDC84 /* Assets.xcassets */; };
@@ -218,6 +222,8 @@
 		C3982F6B2A96B8720089AF69 /* sample-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-logo.png"; sourceTree = "<group>"; };
 		C3A41CED2AFF40E2008E0BFC /* USDZModelSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZModelSystem.swift; sourceTree = "<group>"; };
 		C3ABECD12A958E4C00C64510 /* sample-favicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-favicon.png"; sourceTree = "<group>"; };
+		C3B65E972B04002D00909CA2 /* OrientationCom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationCom.swift; sourceTree = "<group>"; };
+		C3B65E9D2B04090E00909CA2 /* ScaleCom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleCom.swift; sourceTree = "<group>"; };
 		C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelSceneView.swift; sourceTree = "<group>"; };
 		C3BAFA952A81C28300CFDC84 /* MediaGalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaGalleryView.swift; sourceTree = "<group>"; };
 		C3BAFA962A81C28300CFDC84 /* ModelQLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelQLView.swift; sourceTree = "<group>"; };
@@ -355,6 +361,8 @@
 			isa = PBXGroup;
 			children = (
 				C3EBACD52AEDAF8900D0695F /* PositionCom.swift */,
+				C3B65E972B04002D00909CA2 /* OrientationCom.swift */,
+				C3B65E9D2B04090E00909CA2 /* ScaleCom.swift */,
 				C3EBACBE2AEC7BE000D0695F /* ImageCom.swift */,
 				C3EBACC92AEC8F9000D0695F /* ModelCom.swift */,
 				C335444A2AEF4C3C007FFD1B /* NFTCom.swift */,
@@ -765,9 +773,11 @@
 				C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */,
 				C308E7DA2A9438A300EEC111 /* MapViewCell.swift in Sources */,
 				C308E7DB2A9438A800EEC111 /* WebViewCell.swift in Sources */,
+				C3B65E982B04002D00909CA2 /* OrientationCom.swift in Sources */,
 				C3753E8C2A95622C003175B5 /* MediaObjectView.swift in Sources */,
 				C3753E872A9558D5003175B5 /* MediaGalleryCell.swift in Sources */,
 				C3982F6E2A96D3B40089AF69 /* ModelQLView.swift in Sources */,
+				C3B65E9E2B04090E00909CA2 /* ScaleCom.swift in Sources */,
 				C3EBACD42AEDA99700D0695F /* AugmentContract.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -776,6 +786,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3B65E9F2B04090E00909CA2 /* ScaleCom.swift in Sources */,
 				C3F9DB212ADE07A5007EDDD6 /* AugmentListView.swift in Sources */,
 				C39770AA2A9950540052183D /* AVObjectView.swift in Sources */,
 				C3F9DB1C2ADE0003007EDDD6 /* AugmentCell.swift in Sources */,
@@ -821,6 +832,7 @@
 				C35A33752AB384E6007A163D /* ImageCaptureARView.swift in Sources */,
 				C331C8F42A82EB81004B1238 /* AddWorldFormView.swift in Sources */,
 				C3EBACC02AEC7BE000D0695F /* ImageCom.swift in Sources */,
+				C3B65E992B04002D00909CA2 /* OrientationCom.swift in Sources */,
 				C3BAFAC22A81C28300CFDC84 /* MapViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
