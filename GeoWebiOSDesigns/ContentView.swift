@@ -11,20 +11,6 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section("Parcel View") {
-                    NavigationLink(destination: ParcelViewGridCompact(isARAvailable: true)) {
-                        Text("Compact")
-                    }
-                    NavigationLink(destination: ParcelViewGridLarge(isPresentingWorldView: Binding.constant(true), isARAvailable: true)) {
-                        Text("Large")
-                    }
-                    NavigationLink(destination: ParcelViewGridPreviewAll()) {
-                        Text("All")
-                    }
-                    NavigationLink(destination: ParcelViewInfo()) {
-                        Text("Info")
-                    }
-                }
                 Section("Parcel List View") {
                     NavigationLink(destination: WorldListItemView1(hasWebContent: true, hasMediaGallery: true, hasARContent: true)) {
                         Text("Item")

@@ -33,64 +33,48 @@ final class ImageCom: Component, Record {
     
     var encodingFormat: ImageEncodingFormat?
     var physicalWidthInMillimeters: UInt64?
-    var contentHash: Data? {
-        didSet {
-            guard let contentHash = contentHash else {
-                contentUrl = nil
-                return
-            }
-            
-            let contentHashBytes = [UInt8](contentHash)
-            let lengthPrefix = uVarInt(contentHashBytes)
-            let recBytes = [UInt8](contentHashBytes.dropFirst(lengthPrefix.bytesRead))
-            
-            let cidVersion = uVarInt(recBytes)
-            let cidCodecBytes = [UInt8](recBytes.dropFirst(cidVersion.bytesRead))
-            let cidCodec = uVarInt(cidCodecBytes)
-
-            switch Codecs(rawValue: cidCodec.value) {
-            case .identity:
-                let rawBytes = cidCodecBytes.dropFirst(cidCodec.bytesRead)
+    var contentURI: String?
+    
+    @Transient
+    lazy var contentUrl: URL? = {
+        guard contentURI != nil, let contentURI = URL(string: contentURI!) else {
+            return nil
+        }
+        
+        switch contentURI.scheme {
+        case "ipfs":
+            do {
+                let cid = try CID(contentURI.host()!)
                 let ext = switch encodingFormat {
+                case .Png:
+                    ".png"
+                case .Jpeg:
+                    ".jpeg"
+                case .Svg:
+                    ".svg"
                 default:
                     ""
                 }
-                contentUrl = Data(rawBytes).saveToTemporaryURL(ext: ext)
-            default:
-                do {
-                    let cid = try CID(recBytes)
-                    let ext = switch encodingFormat {
-                    case .Png:
-                        ".png"
-                    case .Jpeg:
-                        ".jpeg"
-                    case .Svg:
-                        ".svg"
-                    default:
-                        ""
-                    }
-                    contentUrl = URL(string: "https://dweb.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
-                } catch {
-                    contentUrl = nil
-                }
+                return URL(string: "https://dweb.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
+            } catch {
+                return nil
             }
+        default:
+            return contentURI
         }
-    }
+    }()
     
-    @Transient
-    var contentUrl: URL?
-    
-    init(uniqueKey: String, lastUpdatedAtBlock: UInt, key: Data, encodingFormat: ImageEncodingFormat, physicalWidthInMillimeters: UInt64, contentHash: Data) {
+    init(uniqueKey: String, lastUpdatedAtBlock: UInt, key: Data, encodingFormat: ImageEncodingFormat, physicalWidthInMillimeters: UInt64, contentURI: String) {
         self.uniqueKey = uniqueKey
         self.lastUpdatedAtBlock = lastUpdatedAtBlock
 
         self.key = key
         self.encodingFormat = encodingFormat
         self.physicalWidthInMillimeters = physicalWidthInMillimeters
-        self.contentHash = contentHash
+        self.contentURI = contentURI
     }
     
-    static func setRecord(modelContext: ModelContext, table: Table, values: [String : Any], blockNumber: EthereumQuantity) throws {
+    static func setRecord(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
         guard let keys = values["keyTuple"] as? [Data] else { throw SetRecordError.invalidData }
         guard let key = try ProtocolParser.decodeStaticField(abiType: SolidityType.bytes(length: 32), data: keys[0].makeBytes()) as? Data else { throw SetRecordError.invalidNativeValue }
         
@@ -119,12 +103,42 @@ final class ImageCom: Component, Record {
         
         let dataBytes = dynamicData.makeBytes()
         bytesOffset = 0
-        let contentHashData = Array(dataBytes[bytesOffset..<Int(encodedLengths[0])])
+        let contentURIData = Array(dataBytes[bytesOffset..<Int(encodedLengths[0])])
         
-        guard let contentHash = try ProtocolParser.decodeDynamicField(abiType: SolidityType.bytes(length: 64), data: contentHashData) as? Data else { throw SetRecordError.invalidNativeValue }
+        guard let contentURI = try ProtocolParser.decodeDynamicField(abiType: SolidityType.string, data: contentURIData) as? String else { throw SetRecordError.invalidNativeValue }
 
         let digest: Array<UInt8> = Array(table.namespace!.world!.uniqueKey.hexToBytes() + table.namespace!.namespaceId.hexToBytes() + table.tableName.makeBytes() + key.makeBytes())
         let uniqueKey = SHA3(variant: .keccak256).calculate(for: digest).toHexString()
+        
+        try await storeActor.upsertImageCom(uniqueKey: uniqueKey, tableIdentifier: table.id, lastUpdatedAtBlock: UInt(blockNumber.quantity), key: key, encodingFormat: imageEncodingFormat, physicalWidthInMillimeters: physicalWidthInMillimeters, contentURI: contentURI)
+    }
+    
+    static func spliceStaticData(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
+
+    }
+    
+    static func spliceDynamicData(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
+
+    }
+    
+    static func deleteRecord(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
+        guard let keys = values["keyTuple"] as? [Data] else { throw SetRecordError.invalidData }
+        guard let key = try ProtocolParser.decodeStaticField(abiType: SolidityType.bytes(length: 32), data: keys[0].makeBytes()) as? Data else { throw SetRecordError.invalidNativeValue }
+
+        let digest: Array<UInt8> = Array(table.namespace!.world!.uniqueKey.hexToBytes() + table.namespace!.namespaceId.hexToBytes() + table.tableName.makeBytes() + key.makeBytes())
+        let uniqueKey = SHA3(variant: .keccak256).calculate(for: digest).toHexString()
+        
+        try await storeActor.deleteImageCom(uniqueKey: uniqueKey, lastUpdatedAtBlock: UInt(blockNumber.quantity))
+    }
+}
+
+extension StoreActor {
+    func fetchImageComs() throws -> [ImageCom] {
+        try modelContext.fetch(FetchDescriptor<ImageCom>())
+    }
+    
+    func upsertImageCom(uniqueKey: String, tableIdentifier: PersistentIdentifier, lastUpdatedAtBlock: UInt, key: Data, encodingFormat: ImageEncodingFormat, physicalWidthInMillimeters: UInt64, contentURI: String) throws {
+        guard let table = self[tableIdentifier, as: Table.self] else { return }
         
         let latestValue = FetchDescriptor<ImageCom>(
             predicate: #Predicate { $0.uniqueKey == uniqueKey }
@@ -133,47 +147,37 @@ final class ImageCom: Component, Record {
         let latestBlockNumber = results.first?.lastUpdatedAtBlock
         
         if let existingRecord = results.first {
-            existingRecord.encodingFormat = imageEncodingFormat
+            existingRecord.encodingFormat = encodingFormat
             existingRecord.physicalWidthInMillimeters = physicalWidthInMillimeters
-            existingRecord.contentHash = contentHash
-            existingRecord.lastUpdatedAtBlock = UInt(blockNumber.quantity)
-        } else if latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity {
+            existingRecord.contentURI = contentURI
+            existingRecord.lastUpdatedAtBlock = lastUpdatedAtBlock
+        } else if latestBlockNumber == nil || latestBlockNumber! < lastUpdatedAtBlock {
             let record = ImageCom(
                 uniqueKey: uniqueKey,
-                lastUpdatedAtBlock: UInt(blockNumber.quantity),
+                lastUpdatedAtBlock: lastUpdatedAtBlock,
                 key: key,
-                encodingFormat: imageEncodingFormat,
+                encodingFormat: encodingFormat,
                 physicalWidthInMillimeters: physicalWidthInMillimeters,
-                contentHash: contentHash
+                contentURI: contentURI
             )
             record.table = table
             modelContext.insert(record)
+            
+            try modelContext.save()
         }
     }
     
-    static func spliceStaticData(modelContext: ModelContext, table: Table, values: [String : Any], blockNumber: EthereumQuantity) throws {
-
-    }
-    
-    static func spliceDynamicData(modelContext: ModelContext, table: Table, values: [String : Any], blockNumber: EthereumQuantity) throws {
-
-    }
-    
-    static func deleteRecord(modelContext: ModelContext, table: Table, values: [String : Any], blockNumber: EthereumQuantity) throws {
-        guard let keys = values["keyTuple"] as? [Data] else { throw SetRecordError.invalidData }
-        guard let key = try ProtocolParser.decodeStaticField(abiType: SolidityType.bytes(length: 32), data: keys[0].makeBytes()) as? Data else { throw SetRecordError.invalidNativeValue }
-
-        let digest: Array<UInt8> = Array(table.namespace!.world!.uniqueKey.hexToBytes() + table.namespace!.namespaceId.hexToBytes() + table.tableName.makeBytes() + key.makeBytes())
-        let uniqueKey = SHA3(variant: .keccak256).calculate(for: digest).toHexString()
-        
+    func deleteImageCom(uniqueKey: String, lastUpdatedAtBlock: UInt) throws {
         let latestValue = FetchDescriptor<ImageCom>(
             predicate: #Predicate { $0.uniqueKey == uniqueKey }
         )
         let results = try modelContext.fetch(latestValue)
         let latestBlockNumber = results.first?.lastUpdatedAtBlock
         
-        if let existingRecord = results.first, (latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity) {
+        if let existingRecord = results.first, (latestBlockNumber == nil || latestBlockNumber! < lastUpdatedAtBlock) {
             modelContext.delete(existingRecord)
+            
+            try modelContext.save()
         }
     }
 }

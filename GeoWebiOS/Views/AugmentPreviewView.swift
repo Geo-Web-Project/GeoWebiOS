@@ -17,19 +17,20 @@ struct EthereumSimObject: Codable {
     let logs: [EthereumLogObject]
 }
 
+@MainActor
 struct AugmentPreviewView: View {
     @Environment(\.web3) var web3: Task<Web3, Error>
-    @Environment(\.modelContext) private var context
-    
+    @Environment(\.storeActor) private var storeActor: StoreActor?
+
     let augmentAddress: EthereumAddress
     
     private var storeSync: Task<StoreSync, Error> {
         Task.init {
             let web3 = try await web3.value
-            let store = Store(modelContext: context)
+            let store = Store(storeActor: storeActor!)
             store.registerRecordType(tableName: "ImageCom", handler: ImageCom.self)
-            store.registerRecordType(tableName: "NFTCom", handler: NFTCom.self)
-            return StoreSync(modelContext: context, web3: web3, store: store)
+//            store.registerRecordType(tableName: "NFTCom", handler: NFTCom.self)
+            return StoreSync(web3: web3, store: store)
         }
     }
     private let arView: ARView = ARView(frame: .zero)
@@ -55,26 +56,28 @@ struct AugmentPreviewView: View {
 
                             let chainId = try await storeSync.getChainId()
                             cancellable = arView.scene.subscribe(to: SceneEvents.Update.self) { event in
-                                guard let nftComs = try? context.fetch(FetchDescriptor<NFTCom>()) else { return }
-                                guard let imageComs = try? context.fetch(FetchDescriptor<ImageCom>()) else { return }
-                                                            
-                                overrideLogs.forEach { log in
-                                    storeSync.handleLog(chainId: chainId, log: log)
-                                }
-                                
-                                for com in nftComs {
-                                    guard let i = UInt(hexString: com.key.toHexString()) else { continue }
-                                    guard let entity = event.scene.findEntity(named: "\(i)") else { continue }
+//                                guard let nftComs = try? context.fetch(FetchDescriptor<NFTCom>()) else { return }
+                                Task.detached {
+                                    guard let imageComs = try await storeActor?.fetchImageComs() else { return }
                                     
-                                    entity.components.set(com)
+                                    for log in overrideLogs {
+                                        await storeSync.handleLog(chainId: chainId, log: log)
+                                    }
                                     
-                                }
-                                
-                                for com in imageComs {
-                                    guard let i = UInt(hexString: com.key.toHexString()) else { continue }
-                                    guard let entity = event.scene.findEntity(named: "\(i)") else { continue }
+                                    //                                for com in nftComs {
+                                    //                                    guard let i = UInt(hexString: com.key.toHexString()) else { continue }
+                                    //                                    guard let entity = event.scene.findEntity(named: "\(i)") else { continue }
+                                    //
+                                    //                                    entity.components.set(com)
+                                    //
+                                    //                                }
                                     
-                                    entity.components.set(com)
+                                    for com in imageComs {
+                                        guard let i = UInt(hexString: com.key.toHexString()) else { continue }
+                                        guard let entity = await event.scene.findEntity(named: "\(i)") else { continue }
+                                        
+                                        await entity.components.set(com)
+                                    }
                                 }
                             }
                         } catch {

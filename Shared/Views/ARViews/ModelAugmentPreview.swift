@@ -16,19 +16,19 @@ struct ModelAugmentPreview: View {
     @Environment(\.modelContext) private var context: ModelContext
 
     private let arView: ARView = ARView(frame: .zero)
-    private let contentHash: Data = putUVarInt(0xe3) + (putUVarInt(0x01) + (putUVarInt(0x00) + (try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "geoweb", ofType: "glb")!)))))
+    private let contentURI: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "geoweb", ofType: "glb")!)
 
     @State var cancellable: Cancellable? = nil
 
     var body: some View {
-        AugmentCameraViewRepresentable(arView: arView, inputComponents: [[PositionCom.self]], overlayText: Binding.constant(""))
+        AugmentCameraViewRepresentable(arView: arView, inputComponents: [[PositionCom.self]])
             .onAppear {
                 cancellable = arView.scene.subscribe(to: SceneEvents.Update.self) { event in
                     guard let entity = event.scene.findEntity(named: "1") else { return }
                     
                     let modelComs = try? context.fetch(FetchDescriptor<ModelCom>())
                     if let modelComs, modelComs.isEmpty {
-                        let modelCom = ModelCom(uniqueKey: "1", lastUpdatedAtBlock: 0, key: Data("0".makeBytes()), contentHash: contentHash, encodingFormat: .Glb)
+                        let modelCom = ModelCom(uniqueKey: "1", lastUpdatedAtBlock: 0, key: Data("0".makeBytes()), contentURI: contentURI.absoluteString, encodingFormat: .Glb)
                         context.insert(modelCom)
                         entity.components.set(
                             modelCom

@@ -17,6 +17,14 @@ private struct Web3Key: EnvironmentKey {
     }
 }
 
+private struct StoreActorKey: EnvironmentKey {
+    enum StoreActorError: Error {
+        case NotImplemented
+    }
+    
+    static let defaultValue: StoreActor? = nil
+}
+
 private struct StoreSyncKey: EnvironmentKey {
     enum StoreSyncError: Error {
         case NotImplemented
@@ -33,6 +41,11 @@ extension EnvironmentValues {
         set { self[Web3Key.self] = newValue }
     }
     
+    var storeActor: StoreActor? {
+        get { self[StoreActorKey.self] }
+        set { self[StoreActorKey.self] = newValue }
+    }
+    
     var storeSync: Task<StoreSync, Swift.Error> {
         get { self[StoreSyncKey.self] }
         set { self[StoreSyncKey.self] = newValue }
@@ -41,52 +54,24 @@ extension EnvironmentValues {
 
 @main
 struct GeoWebiOSApp: App {
-    @State private var augmentAddrStr: String = ""
-
+    let container = try! ModelContainer(
+        for: World.self,
+            PositionCom.self,
+            ModelCom.self,
+            ImageCom.self
+    )
+    
     var body: some Scene {
         WindowGroup {
-//            NavigationStack {
-//                ParcelView(parcelId: 320)
-//            }
             TabView {
-//                WorldCameraView()
-//                    .modelContainer(for: [
-//                        World.self,
-//                        PositionCom.self,
-//                        ModelCom.self,
-//                        ImageCom.self,
-//                        NFTCom.self
-//                    ])
-//                    .tabItem {
-//                        Label("World", systemImage: "camera.aperture")
-//                    }
-                NavigationStack {
-                    VStack {
-                        TextField("Augment Address", text: $augmentAddrStr)
-                            .textFieldStyle(.roundedBorder)
-                            .padding(.vertical)
-                        NavigationLink {
-                            if (try? EthereumAddress(hex: augmentAddrStr, eip55: false)) != nil {
-                                AugmentPreviewView(augmentAddress: try! EthereumAddress(hex: augmentAddrStr, eip55: false))
-                            }
-                        } label: {
-                            Text("Preview Augment")
-                        }
-                    }.padding()
-                }
-                .modelContainer(for: [
-                    World.self,
-                    PositionCom.self,
-                    ModelCom.self,
-                    ImageCom.self,
-                    NFTCom.self
-                ], inMemory: true)
-                .tabItem {
-                    Label("AW Hack", systemImage: "camera")
-                }
+                WorldCameraView()
+                    .tabItem {
+                        Label("World", systemImage: "camera.aperture")
+                    }
             }
             
         }
         .environment(\.web3, Web3Key.defaultValue)
+        .environment(\.storeActor, StoreActor(modelContainer: container))
     }
 }

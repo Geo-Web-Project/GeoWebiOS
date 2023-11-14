@@ -17,15 +17,13 @@ struct GeoModelAugmentPreview: View {
     @Environment(\.modelContext) private var context: ModelContext
 
     private let arView: ARView = ARView(frame: .zero)
-    private let contentHash: Data = putUVarInt(0xe3) + (putUVarInt(0x01) + (putUVarInt(0x00) + (try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "geoweb", ofType: "glb")!)))))
+    private let contentURI: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "geoweb", ofType: "glb")!)
 
     @State var cancellable: Cancellable? = nil
     
-    @State private var overlayText: String = ""
-
     var body: some View {
         ZStack {
-            AugmentCameraViewRepresentable(arView: arView, inputComponents: [[PositionCom.self]], overlayText: $overlayText)
+            AugmentCameraViewRepresentable(arView: arView, inputComponents: [[PositionCom.self]])
                 .onAppear {
                     cancellable = arView.scene.subscribe(to: SceneEvents.Update.self) { event in
                         guard let geoAnchorEntity = event.scene.findEntity(named: "geo") else { return }
@@ -60,7 +58,7 @@ struct GeoModelAugmentPreview: View {
 //                        }
     
                         if let entity = event.scene.findEntity(named: "1") {
-                            let modelCom = ModelCom(uniqueKey: "1", lastUpdatedAtBlock: 0, key: Data("0".makeBytes()), contentHash: contentHash, encodingFormat: .Glb)
+                            let modelCom = ModelCom(uniqueKey: "1", lastUpdatedAtBlock: 0, key: Data("0".makeBytes()), contentURI: contentURI.absoluteString, encodingFormat: .Glb)
                             context.insert(modelCom)
                             entity.components.set(
                                 modelCom
@@ -92,11 +90,6 @@ struct GeoModelAugmentPreview: View {
                 }
             
             CoachingOverlayView(arView: arView)
-            
-            VStack {
-                Spacer()
-                Text(overlayText)
-            }
         }
     }
 }

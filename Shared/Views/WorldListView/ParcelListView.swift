@@ -12,8 +12,8 @@ struct ParcelListView: View {
 
     var body: some View {
         if isPresentingWorldView {
-            ParcelViewGridLarge(isPresentingWorldView: $isPresentingWorldView, isARAvailable: true)
-                .transition(.scale(-2))
+//            ParcelViewGridLarge(isPresentingWorldView: $isPresentingWorldView, isARAvailable: true)
+//                .transition(.scale(-2))
         } else {
             VStack(alignment: .leading) {
                 Label("Within 1 mile", systemImage: "location.fill")
@@ -21,7 +21,7 @@ struct ParcelListView: View {
                 List {
                     NavigationLink(destination: {
                         NavigationStack {
-                            ParcelViewGridLarge(isPresentingWorldView: $isPresentingWorldView, isARAvailable: true)
+//                            ParcelViewGridLarge(isPresentingWorldView: $isPresentingWorldView, isARAvailable: true)
                         }
                     }, label: {
                         WorldListItemView1(hasWebContent: true, hasMediaGallery: true, hasARContent: true)

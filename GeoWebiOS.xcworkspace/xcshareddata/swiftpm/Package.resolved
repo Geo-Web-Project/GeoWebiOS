@@ -122,8 +122,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Geo-Web-Project/swift-mud",
       "state" : {
-        "revision" : "321769b90450a0962246bdefbbfa4017fef63b1a",
-        "version" : "0.1.6"
+        "revision" : "c4865e842e8b9a19c5f6052bb78c6d7820ee0e31",
+        "version" : "0.2.2"
       }
     },
     {
@@ -158,8 +158,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio.git",
       "state" : {
-        "revision" : "9497e442486aab515c8486ef8153a506f93a5032",
-        "version" : "2.61.0"
+        "revision" : "853522d90871b4b63262843196685795b5008c46",
+        "version" : "2.61.1"
       }
     },
     {

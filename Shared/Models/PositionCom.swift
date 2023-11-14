@@ -34,7 +34,7 @@ final class PositionCom: Component, Record {
         self.geohash = geohash
     }
     
-    static func setRecord(modelContext: ModelContext, table: Table, values: [String : Any], blockNumber: EthereumQuantity) throws {
+    static func setRecord(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
         guard let keys = values["keyTuple"] as? [Data] else { throw SetRecordError.invalidData }
         guard let key = try ProtocolParser.decodeStaticField(abiType: SolidityType.bytes(length: 32), data: keys[0].makeBytes()) as? Data else { throw SetRecordError.invalidNativeValue }
         
@@ -59,6 +59,36 @@ final class PositionCom: Component, Record {
         let digest: Array<UInt8> = Array(table.namespace!.world!.uniqueKey.hexToBytes() + table.namespace!.namespaceId.hexToBytes() + table.tableName.makeBytes() + key.makeBytes())
         let uniqueKey = SHA3(variant: .keccak256).calculate(for: digest).toHexString()
         
+        try await storeActor.upsertPositionCom(uniqueKey: uniqueKey, tableIdentifier: table.id, lastUpdatedAtBlock: UInt(blockNumber.quantity), key: key, h: h, geohash: geohash)
+    }
+    
+    static func spliceStaticData(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
+        
+    }
+    
+    static func spliceDynamicData(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
+        
+    }
+    
+    static func deleteRecord(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
+        guard let keys = values["keyTuple"] as? [Data] else { throw SetRecordError.invalidData }
+        guard let key = try ProtocolParser.decodeStaticField(abiType: SolidityType.bytes(length: 32), data: keys[0].makeBytes()) as? Data else { throw SetRecordError.invalidNativeValue }
+
+        let digest: Array<UInt8> = Array(table.namespace!.world!.uniqueKey.hexToBytes() + table.namespace!.namespaceId.hexToBytes() + table.tableName.makeBytes() + key.makeBytes())
+        let uniqueKey = SHA3(variant: .keccak256).calculate(for: digest).toHexString()
+        
+        try await storeActor.deletePositionCom(uniqueKey: uniqueKey, lastUpdatedAtBlock: UInt(blockNumber.quantity))
+    }
+}
+
+extension StoreActor {
+    func fetchPositionComs() throws -> [PositionCom] {
+        return try modelContext.fetch(FetchDescriptor<PositionCom>())
+    }
+    
+    func upsertPositionCom(uniqueKey: String, tableIdentifier: PersistentIdentifier, lastUpdatedAtBlock: UInt, key: Data, h: Int32, geohash: Data) throws {
+        guard let table = self[tableIdentifier, as: Table.self] else { return }
+        
         let latestValue = FetchDescriptor<PositionCom>(
             predicate: #Predicate { $0.uniqueKey == uniqueKey }
         )
@@ -68,43 +98,33 @@ final class PositionCom: Component, Record {
         if let existingRecord = results.first {
             existingRecord.h = h
             existingRecord.geohash = geohash
-            existingRecord.lastUpdatedAtBlock = UInt(blockNumber.quantity)
-        } else if latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity {
+            existingRecord.lastUpdatedAtBlock = lastUpdatedAtBlock
+        } else if latestBlockNumber == nil || latestBlockNumber! < lastUpdatedAtBlock {
             let record = PositionCom(
                 uniqueKey: uniqueKey,
-                lastUpdatedAtBlock: UInt(blockNumber.quantity),
+                lastUpdatedAtBlock: lastUpdatedAtBlock,
                 key: key,
                 h: h,
                 geohash: geohash
             )
             record.table = table
             modelContext.insert(record)
+            
+            try modelContext.save()
         }
     }
     
-    static func spliceStaticData(modelContext: ModelContext, table: Table, values: [String : Any], blockNumber: EthereumQuantity) throws {
-        
-    }
-    
-    static func spliceDynamicData(modelContext: ModelContext, table: Table, values: [String : Any], blockNumber: EthereumQuantity) throws {
-        
-    }
-    
-    static func deleteRecord(modelContext: ModelContext, table: Table, values: [String : Any], blockNumber: EthereumQuantity) throws {
-        guard let keys = values["keyTuple"] as? [Data] else { throw SetRecordError.invalidData }
-        guard let key = try ProtocolParser.decodeStaticField(abiType: SolidityType.bytes(length: 32), data: keys[0].makeBytes()) as? Data else { throw SetRecordError.invalidNativeValue }
-
-        let digest: Array<UInt8> = Array(table.namespace!.world!.uniqueKey.hexToBytes() + table.namespace!.namespaceId.hexToBytes() + table.tableName.makeBytes() + key.makeBytes())
-        let uniqueKey = SHA3(variant: .keccak256).calculate(for: digest).toHexString()
-        
+    func deletePositionCom(uniqueKey: String, lastUpdatedAtBlock: UInt) throws {
         let latestValue = FetchDescriptor<PositionCom>(
             predicate: #Predicate { $0.uniqueKey == uniqueKey }
         )
         let results = try modelContext.fetch(latestValue)
         let latestBlockNumber = results.first?.lastUpdatedAtBlock
         
-        if let existingRecord = results.first, (latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity) {
+        if let existingRecord = results.first, (latestBlockNumber == nil || latestBlockNumber! < lastUpdatedAtBlock) {
             modelContext.delete(existingRecord)
+            
+            try modelContext.save()
         }
     }
 }

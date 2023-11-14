@@ -1,18 +1,18 @@
 //
-//  GLBModelSystem.swift
+//  USDZModelSystem.swift
 //  GeoWebiOS
 //
-//  Created by Cody Hatfield on 2023-10-27.
+//  Created by Cody Hatfield on 2023-11-10.
 //
 
 import RealityKit
 import GLTFKit2
 
 /*
- * GLBModelSystem
- * - Loads a GLB into a ModelComponent
+ * USDZModelSystem
+ * - Loads a USDZ into a ModelComponent
  */
-class GLBModelSystem : System {
+class USDZModelSystem : System {
     private static let query = EntityQuery(where: .has(ModelCom.self))
     private var hasStartedLoading: Set<String> = Set()
     
@@ -21,10 +21,10 @@ class GLBModelSystem : System {
     func update(context: SceneUpdateContext) {
         context.scene.performQuery(Self.query).forEach { entity in
             guard let modelCom = entity.components[ModelCom.self] as? ModelCom else { return }
-            guard modelCom.encodingFormat == .Glb else { return }
-
+            guard modelCom.encodingFormat == .Usdz else { return }
+            
             guard !hasStartedLoading.contains(modelCom.uniqueKey) else { return }
-            guard let contentUrl = modelCom.contentUrl else { return }
+            let contentUrl = URL(fileURLWithPath: Bundle.main.path(forResource: "robot", ofType: "usdz")!)
             
             hasStartedLoading.insert(modelCom.uniqueKey)
             
@@ -48,11 +48,7 @@ class GLBModelSystem : System {
     
     @MainActor
     private func addAssetToScene(contentUrl: URL, entity: Entity) throws {
-        let asset = try GLTFAsset(url: contentUrl)
-        guard let assetScene = asset.defaultScene else { return }
-        
-        // TODO: It seems part of this needs to be done on the main actor. But it blocks RealityKit. Is there some other long-running task in here that doesn't need to be on the main actor?
-        let gltfEntity = GLTFRealityKitLoader.convert(scene: assetScene)
-        entity.addChild(gltfEntity)
+        let usdzEntity = try Entity.load(contentsOf: contentUrl)
+        entity.addChild(usdzEntity)
     }
 }

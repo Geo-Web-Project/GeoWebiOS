@@ -27,11 +27,7 @@
 		C331C9022A82F040004B1238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331C9012A82F040004B1238 /* Assets.xcassets */; };
 		C331C9052A82F040004B1238 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331C9042A82F040004B1238 /* Preview Assets.xcassets */; };
 		C331C90D2A82F082004B1238 /* NameCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C90A2A82F082004B1238 /* NameCom.swift */; };
-		C33544332AEDCDD9007FFD1B /* SwiftMUD in Frameworks */ = {isa = PBXBuildFile; productRef = C33544322AEDCDD9007FFD1B /* SwiftMUD */; };
 		C33544352AEF2BD4007FFD1B /* AccessManagementSystemContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33544342AEF2BD4007FFD1B /* AccessManagementSystemContract.swift */; };
-		C335443F2AEF40B2007FFD1B /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = C335443E2AEF40B2007FFD1B /* Web3 */; };
-		C33544412AEF40B2007FFD1B /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = C33544402AEF40B2007FFD1B /* Web3ContractABI */; };
-		C33544432AEF40B2007FFD1B /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C33544422AEF40B2007FFD1B /* Web3PromiseKit */; };
 		C33544462AEF4171007FFD1B /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C33544452AEF4171007FFD1B /* VarInt */; };
 		C33544492AEF41A9007FFD1B /* CID in Frameworks */ = {isa = PBXBuildFile; productRef = C33544482AEF41A9007FFD1B /* CID */; };
 		C335444B2AEF4C3C007FFD1B /* NFTCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335444A2AEF4C3C007FFD1B /* NFTCom.swift */; };
@@ -49,8 +45,9 @@
 		C3552C4A2AF7E3A100E0BC45 /* CID in Frameworks */ = {isa = PBXBuildFile; productRef = C3552C492AF7E3A100E0BC45 /* CID */; };
 		C3552C4C2AF7EADC00E0BC45 /* geoweb.glb in Resources */ = {isa = PBXBuildFile; fileRef = C3552C4B2AF7EADC00E0BC45 /* geoweb.glb */; };
 		C3552C4E2AF7EFE600E0BC45 /* GeoModelAugmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3552C4D2AF7EFE600E0BC45 /* GeoModelAugmentView.swift */; };
-		C35A33642AB360DF007A163D /* IMediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33632AB360DF007A163D /* IMediaObject.swift */; };
-		C35A33652AB360FA007A163D /* IMediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33632AB360DF007A163D /* IMediaObject.swift */; };
+		C356AE0C2AFEE80F0052C11B /* GeoAnchorSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C356AE0B2AFEE80F0052C11B /* GeoAnchorSystem.swift */; };
+		C356AE0D2AFEE80F0052C11B /* GeoAnchorSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C356AE0B2AFEE80F0052C11B /* GeoAnchorSystem.swift */; };
+		C356AE0E2AFEF1BA0052C11B /* geoweb.glb in Resources */ = {isa = PBXBuildFile; fileRef = C3552C4B2AF7EADC00E0BC45 /* geoweb.glb */; };
 		C35A33702AB364BB007A163D /* sample-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C3982F6B2A96B8720089AF69 /* sample-logo.png */; };
 		C35A33712AB364C0007A163D /* sample-favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3ABECD12A958E4C00C64510 /* sample-favicon.png */; };
 		C35A33752AB384E6007A163D /* ImageCaptureARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A33732AB384E6007A163D /* ImageCaptureARView.swift */; };
@@ -71,6 +68,12 @@
 		C39770B02A9952AD0052183D /* audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C39770AE2A9952AD0052183D /* audio.mp3 */; };
 		C3982F6D2A96B8860089AF69 /* sample-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C3982F6B2A96B8720089AF69 /* sample-logo.png */; };
 		C3982F6E2A96D3B40089AF69 /* ModelQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA962A81C28300CFDC84 /* ModelQLView.swift */; };
+		C3A41CE52AFF090E008E0BFC /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = C3A41CE42AFF090E008E0BFC /* Web3 */; };
+		C3A41CE72AFF090E008E0BFC /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = C3A41CE62AFF090E008E0BFC /* Web3ContractABI */; };
+		C3A41CE92AFF090E008E0BFC /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C3A41CE82AFF090E008E0BFC /* Web3PromiseKit */; };
+		C3A41CEC2AFF091E008E0BFC /* SwiftMUD in Frameworks */ = {isa = PBXBuildFile; productRef = C3A41CEB2AFF091E008E0BFC /* SwiftMUD */; };
+		C3A41CEE2AFF40E2008E0BFC /* USDZModelSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A41CED2AFF40E2008E0BFC /* USDZModelSystem.swift */; };
+		C3A41CEF2AFF40E2008E0BFC /* USDZModelSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A41CED2AFF40E2008E0BFC /* USDZModelSystem.swift */; };
 		C3ABECD22A958E4C00C64510 /* sample-favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3ABECD12A958E4C00C64510 /* sample-favicon.png */; };
 		C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */; };
 		C3BAFAB72A81C28300CFDC84 /* ModelQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA962A81C28300CFDC84 /* ModelQLView.swift */; };
@@ -78,11 +81,6 @@
 		C3BAFAB92A81C28300CFDC84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3BAFA992A81C28300CFDC84 /* Preview Assets.xcassets */; };
 		C3BAFABA2A81C28300CFDC84 /* GeoWebiOSDesignsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA9A2A81C28300CFDC84 /* GeoWebiOSDesignsApp.swift */; };
 		C3BAFABB2A81C28300CFDC84 /* buddha.glb in Resources */ = {isa = PBXBuildFile; fileRef = C3BAFA9C2A81C28300CFDC84 /* buddha.glb */; };
-		C3BAFABC2A81C28300CFDC84 /* ParcelViewGridCompact.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA9D2A81C28300CFDC84 /* ParcelViewGridCompact.swift */; };
-		C3BAFABD2A81C28300CFDC84 /* MediaGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA9F2A81C28300CFDC84 /* MediaGalleryCell.swift */; };
-		C3BAFABE2A81C28300CFDC84 /* MediaGalleryCellVariant2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAA02A81C28300CFDC84 /* MediaGalleryCellVariant2.swift */; };
-		C3BAFABF2A81C28300CFDC84 /* MediaGalleryCellVariant1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAA12A81C28300CFDC84 /* MediaGalleryCellVariant1.swift */; };
-		C3BAFAC02A81C28300CFDC84 /* ParcelViewGridPreviewAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAA22A81C28300CFDC84 /* ParcelViewGridPreviewAll.swift */; };
 		C3BAFAC12A81C28300CFDC84 /* MapViewCellVariant1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAA42A81C28300CFDC84 /* MapViewCellVariant1.swift */; };
 		C3BAFAC22A81C28300CFDC84 /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAA52A81C28300CFDC84 /* MapViewCell.swift */; };
 		C3BAFAC32A81C28300CFDC84 /* MapViewCellVariant2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAA62A81C28300CFDC84 /* MapViewCellVariant2.swift */; };
@@ -92,7 +90,6 @@
 		C3BAFAC72A81C28300CFDC84 /* WebViewCellVariant2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAAB2A81C28300CFDC84 /* WebViewCellVariant2.swift */; };
 		C3BAFAC82A81C28300CFDC84 /* WebViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAAC2A81C28300CFDC84 /* WebViewCell.swift */; };
 		C3BAFAC92A81C28300CFDC84 /* EnterARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAAD2A81C28300CFDC84 /* EnterARButton.swift */; };
-		C3BAFACA2A81C28300CFDC84 /* ParcelViewGridLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAAE2A81C28300CFDC84 /* ParcelViewGridLarge.swift */; };
 		C3BAFACB2A81C28300CFDC84 /* FullMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB02A81C28300CFDC84 /* FullMapView.swift */; };
 		C3BAFACC2A81C28300CFDC84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB12A81C28300CFDC84 /* ContentView.swift */; };
 		C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB32A81C28300CFDC84 /* ParcelListView.swift */; };
@@ -118,9 +115,7 @@
 		C3EBACD62AEDAF8900D0695F /* PositionCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACD52AEDAF8900D0695F /* PositionCom.swift */; };
 		C3EBACD72AEDAF8900D0695F /* PositionCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACD52AEDAF8900D0695F /* PositionCom.swift */; };
 		C3EBACDB2AEDC53E00D0695F /* AugmentInstallationSystemContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACDA2AEDC53E00D0695F /* AugmentInstallationSystemContract.swift */; };
-		C3F050902AE35100007FCC56 /* SwiftMUD in Frameworks */ = {isa = PBXBuildFile; productRef = C3F0508F2AE35100007FCC56 /* SwiftMUD */; };
 		C3F94F8E2AA6A3020051B484 /* AnchorTransformSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F94F8D2AA6A3020051B484 /* AnchorTransformSystem.swift */; };
-		C3F9DB162ADDF8C8007EDDD6 /* ParcelViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F9DB152ADDF8C8007EDDD6 /* ParcelViewInfo.swift */; };
 		C3F9DB192ADDFAF4007EDDD6 /* ParcelMetadataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F9DB182ADDFAF4007EDDD6 /* ParcelMetadataView.swift */; };
 		C3F9DB1C2ADE0003007EDDD6 /* AugmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F9DB1B2ADE0003007EDDD6 /* AugmentCell.swift */; };
 		C3F9DB1F2ADE04AE007EDDD6 /* ParcelPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F9DB1E2ADE04AE007EDDD6 /* ParcelPreviewCell.swift */; };
@@ -207,7 +202,7 @@
 		C34B35322A9FF4300079A314 /* WorldARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldARView.swift; sourceTree = "<group>"; };
 		C3552C4B2AF7EADC00E0BC45 /* geoweb.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = geoweb.glb; sourceTree = "<group>"; };
 		C3552C4D2AF7EFE600E0BC45 /* GeoModelAugmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoModelAugmentView.swift; sourceTree = "<group>"; };
-		C35A33632AB360DF007A163D /* IMediaObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMediaObject.swift; sourceTree = "<group>"; };
+		C356AE0B2AFEE80F0052C11B /* GeoAnchorSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoAnchorSystem.swift; sourceTree = "<group>"; };
 		C35A33732AB384E6007A163D /* ImageCaptureARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCaptureARView.swift; sourceTree = "<group>"; };
 		C35A33762AB4615D007A163D /* GeoPublishARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPublishARView.swift; sourceTree = "<group>"; };
 		C35A33782AB46A87007A163D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -220,6 +215,7 @@
 		C39770AB2A9950EC0052183D /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		C39770AE2A9952AD0052183D /* audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audio.mp3; sourceTree = "<group>"; };
 		C3982F6B2A96B8720089AF69 /* sample-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-logo.png"; sourceTree = "<group>"; };
+		C3A41CED2AFF40E2008E0BFC /* USDZModelSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZModelSystem.swift; sourceTree = "<group>"; };
 		C3ABECD12A958E4C00C64510 /* sample-favicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-favicon.png"; sourceTree = "<group>"; };
 		C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelSceneView.swift; sourceTree = "<group>"; };
 		C3BAFA952A81C28300CFDC84 /* MediaGalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaGalleryView.swift; sourceTree = "<group>"; };
@@ -228,11 +224,6 @@
 		C3BAFA992A81C28300CFDC84 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C3BAFA9A2A81C28300CFDC84 /* GeoWebiOSDesignsApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoWebiOSDesignsApp.swift; sourceTree = "<group>"; };
 		C3BAFA9C2A81C28300CFDC84 /* buddha.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = buddha.glb; sourceTree = "<group>"; };
-		C3BAFA9D2A81C28300CFDC84 /* ParcelViewGridCompact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParcelViewGridCompact.swift; sourceTree = "<group>"; };
-		C3BAFA9F2A81C28300CFDC84 /* MediaGalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaGalleryCell.swift; sourceTree = "<group>"; };
-		C3BAFAA02A81C28300CFDC84 /* MediaGalleryCellVariant2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaGalleryCellVariant2.swift; sourceTree = "<group>"; };
-		C3BAFAA12A81C28300CFDC84 /* MediaGalleryCellVariant1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaGalleryCellVariant1.swift; sourceTree = "<group>"; };
-		C3BAFAA22A81C28300CFDC84 /* ParcelViewGridPreviewAll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParcelViewGridPreviewAll.swift; sourceTree = "<group>"; };
 		C3BAFAA42A81C28300CFDC84 /* MapViewCellVariant1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewCellVariant1.swift; sourceTree = "<group>"; };
 		C3BAFAA52A81C28300CFDC84 /* MapViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewCell.swift; sourceTree = "<group>"; };
 		C3BAFAA62A81C28300CFDC84 /* MapViewCellVariant2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewCellVariant2.swift; sourceTree = "<group>"; };
@@ -242,7 +233,6 @@
 		C3BAFAAB2A81C28300CFDC84 /* WebViewCellVariant2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewCellVariant2.swift; sourceTree = "<group>"; };
 		C3BAFAAC2A81C28300CFDC84 /* WebViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewCell.swift; sourceTree = "<group>"; };
 		C3BAFAAD2A81C28300CFDC84 /* EnterARButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterARButton.swift; sourceTree = "<group>"; };
-		C3BAFAAE2A81C28300CFDC84 /* ParcelViewGridLarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParcelViewGridLarge.swift; sourceTree = "<group>"; };
 		C3BAFAB02A81C28300CFDC84 /* FullMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullMapView.swift; sourceTree = "<group>"; };
 		C3BAFAB12A81C28300CFDC84 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C3BAFAB32A81C28300CFDC84 /* ParcelListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParcelListView.swift; sourceTree = "<group>"; };
@@ -265,7 +255,6 @@
 		C3EDAF912A7B148D00C80B0A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		C3EDAF932A7B148D00C80B0A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		C3F94F8D2AA6A3020051B484 /* AnchorTransformSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorTransformSystem.swift; sourceTree = "<group>"; };
-		C3F9DB152ADDF8C8007EDDD6 /* ParcelViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelViewInfo.swift; sourceTree = "<group>"; };
 		C3F9DB182ADDFAF4007EDDD6 /* ParcelMetadataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelMetadataView.swift; sourceTree = "<group>"; };
 		C3F9DB1B2ADE0003007EDDD6 /* AugmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentCell.swift; sourceTree = "<group>"; };
 		C3F9DB1E2ADE04AE007EDDD6 /* ParcelPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelPreviewCell.swift; sourceTree = "<group>"; };
@@ -277,14 +266,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A41CE72AFF090E008E0BFC /* Web3ContractABI in Frameworks */,
 				C31D00B62AB8EC2300AC0CA4 /* GLTFKit2.framework in Frameworks */,
-				C335443F2AEF40B2007FFD1B /* Web3 in Frameworks */,
-				C3F050902AE35100007FCC56 /* SwiftMUD in Frameworks */,
 				C33544492AEF41A9007FFD1B /* CID in Frameworks */,
+				C3A41CEC2AFF091E008E0BFC /* SwiftMUD in Frameworks */,
 				C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */,
 				C33544462AEF4171007FFD1B /* VarInt in Frameworks */,
-				C33544432AEF40B2007FFD1B /* Web3PromiseKit in Frameworks */,
-				C33544412AEF40B2007FFD1B /* Web3ContractABI in Frameworks */,
+				C3A41CE92AFF090E008E0BFC /* Web3PromiseKit in Frameworks */,
+				C3A41CE52AFF090E008E0BFC /* Web3 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +282,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */,
-				C33544332AEDCDD9007FFD1B /* SwiftMUD in Frameworks */,
 				C3552C482AF7E38B00E0BC45 /* VarInt in Frameworks */,
 				C31D00B82AB8EC2900AC0CA4 /* GLTFKit2.framework in Frameworks */,
 				C3552C4A2AF7E3A100E0BC45 /* CID in Frameworks */,
@@ -364,11 +352,10 @@
 		C35A33622AB360C0007A163D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C35A33632AB360DF007A163D /* IMediaObject.swift */,
-				C3EBACBE2AEC7BE000D0695F /* ImageCom.swift */,
-				C335444A2AEF4C3C007FFD1B /* NFTCom.swift */,
-				C3EBACC92AEC8F9000D0695F /* ModelCom.swift */,
 				C3EBACD52AEDAF8900D0695F /* PositionCom.swift */,
+				C3EBACBE2AEC7BE000D0695F /* ImageCom.swift */,
+				C3EBACC92AEC8F9000D0695F /* ModelCom.swift */,
+				C335444A2AEF4C3C007FFD1B /* NFTCom.swift */,
 				C3EBACC12AEC870800D0695F /* Data+SaveTemp.swift */,
 			);
 			path = Models;
@@ -453,30 +440,15 @@
 			children = (
 				C3552C4B2AF7EADC00E0BC45 /* geoweb.glb */,
 				C3BAFA9C2A81C28300CFDC84 /* buddha.glb */,
-				C3BAFA9D2A81C28300CFDC84 /* ParcelViewGridCompact.swift */,
-				C3F9DB152ADDF8C8007EDDD6 /* ParcelViewInfo.swift */,
-				C3BAFAA22A81C28300CFDC84 /* ParcelViewGridPreviewAll.swift */,
 				C3BAFAA72A81C28300CFDC84 /* robot.usdz */,
 				C3F9DB172ADDFACB007EDDD6 /* ParcelMetadataView */,
-				C3BAFA9E2A81C28300CFDC84 /* MediaGalleryCell */,
 				C3BAFAA32A81C28300CFDC84 /* MapViewCell */,
 				C3BAFAA82A81C28300CFDC84 /* WebViewCell */,
 				C3F9DB1A2ADDFFF3007EDDD6 /* AugmentCell */,
 				C3F9DB1D2ADE0498007EDDD6 /* ParcelPreviewCell */,
 				C3BAFAAD2A81C28300CFDC84 /* EnterARButton.swift */,
-				C3BAFAAE2A81C28300CFDC84 /* ParcelViewGridLarge.swift */,
 			);
 			path = ParcelView;
-			sourceTree = "<group>";
-		};
-		C3BAFA9E2A81C28300CFDC84 /* MediaGalleryCell */ = {
-			isa = PBXGroup;
-			children = (
-				C3BAFA9F2A81C28300CFDC84 /* MediaGalleryCell.swift */,
-				C3BAFAA02A81C28300CFDC84 /* MediaGalleryCellVariant2.swift */,
-				C3BAFAA12A81C28300CFDC84 /* MediaGalleryCellVariant1.swift */,
-			);
-			path = MediaGalleryCell;
 			sourceTree = "<group>";
 		};
 		C3BAFAA32A81C28300CFDC84 /* MapViewCell */ = {
@@ -546,10 +518,12 @@
 		C3EBACB72AEC78C100D0695F /* Systems */ = {
 			isa = PBXGroup;
 			children = (
-				C3EBACB82AEC78D800D0695F /* AugmentInputSystem.swift */,
 				C3EBACBB2AEC7B9900D0695F /* FramedImageSystem.swift */,
-				C335444C2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift */,
 				C3EBACC62AEC8F5F00D0695F /* GLBModelSystem.swift */,
+				C3A41CED2AFF40E2008E0BFC /* USDZModelSystem.swift */,
+				C356AE0B2AFEE80F0052C11B /* GeoAnchorSystem.swift */,
+				C3EBACB82AEC78D800D0695F /* AugmentInputSystem.swift */,
+				C335444C2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -620,12 +594,12 @@
 			name = GeoWebiOS;
 			packageProductDependencies = (
 				C308E7E22A94394900EEC111 /* SwiftGLTF */,
-				C3F0508F2AE35100007FCC56 /* SwiftMUD */,
-				C335443E2AEF40B2007FFD1B /* Web3 */,
-				C33544402AEF40B2007FFD1B /* Web3ContractABI */,
-				C33544422AEF40B2007FFD1B /* Web3PromiseKit */,
 				C33544452AEF4171007FFD1B /* VarInt */,
 				C33544482AEF41A9007FFD1B /* CID */,
+				C3A41CE42AFF090E008E0BFC /* Web3 */,
+				C3A41CE62AFF090E008E0BFC /* Web3ContractABI */,
+				C3A41CE82AFF090E008E0BFC /* Web3PromiseKit */,
+				C3A41CEB2AFF091E008E0BFC /* SwiftMUD */,
 			);
 			productName = GeoWebiOS;
 			productReference = C331C8F92A82F03E004B1238 /* GeoWebiOS.app */;
@@ -649,7 +623,6 @@
 			name = GeoWebiOSDesigns;
 			packageProductDependencies = (
 				C33682922A79BA4C00CA5F43 /* SwiftGLTF */,
-				C33544322AEDCDD9007FFD1B /* SwiftMUD */,
 				C3552C472AF7E38B00E0BC45 /* VarInt */,
 				C3552C492AF7E3A100E0BC45 /* CID */,
 			);
@@ -686,10 +659,10 @@
 			mainGroup = C386B56F2A7312BB008F6473;
 			packageReferences = (
 				C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */,
-				C359E0822AE34C4400CBFAA0 /* XCRemoteSwiftPackageReference "swift-mud" */,
-				C335443D2AEF40B2007FFD1B /* XCRemoteSwiftPackageReference "Web3" */,
 				C33544442AEF4171007FFD1B /* XCRemoteSwiftPackageReference "swift-varint" */,
 				C33544472AEF41A9007FFD1B /* XCRemoteSwiftPackageReference "swift-cid" */,
+				C3A41CE32AFF090E008E0BFC /* XCRemoteSwiftPackageReference "Web3" */,
+				C3A41CEA2AFF091E008E0BFC /* XCRemoteSwiftPackageReference "swift-mud" */,
 			);
 			productRefGroup = C386B5792A7312BB008F6473 /* Products */;
 			projectDirPath = "";
@@ -729,6 +702,7 @@
 				C3ABECD22A958E4C00C64510 /* sample-favicon.png in Resources */,
 				C3753E8D2A95632F003175B5 /* robot.usdz in Resources */,
 				C331C9022A82F040004B1238 /* Assets.xcassets in Resources */,
+				C356AE0E2AFEF1BA0052C11B /* geoweb.glb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,13 +730,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C308E7DD2A9438B800EEC111 /* MapViewCellVariant2.swift in Sources */,
-				C35A33642AB360DF007A163D /* IMediaObject.swift in Sources */,
+				C356AE0C2AFEE80F0052C11B /* GeoAnchorSystem.swift in Sources */,
 				C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */,
 				C3EBACBF2AEC7BE000D0695F /* ImageCom.swift in Sources */,
 				C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */,
 				C3EBACDB2AEDC53E00D0695F /* AugmentInstallationSystemContract.swift in Sources */,
 				C3EBACCA2AEC8F9000D0695F /* ModelCom.swift in Sources */,
 				C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */,
+				C3A41CEE2AFF40E2008E0BFC /* USDZModelSystem.swift in Sources */,
 				C35E319E2A9D432600AA4743 /* WorldListItemView.swift in Sources */,
 				C3EBACD12AEDA88A00D0695F /* AugmentPreviewView.swift in Sources */,
 				C335444B2AEF4C3C007FFD1B /* NFTCom.swift in Sources */,
@@ -811,22 +786,19 @@
 				C3552C462AF7E32100E0BC45 /* NFTCom.swift in Sources */,
 				C31E0AC22AC4EBE400051DFF /* AnchorTransformSystem.swift in Sources */,
 				C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */,
-				C3BAFABE2A81C28300CFDC84 /* MediaGalleryCellVariant2.swift in Sources */,
 				C3386F342AEC62D300720F7A /* ModelAugmentPreview.swift in Sources */,
 				C3BAFACC2A81C28300CFDC84 /* ContentView.swift in Sources */,
 				C31ABFD02A9D644100F3368C /* WorldListItemView1.swift in Sources */,
 				C3BAFABA2A81C28300CFDC84 /* GeoWebiOSDesignsApp.swift in Sources */,
-				C35A33652AB360FA007A163D /* IMediaObject.swift in Sources */,
-				C3F9DB162ADDF8C8007EDDD6 /* ParcelViewInfo.swift in Sources */,
 				C3BAFAD42A81C90B00CFDC84 /* ParcelListView3.swift in Sources */,
 				C3386F362AEC68B600720F7A /* ImageAugmentPreview.swift in Sources */,
 				C3BAFAC82A81C28300CFDC84 /* WebViewCell.swift in Sources */,
+				C356AE0D2AFEE80F0052C11B /* GeoAnchorSystem.swift in Sources */,
 				C3BAFAC72A81C28300CFDC84 /* WebViewCellVariant2.swift in Sources */,
 				C3BAFAC12A81C28300CFDC84 /* MapViewCellVariant1.swift in Sources */,
 				C3EBACBA2AEC78D800D0695F /* AugmentInputSystem.swift in Sources */,
 				C3D9FDC42AE0CD6300DEC3BD /* AugmentCellVariant3.swift in Sources */,
 				C3BAFAD22A81C73700CFDC84 /* ParcelListView2.swift in Sources */,
-				C3BAFACA2A81C28300CFDC84 /* ParcelViewGridLarge.swift in Sources */,
 				C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */,
 				C3BAFAC52A81C28300CFDC84 /* WebViewCellVariant1.swift in Sources */,
 				C3386F312AEC593900720F7A /* AugmentCameraView.swift in Sources */,
@@ -834,19 +806,16 @@
 				C335444E2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift in Sources */,
 				C31E0AC12AC4E2A100051DFF /* ImageTargetARView.swift in Sources */,
 				C3D9FDC22AE0CC4E00DEC3BD /* AugmentCellVariant1.swift in Sources */,
+				C3A41CEF2AFF40E2008E0BFC /* USDZModelSystem.swift in Sources */,
 				C3D9FDC02AE0CC3800DEC3BD /* AugmentCellVariant2.swift in Sources */,
 				C3EBACD72AEDAF8900D0695F /* PositionCom.swift in Sources */,
 				C3F9DB192ADDFAF4007EDDD6 /* ParcelMetadataView.swift in Sources */,
-				C3BAFABC2A81C28300CFDC84 /* ParcelViewGridCompact.swift in Sources */,
 				C3753E8A2A955EDF003175B5 /* MediaGalleryView.swift in Sources */,
 				C3BAFAB72A81C28300CFDC84 /* ModelQLView.swift in Sources */,
-				C3BAFABD2A81C28300CFDC84 /* MediaGalleryCell.swift in Sources */,
 				C3F9DB1F2ADE04AE007EDDD6 /* ParcelPreviewCell.swift in Sources */,
-				C3BAFABF2A81C28300CFDC84 /* MediaGalleryCellVariant1.swift in Sources */,
 				C3EBACC32AEC870800D0695F /* Data+SaveTemp.swift in Sources */,
 				C35A33752AB384E6007A163D /* ImageCaptureARView.swift in Sources */,
 				C331C8F42A82EB81004B1238 /* AddWorldFormView.swift in Sources */,
-				C3BAFAC02A81C28300CFDC84 /* ParcelViewGridPreviewAll.swift in Sources */,
 				C3EBACC02AEC7BE000D0695F /* ImageCom.swift in Sources */,
 				C3BAFAC22A81C28300CFDC84 /* MapViewCell.swift in Sources */,
 			);
@@ -906,6 +875,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -950,6 +920,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.8;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1195,14 +1166,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C335443D2AEF40B2007FFD1B /* XCRemoteSwiftPackageReference "Web3" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Geo-Web-Project/Web3.swift";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		C33544442AEF4171007FFD1B /* XCRemoteSwiftPackageReference "swift-varint" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swift-libp2p/swift-varint";
@@ -1227,12 +1190,20 @@
 				minimumVersion = 0.0.3;
 			};
 		};
-		C359E0822AE34C4400CBFAA0 /* XCRemoteSwiftPackageReference "swift-mud" */ = {
+		C3A41CE32AFF090E008E0BFC /* XCRemoteSwiftPackageReference "Web3" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Geo-Web-Project/Web3.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		C3A41CEA2AFF091E008E0BFC /* XCRemoteSwiftPackageReference "swift-mud" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Geo-Web-Project/swift-mud";
 			requirement = {
-				kind = exactVersion;
-				version = 0.1.6;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1242,26 +1213,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */;
 			productName = SwiftGLTF;
-		};
-		C33544322AEDCDD9007FFD1B /* SwiftMUD */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C359E0822AE34C4400CBFAA0 /* XCRemoteSwiftPackageReference "swift-mud" */;
-			productName = SwiftMUD;
-		};
-		C335443E2AEF40B2007FFD1B /* Web3 */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C335443D2AEF40B2007FFD1B /* XCRemoteSwiftPackageReference "Web3" */;
-			productName = Web3;
-		};
-		C33544402AEF40B2007FFD1B /* Web3ContractABI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C335443D2AEF40B2007FFD1B /* XCRemoteSwiftPackageReference "Web3" */;
-			productName = Web3ContractABI;
-		};
-		C33544422AEF40B2007FFD1B /* Web3PromiseKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C335443D2AEF40B2007FFD1B /* XCRemoteSwiftPackageReference "Web3" */;
-			productName = Web3PromiseKit;
 		};
 		C33544452AEF4171007FFD1B /* VarInt */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1288,9 +1239,24 @@
 			package = C33544472AEF41A9007FFD1B /* XCRemoteSwiftPackageReference "swift-cid" */;
 			productName = CID;
 		};
-		C3F0508F2AE35100007FCC56 /* SwiftMUD */ = {
+		C3A41CE42AFF090E008E0BFC /* Web3 */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C359E0822AE34C4400CBFAA0 /* XCRemoteSwiftPackageReference "swift-mud" */;
+			package = C3A41CE32AFF090E008E0BFC /* XCRemoteSwiftPackageReference "Web3" */;
+			productName = Web3;
+		};
+		C3A41CE62AFF090E008E0BFC /* Web3ContractABI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3A41CE32AFF090E008E0BFC /* XCRemoteSwiftPackageReference "Web3" */;
+			productName = Web3ContractABI;
+		};
+		C3A41CE82AFF090E008E0BFC /* Web3PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3A41CE32AFF090E008E0BFC /* XCRemoteSwiftPackageReference "Web3" */;
+			productName = Web3PromiseKit;
+		};
+		C3A41CEB2AFF091E008E0BFC /* SwiftMUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3A41CEA2AFF091E008E0BFC /* XCRemoteSwiftPackageReference "swift-mud" */;
 			productName = SwiftMUD;
 		};
 /* End XCSwiftPackageProductDependency section */

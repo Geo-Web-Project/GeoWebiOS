@@ -30,38 +30,19 @@ final class ModelCom: Component, Record {
 
     var key: Data
     
-    var contentHash: Data?
+    var contentURI: String?
     var encodingFormat: ModelEncodingFormat?
     
     @Transient
     lazy var contentUrl: URL? = {
-        guard let contentHash = contentHash else {
+        guard contentURI != nil, let contentURI = URL(string: contentURI!) else {
             return nil
         }
         
-        let contentHashBytes = [UInt8](contentHash)
-        let lengthPrefix = uVarInt(contentHashBytes)
-        let recBytes = [UInt8](contentHashBytes.dropFirst(lengthPrefix.bytesRead))
-        
-        let cidVersion = uVarInt(recBytes)
-        let cidCodecBytes = [UInt8](recBytes.dropFirst(cidVersion.bytesRead))
-        let cidCodec = uVarInt(cidCodecBytes)
-
-        switch Codecs(rawValue: cidCodec.value) {
-        case .identity:
-            let rawBytes = cidCodecBytes.dropFirst(cidCodec.bytesRead)
-            let ext = switch encodingFormat {
-            case .Glb:
-                ".glb"
-            case .Usdz:
-                ".usdz"
-            default:
-                ""
-            }
-            return Data(rawBytes).saveToTemporaryURL(ext: ext)
-        default:
+        switch contentURI.scheme {
+        case "ipfs":
             do {
-                let cid = try CID(recBytes)
+                let cid = try CID(contentURI.host()!)
                 let ext = switch encodingFormat {
                 case .Glb:
                     ".glb"
@@ -70,23 +51,25 @@ final class ModelCom: Component, Record {
                 default:
                     ""
                 }
-                return URL(string: "https://dweb.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
+                return URL(string: "https://w3s.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
             } catch {
                 return nil
             }
+        default:
+            return contentURI
         }
     }()
     
-    init(uniqueKey: String, lastUpdatedAtBlock: UInt, key: Data, contentHash: Data, encodingFormat: ModelEncodingFormat) {
+    init(uniqueKey: String, lastUpdatedAtBlock: UInt, key: Data, contentURI: String, encodingFormat: ModelEncodingFormat) {
         self.uniqueKey = uniqueKey
         self.lastUpdatedAtBlock = lastUpdatedAtBlock
 
         self.key = key
-        self.contentHash = contentHash
+        self.contentURI = contentURI
         self.encodingFormat = encodingFormat
     }
     
-    static func setRecord(modelContext: ModelContext, table: Table, values: [String : Any], blockNumber: EthereumQuantity) throws {
+    static func setRecord(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
         guard let keys = values["keyTuple"] as? [Data] else { throw SetRecordError.invalidData }
         guard let key = try ProtocolParser.decodeStaticField(abiType: SolidityType.bytes(length: 32), data: keys[0].makeBytes()) as? Data else { throw SetRecordError.invalidNativeValue }
         
@@ -102,12 +85,42 @@ final class ModelCom: Component, Record {
         
         let dataBytes = dynamicData.makeBytes()
         let bytesOffset = 0
-        let contentHashData = Array(dataBytes[bytesOffset..<Int(encodedLengths[0])])
+        let contentURIData = Array(dataBytes[bytesOffset..<Int(encodedLengths[0])])
         
-        guard let contentHash = try ProtocolParser.decodeDynamicField(abiType: SolidityType.bytes(length: nil), data: contentHashData) as? Data else { throw SetRecordError.invalidNativeValue }
+        guard let contentURI = try ProtocolParser.decodeDynamicField(abiType: SolidityType.string, data: contentURIData) as? String else { throw SetRecordError.invalidNativeValue }
 
         let digest: Array<UInt8> = Array(table.namespace!.world!.uniqueKey.hexToBytes() + table.namespace!.namespaceId.hexToBytes() + table.tableName.makeBytes() + key.makeBytes())
         let uniqueKey = SHA3(variant: .keccak256).calculate(for: digest).toHexString()
+        
+        try await storeActor.upsertModelCom(uniqueKey: uniqueKey, tableIdentifier: table.id, lastUpdatedAtBlock: UInt(blockNumber.quantity), key: key, contentURI: contentURI, encodingFormat: modelEncodingFormat)
+    }
+    
+    static func spliceStaticData(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
+        
+    }
+    
+    static func spliceDynamicData(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
+        
+    }
+    
+    static func deleteRecord(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
+        guard let keys = values["keyTuple"] as? [Data] else { throw SetRecordError.invalidData }
+        guard let key = try ProtocolParser.decodeStaticField(abiType: SolidityType.bytes(length: 32), data: keys[0].makeBytes()) as? Data else { throw SetRecordError.invalidNativeValue }
+
+        let digest: Array<UInt8> = Array(table.namespace!.world!.uniqueKey.hexToBytes() + table.namespace!.namespaceId.hexToBytes() + table.tableName.makeBytes() + key.makeBytes())
+        let uniqueKey = SHA3(variant: .keccak256).calculate(for: digest).toHexString()
+        
+        try await storeActor.deleteModelCom(uniqueKey: uniqueKey, lastUpdatedAtBlock: UInt(blockNumber.quantity))
+    }
+}
+
+extension StoreActor {
+    func fetchModelComs() throws -> [ModelCom] {
+        return try modelContext.fetch(FetchDescriptor<ModelCom>())
+    }
+    
+    func upsertModelCom(uniqueKey: String, tableIdentifier: PersistentIdentifier, lastUpdatedAtBlock: UInt, key: Data, contentURI: String, encodingFormat: ModelEncodingFormat) throws {
+        guard let table = self[tableIdentifier, as: Table.self] else { return }
         
         let latestValue = FetchDescriptor<ModelCom>(
             predicate: #Predicate { $0.uniqueKey == uniqueKey }
@@ -116,45 +129,35 @@ final class ModelCom: Component, Record {
         let latestBlockNumber = results.first?.lastUpdatedAtBlock
         
         if let existingRecord = results.first {
-            existingRecord.encodingFormat = modelEncodingFormat
-            existingRecord.contentHash = contentHash
-            existingRecord.lastUpdatedAtBlock = UInt(blockNumber.quantity)
-        } else if latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity {
+            existingRecord.encodingFormat = encodingFormat
+            existingRecord.contentURI = contentURI
+            existingRecord.lastUpdatedAtBlock = lastUpdatedAtBlock
+        } else if latestBlockNumber == nil || latestBlockNumber! < lastUpdatedAtBlock {
             let record = ModelCom(
                 uniqueKey: uniqueKey,
-                lastUpdatedAtBlock: UInt(blockNumber.quantity),
+                lastUpdatedAtBlock: lastUpdatedAtBlock,
                 key: key,
-                contentHash: contentHash,
-                encodingFormat: modelEncodingFormat
+                contentURI: contentURI,
+                encodingFormat: encodingFormat
             )
             record.table = table
             modelContext.insert(record)
+            
+            try modelContext.save()
         }
     }
     
-    static func spliceStaticData(modelContext: ModelContext, table: Table, values: [String : Any], blockNumber: EthereumQuantity) throws {
-        
-    }
-    
-    static func spliceDynamicData(modelContext: ModelContext, table: Table, values: [String : Any], blockNumber: EthereumQuantity) throws {
-        
-    }
-    
-    static func deleteRecord(modelContext: ModelContext, table: Table, values: [String : Any], blockNumber: EthereumQuantity) throws {
-        guard let keys = values["keyTuple"] as? [Data] else { throw SetRecordError.invalidData }
-        guard let key = try ProtocolParser.decodeStaticField(abiType: SolidityType.bytes(length: 32), data: keys[0].makeBytes()) as? Data else { throw SetRecordError.invalidNativeValue }
-
-        let digest: Array<UInt8> = Array(table.namespace!.world!.uniqueKey.hexToBytes() + table.namespace!.namespaceId.hexToBytes() + table.tableName.makeBytes() + key.makeBytes())
-        let uniqueKey = SHA3(variant: .keccak256).calculate(for: digest).toHexString()
-        
+    func deleteModelCom(uniqueKey: String, lastUpdatedAtBlock: UInt) throws {
         let latestValue = FetchDescriptor<ModelCom>(
             predicate: #Predicate { $0.uniqueKey == uniqueKey }
         )
         let results = try modelContext.fetch(latestValue)
         let latestBlockNumber = results.first?.lastUpdatedAtBlock
         
-        if let existingRecord = results.first, (latestBlockNumber == nil || latestBlockNumber! < blockNumber.quantity) {
+        if let existingRecord = results.first, (latestBlockNumber == nil || latestBlockNumber! < lastUpdatedAtBlock) {
             modelContext.delete(existingRecord)
+            
+            try modelContext.save()
         }
     }
 }

@@ -16,7 +16,6 @@ enum ModelType {
 }
 
 struct ModelSceneView: View {
-    var mediaObject: IMediaObject
     var qLAvailable: Bool = false
     @State var scene: SCNScene? = nil
     @State var qlPreviewItem: QLPreviewItem? = nil
@@ -51,54 +50,54 @@ struct ModelSceneView: View {
                 ModelQLView(qlPreviewItem: qlPreviewItem)
             }
         }
-        .task {
-            guard let contentUrl = mediaObject.contentUrl else { return }
-            if contentUrl.isFileURL {
-                // Load local file
-                
-                switch mediaObject.encodingFormat {
-                case .Glb:
-                    let asset = try! GLTFAsset(url: contentUrl)
-                    scene = SCNScene(gltfAsset: asset)
-                    qlPreviewItem = contentUrl as NSURL
-                case .Usdz:
-                    scene = try? SCNScene(url: contentUrl)
-                    qlPreviewItem = contentUrl as NSURL
-                default:
-                    return
-                }
-                
-            } else {
-                // Load remote URL
-                do {
-                    let (url, response) = try await URLSession.shared.download(for: URLRequest(url: contentUrl, cachePolicy: .returnCacheDataElseLoad))
-                    
-                    var tmpUrl = url
-                    if let suggestedFilename = response.suggestedFilename {
-                        let newUrl = url.deletingLastPathComponent().appending(path: suggestedFilename)
-                        
-                        // Rename with suggested name
-                        try? FileManager.default.moveItem(at: url, to: newUrl)
-                        
-                        tmpUrl = newUrl
-                    }
-                    
-                    switch mediaObject.encodingFormat {
-                    case .Glb:
-                        let asset = try! GLTFAsset(url: tmpUrl)
-                        scene = SCNScene(gltfAsset: asset)
-                        qlPreviewItem = tmpUrl as NSURL
-                    case .Usdz:
-                        scene = try? SCNScene(url: tmpUrl)
-                        qlPreviewItem = tmpUrl as NSURL
-                    default:
-                        return
-                    }
-                } catch {
-                    print(error)
-                }
-            }
-        }
+//        .task {
+//            guard let contentUrl = mediaObject.contentUrl else { return }
+//            if contentUrl.isFileURL {
+//                // Load local file
+//                
+//                switch mediaObject.encodingFormat {
+//                case .Glb:
+//                    let asset = try! GLTFAsset(url: contentUrl)
+//                    scene = SCNScene(gltfAsset: asset)
+//                    qlPreviewItem = contentUrl as NSURL
+//                case .Usdz:
+//                    scene = try? SCNScene(url: contentUrl)
+//                    qlPreviewItem = contentUrl as NSURL
+//                default:
+//                    return
+//                }
+//                
+//            } else {
+//                // Load remote URL
+//                do {
+//                    let (url, response) = try await URLSession.shared.download(for: URLRequest(url: contentUrl, cachePolicy: .returnCacheDataElseLoad))
+//                    
+//                    var tmpUrl = url
+//                    if let suggestedFilename = response.suggestedFilename {
+//                        let newUrl = url.deletingLastPathComponent().appending(path: suggestedFilename)
+//                        
+//                        // Rename with suggested name
+//                        try? FileManager.default.moveItem(at: url, to: newUrl)
+//                        
+//                        tmpUrl = newUrl
+//                    }
+//                    
+//                    switch mediaObject.encodingFormat {
+//                    case .Glb:
+//                        let asset = try! GLTFAsset(url: tmpUrl)
+//                        scene = SCNScene(gltfAsset: asset)
+//                        qlPreviewItem = tmpUrl as NSURL
+//                    case .Usdz:
+//                        scene = try? SCNScene(url: tmpUrl)
+//                        qlPreviewItem = tmpUrl as NSURL
+//                    default:
+//                        return
+//                    }
+//                } catch {
+//                    print(error)
+//                }
+//            }
+//        }
     }
 }
 
