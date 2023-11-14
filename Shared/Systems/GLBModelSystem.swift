@@ -50,7 +50,7 @@ class GLBModelSystem : System {
     private func addAssetToScene(contentUrl: URL, entity: Entity) throws {
         let asset = try GLTFAsset(url: contentUrl)
         guard let assetScene = asset.defaultScene else { return }
-        
+                
         // TODO: It seems part of this needs to be done on the main actor. But it blocks RealityKit. Is there some other long-running task in here that doesn't need to be on the main actor?
         let gltfEntity = GLTFRealityKitLoader.convert(scene: assetScene)
         entity.addChild(gltfEntity)

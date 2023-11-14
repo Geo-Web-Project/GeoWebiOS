@@ -11,6 +11,7 @@ import Web3
 import SwiftMUD
 import CryptoSwift
 import RealityKit
+import ARKit
 
 @MainActor
 struct WorldCameraView: View {
@@ -58,9 +59,18 @@ struct WorldCameraView: View {
                         for com in positionComs {
                             let entity = Entity()
                             entity.name = com.key.toHexString()
-                            entity.components.set(com)
                             entity.isEnabled = false
+                            entity.components.set(com)
                             anchor.addChild(entity)
+                            
+                            if com.geohash != nil {
+                                
+                                arView.session.add(anchor: geoAnchor)
+                                
+                                let geoAnchorEntity = AnchorEntity(anchor: geoAnchor)
+                                geoAnchorEntity.name = "geo-\(entity.name)"
+                                arView.scene.addAnchor(geoAnchorEntity)
+                            }
                         }
                         
                         for com in modelComs {

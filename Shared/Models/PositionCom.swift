@@ -22,8 +22,8 @@ final class PositionCom: Component, Record {
 
     var key: Data
     
-    var h: Int32
-    var geohash: Data
+    var h: Int32?
+    var geohash: Data?
     
     init(uniqueKey: String, lastUpdatedAtBlock: UInt, key: Data, h: Int32, geohash: Data) {
         self.uniqueKey = uniqueKey
