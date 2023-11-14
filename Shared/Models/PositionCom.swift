@@ -23,9 +23,9 @@ final class PositionCom: Component, Record {
     var key: Data
     
     var h: Int32?
-    var geohash: Data?
+    var geohash: String?
     
-    init(uniqueKey: String, lastUpdatedAtBlock: UInt, key: Data, h: Int32, geohash: Data) {
+    init(uniqueKey: String, lastUpdatedAtBlock: UInt, key: Data, h: Int32, geohash: String) {
         self.uniqueKey = uniqueKey
         self.lastUpdatedAtBlock = lastUpdatedAtBlock
         self.key = key
@@ -54,7 +54,7 @@ final class PositionCom: Component, Record {
         let dataBytes = dynamicData.makeBytes()
         let geohashData = Array(dataBytes[bytesOffset..<Int(encodedLengths[0])])
         
-        guard let geohash = try ProtocolParser.decodeDynamicField(abiType: SolidityType.bytes(length: nil), data: geohashData) as? Data else { throw SetRecordError.invalidNativeValue }
+        guard let geohash = try ProtocolParser.decodeDynamicField(abiType: SolidityType.string, data: geohashData) as? String else { throw SetRecordError.invalidNativeValue }
 
         let digest: Array<UInt8> = Array(table.namespace!.world!.uniqueKey.hexToBytes() + table.namespace!.namespaceId.hexToBytes() + table.tableName.makeBytes() + key.makeBytes())
         let uniqueKey = SHA3(variant: .keccak256).calculate(for: digest).toHexString()
@@ -86,7 +86,7 @@ extension StoreActor {
         return try modelContext.fetch(FetchDescriptor<PositionCom>())
     }
     
-    func upsertPositionCom(uniqueKey: String, tableIdentifier: PersistentIdentifier, lastUpdatedAtBlock: UInt, key: Data, h: Int32, geohash: Data) throws {
+    func upsertPositionCom(uniqueKey: String, tableIdentifier: PersistentIdentifier, lastUpdatedAtBlock: UInt, key: Data, h: Int32, geohash: String) throws {
         guard let table = self[tableIdentifier, as: Table.self] else { return }
         
         let latestValue = FetchDescriptor<PositionCom>(

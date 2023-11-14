@@ -37,6 +37,15 @@
       }
     },
     {
+      "identity" : "geohash",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nh7a/Geohash",
+      "state" : {
+        "revision" : "e34bbddb04c65317c45f951e5b40cc2f78caf8ae",
+        "version" : "1.0.0"
+      }
+    },
+    {
       "identity" : "promisekit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mxcl/PromiseKit.git",

@@ -75,6 +75,7 @@
 		C3A41CEE2AFF40E2008E0BFC /* USDZModelSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A41CED2AFF40E2008E0BFC /* USDZModelSystem.swift */; };
 		C3A41CEF2AFF40E2008E0BFC /* USDZModelSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A41CED2AFF40E2008E0BFC /* USDZModelSystem.swift */; };
 		C3ABECD22A958E4C00C64510 /* sample-favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3ABECD12A958E4C00C64510 /* sample-favicon.png */; };
+		C3B65E962B03F70C00909CA2 /* Geohash in Frameworks */ = {isa = PBXBuildFile; productRef = C3B65E952B03F70C00909CA2 /* Geohash */; };
 		C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */; };
 		C3BAFAB72A81C28300CFDC84 /* ModelQLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA962A81C28300CFDC84 /* ModelQLView.swift */; };
 		C3BAFAB82A81C28300CFDC84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3BAFA972A81C28300CFDC84 /* Assets.xcassets */; };
@@ -269,6 +270,7 @@
 				C3A41CE72AFF090E008E0BFC /* Web3ContractABI in Frameworks */,
 				C31D00B62AB8EC2300AC0CA4 /* GLTFKit2.framework in Frameworks */,
 				C33544492AEF41A9007FFD1B /* CID in Frameworks */,
+				C3B65E962B03F70C00909CA2 /* Geohash in Frameworks */,
 				C3A41CEC2AFF091E008E0BFC /* SwiftMUD in Frameworks */,
 				C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */,
 				C33544462AEF4171007FFD1B /* VarInt in Frameworks */,
@@ -600,6 +602,7 @@
 				C3A41CE62AFF090E008E0BFC /* Web3ContractABI */,
 				C3A41CE82AFF090E008E0BFC /* Web3PromiseKit */,
 				C3A41CEB2AFF091E008E0BFC /* SwiftMUD */,
+				C3B65E952B03F70C00909CA2 /* Geohash */,
 			);
 			productName = GeoWebiOS;
 			productReference = C331C8F92A82F03E004B1238 /* GeoWebiOS.app */;
@@ -663,6 +666,7 @@
 				C33544472AEF41A9007FFD1B /* XCRemoteSwiftPackageReference "swift-cid" */,
 				C3A41CE32AFF090E008E0BFC /* XCRemoteSwiftPackageReference "Web3" */,
 				C3A41CEA2AFF091E008E0BFC /* XCRemoteSwiftPackageReference "swift-mud" */,
+				C3B65E942B03F70C00909CA2 /* XCRemoteSwiftPackageReference "Geohash" */,
 			);
 			productRefGroup = C386B5792A7312BB008F6473 /* Products */;
 			projectDirPath = "";
@@ -1206,6 +1210,14 @@
 				minimumVersion = 0.2.2;
 			};
 		};
+		C3B65E942B03F70C00909CA2 /* XCRemoteSwiftPackageReference "Geohash" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nh7a/Geohash";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1258,6 +1270,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C3A41CEA2AFF091E008E0BFC /* XCRemoteSwiftPackageReference "swift-mud" */;
 			productName = SwiftMUD;
+		};
+		C3B65E952B03F70C00909CA2 /* Geohash */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B65E942B03F70C00909CA2 /* XCRemoteSwiftPackageReference "Geohash" */;
+			productName = Geohash;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

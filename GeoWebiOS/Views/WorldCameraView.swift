@@ -12,6 +12,7 @@ import SwiftMUD
 import CryptoSwift
 import RealityKit
 import ARKit
+import Geohash
 
 @MainActor
 struct WorldCameraView: View {
@@ -31,7 +32,7 @@ struct WorldCameraView: View {
         }
     }
 
-    let worldAddress: String = "0x22D33a1d6A772B88C557C4e243F2f949935d35E1"
+    let worldAddress: String = "0x3904285496739BF5030d79C0CF259A569806F759"
     let parcelId: UInt = 320
     var namespace: Bytes {
         Array("\(parcelId)".makeBytes()) + Array(repeating: 0, count: 11)
@@ -63,8 +64,12 @@ struct WorldCameraView: View {
                             entity.components.set(com)
                             anchor.addChild(entity)
                             
-                            if com.geohash != nil {
-                                
+                            if let geohash = com.geohash {
+                                let l = CLLocationCoordinate2D(geohash: geohash)
+                                let geoAnchor = ARGeoAnchor(
+                                    coordinate: CLLocationCoordinate2D(geohash: geohash),
+                                    altitude: CLLocationDistance(com.h ?? 0)
+                                )
                                 arView.session.add(anchor: geoAnchor)
                                 
                                 let geoAnchorEntity = AnchorEntity(anchor: geoAnchor)
