@@ -68,7 +68,7 @@ struct GeoWebiOSApp: App {
             TabView {
                 WorldCameraView()
                     .tabItem {
-                        Label("World", systemImage: "camera.aperture")
+                        Image(systemName: "list.bullet")
                     }
             }
             

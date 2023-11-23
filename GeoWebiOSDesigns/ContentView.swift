@@ -11,6 +11,34 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section("Tab Views and Bars") {
+                    NavigationLink(destination: {
+                        ZStack {
+                            Color.orange
+                                .ignoresSafeArea()
+                            TabBarEllipse1()
+                        }
+                    }) {
+                        Text("TabBarEllipse1")
+                            .fontWeight(.bold)
+                    }
+                    NavigationLink(destination: {
+                        ZStack {
+                            Color.orange
+                                .ignoresSafeArea()
+                            TabBarEllipse2()
+                        }
+                    }) {
+                        Text("TabBarEllipse2")
+                            .fontWeight(.bold)
+                    }
+                    NavigationLink(destination: {
+                        TabSheetView()
+                    }) {
+                        Text("TabSheetView")
+                            .fontWeight(.bold)
+                    }
+                }
                 Section("Parcel List View") {
                     NavigationLink(destination: WorldListItemView1(hasWebContent: true, hasMediaGallery: true, hasARContent: true)) {
                         Text("Item")
@@ -86,7 +114,6 @@ struct ContentView: View {
                             ModelCom.self,
                         ], inMemory: true)) {
                         Text("GeoModelAugmentPreview")
-                            .fontWeight(.bold)
                     }
                 }
             }

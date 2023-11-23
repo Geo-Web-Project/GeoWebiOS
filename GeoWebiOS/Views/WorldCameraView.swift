@@ -76,7 +76,7 @@ struct WorldCameraView: View {
                                 )
                                 arView.session.add(anchor: geoAnchor)
                                 
-                                let geoAnchorEntity = AnchorEntity(anchor: geoAnchor)
+                                let geoAnchorEntity = AnchorEntity(.anchor(identifier: geoAnchor.identifier))
                                 geoAnchorEntity.name = "geo-\(entity.name)"
                                 arView.scene.addAnchor(geoAnchorEntity)
                             }

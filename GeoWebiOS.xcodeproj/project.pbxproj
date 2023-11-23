@@ -38,6 +38,13 @@
 		C3386F322AEC593B00720F7A /* AugmentCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3386F2C2AEC32BC00720F7A /* AugmentCameraView.swift */; };
 		C3386F342AEC62D300720F7A /* ModelAugmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3386F332AEC62D300720F7A /* ModelAugmentPreview.swift */; };
 		C3386F362AEC68B600720F7A /* ImageAugmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3386F352AEC68B600720F7A /* ImageAugmentPreview.swift */; };
+		C34114532B0ED193004BC70A /* TabSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34114522B0ED193004BC70A /* TabSheetView.swift */; };
+		C34114542B0ED6AB004BC70A /* TabSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34114522B0ED193004BC70A /* TabSheetView.swift */; };
+		C34114562B0ED71D004BC70A /* SwiftMUD in Frameworks */ = {isa = PBXBuildFile; productRef = C34114552B0ED71D004BC70A /* SwiftMUD */; };
+		C34114592B0EDBA6004BC70A /* TabBarEllipse1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34114582B0EDBA6004BC70A /* TabBarEllipse1.swift */; };
+		C341145A2B0EDBA6004BC70A /* TabBarEllipse1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34114582B0EDBA6004BC70A /* TabBarEllipse1.swift */; };
+		C341145C2B0EDD4B004BC70A /* TabBarEllipse2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C341145B2B0EDD4B004BC70A /* TabBarEllipse2.swift */; };
+		C341145D2B0EDD4B004BC70A /* TabBarEllipse2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C341145B2B0EDD4B004BC70A /* TabBarEllipse2.swift */; };
 		C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35302A9FF3C20079A314 /* EnterARButton.swift */; };
 		C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35322A9FF4300079A314 /* WorldARView.swift */; };
 		C3552C462AF7E32100E0BC45 /* NFTCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335444A2AEF4C3C007FFD1B /* NFTCom.swift */; };
@@ -203,6 +210,9 @@
 		C3386F2C2AEC32BC00720F7A /* AugmentCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentCameraView.swift; sourceTree = "<group>"; };
 		C3386F332AEC62D300720F7A /* ModelAugmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAugmentPreview.swift; sourceTree = "<group>"; };
 		C3386F352AEC68B600720F7A /* ImageAugmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAugmentPreview.swift; sourceTree = "<group>"; };
+		C34114522B0ED193004BC70A /* TabSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSheetView.swift; sourceTree = "<group>"; };
+		C34114582B0EDBA6004BC70A /* TabBarEllipse1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarEllipse1.swift; sourceTree = "<group>"; };
+		C341145B2B0EDD4B004BC70A /* TabBarEllipse2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarEllipse2.swift; sourceTree = "<group>"; };
 		C34B35302A9FF3C20079A314 /* EnterARButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterARButton.swift; sourceTree = "<group>"; };
 		C34B35322A9FF4300079A314 /* WorldARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldARView.swift; sourceTree = "<group>"; };
 		C3552C4B2AF7EADC00E0BC45 /* geoweb.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = geoweb.glb; sourceTree = "<group>"; };
@@ -291,6 +301,7 @@
 			files = (
 				C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */,
 				C3552C482AF7E38B00E0BC45 /* VarInt in Frameworks */,
+				C34114562B0ED71D004BC70A /* SwiftMUD in Frameworks */,
 				C31D00B82AB8EC2900AC0CA4 /* GLTFKit2.framework in Frameworks */,
 				C3552C4A2AF7E3A100E0BC45 /* CID in Frameworks */,
 			);
@@ -355,6 +366,16 @@
 				C331C90A2A82F082004B1238 /* NameCom.swift */,
 			);
 			path = Tables;
+			sourceTree = "<group>";
+		};
+		C34114572B0EDB90004BC70A /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				C34114522B0ED193004BC70A /* TabSheetView.swift */,
+				C34114582B0EDBA6004BC70A /* TabBarEllipse1.swift */,
+				C341145B2B0EDD4B004BC70A /* TabBarEllipse2.swift */,
+			);
+			path = TabView;
 			sourceTree = "<group>";
 		};
 		C35A33622AB360C0007A163D /* Models */ = {
@@ -516,6 +537,7 @@
 		C3BAFAD02A81C2CD00CFDC84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C34114572B0EDB90004BC70A /* TabView */,
 				C35A33722AB384D1007A163D /* ARViews */,
 				C3BAFA9B2A81C28300CFDC84 /* ParcelView */,
 				C3BAFAB22A81C28300CFDC84 /* WorldListView */,
@@ -636,6 +658,7 @@
 				C33682922A79BA4C00CA5F43 /* SwiftGLTF */,
 				C3552C472AF7E38B00E0BC45 /* VarInt */,
 				C3552C492AF7E3A100E0BC45 /* CID */,
+				C34114552B0ED71D004BC70A /* SwiftMUD */,
 			);
 			productName = HubbleDesigns;
 			productReference = C386B5782A7312BB008F6473 /* GeoWebiOSDesigns.app */;
@@ -741,6 +764,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C34114592B0EDBA6004BC70A /* TabBarEllipse1.swift in Sources */,
 				C308E7DD2A9438B800EEC111 /* MapViewCellVariant2.swift in Sources */,
 				C356AE0C2AFEE80F0052C11B /* GeoAnchorSystem.swift in Sources */,
 				C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */,
@@ -770,6 +794,7 @@
 				C3EBACB92AEC78D800D0695F /* AugmentInputSystem.swift in Sources */,
 				C3EBACD62AEDAF8900D0695F /* PositionCom.swift in Sources */,
 				C3386F322AEC593B00720F7A /* AugmentCameraView.swift in Sources */,
+				C34114532B0ED193004BC70A /* TabSheetView.swift in Sources */,
 				C331C8FC2A82F03E004B1238 /* GeoWebiOSApp.swift in Sources */,
 				C308E7DA2A9438A300EEC111 /* MapViewCell.swift in Sources */,
 				C308E7DB2A9438A800EEC111 /* WebViewCell.swift in Sources */,
@@ -779,6 +804,7 @@
 				C3982F6E2A96D3B40089AF69 /* ModelQLView.swift in Sources */,
 				C3B65E9E2B04090E00909CA2 /* ScaleCom.swift in Sources */,
 				C3EBACD42AEDA99700D0695F /* AugmentContract.swift in Sources */,
+				C341145C2B0EDD4B004BC70A /* TabBarEllipse2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,11 +827,13 @@
 				C3552C462AF7E32100E0BC45 /* NFTCom.swift in Sources */,
 				C31E0AC22AC4EBE400051DFF /* AnchorTransformSystem.swift in Sources */,
 				C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */,
+				C341145D2B0EDD4B004BC70A /* TabBarEllipse2.swift in Sources */,
 				C3386F342AEC62D300720F7A /* ModelAugmentPreview.swift in Sources */,
 				C3BAFACC2A81C28300CFDC84 /* ContentView.swift in Sources */,
 				C31ABFD02A9D644100F3368C /* WorldListItemView1.swift in Sources */,
 				C3BAFABA2A81C28300CFDC84 /* GeoWebiOSDesignsApp.swift in Sources */,
 				C3BAFAD42A81C90B00CFDC84 /* ParcelListView3.swift in Sources */,
+				C341145A2B0EDBA6004BC70A /* TabBarEllipse1.swift in Sources */,
 				C3386F362AEC68B600720F7A /* ImageAugmentPreview.swift in Sources */,
 				C3BAFAC82A81C28300CFDC84 /* WebViewCell.swift in Sources */,
 				C356AE0D2AFEE80F0052C11B /* GeoAnchorSystem.swift in Sources */,
@@ -826,6 +854,7 @@
 				C3EBACD72AEDAF8900D0695F /* PositionCom.swift in Sources */,
 				C3F9DB192ADDFAF4007EDDD6 /* ParcelMetadataView.swift in Sources */,
 				C3753E8A2A955EDF003175B5 /* MediaGalleryView.swift in Sources */,
+				C34114542B0ED6AB004BC70A /* TabSheetView.swift in Sources */,
 				C3BAFAB72A81C28300CFDC84 /* ModelQLView.swift in Sources */,
 				C3F9DB1F2ADE04AE007EDDD6 /* ParcelPreviewCell.swift in Sources */,
 				C3EBACC32AEC870800D0695F /* Data+SaveTemp.swift in Sources */,
@@ -1252,6 +1281,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */;
 			productName = SwiftGLTF;
+		};
+		C34114552B0ED71D004BC70A /* SwiftMUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3A41CEA2AFF091E008E0BFC /* XCRemoteSwiftPackageReference "swift-mud" */;
+			productName = SwiftMUD;
 		};
 		C3552C472AF7E38B00E0BC45 /* VarInt */ = {
 			isa = XCSwiftPackageProductDependency;
