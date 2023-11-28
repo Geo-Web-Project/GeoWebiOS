@@ -109,7 +109,7 @@ final class ImageCom: Component, Record {
         let digest: Array<UInt8> = Array(table.namespace!.world!.uniqueKey.hexToBytes() + table.namespace!.namespaceId.hexToBytes() + table.tableName.makeBytes() + key.makeBytes())
         let uniqueKey = SHA3(variant: .keccak256).calculate(for: digest).toHexString()
         
-        try await storeActor.upsertImageCom(uniqueKey: uniqueKey, tableIdentifier: table.id, lastUpdatedAtBlock: UInt(blockNumber.quantity), key: key, encodingFormat: imageEncodingFormat, physicalWidthInMillimeters: physicalWidthInMillimeters, contentURI: contentURI)
+        try await storeActor.upsertImageCom(uniqueKey: uniqueKey, tableId: table.id, lastBlock: UInt(blockNumber.quantity), key: key, format: imageEncodingFormat, physicalWidth: physicalWidthInMillimeters, contentURI: contentURI)
     }
     
     static func spliceStaticData(storeActor: StoreActor, table: Table, values: [String : Any], blockNumber: EthereumQuantity) async throws {
@@ -136,8 +136,8 @@ extension StoreActor {
         try modelContext.fetch(FetchDescriptor<ImageCom>())
     }
     
-    func upsertImageCom(uniqueKey: String, tableIdentifier: PersistentIdentifier, lastUpdatedAtBlock: UInt, key: Data, encodingFormat: ImageEncodingFormat, physicalWidthInMillimeters: UInt64, contentURI: String) throws {
-        guard let table = self[tableIdentifier, as: Table.self] else { return }
+    func upsertImageCom(uniqueKey: String, tableId: PersistentIdentifier, lastBlock: UInt, key: Data, format: ImageEncodingFormat, physicalWidth: UInt64, contentURI: String) throws {
+        guard let table = self[tableId, as: Table.self] else { return }
         
         let latestValue = FetchDescriptor<ImageCom>(
             predicate: #Predicate { $0.uniqueKey == uniqueKey }
@@ -146,17 +146,17 @@ extension StoreActor {
         let latestBlockNumber = results.first?.lastUpdatedAtBlock
         
         if let existingRecord = results.first {
-            existingRecord.encodingFormat = encodingFormat
-            existingRecord.physicalWidthInMillimeters = physicalWidthInMillimeters
+            existingRecord.encodingFormat = format
+            existingRecord.physicalWidthInMillimeters = physicalWidth
             existingRecord.contentURI = contentURI
-            existingRecord.lastUpdatedAtBlock = lastUpdatedAtBlock
-        } else if latestBlockNumber == nil || latestBlockNumber! < lastUpdatedAtBlock {
+            existingRecord.lastUpdatedAtBlock = lastBlock
+        } else if latestBlockNumber == nil || latestBlockNumber! < lastBlock {
             let record = ImageCom(
                 uniqueKey: uniqueKey,
-                lastUpdatedAtBlock: lastUpdatedAtBlock,
+                lastUpdatedAtBlock: lastBlock,
                 key: key,
-                encodingFormat: encodingFormat,
-                physicalWidthInMillimeters: physicalWidthInMillimeters,
+                encodingFormat: format,
+                physicalWidthInMillimeters: physicalWidth,
                 contentURI: contentURI
             )
             record.table = table
