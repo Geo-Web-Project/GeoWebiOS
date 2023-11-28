@@ -8,7 +8,6 @@
 import SwiftUI
 import RealityKit
 import Combine
-import VarInt
 import Web3
 import SwiftMUD
 import SwiftData

@@ -7,7 +7,6 @@
 
 import Foundation
 import RealityKit
-import VarInt
 import CID
 import Multicodec
 import SwiftData

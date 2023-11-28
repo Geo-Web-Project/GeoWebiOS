@@ -8,7 +8,6 @@
 import SwiftUI
 import RealityKit
 import Combine
-import VarInt
 
 struct ImageAugmentPreview: View {
     private let arView: ARView = ARView(frame: .zero)

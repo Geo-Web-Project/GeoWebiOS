@@ -28,7 +28,6 @@
 		C331C9052A82F040004B1238 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331C9042A82F040004B1238 /* Preview Assets.xcassets */; };
 		C331C90D2A82F082004B1238 /* NameCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C90A2A82F082004B1238 /* NameCom.swift */; };
 		C33544352AEF2BD4007FFD1B /* AccessManagementSystemContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33544342AEF2BD4007FFD1B /* AccessManagementSystemContract.swift */; };
-		C33544462AEF4171007FFD1B /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C33544452AEF4171007FFD1B /* VarInt */; };
 		C33544492AEF41A9007FFD1B /* CID in Frameworks */ = {isa = PBXBuildFile; productRef = C33544482AEF41A9007FFD1B /* CID */; };
 		C335444B2AEF4C3C007FFD1B /* NFTCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335444A2AEF4C3C007FFD1B /* NFTCom.swift */; };
 		C335444D2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335444C2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift */; };
@@ -48,7 +47,6 @@
 		C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35302A9FF3C20079A314 /* EnterARButton.swift */; };
 		C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35322A9FF4300079A314 /* WorldARView.swift */; };
 		C3552C462AF7E32100E0BC45 /* NFTCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335444A2AEF4C3C007FFD1B /* NFTCom.swift */; };
-		C3552C482AF7E38B00E0BC45 /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = C3552C472AF7E38B00E0BC45 /* VarInt */; };
 		C3552C4A2AF7E3A100E0BC45 /* CID in Frameworks */ = {isa = PBXBuildFile; productRef = C3552C492AF7E3A100E0BC45 /* CID */; };
 		C3552C4C2AF7EADC00E0BC45 /* geoweb.glb in Resources */ = {isa = PBXBuildFile; fileRef = C3552C4B2AF7EADC00E0BC45 /* geoweb.glb */; };
 		C3552C4E2AF7EFE600E0BC45 /* GeoModelAugmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3552C4D2AF7EFE600E0BC45 /* GeoModelAugmentView.swift */; };
@@ -289,7 +287,6 @@
 				C3B65E962B03F70C00909CA2 /* Geohash in Frameworks */,
 				C3A41CEC2AFF091E008E0BFC /* SwiftMUD in Frameworks */,
 				C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */,
-				C33544462AEF4171007FFD1B /* VarInt in Frameworks */,
 				C3A41CE92AFF090E008E0BFC /* Web3PromiseKit in Frameworks */,
 				C3A41CE52AFF090E008E0BFC /* Web3 in Frameworks */,
 			);
@@ -300,7 +297,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */,
-				C3552C482AF7E38B00E0BC45 /* VarInt in Frameworks */,
 				C34114562B0ED71D004BC70A /* SwiftMUD in Frameworks */,
 				C31D00B82AB8EC2900AC0CA4 /* GLTFKit2.framework in Frameworks */,
 				C3552C4A2AF7E3A100E0BC45 /* CID in Frameworks */,
@@ -626,7 +622,6 @@
 			name = GeoWebiOS;
 			packageProductDependencies = (
 				C308E7E22A94394900EEC111 /* SwiftGLTF */,
-				C33544452AEF4171007FFD1B /* VarInt */,
 				C33544482AEF41A9007FFD1B /* CID */,
 				C3A41CE42AFF090E008E0BFC /* Web3 */,
 				C3A41CE62AFF090E008E0BFC /* Web3ContractABI */,
@@ -656,7 +651,6 @@
 			name = GeoWebiOSDesigns;
 			packageProductDependencies = (
 				C33682922A79BA4C00CA5F43 /* SwiftGLTF */,
-				C3552C472AF7E38B00E0BC45 /* VarInt */,
 				C3552C492AF7E3A100E0BC45 /* CID */,
 				C34114552B0ED71D004BC70A /* SwiftMUD */,
 			);
@@ -1267,11 +1261,6 @@
 			package = C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */;
 			productName = SwiftGLTF;
 		};
-		C33544452AEF4171007FFD1B /* VarInt */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C33544442AEF4171007FFD1B /* XCRemoteSwiftPackageReference "swift-varint" */;
-			productName = VarInt;
-		};
 		C33544482AEF41A9007FFD1B /* CID */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C33544472AEF41A9007FFD1B /* XCRemoteSwiftPackageReference "swift-cid" */;
@@ -1286,11 +1275,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C3A41CEA2AFF091E008E0BFC /* XCRemoteSwiftPackageReference "swift-mud" */;
 			productName = SwiftMUD;
-		};
-		C3552C472AF7E38B00E0BC45 /* VarInt */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C33544442AEF4171007FFD1B /* XCRemoteSwiftPackageReference "swift-varint" */;
-			productName = VarInt;
 		};
 		C3552C492AF7E3A100E0BC45 /* CID */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -8,7 +8,6 @@
 import SwiftUI
 import RealityKit
 import GLTFKit2
-import VarInt
 import Combine
 import SwiftData
 import ARKit
