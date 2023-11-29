@@ -41,12 +41,13 @@ struct TabBarEllipse: View {
                             .scaleEffect(shrink ? 1.0 : 1.5)
                             .padding(.top, 20)
                             .offset(y: shrink ? -8 : -20)
-                            .foregroundStyle(selectedTab == 1 ? Color.accentColor : Color.primary)
-                            .onTapGesture {
-                                withAnimation(shrink ? .none : .default) {
-                                    selectedTab = 1
-                                }
-                            }
+                            .foregroundStyle(.secondary)
+//                            .foregroundStyle(selectedTab == 1 ? Color.accentColor : Color.primary)
+//                            .onTapGesture {
+//                                withAnimation(shrink ? .none : .default) {
+//                                    selectedTab = 1
+//                                }
+//                            }
                         
                         Spacer()
                         Image(systemName: "map")
