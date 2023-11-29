@@ -42,8 +42,8 @@
 		C34114562B0ED71D004BC70A /* SwiftMUD in Frameworks */ = {isa = PBXBuildFile; productRef = C34114552B0ED71D004BC70A /* SwiftMUD */; };
 		C34114592B0EDBA6004BC70A /* TabBarEllipse1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34114582B0EDBA6004BC70A /* TabBarEllipse1.swift */; };
 		C341145A2B0EDBA6004BC70A /* TabBarEllipse1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34114582B0EDBA6004BC70A /* TabBarEllipse1.swift */; };
-		C341145C2B0EDD4B004BC70A /* TabBarEllipse2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C341145B2B0EDD4B004BC70A /* TabBarEllipse2.swift */; };
-		C341145D2B0EDD4B004BC70A /* TabBarEllipse2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C341145B2B0EDD4B004BC70A /* TabBarEllipse2.swift */; };
+		C341145C2B0EDD4B004BC70A /* TabBarEllipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C341145B2B0EDD4B004BC70A /* TabBarEllipse.swift */; };
+		C341145D2B0EDD4B004BC70A /* TabBarEllipse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C341145B2B0EDD4B004BC70A /* TabBarEllipse.swift */; };
 		C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35302A9FF3C20079A314 /* EnterARButton.swift */; };
 		C34B35332A9FF4300079A314 /* WorldARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B35322A9FF4300079A314 /* WorldARView.swift */; };
 		C3552C462AF7E32100E0BC45 /* NFTCom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335444A2AEF4C3C007FFD1B /* NFTCom.swift */; };
@@ -210,7 +210,7 @@
 		C3386F352AEC68B600720F7A /* ImageAugmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAugmentPreview.swift; sourceTree = "<group>"; };
 		C34114522B0ED193004BC70A /* TabSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSheetView.swift; sourceTree = "<group>"; };
 		C34114582B0EDBA6004BC70A /* TabBarEllipse1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarEllipse1.swift; sourceTree = "<group>"; };
-		C341145B2B0EDD4B004BC70A /* TabBarEllipse2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarEllipse2.swift; sourceTree = "<group>"; };
+		C341145B2B0EDD4B004BC70A /* TabBarEllipse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarEllipse.swift; sourceTree = "<group>"; };
 		C34B35302A9FF3C20079A314 /* EnterARButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterARButton.swift; sourceTree = "<group>"; };
 		C34B35322A9FF4300079A314 /* WorldARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldARView.swift; sourceTree = "<group>"; };
 		C3552C4B2AF7EADC00E0BC45 /* geoweb.glb */ = {isa = PBXFileReference; lastKnownFileType = file; path = geoweb.glb; sourceTree = "<group>"; };
@@ -368,8 +368,8 @@
 			isa = PBXGroup;
 			children = (
 				C34114522B0ED193004BC70A /* TabSheetView.swift */,
+				C341145B2B0EDD4B004BC70A /* TabBarEllipse.swift */,
 				C34114582B0EDBA6004BC70A /* TabBarEllipse1.swift */,
-				C341145B2B0EDD4B004BC70A /* TabBarEllipse2.swift */,
 			);
 			path = TabView;
 			sourceTree = "<group>";
@@ -798,7 +798,7 @@
 				C3982F6E2A96D3B40089AF69 /* ModelQLView.swift in Sources */,
 				C3B65E9E2B04090E00909CA2 /* ScaleCom.swift in Sources */,
 				C3EBACD42AEDA99700D0695F /* AugmentContract.swift in Sources */,
-				C341145C2B0EDD4B004BC70A /* TabBarEllipse2.swift in Sources */,
+				C341145C2B0EDD4B004BC70A /* TabBarEllipse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,7 +821,7 @@
 				C3552C462AF7E32100E0BC45 /* NFTCom.swift in Sources */,
 				C31E0AC22AC4EBE400051DFF /* AnchorTransformSystem.swift in Sources */,
 				C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */,
-				C341145D2B0EDD4B004BC70A /* TabBarEllipse2.swift in Sources */,
+				C341145D2B0EDD4B004BC70A /* TabBarEllipse.swift in Sources */,
 				C3386F342AEC62D300720F7A /* ModelAugmentPreview.swift in Sources */,
 				C3BAFACC2A81C28300CFDC84 /* ContentView.swift in Sources */,
 				C31ABFD02A9D644100F3368C /* WorldListItemView1.swift in Sources */,

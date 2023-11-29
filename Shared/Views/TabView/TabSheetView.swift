@@ -8,18 +8,16 @@
 import SwiftUI
 
 struct TabSheetView: View {
-    @State private var isPresented = true
+    @State private var selectedTab = 1
+    private var isPresented: Bool {
+        selectedTab != 1
+    }
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 Color.orange
                     .ignoresSafeArea()
-                    .onTapGesture {
-                        withAnimation {
-                            isPresented = false
-                        }
-                    }
                 
                 VStack {
                     Spacer()
@@ -29,12 +27,7 @@ struct TabSheetView: View {
                         .offset(y: isPresented ? 0 : geometry.safeAreaInsets.bottom + (geometry.size.height / 3))
                 }
                 
-                TabBarEllipse2(shrink: isPresented)
-                    .onTapGesture {
-                        withAnimation {
-                            isPresented.toggle()
-                        }
-                    }
+                TabBarEllipse(selectedTab: $selectedTab)
             }
         }
     }

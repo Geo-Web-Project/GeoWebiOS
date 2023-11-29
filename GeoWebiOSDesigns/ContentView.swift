@@ -26,7 +26,7 @@ struct ContentView: View {
                         ZStack {
                             Color.orange
                                 .ignoresSafeArea()
-                            TabBarEllipse2()
+                            TabBarEllipse(selectedTab: Binding.constant(0))
                         }
                     }) {
                         Text("TabBarEllipse2")
