@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct TabBarEllipse: View {
-    @Binding var selectedTab: Int
+    @Binding var selectedTab: Int?
     
     private var shrink: Bool {
-        selectedTab != 1
+        selectedTab != nil
     }
     
     var body: some View {
@@ -20,7 +20,7 @@ struct TabBarEllipse: View {
                 Spacer()
                 ZStack {
                     Ellipse()
-                        .fill(.thickMaterial)
+                        .fill(.thinMaterial)
                         .frame(height: 200)
                         .offset(y: geometry.safeAreaInsets.bottom + (shrink ? 130 : 110))
                     HStack {
@@ -31,7 +31,7 @@ struct TabBarEllipse: View {
                             .offset(x: shrink ? 30 : 0)
                             .foregroundStyle(selectedTab == 0 ? Color.accentColor : Color.primary)
                             .onTapGesture {
-                                withAnimation {
+                                withAnimation(shrink ? .none : .default) {
                                     selectedTab = 0
                                 }
                             }
@@ -43,7 +43,7 @@ struct TabBarEllipse: View {
                             .offset(y: shrink ? -8 : -20)
                             .foregroundStyle(selectedTab == 1 ? Color.accentColor : Color.primary)
                             .onTapGesture {
-                                withAnimation {
+                                withAnimation(shrink ? .none : .default) {
                                     selectedTab = 1
                                 }
                             }
@@ -55,7 +55,7 @@ struct TabBarEllipse: View {
                             .offset(x: shrink ? -30 : 0)
                             .foregroundStyle(selectedTab == 2 ? Color.accentColor : Color.primary)
                             .onTapGesture {
-                                withAnimation {
+                                withAnimation(shrink ? .none : .default) {
                                     selectedTab = 2
                                 }
                             }
@@ -69,7 +69,7 @@ struct TabBarEllipse: View {
 }
 
 #Preview {
-    TabBarEllipse(selectedTab: Binding.constant(0))
+    TabBarEllipse(selectedTab: Binding.constant(nil))
 }
 
 #Preview {

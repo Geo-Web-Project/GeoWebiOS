@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct TabSheetView: View {
-    @State private var selectedTab = 1
+    @State private var selectedTab: Int? = nil
     private var isPresented: Bool {
-        selectedTab != 1
+        selectedTab != nil
     }
     
     var body: some View {
@@ -18,10 +18,15 @@ struct TabSheetView: View {
             ZStack {
                 Color.orange
                     .ignoresSafeArea()
+                    .onTapGesture {
+                        withAnimation {
+                            selectedTab = nil
+                        }
+                    }
                 
                 VStack {
                     Spacer()
-                    Color.red
+                    Color.background
                         .ignoresSafeArea()
                         .frame(height: geometry.size.height / 3)
                         .offset(y: isPresented ? 0 : geometry.safeAreaInsets.bottom + (geometry.size.height / 3))
