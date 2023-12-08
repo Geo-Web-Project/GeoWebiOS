@@ -33,7 +33,9 @@ struct ContentView: View {
                             .fontWeight(.bold)
                     }
                     NavigationLink(destination: {
-                        TabSheetView()
+                        TabSheetView {
+                            Color.orange
+                        }
                     }) {
                         Text("TabSheetView")
                             .fontWeight(.bold)

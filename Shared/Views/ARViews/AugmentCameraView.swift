@@ -24,7 +24,7 @@ struct AugmentCameraViewRepresentable: UIViewRepresentable {
         AugmentInputSystem.registerSystem()
 ////        FramedImageSystem.registerSystem()
 ////        FramedNFTImageSystem.registerSystem()
-        GLBModelSystem.registerSystem()
+//        GLBModelSystem.registerSystem()
         USDZModelSystem.registerSystem()
         GeoAnchorSystem.registerSystem()
         

@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct TabSheetView: View {
+struct TabSheetView<Content>: View where Content: View {
+    let content: Content
     @State private var selectedTab: Int? = nil
     private var selectedTabBinding: Binding<Int?> {
         Binding {
@@ -21,9 +22,24 @@ struct TabSheetView: View {
 
     }
     @State private var sheetDetent: PresentationDetent? = nil
+    
+    private var navigationTitle: String {
+        switch selectedTab {
+        case 0:
+            "Nearby"
+        case 1:
+            "Augment Publisher"
+        default:
+            ""
+        }
+    }
 
     private var isPresented: Bool {
         sheetDetent != nil
+    }
+    
+    init(content: () -> Content) {
+        self.content = content()
     }
     
     func calculateSheetHeight(geometry: GeometryProxy) -> CGFloat {
@@ -31,7 +47,7 @@ struct TabSheetView: View {
         case .some(.large):
             return geometry.size.height + geometry.safeAreaInsets.top
         default :
-            return geometry.size.height / 3
+            return max(geometry.size.height / 3, 320)
         }
     }
     
@@ -42,14 +58,15 @@ struct TabSheetView: View {
         case .some(.large):
             return -geometry.safeAreaInsets.top
         default :
-            return geometry.safeAreaInsets.bottom + (geometry.size.height / 3)
+            return geometry.safeAreaInsets.bottom + calculateSheetHeight(geometry: geometry)
         }
     }
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Color.orange
+                content
+                    .frame(width: geometry.size.width)
                     .ignoresSafeArea()
                 
                 if isPresented {
@@ -67,10 +84,52 @@ struct TabSheetView: View {
                 VStack {
                     Spacer()
                     VStack {
-                        Capsule()
-                            .fill(Color.secondary)
-                            .frame(width: 30, height: 3)
-                            .padding(10)
+                        ZStack(alignment: .top) {
+                            if sheetDetent == .medium {
+                                VStack {
+                                    Capsule()
+                                        .fill(Color.secondary)
+                                        .frame(width: 30, height: 3)
+                                        .padding(10)
+                                    Spacer()
+                                }
+                            }
+                            
+                            HStack {
+                                if sheetDetent == .large {
+                                    Button(action: {
+                                        withAnimation {
+                                            selectedTab = nil
+                                            sheetDetent = nil
+                                        }
+                                    }) {
+                                        Image(systemName: "chevron.down")
+                                            .padding()
+                                    }
+                                    .foregroundStyle(Color.primary)
+                                }
+                                
+                                Text(navigationTitle)
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .padding()
+                                    .animation(.none, value: navigationTitle)
+                                Spacer()
+                                
+                                if sheetDetent == .medium {
+                                    Button(action: {
+                                        withAnimation {
+                                            selectedTab = nil
+                                            sheetDetent = nil
+                                        }
+                                    }) {
+                                        Image(systemName: "xmark")
+                                            .padding()
+                                    }
+                                    .foregroundStyle(Color.primary)
+                                }
+                            }
+                        }
                         
                         Spacer()
                         
@@ -91,5 +150,7 @@ struct TabSheetView: View {
 }
 
 #Preview {
-    TabSheetView()
+    TabSheetView {
+        Color.orange
+    }
 }

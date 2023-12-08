@@ -65,11 +65,8 @@ struct GeoWebiOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabView {
+            TabSheetView {
                 WorldCameraView()
-                    .tabItem {
-                        Image(systemName: "list.bullet")
-                    }
             }
             
         }

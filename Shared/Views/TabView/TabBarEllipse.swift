@@ -22,13 +22,13 @@ struct TabBarEllipse: View {
                     Ellipse()
                         .fill(.thinMaterial)
                         .frame(height: 200)
-                        .offset(y: geometry.safeAreaInsets.bottom + (shrink ? 130 : 110))
+                        .offset(y: (shrink ? 135 : 120))
                     HStack {
                         Spacer()
                         Image(systemName: "list.bullet")
-                            .scaleEffect(shrink ? 1.0 : 1.5)
-                            .padding(.top, 20)
-                            .offset(x: shrink ? 30 : 0)
+                            .scaleEffect(shrink ? 1.2 : 1.5)
+                            .padding(.top, 30 - geometry.safeAreaInsets.bottom)
+                            .offset(x: shrink ? 20 : 0)
                             .foregroundStyle(selectedTab == 0 ? Color.accentColor : Color.primary)
                             .onTapGesture {
                                 withAnimation(shrink ? .none : .default) {
@@ -38,9 +38,9 @@ struct TabBarEllipse: View {
                         
                         Spacer()
                         Image(systemName: "arkit")
-                            .scaleEffect(shrink ? 1.0 : 1.5)
-                            .padding(.top, 20)
-                            .offset(y: shrink ? -8 : -20)
+                            .scaleEffect(shrink ? 1.2 : 1.5)
+                            .padding(.top, 30 - geometry.safeAreaInsets.bottom)
+                            .offset(y: shrink ? -10 : -18)
                             .foregroundStyle(.secondary)
 //                            .foregroundStyle(selectedTab == 1 ? Color.accentColor : Color.primary)
 //                            .onTapGesture {
@@ -51,9 +51,9 @@ struct TabBarEllipse: View {
                         
                         Spacer()
                         Image(systemName: "map")
-                            .scaleEffect(shrink ? 1.0 : 1.5)
-                            .padding(.top, 20)
-                            .offset(x: shrink ? -30 : 0)
+                            .scaleEffect(shrink ? 1.2 : 1.5)
+                            .padding(.top, 30 - geometry.safeAreaInsets.bottom)
+                            .offset(x: shrink ? -20 : 0)
                             .foregroundStyle(selectedTab == 2 ? Color.accentColor : Color.primary)
                             .onTapGesture {
                                 withAnimation(shrink ? .none : .default) {
