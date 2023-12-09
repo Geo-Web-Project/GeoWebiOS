@@ -29,9 +29,10 @@ class GeoAnchorSystem : System {
             geoAnchorEntity.addChild(entity)
             entity.isEnabled = true
             
-            entity.transform.scale.x = Float(scaleCom?.x ?? 1000) / 1000
-            entity.transform.scale.y = Float(scaleCom?.y ?? 1000) / 1000
-            entity.transform.scale.z = Float(scaleCom?.z ?? 1000) / 1000
+            // TODO: Remove 10x hardcoding
+            entity.transform.scale.x = Float(scaleCom?.x ?? 10000) / 1000
+            entity.transform.scale.y = Float(scaleCom?.y ?? 10000) / 1000
+            entity.transform.scale.z = Float(scaleCom?.z ?? 10000) / 1000
             
             let x = Float(orientationCom?.x ?? 0) / 1000
             let y = Float(orientationCom?.y ?? 0) / 1000
