@@ -23,11 +23,16 @@ class GeoAnchorSystem : System {
     func update(context: SceneUpdateContext) {
         context.scene.performQuery(Self.query).forEach { entity in
             guard let geoAnchorEntity = context.scene.findEntity(named: "geo-\(entity.name)") else { return }
+            let positionCom = entity.components[PositionCom.self] as? PositionCom
             let orientationCom = entity.components[OrientationCom.self] as? OrientationCom
-            let scaleCom = entity.components[OrientationCom.self] as? ScaleCom
+            let scaleCom = entity.components[ScaleCom.self] as? ScaleCom
 
             geoAnchorEntity.addChild(entity)
             entity.isEnabled = true
+            
+            // Altitude
+            let altitudeMillimeters = Float(positionCom?.h ?? 0)
+            entity.transform.translation.y = altitudeMillimeters / 1000
             
             // TODO: Remove 10x hardcoding
             entity.transform.scale.x = Float(scaleCom?.x ?? 10000) / 1000

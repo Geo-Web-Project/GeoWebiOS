@@ -69,10 +69,8 @@ struct WorldCameraView: View {
                             anchor.addChild(entity)
                             
                             if let geohash = com.geohash {
-                                let altitudeMillimeters = Double(com.h ?? 0)
                                 let geoAnchor = ARGeoAnchor(
                                     coordinate: CLLocationCoordinate2D(geohash: geohash)
-//                                    altitude: altitudeMillimeters / 1000
                                 )
                                 arView.session.add(anchor: geoAnchor)
                                 
