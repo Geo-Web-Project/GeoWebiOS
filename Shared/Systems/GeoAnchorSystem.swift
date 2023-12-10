@@ -34,11 +34,12 @@ class GeoAnchorSystem : System {
             let altitudeMillimeters = Float(positionCom?.h ?? 0)
             entity.transform.translation.y = altitudeMillimeters / 1000
             
-            // TODO: Remove 10x hardcoding
-            entity.transform.scale.x = Float(scaleCom?.x ?? 10000) / 1000
-            entity.transform.scale.y = Float(scaleCom?.y ?? 10000) / 1000
-            entity.transform.scale.z = Float(scaleCom?.z ?? 10000) / 1000
+            // Scale
+            entity.transform.scale.x = Float(scaleCom?.x ?? 1000) / 1000
+            entity.transform.scale.y = Float(scaleCom?.y ?? 1000) / 1000
+            entity.transform.scale.z = Float(scaleCom?.z ?? 1000) / 1000
             
+            // Orientation
             let x = Float(orientationCom?.x ?? 0) / 1000
             let y = Float(orientationCom?.y ?? 0) / 1000
             let z = Float(orientationCom?.z ?? 0) / 1000
