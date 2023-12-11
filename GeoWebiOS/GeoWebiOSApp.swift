@@ -68,7 +68,10 @@ struct GeoWebiOSApp: App {
             TabSheetView {
                 WorldCameraView()
             }
-            
+            .onAppear {
+                print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!")
+                
+            }
         }
         .environment(\.web3, Web3Key.defaultValue)
         .environment(\.storeActor, StoreActor(modelContainer: container))

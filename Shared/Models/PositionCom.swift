@@ -12,6 +12,7 @@ import SwiftMUD
 import Web3
 import Web3ContractABI
 import CryptoSwift
+import ARKit
 
 @Model
 final class PositionCom: Component, Record {
@@ -24,6 +25,9 @@ final class PositionCom: Component, Record {
     
     var h: Int32?
     var geohash: String?
+    
+    @Transient
+    var geoAnchor: ARGeoAnchor?
     
     init(uniqueKey: String, lastUpdatedAtBlock: UInt, key: Data, h: Int32, geohash: String) {
         self.uniqueKey = uniqueKey

@@ -74,11 +74,16 @@ class AugmentCameraViewCoordinator: NSObject, ARSessionDelegate {
     init(_ parent: AugmentCameraViewRepresentable) {
         self.parent = parent
     }
-    
-    func session(_ session: ARSession, didUpdate frame: ARFrame) {
-//        if let geoTrackingStatus = frame.geoTrackingStatus {
-//            self.parent.overlayText = "\(geoTrackingStatus.accuracy)"
-//        }
+
+    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
+        for anchor in anchors {
+            guard let geoAnchor = anchor as? ARGeoAnchor else { continue }
+            guard let name = geoAnchor.name else { continue }
+            
+            guard let anchorEntity = self.parent.arView.scene.findEntity(named: name) as? AnchorEntity else { return }
+            guard let positionCom = anchorEntity.components[PositionCom.self] as? PositionCom else { return }
+            positionCom.geoAnchor = geoAnchor
+        }
     }
 }
 

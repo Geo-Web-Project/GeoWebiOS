@@ -20,6 +20,7 @@ class USDZModelSystem : System {
 
     func update(context: SceneUpdateContext) {
         context.scene.performQuery(Self.query).forEach { entity in
+            guard entity.isEnabled else { return }
             guard let modelCom = entity.components[ModelCom.self] as? ModelCom else { return }
             guard modelCom.encodingFormat == .Usdz else { return }
             
@@ -31,8 +32,9 @@ class USDZModelSystem : System {
             if contentUrl.isFileURL {
                 do {
                     try addAssetToScene(contentUrl: contentUrl, entity: entity)
+                    print("Added USDZ asset to entity: \(entity)")
                 } catch {
-                    print(error)
+                    print("Error adding USDZ asset: \(error)")
                 }
             } else {
                 // Download in detached task to not block parent actor

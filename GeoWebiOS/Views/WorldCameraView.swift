@@ -57,26 +57,21 @@ struct WorldCameraView: View {
                         let modelComs = try await storeActor?.fetchModelComs() ?? []
 //                        let nftComs = try modelContext.fetch(FetchDescriptor<NFTCom>())
                         let imageComs = try await storeActor?.fetchImageComs() ?? []
-                        
-                        let anchor = AnchorEntity(world: simd_float3(x: 0, y: 0, z: 0))
-                        arView.scene.addAnchor(anchor)
-                        
+        
                         for com in positionComs {
-                            let entity = Entity()
+                            let entity = AnchorEntity(world: simd_float3(x: 0, y: 0, z: 0))
                             entity.name = com.key.toHexString()
-                            entity.isEnabled = false
                             entity.components.set(com)
-                            anchor.addChild(entity)
+                            entity.isEnabled = false
+                            arView.scene.addAnchor(entity)
                             
                             if let geohash = com.geohash {
                                 let geoAnchor = ARGeoAnchor(
+                                    name: entity.name,
                                     coordinate: CLLocationCoordinate2D(geohash: geohash)
                                 )
+                                com.geoAnchor = geoAnchor
                                 arView.session.add(anchor: geoAnchor)
-                                
-                                let geoAnchorEntity = AnchorEntity(.anchor(identifier: geoAnchor.identifier))
-                                geoAnchorEntity.name = "geo-\(entity.name)"
-                                arView.scene.addAnchor(geoAnchorEntity)
                             }
                         }
                         

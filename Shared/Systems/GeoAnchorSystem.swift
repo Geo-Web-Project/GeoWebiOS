@@ -22,22 +22,27 @@ class GeoAnchorSystem : System {
 
     func update(context: SceneUpdateContext) {
         context.scene.performQuery(Self.query).forEach { entity in
-            guard let geoAnchorEntity = context.scene.findEntity(named: "geo-\(entity.name)") else { return }
+            guard let anchorEntity = entity as? AnchorEntity else { return }
+
+            // TODO: Find all other anchors
+            
             let positionCom = entity.components[PositionCom.self] as? PositionCom
             let orientationCom = entity.components[OrientationCom.self] as? OrientationCom
             let scaleCom = entity.components[ScaleCom.self] as? ScaleCom
-
-            geoAnchorEntity.addChild(entity)
-            entity.isEnabled = true
             
+            guard let geoAnchor = positionCom?.geoAnchor else { return }
+            
+            anchorEntity.reanchor(.world(transform: geoAnchor.transform), preservingWorldTransform: false)
+            anchorEntity.isEnabled = geoAnchor.isTracked
+                            
             // Altitude
-            let altitudeMillimeters = Float(positionCom?.h ?? 0)
-            entity.transform.translation.y = altitudeMillimeters / 1000
-            
+//            let altitudeMillimeters = Float(positionCom?.h ?? 0)
+//            entity.transform.translation.y = altitudeMillimeters / 1000
+//            
             // Scale
-            entity.transform.scale.x = Float(scaleCom?.x ?? 1000) / 1000
-            entity.transform.scale.y = Float(scaleCom?.y ?? 1000) / 1000
-            entity.transform.scale.z = Float(scaleCom?.z ?? 1000) / 1000
+            entity.transform.scale.x = Float(10000) / 1000
+            entity.transform.scale.y = Float(10000) / 1000
+            entity.transform.scale.z = Float(10000) / 1000
             
             // Orientation
             let x = Float(orientationCom?.x ?? 0) / 1000

@@ -108,6 +108,9 @@
 		C3D9FDC02AE0CC3800DEC3BD /* AugmentCellVariant2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9FDBF2AE0CC3800DEC3BD /* AugmentCellVariant2.swift */; };
 		C3D9FDC22AE0CC4E00DEC3BD /* AugmentCellVariant1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9FDC12AE0CC4E00DEC3BD /* AugmentCellVariant1.swift */; };
 		C3D9FDC42AE0CD6300DEC3BD /* AugmentCellVariant3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9FDC32AE0CD6300DEC3BD /* AugmentCellVariant3.swift */; };
+		C3DBB55B2B23F5C600BDE9AE /* GraphQL in Frameworks */ = {isa = PBXBuildFile; productRef = C3DBB55A2B23F5C600BDE9AE /* GraphQL */; };
+		C3DBB55D2B23F5C600BDE9AE /* SwiftGraphQL in Frameworks */ = {isa = PBXBuildFile; productRef = C3DBB55C2B23F5C600BDE9AE /* SwiftGraphQL */; };
+		C3DBB55F2B23F5C600BDE9AE /* SwiftGraphQLClient in Frameworks */ = {isa = PBXBuildFile; productRef = C3DBB55E2B23F5C600BDE9AE /* SwiftGraphQLClient */; };
 		C3EBACB92AEC78D800D0695F /* AugmentInputSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACB82AEC78D800D0695F /* AugmentInputSystem.swift */; };
 		C3EBACBA2AEC78D800D0695F /* AugmentInputSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACB82AEC78D800D0695F /* AugmentInputSystem.swift */; };
 		C3EBACBC2AEC7B9900D0695F /* FramedImageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBACBB2AEC7B9900D0695F /* FramedImageSystem.swift */; };
@@ -285,8 +288,11 @@
 				C31D00B62AB8EC2300AC0CA4 /* GLTFKit2.framework in Frameworks */,
 				C33544492AEF41A9007FFD1B /* CID in Frameworks */,
 				C3B65E962B03F70C00909CA2 /* Geohash in Frameworks */,
+				C3DBB55D2B23F5C600BDE9AE /* SwiftGraphQL in Frameworks */,
 				C3A41CEC2AFF091E008E0BFC /* SwiftMUD in Frameworks */,
+				C3DBB55F2B23F5C600BDE9AE /* SwiftGraphQLClient in Frameworks */,
 				C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */,
+				C3DBB55B2B23F5C600BDE9AE /* GraphQL in Frameworks */,
 				C3A41CE92AFF090E008E0BFC /* Web3PromiseKit in Frameworks */,
 				C3A41CE52AFF090E008E0BFC /* Web3 in Frameworks */,
 			);
@@ -628,6 +634,9 @@
 				C3A41CE82AFF090E008E0BFC /* Web3PromiseKit */,
 				C3A41CEB2AFF091E008E0BFC /* SwiftMUD */,
 				C3B65E952B03F70C00909CA2 /* Geohash */,
+				C3DBB55A2B23F5C600BDE9AE /* GraphQL */,
+				C3DBB55C2B23F5C600BDE9AE /* SwiftGraphQL */,
+				C3DBB55E2B23F5C600BDE9AE /* SwiftGraphQLClient */,
 			);
 			productName = GeoWebiOS;
 			productReference = C331C8F92A82F03E004B1238 /* GeoWebiOS.app */;
@@ -692,6 +701,7 @@
 				C3A41CE32AFF090E008E0BFC /* XCRemoteSwiftPackageReference "Web3" */,
 				C3A41CEA2AFF091E008E0BFC /* XCRemoteSwiftPackageReference "swift-mud" */,
 				C3B65E942B03F70C00909CA2 /* XCRemoteSwiftPackageReference "Geohash" */,
+				C3DBB5592B23F5C600BDE9AE /* XCRemoteSwiftPackageReference "swift-graphql" */,
 			);
 			productRefGroup = C386B5792A7312BB008F6473 /* Products */;
 			projectDirPath = "";
@@ -1253,6 +1263,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		C3DBB5592B23F5C600BDE9AE /* XCRemoteSwiftPackageReference "swift-graphql" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maticzav/swift-graphql/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1305,6 +1323,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C3B65E942B03F70C00909CA2 /* XCRemoteSwiftPackageReference "Geohash" */;
 			productName = Geohash;
+		};
+		C3DBB55A2B23F5C600BDE9AE /* GraphQL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3DBB5592B23F5C600BDE9AE /* XCRemoteSwiftPackageReference "swift-graphql" */;
+			productName = GraphQL;
+		};
+		C3DBB55C2B23F5C600BDE9AE /* SwiftGraphQL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3DBB5592B23F5C600BDE9AE /* XCRemoteSwiftPackageReference "swift-graphql" */;
+			productName = SwiftGraphQL;
+		};
+		C3DBB55E2B23F5C600BDE9AE /* SwiftGraphQLClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3DBB5592B23F5C600BDE9AE /* XCRemoteSwiftPackageReference "swift-graphql" */;
+			productName = SwiftGraphQLClient;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

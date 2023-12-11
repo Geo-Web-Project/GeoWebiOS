@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "bluesignals",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/IBM-Swift/BlueSignals.git",
+      "state" : {
+        "revision" : "1f6c49e186c8a4eeef87ba14f2f97b8646559d13",
+        "version" : "1.0.200"
+      }
+    },
+    {
       "identity" : "coregraphicsgeometrysupport",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/schwa/CoreGraphicsGeometrySupport",
@@ -37,6 +46,15 @@
       }
     },
     {
+      "identity" : "files",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnSundell/Files",
+      "state" : {
+        "revision" : "d273b5b7025d386feef79ef6bad7de762e106eaf",
+        "version" : "4.2.0"
+      }
+    },
+    {
       "identity" : "geohash",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nh7a/Geohash",
@@ -46,12 +64,30 @@
       }
     },
     {
+      "identity" : "nanoseconds",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dominicegginton/Nanoseconds",
+      "state" : {
+        "revision" : "34318d7a13b5b5013102fbe18b36b80368b4dcbd",
+        "version" : "1.1.2"
+      }
+    },
+    {
       "identity" : "promisekit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mxcl/PromiseKit.git",
       "state" : {
         "revision" : "8a98e31a47854d3180882c8068cc4d9381bf382d",
         "version" : "6.22.1"
+      }
+    },
+    {
+      "identity" : "rainbow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Rainbow",
+      "state" : {
+        "revision" : "e0dada9cd44e3fa7ec3b867e49a8ddbf543e3df3",
+        "version" : "4.0.1"
       }
     },
     {
@@ -73,12 +109,39 @@
       }
     },
     {
+      "identity" : "spinner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dominicegginton/Spinner",
+      "state" : {
+        "revision" : "16ac0c404320005936579f1d6454bb88dbd8d71a",
+        "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "starscream",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/daltoniam/Starscream.git",
+      "state" : {
+        "revision" : "ac6c0fc9da221873e01bd1a0d4818498a71eef33",
+        "version" : "4.0.6"
+      }
+    },
+    {
       "identity" : "swift-algorithms",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-algorithms",
       "state" : {
         "revision" : "bcd4f369ac962bc3e5244c9df778739f8f5bdbf1",
         "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser",
+      "state" : {
+        "revision" : "c8ed701b513cf5177118a175d85fbbbcd707ab41",
+        "version" : "1.3.0"
       }
     },
     {
@@ -109,6 +172,15 @@
       }
     },
     {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-cmark.git",
+      "state" : {
+        "revision" : "f218e5d7691f78b55bfa39b367763f4612486c35",
+        "version" : "0.3.0"
+      }
+    },
+    {
       "identity" : "swift-collections",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections.git",
@@ -118,12 +190,48 @@
       }
     },
     {
+      "identity" : "swift-format",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-format",
+      "state" : {
+        "revision" : "83248b4fa37919f78ffbd4650946759bcc54c2b5",
+        "version" : "509.0.0"
+      }
+    },
+    {
+      "identity" : "swift-graphql",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maticzav/swift-graphql/",
+      "state" : {
+        "revision" : "8e8eb8943fcf1059800a6f5d73165668207ffaa8",
+        "version" : "5.1.0"
+      }
+    },
+    {
       "identity" : "swift-http-types",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-http-types",
       "state" : {
         "revision" : "99d066e29effa8845e4761dd3f2f831edfdf8925",
         "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "532d8b529501fb73a2455b179e0bbb6d49b652ed",
+        "version" : "1.5.3"
+      }
+    },
+    {
+      "identity" : "swift-markdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-markdown.git",
+      "state" : {
+        "revision" : "e4f95e2dc23097a1a9a1dfdfe3fe3ee44de77378",
+        "version" : "0.3.0"
       }
     },
     {
@@ -217,6 +325,15 @@
       }
     },
     {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-syntax.git",
+      "state" : {
+        "revision" : "6ad4ea24b01559dde0773e3d091f1b9e36175036",
+        "version" : "509.0.2"
+      }
+    },
+    {
       "identity" : "swift-varint",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swift-libp2p/swift-varint",
@@ -250,6 +367,15 @@
       "state" : {
         "revision" : "53fe0639a98903858d0196b699720decb42aee7b",
         "version" : "2.14.0"
+      }
+    },
+    {
+      "identity" : "yams",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jpsim/Yams.git",
+      "state" : {
+        "revision" : "0d9ee7ea8c4ebd4a489ad7a73d5c6cad55d6fed3",
+        "version" : "5.0.6"
       }
     }
   ],
