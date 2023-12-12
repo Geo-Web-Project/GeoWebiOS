@@ -36,13 +36,13 @@ class GeoAnchorSystem : System {
             anchorEntity.isEnabled = geoAnchor.isTracked
                             
             // Altitude
-//            let altitudeMillimeters = Float(positionCom?.h ?? 0)
-//            entity.transform.translation.y = altitudeMillimeters / 1000
-//            
+            let altitudeMillimeters = Float(positionCom?.h ?? 0)
+            entity.transform.translation.y = altitudeMillimeters / 1000
+            
             // Scale
-            entity.transform.scale.x = Float(10000) / 1000
-            entity.transform.scale.y = Float(10000) / 1000
-            entity.transform.scale.z = Float(10000) / 1000
+            entity.transform.scale.x = Float(scaleCom?.x ?? 1000) / 1000
+            entity.transform.scale.y = Float(scaleCom?.y ?? 1000) / 1000
+            entity.transform.scale.z = Float(scaleCom?.z ?? 1000) / 1000
             
             // Orientation
             let x = Float(orientationCom?.x ?? 0) / 1000
