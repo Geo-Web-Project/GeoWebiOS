@@ -75,5 +75,6 @@ struct GeoWebiOSApp: App {
         }
         .environment(\.web3, Web3Key.defaultValue)
         .environment(\.storeActor, StoreActor(modelContainer: container))
+        .modelContainer(container)
     }
 }

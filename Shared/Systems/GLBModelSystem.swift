@@ -37,10 +37,19 @@ class GLBModelSystem : System {
             } else {
                 // Download in detached task to not block parent actor
                 Task.detached {
-                    let (url, _) =  try await URLSession.shared.download(from: contentUrl)
+                    let (url, response) =  try await URLSession.shared.download(from: contentUrl)
+                    var tmpUrl = url
+                    if let suggestedFilename = response.suggestedFilename {
+                        let newUrl = url.deletingLastPathComponent().appending(path: suggestedFilename)
+                        
+                        // Rename with suggested name
+                        try? FileManager.default.moveItem(at: url, to: newUrl)
+                        
+                        tmpUrl = newUrl
+                    }
                     
                     // Add asset back on main actor
-                    try await self.addAssetToScene(contentUrl: url, entity: entity)
+                    try await self.addAssetToScene(contentUrl: tmpUrl, entity: entity)
                 }
             }
         }

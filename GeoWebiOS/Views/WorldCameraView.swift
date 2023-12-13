@@ -40,9 +40,23 @@ struct WorldCameraView: View {
         Array("\(parcelId)".makeBytes()) + Array(repeating: 0, count: 11)
     }
     
+    @Query var positionComs: [PositionCom]
+    @Query var orientationComs: [OrientationCom]
+    @Query var scaleComs: [ScaleCom]
+    @Query var modelComs: [ModelCom]
+    @Query var imageComs: [ImageCom]
+    
     var body: some View {
         ZStack {
-            AugmentCameraViewRepresentable(arView: arView, inputComponents: [])
+            AugmentCameraViewRepresentable(
+                arView: arView,
+                inputComponents: [],
+                positionComs: positionComs, 
+                orientationComs: orientationComs,
+                scaleComs: scaleComs,
+                modelComs: modelComs,
+                imageComs: imageComs
+            )
                 .task(priority: .background) {
                     do {
                         // Sync logs
@@ -50,56 +64,6 @@ struct WorldCameraView: View {
                         
                         // Subscribe to logs
                         //                    try await storeSync.value.subscribeToLogs(worldAddress: EthereumAddress(hexString: worldAddress)!, namespace: namespace)
-                        
-                        let positionComs = try await storeActor?.fetchPositionComs() ?? []
-                        let orientationComs = try await storeActor?.fetchOrientationComs() ?? []
-                        let scaleComs = try await storeActor?.fetchScaleComs() ?? []
-                        let modelComs = try await storeActor?.fetchModelComs() ?? []
-//                        let nftComs = try modelContext.fetch(FetchDescriptor<NFTCom>())
-                        let imageComs = try await storeActor?.fetchImageComs() ?? []
-        
-                        for com in positionComs {
-                            let entity = AnchorEntity(world: simd_float3(x: 0, y: 0, z: 0))
-                            entity.name = com.key.toHexString()
-                            entity.components.set(com)
-                            entity.isEnabled = false
-                            arView.scene.addAnchor(entity)
-                            
-                            if let geohash = com.geohash {
-                                let geoAnchor = ARGeoAnchor(
-                                    name: entity.name,
-                                    coordinate: CLLocationCoordinate2D(geohash: geohash)
-                                )
-                                com.geoAnchor = geoAnchor
-                                arView.session.add(anchor: geoAnchor)
-                            }
-                        }
-                        
-                        for com in orientationComs {
-                            guard let entity = arView.scene.findEntity(named: com.key.toHexString()) else { continue }
-                            entity.components.set(com)
-                        }
-                        
-                        for com in scaleComs {
-                            guard let entity = arView.scene.findEntity(named: com.key.toHexString()) else { continue }
-                            entity.components.set(com)
-                        }
-                        
-                        for com in modelComs {
-                            guard let entity = arView.scene.findEntity(named: com.key.toHexString()) else { continue }
-                            entity.components.set(com)
-                        }
-                        
-//                        for com in nftComs {
-//                            guard let entity = arView.scene.findEntity(named: com.key.toHexString()) else { continue }
-//                            entity.components.set(com)
-//                            await com.fetchNFTMetadata()
-//                        }
-                        
-                        for com in imageComs {
-                            guard let entity = arView.scene.findEntity(named: com.key.toHexString()) else { continue }
-                            entity.components.set(com)
-                        }
                     } catch {
                         print(error)
                     }

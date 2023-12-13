@@ -54,7 +54,7 @@ final class ImageCom: Component, Record {
                 default:
                     ""
                 }
-                return URL(string: "https://dweb.link/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
+                return URL(string: "https:/ipfs.io/ipfs/\(cid.toBaseEncodedString)?filename=\(cid.toBaseEncodedString)\(ext)")
             } catch {
                 return nil
             }
