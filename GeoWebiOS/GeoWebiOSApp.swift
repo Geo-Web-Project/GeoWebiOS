@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 import Web3
 import SwiftMUD
+import SwiftGraphQL
+import SwiftGraphQLClient
 
 private struct Web3Key: EnvironmentKey {
     static let defaultValue: Task<Web3, Swift.Error> = Task.detached {
@@ -35,6 +37,14 @@ private struct StoreSyncKey: EnvironmentKey {
     }
 }
 
+private struct GraphQLClientKey: EnvironmentKey {
+    enum GraphQLClientError: Error {
+        case NotImplemented
+    }
+    
+    static let defaultValue: SwiftGraphQLClient.Client = SwiftGraphQLClient.Client(request: URLRequest(url:  URL(string: "https://api.thegraph.com/subgraphs/name/geo-web-project/geo-web-testnet")!))
+}
+
 extension EnvironmentValues {
     var web3: Task<Web3, Swift.Error> {
         get { self[Web3Key.self] }
@@ -49,6 +59,11 @@ extension EnvironmentValues {
     var storeSync: Task<StoreSync, Swift.Error> {
         get { self[StoreSyncKey.self] }
         set { self[StoreSyncKey.self] = newValue }
+    }
+    
+    var graphQLClient: SwiftGraphQLClient.Client {
+        get { self[GraphQLClientKey.self] }
+        set { self[GraphQLClientKey.self] = newValue }
     }
 }
 

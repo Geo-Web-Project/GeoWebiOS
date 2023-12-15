@@ -60,6 +60,7 @@
 		C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35E31992A9D3EB300AA4743 /* WorldListView.swift */; };
 		C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */; };
 		C35E319E2A9D432600AA4743 /* WorldListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB42A81C28300CFDC84 /* WorldListItemView.swift */; };
+		C365155C2B2BB5CE0057FFF1 /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C365155B2B2BB5CE0057FFF1 /* GraphQL.swift */; };
 		C3753E872A9558D5003175B5 /* MediaGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3753E862A9558D5003175B5 /* MediaGalleryCell.swift */; };
 		C3753E892A955E8C003175B5 /* MediaGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3753E882A955E8C003175B5 /* MediaGalleryView.swift */; };
 		C3753E8A2A955EDF003175B5 /* MediaGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA952A81C28300CFDC84 /* MediaGalleryView.swift */; };
@@ -223,6 +224,7 @@
 		C35A33762AB4615D007A163D /* GeoPublishARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPublishARView.swift; sourceTree = "<group>"; };
 		C35A33782AB46A87007A163D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C35E31992A9D3EB300AA4743 /* WorldListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListView.swift; sourceTree = "<group>"; };
+		C365155B2B2BB5CE0057FFF1 /* GraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
 		C3753E862A9558D5003175B5 /* MediaGalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGalleryCell.swift; sourceTree = "<group>"; };
 		C3753E882A955E8C003175B5 /* MediaGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGalleryView.swift; sourceTree = "<group>"; };
 		C3753E8B2A95622C003175B5 /* MediaObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObjectView.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 		C331C8FA2A82F03E004B1238 /* GeoWebiOS */ = {
 			isa = PBXGroup;
 			children = (
+				C365155A2B2BB5CE0057FFF1 /* generated */,
 				C331C8FB2A82F03E004B1238 /* GeoWebiOSApp.swift */,
 				C308E7D92A94388E00EEC111 /* Views */,
 				C377A5012A82FC8A003FB3EF /* Systems */,
@@ -407,6 +410,14 @@
 			);
 			path = ARViews;
 			sourceTree = "<group>";
+		};
+		C365155A2B2BB5CE0057FFF1 /* generated */ = {
+			isa = PBXGroup;
+			children = (
+				C365155B2B2BB5CE0057FFF1 /* GraphQL.swift */,
+			);
+			path = generated;
+			sourceTree = SOURCE_ROOT;
 		};
 		C377A5012A82FC8A003FB3EF /* Systems */ = {
 			isa = PBXGroup;
@@ -775,6 +786,7 @@
 				C3EBACBF2AEC7BE000D0695F /* ImageCom.swift in Sources */,
 				C35E319A2A9D3EB300AA4743 /* WorldListView.swift in Sources */,
 				C3EBACDB2AEDC53E00D0695F /* AugmentInstallationSystemContract.swift in Sources */,
+				C365155C2B2BB5CE0057FFF1 /* GraphQL.swift in Sources */,
 				C3EBACCA2AEC8F9000D0695F /* ModelCom.swift in Sources */,
 				C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */,
 				C3A41CEE2AFF40E2008E0BFC /* USDZModelSystem.swift in Sources */,

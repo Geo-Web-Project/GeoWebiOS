@@ -89,7 +89,6 @@ struct AugmentCameraViewRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ arView: ARView, context: Context) {
-        print("UPDATE UI VIEW")
         for com in positionComs {
             if let entity = arView.scene.findEntity(named: com.key.toHexString()) as? AnchorEntity {
                 if let positionCom = entity.components[PositionCom.self] as? PositionCom {

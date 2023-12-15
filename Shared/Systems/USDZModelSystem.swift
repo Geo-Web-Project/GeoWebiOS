@@ -40,6 +40,7 @@ class USDZModelSystem : System {
                 // Download in detached task to not block parent actor
                 Task.detached {
                     do {
+                        print("Downloading USDZ asset: \(contentUrl)")
                         let (url, response) =  try await URLSession.shared.download(from: contentUrl)
                         var tmpUrl = url
                         if let suggestedFilename = response.suggestedFilename {

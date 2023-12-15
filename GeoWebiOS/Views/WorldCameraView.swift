@@ -13,11 +13,14 @@ import CryptoSwift
 import RealityKit
 import ARKit
 import Geohash
+import SwiftGraphQL
+import SwiftGraphQLClient
 
 @MainActor
 struct WorldCameraView: View {
     @Environment(\.web3) var web3: Task<Web3, Error>
     @Environment(\.storeActor) private var storeActor: StoreActor?
+    @Environment(\.graphQLClient) private var graphQLClient: SwiftGraphQLClient.Client
     
     private let arView: ARView = ARView(frame: .zero)
     private var storeSync: Task<StoreSync, Error> {
@@ -33,37 +36,52 @@ struct WorldCameraView: View {
             return StoreSync(web3: web3, store: store)
         }
     }
-
-    let worldAddress: String = "0x3904285496739BF5030d79C0CF259A569806F759"
-    let parcelId: UInt = 320
-    var namespace: Bytes {
-        Array("\(parcelId)".makeBytes()) + Array(repeating: 0, count: 11)
+    private static let parcelSelection = Selection.GeoWebParcel<String> {
+        return try $0.id()
     }
+    private static let parcelQuery = Selection.Query<[String]> {
+        try $0.geoWebParcels(
+            where: ~InputObjects.GeoWebParcelFilter(id: "0x140"),
+            subgraphError: .deny,
+            selection: parcelSelection.list
+        )
+    }
+
+    private static let worldAddress: String = "0x3904285496739BF5030d79C0CF259A569806F759"
     
-    @Query var positionComs: [PositionCom]
-    @Query var orientationComs: [OrientationCom]
-    @Query var scaleComs: [ScaleCom]
-    @Query var modelComs: [ModelCom]
-    @Query var imageComs: [ImageCom]
+    @State private var namespaces: [Bytes] = []
+    @Query private var positionComs: [PositionCom]
+    @Query private var orientationComs: [OrientationCom]
+    @Query private var scaleComs: [ScaleCom]
+    @Query private var modelComs: [ModelCom]
+    @Query private var imageComs: [ImageCom]
     
     var body: some View {
         ZStack {
             AugmentCameraViewRepresentable(
                 arView: arView,
                 inputComponents: [],
-                positionComs: positionComs, 
-                orientationComs: orientationComs,
-                scaleComs: scaleComs,
-                modelComs: modelComs,
-                imageComs: imageComs
+                positionComs: positionComs.filter{ filterParcelIds(record: $0) },
+                orientationComs: orientationComs.filter{ filterParcelIds(record: $0) },
+                scaleComs: scaleComs.filter{ filterParcelIds(record: $0) },
+                modelComs: modelComs.filter{ filterParcelIds(record: $0) },
+                imageComs: imageComs.filter{ filterParcelIds(record: $0) }
             )
                 .task(priority: .background) {
                     do {
-                        // Sync logs
-                        try await storeSync.value.syncLogs(worldAddress: EthereumAddress(hexString: worldAddress)!, namespace: namespace)
+                        let parcelIds = try await graphQLClient.query(WorldCameraView.parcelQuery)
                         
-                        // Subscribe to logs
-                        //                    try await storeSync.value.subscribeToLogs(worldAddress: EthereumAddress(hexString: worldAddress)!, namespace: namespace)
+                        self.namespaces = parcelIds.data.map { getNamespace(parcelIdHex: $0) }
+                        
+                        for parcelId in parcelIds.data {
+                            // Sync logs
+                            print("Syncing logs \(parcelId)...")
+                            try await storeSync.value.syncLogs(worldAddress: EthereumAddress(hexString: WorldCameraView.worldAddress)!, namespace: getNamespace(parcelIdHex: parcelId))
+                            print("Synced logs \(parcelId)")
+                            
+                            // Subscribe to logs
+                            //                    try await storeSync.value.subscribeToLogs(worldAddress: EthereumAddress(hexString: worldAddress)!, namespace: namespace)
+                        }
                     } catch {
                         print(error)
                     }
@@ -71,5 +89,14 @@ struct WorldCameraView: View {
             
             CoachingOverlayView(arView: arView)
         }
+    }
+    
+    private func filterParcelIds(record: Record) -> Bool {
+        guard let namespaceId = record.table?.namespace?.namespaceId else { return false }
+        return namespaces.contains(Bytes(hex: namespaceId))
+    }
+    
+    private func getNamespace(parcelIdHex: String) -> Bytes {
+        return Array("\(Int(hexString: String(parcelIdHex.dropFirst(2)))!)".makeBytes()) + Array(repeating: 0, count: 11)
     }
 }
