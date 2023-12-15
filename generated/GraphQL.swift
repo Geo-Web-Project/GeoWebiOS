@@ -332,7 +332,7 @@ extension Fields where TypeLock == Objects.GeoWebParcel {
     }
   }
 
-  public func coordinates() throws -> [AnyCodable]? {
+  public func coordinates() throws -> [String]? {
     let field = GraphQLField.leaf(
       field: "coordinates",
       parent: "GeoWebParcel",
@@ -342,13 +342,13 @@ extension Fields where TypeLock == Objects.GeoWebParcel {
 
     switch self.__state {
     case .decoding:
-      return try self.__decode(field: field.alias!) { try [AnyCodable]?(from: $0) }
+      return try self.__decode(field: field.alias!) { try [String]?(from: $0) }
     case .selecting:
       return nil
     }
   }
 
-  public func bboxN() throws -> AnyCodable? {
+  public func bboxN() throws -> String? {
     let field = GraphQLField.leaf(
       field: "bboxN",
       parent: "GeoWebParcel",
@@ -358,13 +358,13 @@ extension Fields where TypeLock == Objects.GeoWebParcel {
 
     switch self.__state {
     case .decoding:
-      return try self.__decode(field: field.alias!) { try AnyCodable?(from: $0) }
+      return try self.__decode(field: field.alias!) { try String?(from: $0) }
     case .selecting:
       return nil
     }
   }
 
-  public func bboxS() throws -> AnyCodable? {
+  public func bboxS() throws -> String? {
     let field = GraphQLField.leaf(
       field: "bboxS",
       parent: "GeoWebParcel",
@@ -374,13 +374,13 @@ extension Fields where TypeLock == Objects.GeoWebParcel {
 
     switch self.__state {
     case .decoding:
-      return try self.__decode(field: field.alias!) { try AnyCodable?(from: $0) }
+      return try self.__decode(field: field.alias!) { try String?(from: $0) }
     case .selecting:
       return nil
     }
   }
 
-  public func bboxE() throws -> AnyCodable? {
+  public func bboxE() throws -> String? {
     let field = GraphQLField.leaf(
       field: "bboxE",
       parent: "GeoWebParcel",
@@ -390,13 +390,13 @@ extension Fields where TypeLock == Objects.GeoWebParcel {
 
     switch self.__state {
     case .decoding:
-      return try self.__decode(field: field.alias!) { try AnyCodable?(from: $0) }
+      return try self.__decode(field: field.alias!) { try String?(from: $0) }
     case .selecting:
       return nil
     }
   }
 
-  public func bboxW() throws -> AnyCodable? {
+  public func bboxW() throws -> String? {
     let field = GraphQLField.leaf(
       field: "bboxW",
       parent: "GeoWebParcel",
@@ -406,7 +406,7 @@ extension Fields where TypeLock == Objects.GeoWebParcel {
 
     switch self.__state {
     case .decoding:
-      return try self.__decode(field: field.alias!) { try AnyCodable?(from: $0) }
+      return try self.__decode(field: field.alias!) { try String?(from: $0) }
     case .selecting:
       return nil
     }
@@ -1103,32 +1103,32 @@ extension Objects.GeoWebParcel {
     }
   }
 
-  public static func coordinates() -> Selection<[AnyCodable]?, Objects.GeoWebParcel> {
-    Selection<[AnyCodable]?, Objects.GeoWebParcel> {
+  public static func coordinates() -> Selection<[String]?, Objects.GeoWebParcel> {
+    Selection<[String]?, Objects.GeoWebParcel> {
       try $0.coordinates()
     }
   }
 
-  public static func bboxN() -> Selection<AnyCodable?, Objects.GeoWebParcel> {
-    Selection<AnyCodable?, Objects.GeoWebParcel> {
+  public static func bboxN() -> Selection<String?, Objects.GeoWebParcel> {
+    Selection<String?, Objects.GeoWebParcel> {
       try $0.bboxN()
     }
   }
 
-  public static func bboxS() -> Selection<AnyCodable?, Objects.GeoWebParcel> {
-    Selection<AnyCodable?, Objects.GeoWebParcel> {
+  public static func bboxS() -> Selection<String?, Objects.GeoWebParcel> {
+    Selection<String?, Objects.GeoWebParcel> {
       try $0.bboxS()
     }
   }
 
-  public static func bboxE() -> Selection<AnyCodable?, Objects.GeoWebParcel> {
-    Selection<AnyCodable?, Objects.GeoWebParcel> {
+  public static func bboxE() -> Selection<String?, Objects.GeoWebParcel> {
+    Selection<String?, Objects.GeoWebParcel> {
       try $0.bboxE()
     }
   }
 
-  public static func bboxW() -> Selection<AnyCodable?, Objects.GeoWebParcel> {
-    Selection<AnyCodable?, Objects.GeoWebParcel> {
+  public static func bboxW() -> Selection<String?, Objects.GeoWebParcel> {
+    Selection<String?, Objects.GeoWebParcel> {
       try $0.bboxW()
     }
   }
@@ -2645,81 +2645,81 @@ extension InputObjects {
 
     public var licenseDiamondNotContains: OptionalArgument<AnyCodable>
 
-    public var coordinates: OptionalArgument<[AnyCodable]>
+    public var coordinates: OptionalArgument<[String]>
 
-    public var coordinatesNot: OptionalArgument<[AnyCodable]>
+    public var coordinatesNot: OptionalArgument<[String]>
 
-    public var coordinatesContains: OptionalArgument<[AnyCodable]>
+    public var coordinatesContains: OptionalArgument<[String]>
 
-    public var coordinatesContainsNocase: OptionalArgument<[AnyCodable]>
+    public var coordinatesContainsNocase: OptionalArgument<[String]>
 
-    public var coordinatesNotContains: OptionalArgument<[AnyCodable]>
+    public var coordinatesNotContains: OptionalArgument<[String]>
 
-    public var coordinatesNotContainsNocase: OptionalArgument<[AnyCodable]>
+    public var coordinatesNotContainsNocase: OptionalArgument<[String]>
 
-    public var bboxN: OptionalArgument<AnyCodable>
+    public var bboxN: OptionalArgument<String>
 
-    public var bboxNNot: OptionalArgument<AnyCodable>
+    public var bboxNNot: OptionalArgument<String>
 
-    public var bboxNGt: OptionalArgument<AnyCodable>
+    public var bboxNGt: OptionalArgument<String>
 
-    public var bboxNLt: OptionalArgument<AnyCodable>
+    public var bboxNLt: OptionalArgument<String>
 
-    public var bboxNGte: OptionalArgument<AnyCodable>
+    public var bboxNGte: OptionalArgument<String>
 
-    public var bboxNLte: OptionalArgument<AnyCodable>
+    public var bboxNLte: OptionalArgument<String>
 
-    public var bboxNIn: OptionalArgument<[AnyCodable]>
+    public var bboxNIn: OptionalArgument<[String]>
 
-    public var bboxNNotIn: OptionalArgument<[AnyCodable]>
+    public var bboxNNotIn: OptionalArgument<[String]>
 
-    public var bboxS: OptionalArgument<AnyCodable>
+    public var bboxS: OptionalArgument<String>
 
-    public var bboxSNot: OptionalArgument<AnyCodable>
+    public var bboxSNot: OptionalArgument<String>
 
-    public var bboxSGt: OptionalArgument<AnyCodable>
+    public var bboxSGt: OptionalArgument<String>
 
-    public var bboxSLt: OptionalArgument<AnyCodable>
+    public var bboxSLt: OptionalArgument<String>
 
-    public var bboxSGte: OptionalArgument<AnyCodable>
+    public var bboxSGte: OptionalArgument<String>
 
-    public var bboxSLte: OptionalArgument<AnyCodable>
+    public var bboxSLte: OptionalArgument<String>
 
-    public var bboxSIn: OptionalArgument<[AnyCodable]>
+    public var bboxSIn: OptionalArgument<[String]>
 
-    public var bboxSNotIn: OptionalArgument<[AnyCodable]>
+    public var bboxSNotIn: OptionalArgument<[String]>
 
-    public var bboxE: OptionalArgument<AnyCodable>
+    public var bboxE: OptionalArgument<String>
 
-    public var bboxENot: OptionalArgument<AnyCodable>
+    public var bboxENot: OptionalArgument<String>
 
-    public var bboxEGt: OptionalArgument<AnyCodable>
+    public var bboxEGt: OptionalArgument<String>
 
-    public var bboxELt: OptionalArgument<AnyCodable>
+    public var bboxELt: OptionalArgument<String>
 
-    public var bboxEGte: OptionalArgument<AnyCodable>
+    public var bboxEGte: OptionalArgument<String>
 
-    public var bboxELte: OptionalArgument<AnyCodable>
+    public var bboxELte: OptionalArgument<String>
 
-    public var bboxEIn: OptionalArgument<[AnyCodable]>
+    public var bboxEIn: OptionalArgument<[String]>
 
-    public var bboxENotIn: OptionalArgument<[AnyCodable]>
+    public var bboxENotIn: OptionalArgument<[String]>
 
-    public var bboxW: OptionalArgument<AnyCodable>
+    public var bboxW: OptionalArgument<String>
 
-    public var bboxWNot: OptionalArgument<AnyCodable>
+    public var bboxWNot: OptionalArgument<String>
 
-    public var bboxWGt: OptionalArgument<AnyCodable>
+    public var bboxWGt: OptionalArgument<String>
 
-    public var bboxWLt: OptionalArgument<AnyCodable>
+    public var bboxWLt: OptionalArgument<String>
 
-    public var bboxWGte: OptionalArgument<AnyCodable>
+    public var bboxWGte: OptionalArgument<String>
 
-    public var bboxWLte: OptionalArgument<AnyCodable>
+    public var bboxWLte: OptionalArgument<String>
 
-    public var bboxWIn: OptionalArgument<[AnyCodable]>
+    public var bboxWIn: OptionalArgument<[String]>
 
-    public var bboxWNotIn: OptionalArgument<[AnyCodable]>
+    public var bboxWNotIn: OptionalArgument<[String]>
 
     public var contentHash: OptionalArgument<AnyCodable>
 
@@ -2866,44 +2866,44 @@ extension InputObjects {
       licenseDiamondNotIn: OptionalArgument<[AnyCodable]> = .init(),
       licenseDiamondContains: OptionalArgument<AnyCodable> = .init(),
       licenseDiamondNotContains: OptionalArgument<AnyCodable> = .init(),
-      coordinates: OptionalArgument<[AnyCodable]> = .init(),
-      coordinatesNot: OptionalArgument<[AnyCodable]> = .init(),
-      coordinatesContains: OptionalArgument<[AnyCodable]> = .init(),
-      coordinatesContainsNocase: OptionalArgument<[AnyCodable]> = .init(),
-      coordinatesNotContains: OptionalArgument<[AnyCodable]> = .init(),
-      coordinatesNotContainsNocase: OptionalArgument<[AnyCodable]> = .init(),
-      bboxN: OptionalArgument<AnyCodable> = .init(),
-      bboxNNot: OptionalArgument<AnyCodable> = .init(),
-      bboxNGt: OptionalArgument<AnyCodable> = .init(),
-      bboxNLt: OptionalArgument<AnyCodable> = .init(),
-      bboxNGte: OptionalArgument<AnyCodable> = .init(),
-      bboxNLte: OptionalArgument<AnyCodable> = .init(),
-      bboxNIn: OptionalArgument<[AnyCodable]> = .init(),
-      bboxNNotIn: OptionalArgument<[AnyCodable]> = .init(),
-      bboxS: OptionalArgument<AnyCodable> = .init(),
-      bboxSNot: OptionalArgument<AnyCodable> = .init(),
-      bboxSGt: OptionalArgument<AnyCodable> = .init(),
-      bboxSLt: OptionalArgument<AnyCodable> = .init(),
-      bboxSGte: OptionalArgument<AnyCodable> = .init(),
-      bboxSLte: OptionalArgument<AnyCodable> = .init(),
-      bboxSIn: OptionalArgument<[AnyCodable]> = .init(),
-      bboxSNotIn: OptionalArgument<[AnyCodable]> = .init(),
-      bboxE: OptionalArgument<AnyCodable> = .init(),
-      bboxENot: OptionalArgument<AnyCodable> = .init(),
-      bboxEGt: OptionalArgument<AnyCodable> = .init(),
-      bboxELt: OptionalArgument<AnyCodable> = .init(),
-      bboxEGte: OptionalArgument<AnyCodable> = .init(),
-      bboxELte: OptionalArgument<AnyCodable> = .init(),
-      bboxEIn: OptionalArgument<[AnyCodable]> = .init(),
-      bboxENotIn: OptionalArgument<[AnyCodable]> = .init(),
-      bboxW: OptionalArgument<AnyCodable> = .init(),
-      bboxWNot: OptionalArgument<AnyCodable> = .init(),
-      bboxWGt: OptionalArgument<AnyCodable> = .init(),
-      bboxWLt: OptionalArgument<AnyCodable> = .init(),
-      bboxWGte: OptionalArgument<AnyCodable> = .init(),
-      bboxWLte: OptionalArgument<AnyCodable> = .init(),
-      bboxWIn: OptionalArgument<[AnyCodable]> = .init(),
-      bboxWNotIn: OptionalArgument<[AnyCodable]> = .init(),
+      coordinates: OptionalArgument<[String]> = .init(),
+      coordinatesNot: OptionalArgument<[String]> = .init(),
+      coordinatesContains: OptionalArgument<[String]> = .init(),
+      coordinatesContainsNocase: OptionalArgument<[String]> = .init(),
+      coordinatesNotContains: OptionalArgument<[String]> = .init(),
+      coordinatesNotContainsNocase: OptionalArgument<[String]> = .init(),
+      bboxN: OptionalArgument<String> = .init(),
+      bboxNNot: OptionalArgument<String> = .init(),
+      bboxNGt: OptionalArgument<String> = .init(),
+      bboxNLt: OptionalArgument<String> = .init(),
+      bboxNGte: OptionalArgument<String> = .init(),
+      bboxNLte: OptionalArgument<String> = .init(),
+      bboxNIn: OptionalArgument<[String]> = .init(),
+      bboxNNotIn: OptionalArgument<[String]> = .init(),
+      bboxS: OptionalArgument<String> = .init(),
+      bboxSNot: OptionalArgument<String> = .init(),
+      bboxSGt: OptionalArgument<String> = .init(),
+      bboxSLt: OptionalArgument<String> = .init(),
+      bboxSGte: OptionalArgument<String> = .init(),
+      bboxSLte: OptionalArgument<String> = .init(),
+      bboxSIn: OptionalArgument<[String]> = .init(),
+      bboxSNotIn: OptionalArgument<[String]> = .init(),
+      bboxE: OptionalArgument<String> = .init(),
+      bboxENot: OptionalArgument<String> = .init(),
+      bboxEGt: OptionalArgument<String> = .init(),
+      bboxELt: OptionalArgument<String> = .init(),
+      bboxEGte: OptionalArgument<String> = .init(),
+      bboxELte: OptionalArgument<String> = .init(),
+      bboxEIn: OptionalArgument<[String]> = .init(),
+      bboxENotIn: OptionalArgument<[String]> = .init(),
+      bboxW: OptionalArgument<String> = .init(),
+      bboxWNot: OptionalArgument<String> = .init(),
+      bboxWGt: OptionalArgument<String> = .init(),
+      bboxWLt: OptionalArgument<String> = .init(),
+      bboxWGte: OptionalArgument<String> = .init(),
+      bboxWLte: OptionalArgument<String> = .init(),
+      bboxWIn: OptionalArgument<[String]> = .init(),
+      bboxWNotIn: OptionalArgument<[String]> = .init(),
       contentHash: OptionalArgument<AnyCodable> = .init(),
       contentHashNot: OptionalArgument<AnyCodable> = .init(),
       contentHashGt: OptionalArgument<AnyCodable> = .init(),

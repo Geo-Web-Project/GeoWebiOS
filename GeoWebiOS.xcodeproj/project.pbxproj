@@ -707,7 +707,6 @@
 			mainGroup = C386B56F2A7312BB008F6473;
 			packageReferences = (
 				C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */,
-				C33544442AEF4171007FFD1B /* XCRemoteSwiftPackageReference "swift-varint" */,
 				C33544472AEF41A9007FFD1B /* XCRemoteSwiftPackageReference "swift-cid" */,
 				C3A41CE32AFF090E008E0BFC /* XCRemoteSwiftPackageReference "Web3" */,
 				C3A41CEA2AFF091E008E0BFC /* XCRemoteSwiftPackageReference "swift-mud" */,
@@ -1227,14 +1226,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C33544442AEF4171007FFD1B /* XCRemoteSwiftPackageReference "swift-varint" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swift-libp2p/swift-varint";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
 		C33544472AEF41A9007FFD1B /* XCRemoteSwiftPackageReference "swift-cid" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/swift-libp2p/swift-cid.git";
