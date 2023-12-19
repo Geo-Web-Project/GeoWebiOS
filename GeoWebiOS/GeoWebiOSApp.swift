@@ -71,6 +71,7 @@ extension EnvironmentValues {
 struct GeoWebiOSApp: App {
     let container = try! ModelContainer(
         for: World.self,
+            GeoWebParcel.self,
             PositionCom.self,
             OrientationCom.self,
             ScaleCom.self,

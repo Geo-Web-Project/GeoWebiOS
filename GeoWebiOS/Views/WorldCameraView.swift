@@ -36,8 +36,19 @@ struct WorldCameraView: View {
             return StoreSync(web3: web3, store: store)
         }
     }
-    private static let parcelSelection = Selection.GeoWebParcel<String> {
-        return try $0.id()
+    private static let parcelSelection = Selection.GeoWebParcel<GeoWebParcel> {
+        let bboxE = try? $0.bboxE()
+        let bboxS = try? $0.bboxS()
+        let bboxN = try? $0.bboxN()
+        let bboxW = try? $0.bboxW()
+        
+        return GeoWebParcel(
+            id: try $0.id(),
+            bboxE: bboxE != nil ? CLLocationDegrees(truncating: Decimal(string: bboxE!)! as NSNumber): nil,
+            bboxW: bboxW != nil ? CLLocationDegrees(truncating: Decimal(string: bboxW!)! as NSNumber): nil,
+            bboxN: bboxN != nil ? CLLocationDegrees(truncating: Decimal(string: bboxN!)! as NSNumber): nil, 
+            bboxS: bboxS != nil ? CLLocationDegrees(truncating: Decimal(string: bboxS!)! as NSNumber): nil
+        )
     }
     
     private let locationManager: CLLocationManager = CLLocationManager()
@@ -45,7 +56,12 @@ struct WorldCameraView: View {
     
     private static let worldAddress: String = "0x3904285496739BF5030d79C0CF259A569806F759"
     
-    @State private var namespaces: [Bytes] = []
+    @Query(filter: #Predicate<GeoWebParcel> {
+        $0.distanceAway ?? 1000 < 1000
+    }, sort: \.distanceAway, order: .reverse) private var parcels: [GeoWebParcel]
+    private var namespaces: [Bytes] {
+        parcels.map { getNamespace(parcelIdHex: $0.id) }
+    }
     @Query private var positionComs: [PositionCom]
     @Query private var orientationComs: [OrientationCom]
     @Query private var scaleComs: [ScaleCom]
@@ -64,10 +80,12 @@ struct WorldCameraView: View {
                 imageComs: imageComs.filter{ filterParcelIds(record: $0) }
             )
                 .task {
+                    syncParcelNamespaces()
+
                     if self.locationManager.authorizationStatus == .notDetermined {
                         self.locationManager.requestWhenInUseAuthorization()
                     }
-                    
+                                        
                     do {
                         let updates = CLLocationUpdate.liveUpdates()
                         for try await update in updates {
@@ -77,12 +95,17 @@ struct WorldCameraView: View {
                                 // Query graph
                                 try await performParcelQuery(location: loc.coordinate)
                                 
+                                try await storeActor?.updateParcelsDistanceAway(currentUserLocation: loc.coordinate)
+                                
                                 self.lastLocation = loc
                             }
                         }
                     } catch {
                         print("Parcel Query Error: \(error)")
                     }
+                }
+                .onChange(of: parcels) {
+                    syncParcelNamespaces()
                 }
             
             CoachingOverlayView(arView: arView)
@@ -99,7 +122,7 @@ struct WorldCameraView: View {
     }
     
     private func performParcelQuery(location: CLLocationCoordinate2D) async throws {
-        let parcelQuery = Selection.Query<[String]> {
+        let parcelQuery = Selection.Query<[GeoWebParcel]> {
             try $0.geoWebParcels(
                 where: ~InputObjects.GeoWebParcelFilter(
                     bboxNGt: ~String(location.latitude - 0.00045),
@@ -112,18 +135,22 @@ struct WorldCameraView: View {
             )
         }
         
-        let parcelIds = try await graphQLClient.query(parcelQuery)
+        let parcels = try await graphQLClient.query(parcelQuery)
+        try await storeActor?.updateParcels(currentUserLocation: location, parcels: parcels.data)
+    }
+    
+    private func syncParcelNamespaces() {
+        print("Syncing parcels...")
+        for parcel in parcels {
+            Task.detached {
+                // Sync logs
+                print("Syncing logs \(parcel.id)...")
+                try await storeSync.value.syncLogs(worldAddress: EthereumAddress(hexString: WorldCameraView.worldAddress)!, namespace: getNamespace(parcelIdHex: parcel.id))
+                print("Synced logs \(parcel.id)")
                 
-        self.namespaces = parcelIds.data.map { getNamespace(parcelIdHex: $0) }
-        
-        for parcelId in parcelIds.data {
-            // Sync logs
-            print("Syncing logs \(parcelId)...")
-            try await storeSync.value.syncLogs(worldAddress: EthereumAddress(hexString: WorldCameraView.worldAddress)!, namespace: getNamespace(parcelIdHex: parcelId))
-            print("Synced logs \(parcelId)")
-            
-            // Subscribe to logs
-            //                    try await storeSync.value.subscribeToLogs(worldAddress: EthereumAddress(hexString: worldAddress)!, namespace: namespace)
+                // Subscribe to logs
+                //                    try await storeSync.value.subscribeToLogs(worldAddress: EthereumAddress(hexString: worldAddress)!, namespace: namespace)
+            }
         }
     }
 }

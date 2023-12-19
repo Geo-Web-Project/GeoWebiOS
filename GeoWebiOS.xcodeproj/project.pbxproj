@@ -61,6 +61,8 @@
 		C35E319B2A9D3EE900AA4743 /* AddWorldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */; };
 		C35E319E2A9D432600AA4743 /* WorldListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB42A81C28300CFDC84 /* WorldListItemView.swift */; };
 		C365155C2B2BB5CE0057FFF1 /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C365155B2B2BB5CE0057FFF1 /* GraphQL.swift */; };
+		C36CF5042B30EC2F002D50DA /* GeoWebParcel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36CF5032B30EC2F002D50DA /* GeoWebParcel.swift */; };
+		C36CF5052B30EC2F002D50DA /* GeoWebParcel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36CF5032B30EC2F002D50DA /* GeoWebParcel.swift */; };
 		C3753E872A9558D5003175B5 /* MediaGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3753E862A9558D5003175B5 /* MediaGalleryCell.swift */; };
 		C3753E892A955E8C003175B5 /* MediaGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3753E882A955E8C003175B5 /* MediaGalleryView.swift */; };
 		C3753E8A2A955EDF003175B5 /* MediaGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA952A81C28300CFDC84 /* MediaGalleryView.swift */; };
@@ -225,6 +227,7 @@
 		C35A33782AB46A87007A163D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C35E31992A9D3EB300AA4743 /* WorldListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListView.swift; sourceTree = "<group>"; };
 		C365155B2B2BB5CE0057FFF1 /* GraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
+		C36CF5032B30EC2F002D50DA /* GeoWebParcel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoWebParcel.swift; sourceTree = "<group>"; };
 		C3753E862A9558D5003175B5 /* MediaGalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGalleryCell.swift; sourceTree = "<group>"; };
 		C3753E882A955E8C003175B5 /* MediaGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGalleryView.swift; sourceTree = "<group>"; };
 		C3753E8B2A95622C003175B5 /* MediaObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObjectView.swift; sourceTree = "<group>"; };
@@ -393,6 +396,7 @@
 				C3EBACC92AEC8F9000D0695F /* ModelCom.swift */,
 				C335444A2AEF4C3C007FFD1B /* NFTCom.swift */,
 				C3EBACC12AEC870800D0695F /* Data+SaveTemp.swift */,
+				C36CF5032B30EC2F002D50DA /* GeoWebParcel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -789,6 +793,7 @@
 				C3EBACCA2AEC8F9000D0695F /* ModelCom.swift in Sources */,
 				C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */,
 				C3A41CEE2AFF40E2008E0BFC /* USDZModelSystem.swift in Sources */,
+				C36CF5042B30EC2F002D50DA /* GeoWebParcel.swift in Sources */,
 				C35E319E2A9D432600AA4743 /* WorldListItemView.swift in Sources */,
 				C3EBACD12AEDA88A00D0695F /* AugmentPreviewView.swift in Sources */,
 				C335444B2AEF4C3C007FFD1B /* NFTCom.swift in Sources */,
@@ -852,6 +857,7 @@
 				C3386F362AEC68B600720F7A /* ImageAugmentPreview.swift in Sources */,
 				C3BAFAC82A81C28300CFDC84 /* WebViewCell.swift in Sources */,
 				C356AE0D2AFEE80F0052C11B /* GeoAnchorSystem.swift in Sources */,
+				C36CF5052B30EC2F002D50DA /* GeoWebParcel.swift in Sources */,
 				C3BAFAC72A81C28300CFDC84 /* WebViewCellVariant2.swift in Sources */,
 				C3BAFAC12A81C28300CFDC84 /* MapViewCellVariant1.swift in Sources */,
 				C3EBACBA2AEC78D800D0695F /* AugmentInputSystem.swift in Sources */,
