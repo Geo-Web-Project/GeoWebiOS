@@ -83,6 +83,8 @@ struct GeoWebiOSApp: App {
         WindowGroup {
             TabSheetView {
                 WorldCameraView()
+            } overContent: {
+                AugmentListView()
             }
             .onAppear {
                 print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!")

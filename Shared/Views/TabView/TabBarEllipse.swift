@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabBarEllipse: View {
+    @Binding var selectedView: Int?
     @Binding var selectedTab: Int?
     
     private var shrink: Bool {
@@ -31,6 +32,7 @@ struct TabBarEllipse: View {
                             .offset(x: shrink ? 20 : 0)
                             .foregroundStyle(selectedTab == 0 ? Color.accentColor : Color.primary)
                             .onTapGesture {
+                                selectedView = 0
                                 withAnimation(shrink ? .none : .default) {
                                     selectedTab = 0
                                 }
@@ -56,6 +58,7 @@ struct TabBarEllipse: View {
                             .offset(x: shrink ? -20 : 0)
                             .foregroundStyle(selectedTab == 2 ? Color.accentColor : Color.primary)
                             .onTapGesture {
+                                selectedView = 2
                                 withAnimation(shrink ? .none : .default) {
                                     selectedTab = 2
                                 }
@@ -70,9 +73,9 @@ struct TabBarEllipse: View {
 }
 
 #Preview {
-    TabBarEllipse(selectedTab: Binding.constant(nil))
+    TabBarEllipse(selectedView: Binding.constant(nil), selectedTab: Binding.constant(nil))
 }
 
 #Preview {
-    TabBarEllipse(selectedTab: Binding.constant(1))
+    TabBarEllipse(selectedView: Binding.constant(1), selectedTab: Binding.constant(1))
 }

@@ -26,7 +26,7 @@ struct ContentView: View {
                         ZStack {
                             Color.orange
                                 .ignoresSafeArea()
-                            TabBarEllipse(selectedTab: Binding.constant(0))
+                            TabBarEllipse(selectedView: Binding.constant(0), selectedTab: Binding.constant(0))
                         }
                     }) {
                         Text("TabBarEllipse2")
@@ -35,6 +35,8 @@ struct ContentView: View {
                     NavigationLink(destination: {
                         TabSheetView {
                             Color.orange
+                        } overContent: {
+                            Color.green
                         }
                     }) {
                         Text("TabSheetView")

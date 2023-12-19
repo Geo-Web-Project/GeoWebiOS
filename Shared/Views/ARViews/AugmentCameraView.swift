@@ -8,6 +8,7 @@
 import SwiftUI
 import RealityKit
 import ARKit
+import Geohash
 
 struct AugmentCameraViewRepresentable: UIViewRepresentable {
     let arView: ARView

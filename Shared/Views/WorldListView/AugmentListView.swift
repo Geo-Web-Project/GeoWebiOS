@@ -6,31 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AugmentListView: View {
+    @Query(filter: #Predicate<GeoWebParcel> {
+        $0.distanceAway ?? 1000 < 1000
+    }, sort: \.distanceAway, order: .reverse) private var parcels: [GeoWebParcel]
+    
     var body: some View {
-        List {
-            ParcelPreviewCell()
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.clear)
-            AugmentCell()
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.clear)
-            ParcelPreviewCell()
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.clear)
-            AugmentCellVariant2()
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.clear)
-            AugmentCellVariant3()
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.clear)
+        List(parcels) { parcel in
+            ParcelPreviewSmallCell(parcel: parcel)
+                .listRowBackground(Color.background)
+                .listRowSeparator(.hidden, edges: .all)
+                .listSectionSeparator(.hidden, edges: .all)
+            
         }
         .listStyle(.plain)
-        .navigationTitle("Nearby")
-        .navigationBarTitleDisplayMode(.large)
-        .background(Color("BackgroundColor"))
-        .backgroundStyle(.thinMaterial)
     }
 }
 
