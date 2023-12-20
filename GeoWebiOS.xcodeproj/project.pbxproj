@@ -66,6 +66,7 @@
 		C3753E8A2A955EDF003175B5 /* MediaGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA952A81C28300CFDC84 /* MediaGalleryView.swift */; };
 		C3753E8C2A95622C003175B5 /* MediaObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3753E8B2A95622C003175B5 /* MediaObjectView.swift */; };
 		C3753E8D2A95632F003175B5 /* robot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = C3BAFAA72A81C28300CFDC84 /* robot.usdz */; };
+		C38D918C2B3258D400F94D9F /* Turf in Frameworks */ = {isa = PBXBuildFile; productRef = C38D918B2B3258D400F94D9F /* Turf */; };
 		C39770A92A9950540052183D /* AVObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39770A82A9950540052183D /* AVObjectView.swift */; };
 		C39770AA2A9950540052183D /* AVObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39770A82A9950540052183D /* AVObjectView.swift */; };
 		C39770AC2A9950EC0052183D /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C39770AB2A9950EC0052183D /* video.mp4 */; };
@@ -299,6 +300,7 @@
 				C3DBB55F2B23F5C600BDE9AE /* SwiftGraphQLClient in Frameworks */,
 				C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */,
 				C3DBB55B2B23F5C600BDE9AE /* GraphQL in Frameworks */,
+				C38D918C2B3258D400F94D9F /* Turf in Frameworks */,
 				C3A41CE92AFF090E008E0BFC /* Web3PromiseKit in Frameworks */,
 				C3A41CE52AFF090E008E0BFC /* Web3 in Frameworks */,
 			);
@@ -653,6 +655,7 @@
 				C3DBB55A2B23F5C600BDE9AE /* GraphQL */,
 				C3DBB55C2B23F5C600BDE9AE /* SwiftGraphQL */,
 				C3DBB55E2B23F5C600BDE9AE /* SwiftGraphQLClient */,
+				C38D918B2B3258D400F94D9F /* Turf */,
 			);
 			productName = GeoWebiOS;
 			productReference = C331C8F92A82F03E004B1238 /* GeoWebiOS.app */;
@@ -718,6 +721,7 @@
 				C3A41CEA2AFF091E008E0BFC /* XCRemoteSwiftPackageReference "swift-mud" */,
 				C3B65E942B03F70C00909CA2 /* XCRemoteSwiftPackageReference "Geohash" */,
 				C3DBB5592B23F5C600BDE9AE /* XCRemoteSwiftPackageReference "swift-graphql" */,
+				C38D918A2B3258D400F94D9F /* XCRemoteSwiftPackageReference "turf-swift" */,
 			);
 			productRefGroup = C386B5792A7312BB008F6473 /* Products */;
 			projectDirPath = "";
@@ -1251,6 +1255,14 @@
 				minimumVersion = 0.0.3;
 			};
 		};
+		C38D918A2B3258D400F94D9F /* XCRemoteSwiftPackageReference "turf-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/turf-swift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		C3A41CE32AFF090E008E0BFC /* XCRemoteSwiftPackageReference "Web3" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Geo-Web-Project/Web3.swift";
@@ -1310,6 +1322,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C33544472AEF41A9007FFD1B /* XCRemoteSwiftPackageReference "swift-cid" */;
 			productName = CID;
+		};
+		C38D918B2B3258D400F94D9F /* Turf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C38D918A2B3258D400F94D9F /* XCRemoteSwiftPackageReference "turf-swift" */;
+			productName = Turf;
 		};
 		C39AB1FC2B31214100F83ABE /* Geohash */ = {
 			isa = XCSwiftPackageProductDependency;

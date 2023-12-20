@@ -57,7 +57,7 @@ struct WorldCameraView: View {
     private static let worldAddress: String = "0x3904285496739BF5030d79C0CF259A569806F759"
     
     @Query(filter: #Predicate<GeoWebParcel> {
-        $0.distanceAway ?? 1000 < 1000
+        $0.distanceAway ?? 100 < 100
     }, sort: \.distanceAway, order: .reverse) private var parcels: [GeoWebParcel]
     private var namespaces: [Bytes] {
         parcels.map { getNamespace(parcelIdHex: $0.id) }
@@ -90,13 +90,13 @@ struct WorldCameraView: View {
                         let updates = CLLocationUpdate.liveUpdates()
                         for try await update in updates {
                             guard let loc = update.location else { continue }
+                                                        
+                            try await storeActor?.updateParcelsDistanceAway(currentUserLocation: loc.coordinate)
 
-                            if self.lastLocation.distance(from: loc) > 100 && loc.speed < 10 {
+                            if self.lastLocation.distance(from: loc) > 50 && loc.speed < 10 {
                                 // Query graph
                                 try await performParcelQuery(location: loc.coordinate)
-                                
-                                try await storeActor?.updateParcelsDistanceAway(currentUserLocation: loc.coordinate)
-                                
+                                                                
                                 self.lastLocation = loc
                             }
                         }

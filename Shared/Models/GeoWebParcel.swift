@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 import CoreLocation
 import SwiftMUD
+import Turf
 
 @Model
 final class GeoWebParcel {
@@ -23,15 +24,52 @@ final class GeoWebParcel {
     var distanceAway: CLLocationDistance?
     
     @Transient
-    var locationCenter: CLLocation? {
+    var polygon: Polygon? {
         guard let bboxN = bboxN, let bboxS = bboxS, let bboxE = bboxE, let bboxW = bboxW  else { return nil }
-        
-        let deltaLon = abs(bboxW - bboxE)
-        let deltaLat = abs(bboxN - bboxS)
-        return CLLocation(
-            latitude: bboxS + deltaLat,
-            longitude: bboxW + deltaLon
-        )
+
+        return Polygon([[
+            LocationCoordinate2D(latitude: bboxS, longitude: bboxW),
+            LocationCoordinate2D(latitude: bboxN, longitude: bboxW),
+            LocationCoordinate2D(latitude: bboxN, longitude: bboxE),
+            LocationCoordinate2D(latitude: bboxS, longitude: bboxE),
+        ]])
+    }
+    
+    @Transient
+    var lineE: LineString? {
+        guard let bboxN = bboxN, let bboxS = bboxS, let bboxW = bboxW  else { return nil }
+
+        return LineString([
+            LocationCoordinate2D(latitude: bboxS, longitude: bboxW),
+            LocationCoordinate2D(latitude: bboxN, longitude: bboxW)
+        ])
+    }
+    @Transient
+    var lineW: LineString? {
+        guard let bboxN = bboxN, let bboxS = bboxS, let bboxE = bboxE else { return nil }
+
+        return LineString([
+            LocationCoordinate2D(latitude: bboxS, longitude: bboxE),
+            LocationCoordinate2D(latitude: bboxN, longitude: bboxE)
+        ])
+    }
+    @Transient
+    var lineN: LineString? {
+        guard let bboxN = bboxN, let bboxE = bboxE, let bboxW = bboxW  else { return nil }
+
+        return LineString([
+            LocationCoordinate2D(latitude: bboxN, longitude: bboxE),
+            LocationCoordinate2D(latitude: bboxN, longitude: bboxW)
+        ])
+    }
+    @Transient
+    var lineS: LineString? {
+        guard let bboxS = bboxS, let bboxE = bboxE, let bboxW = bboxW  else { return nil }
+
+        return LineString([
+            LocationCoordinate2D(latitude: bboxS, longitude: bboxE),
+            LocationCoordinate2D(latitude: bboxS, longitude: bboxW)
+        ])
     }
     
     init(id: String, coordinates: [CLLocationDegrees]? = nil, bboxE: CLLocationDegrees? = nil, bboxW: CLLocationDegrees? = nil, bboxN: CLLocationDegrees? = nil, bboxS: CLLocationDegrees? = nil, tokenURI: String? = nil) {
@@ -54,8 +92,17 @@ extension StoreActor {
             )
             let results = try modelContext.fetch(latestValue)
              
-            if let center = parcel.locationCenter {
-                parcel.distanceAway = CLLocation(latitude: currentUserLocation.latitude, longitude: currentUserLocation.longitude).distance(from: center)
+            if let polygon = parcel.polygon {
+                if polygon.contains(currentUserLocation) {
+                    parcel.distanceAway = 0
+                } else if
+                    let distanceN = parcel.lineN?.closestCoordinate(to: currentUserLocation)?.coordinate.distance(to: currentUserLocation),
+                    let distanceS = parcel.lineS?.closestCoordinate(to: currentUserLocation)?.coordinate.distance(to: currentUserLocation),
+                    let distanceE = parcel.lineE?.closestCoordinate(to: currentUserLocation)?.coordinate.distance(to: currentUserLocation),
+                    let distanceW = parcel.lineW?.closestCoordinate(to: currentUserLocation)?.coordinate.distance(to: currentUserLocation)
+                {
+                    parcel.distanceAway = min(min(min(distanceN, distanceS), distanceE), distanceW)
+                }
             } else {
                 parcel.distanceAway = nil
             }
@@ -80,10 +127,20 @@ extension StoreActor {
     func updateParcelsDistanceAway(currentUserLocation: CLLocationCoordinate2D) throws {
         let parcels = try modelContext.fetch(FetchDescriptor<GeoWebParcel>())
         for parcel in parcels {
-            if let center = parcel.locationCenter {
-                parcel.distanceAway = CLLocation(latitude: currentUserLocation.latitude, longitude: currentUserLocation.longitude).distance(from: center)
-            } else {
+            guard let polygon = parcel.polygon else {
                 parcel.distanceAway = nil
+                return
+            }
+            
+            if polygon.contains(currentUserLocation) {
+                parcel.distanceAway = 0
+            } else if
+                let distanceN = parcel.lineN?.closestCoordinate(to: currentUserLocation)?.coordinate.distance(to: currentUserLocation),
+                let distanceS = parcel.lineS?.closestCoordinate(to: currentUserLocation)?.coordinate.distance(to: currentUserLocation),
+                let distanceE = parcel.lineE?.closestCoordinate(to: currentUserLocation)?.coordinate.distance(to: currentUserLocation),
+                let distanceW = parcel.lineW?.closestCoordinate(to: currentUserLocation)?.coordinate.distance(to: currentUserLocation)
+            {
+                parcel.distanceAway = min(min(min(distanceN, distanceS), distanceE), distanceW)
             }
         }
         

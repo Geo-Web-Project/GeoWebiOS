@@ -352,6 +352,15 @@
       }
     },
     {
+      "identity" : "turf-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/turf-swift.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f0afe204b4266337066a436becab62fdd2b32378"
+      }
+    },
+    {
       "identity" : "web3.swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Geo-Web-Project/Web3.swift",

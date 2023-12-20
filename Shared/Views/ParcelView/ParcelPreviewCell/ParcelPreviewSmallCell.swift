@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct ParcelPreviewSmallCell: View {
-    @State var parcel: GeoWebParcel
+    @Bindable var parcel: GeoWebParcel
     
     var body: some View {
         HStack {
@@ -29,8 +29,13 @@ struct ParcelPreviewSmallCell: View {
             if let distanceAway = parcel.distanceAway {
                 VStack {
                     Image(systemName: "mappin.and.ellipse")
-                    Text("\(String(format: "%.0f", distanceAway)) m.")
-                        .font(.caption)
+                    if distanceAway == 0 {
+                        Text("Current")
+                            .font(.caption)
+                    } else {
+                        Text("\(String(format: "%.0f", distanceAway)) m.")
+                            .font(.caption)
+                    }
                 }
             }
         }
