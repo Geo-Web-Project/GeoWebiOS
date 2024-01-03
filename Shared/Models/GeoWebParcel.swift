@@ -24,6 +24,18 @@ final class GeoWebParcel {
     var distanceAway: CLLocationDistance?
     
     @Transient
+    var clCoordinates: [CLLocationCoordinate2D]? {
+        guard let bboxN = bboxN, let bboxS = bboxS, let bboxE = bboxE, let bboxW = bboxW  else { return nil }
+
+        return [
+            CLLocationCoordinate2D(latitude: bboxN, longitude: bboxW),
+            CLLocationCoordinate2D(latitude: bboxN, longitude: bboxE),
+            CLLocationCoordinate2D(latitude: bboxS, longitude: bboxE),
+            CLLocationCoordinate2D(latitude: bboxS, longitude: bboxW)
+        ]
+    }
+    
+    @Transient
     var polygon: Polygon? {
         guard let bboxN = bboxN, let bboxS = bboxS, let bboxE = bboxE, let bboxW = bboxW  else { return nil }
 

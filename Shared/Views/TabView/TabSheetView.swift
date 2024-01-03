@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-struct TabSheetView<UContent, OContent>: View where UContent: View, OContent: View {
+struct TabSheetView<UContent>: View where UContent: View {
     let underContent: UContent
-    let overContent: OContent
     @State private var selectedView: Int? = nil
     @State private var selectedTab: Int? = nil
     private var selectedTabBinding: Binding<Int?> {
@@ -27,12 +26,10 @@ struct TabSheetView<UContent, OContent>: View where UContent: View, OContent: Vi
     
     private var navigationTitle: String {
         switch selectedView {
-        case 0:
-            "Nearby"
         case 1:
             "Augment Publisher"
         default:
-            ""
+            "Nearby"
         }
     }
 
@@ -40,9 +37,8 @@ struct TabSheetView<UContent, OContent>: View where UContent: View, OContent: Vi
         sheetDetent != nil
     }
     
-    init(@ViewBuilder underContent: () -> UContent, @ViewBuilder overContent: () -> OContent) {
+    init(@ViewBuilder underContent: () -> UContent) {
         self.underContent = underContent()
-        self.overContent = overContent()
     }
     
     func calculateSheetHeight(geometry: GeometryProxy) -> CGFloat {
@@ -140,7 +136,14 @@ struct TabSheetView<UContent, OContent>: View where UContent: View, OContent: Vi
                                     }
                                 }
                                 
-                                overContent
+                                switch selectedView {
+                                case 0:
+                                    AugmentListView()
+                                case 2:
+                                    MapNearbyView()
+                                default:
+                                    EmptyView()
+                                }
                             }
                         }
                     }
@@ -161,7 +164,5 @@ struct TabSheetView<UContent, OContent>: View where UContent: View, OContent: Vi
 #Preview {
     TabSheetView {
         Color.orange
-    } overContent: {
-        Color.green
     }
 }

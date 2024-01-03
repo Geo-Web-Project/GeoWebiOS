@@ -79,12 +79,12 @@ struct GeoWebiOSApp: App {
             ImageCom.self
     )
     
+    @State private var selectedTabView: Int? = nil
+    
     var body: some Scene {
         WindowGroup {
             TabSheetView {
                 WorldCameraView()
-            } overContent: {
-                AugmentListView()
             }
             .onAppear {
                 print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!")

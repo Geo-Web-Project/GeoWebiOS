@@ -111,6 +111,8 @@
 		C3BAFACD2A81C28300CFDC84 /* ParcelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB32A81C28300CFDC84 /* ParcelListView.swift */; };
 		C3BAFAD22A81C73700CFDC84 /* ParcelListView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */; };
 		C3BAFAD42A81C90B00CFDC84 /* ParcelListView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */; };
+		C3C211142B460A100063094C /* MapNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C211132B460A100063094C /* MapNearbyView.swift */; };
+		C3C211152B460A100063094C /* MapNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C211132B460A100063094C /* MapNearbyView.swift */; };
 		C3D9FDC02AE0CC3800DEC3BD /* AugmentCellVariant2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9FDBF2AE0CC3800DEC3BD /* AugmentCellVariant2.swift */; };
 		C3D9FDC22AE0CC4E00DEC3BD /* AugmentCellVariant1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9FDC12AE0CC4E00DEC3BD /* AugmentCellVariant1.swift */; };
 		C3D9FDC42AE0CD6300DEC3BD /* AugmentCellVariant3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9FDC32AE0CD6300DEC3BD /* AugmentCellVariant3.swift */; };
@@ -264,6 +266,7 @@
 		C3BAFAB32A81C28300CFDC84 /* ParcelListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParcelListView.swift; sourceTree = "<group>"; };
 		C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelListView2.swift; sourceTree = "<group>"; };
 		C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelListView3.swift; sourceTree = "<group>"; };
+		C3C211132B460A100063094C /* MapNearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNearbyView.swift; sourceTree = "<group>"; };
 		C3D9FDBF2AE0CC3800DEC3BD /* AugmentCellVariant2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentCellVariant2.swift; sourceTree = "<group>"; };
 		C3D9FDC12AE0CC4E00DEC3BD /* AugmentCellVariant1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentCellVariant1.swift; sourceTree = "<group>"; };
 		C3D9FDC32AE0CD6300DEC3BD /* AugmentCellVariant3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentCellVariant3.swift; sourceTree = "<group>"; };
@@ -526,6 +529,7 @@
 			isa = PBXGroup;
 			children = (
 				C3BAFAB02A81C28300CFDC84 /* FullMapView.swift */,
+				C3C211132B460A100063094C /* MapNearbyView.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -828,6 +832,7 @@
 				C3753E8C2A95622C003175B5 /* MediaObjectView.swift in Sources */,
 				C3753E872A9558D5003175B5 /* MediaGalleryCell.swift in Sources */,
 				C3982F6E2A96D3B40089AF69 /* ModelQLView.swift in Sources */,
+				C3C211142B460A100063094C /* MapNearbyView.swift in Sources */,
 				C3B65E9E2B04090E00909CA2 /* ScaleCom.swift in Sources */,
 				C3EBACD42AEDA99700D0695F /* AugmentContract.swift in Sources */,
 				C341145C2B0EDD4B004BC70A /* TabBarEllipse.swift in Sources */,
@@ -844,6 +849,7 @@
 				C3F9DB1C2ADE0003007EDDD6 /* AugmentCell.swift in Sources */,
 				C39AB2002B3121C700F83ABE /* ParcelPreviewSmallCell.swift in Sources */,
 				C35A33772AB4615D007A163D /* GeoPublishARView.swift in Sources */,
+				C3C211152B460A100063094C /* MapNearbyView.swift in Sources */,
 				C3BAFAC32A81C28300CFDC84 /* MapViewCellVariant2.swift in Sources */,
 				C3BAFAC62A81C28300CFDC84 /* WebViewCellVariant3.swift in Sources */,
 				C3EBACC82AEC8F5F00D0695F /* GLBModelSystem.swift in Sources */,
