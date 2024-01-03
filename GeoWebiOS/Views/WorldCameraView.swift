@@ -58,7 +58,7 @@ struct WorldCameraView: View {
     
     @Query(filter: #Predicate<GeoWebParcel> {
         $0.distanceAway ?? 100 < 100
-    }, sort: \.distanceAway, order: .reverse) private var parcels: [GeoWebParcel]
+    }, sort: \.distanceAway, order: .forward) private var parcels: [GeoWebParcel]
     private var namespaces: [Bytes] {
         parcels.map { getNamespace(parcelIdHex: $0.id) }
     }

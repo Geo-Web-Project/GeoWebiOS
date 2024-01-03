@@ -11,7 +11,7 @@ import SwiftData
 struct AugmentListView: View {
     @Query(filter: #Predicate<GeoWebParcel> {
         $0.distanceAway ?? 1000 < 1000
-    }, sort: \.distanceAway, order: .reverse) private var parcels: [GeoWebParcel]
+    }, sort: \.distanceAway, order: .forward) private var parcels: [GeoWebParcel]
     
     var body: some View {
         List(parcels) { parcel in
