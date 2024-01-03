@@ -15,9 +15,10 @@ struct MapNearbyView: View {
     }, sort: \.distanceAway, order: .forward) private var parcels: [GeoWebParcel]
     
     @Namespace var mapScope
+    @State var mapPosition: MapCameraPosition = .userLocation(fallback: .automatic)
     
     var body: some View {
-        Map(scope: mapScope) {
+        Map(position: $mapPosition, scope: mapScope) {
             ForEach(parcels) { parcel in
                 if let coords = parcel.clCoordinates {
                     MapPolygon(coordinates: coords)
