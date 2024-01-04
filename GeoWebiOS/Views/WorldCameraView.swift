@@ -41,13 +41,15 @@ struct WorldCameraView: View {
         let bboxS = try? $0.bboxS()
         let bboxN = try? $0.bboxN()
         let bboxW = try? $0.bboxW()
+        let tokenURI = try? $0.tokenUri()
         
         return GeoWebParcel(
             id: try $0.id(),
             bboxE: bboxE != nil ? CLLocationDegrees(truncating: Decimal(string: bboxE!)! as NSNumber): nil,
             bboxW: bboxW != nil ? CLLocationDegrees(truncating: Decimal(string: bboxW!)! as NSNumber): nil,
             bboxN: bboxN != nil ? CLLocationDegrees(truncating: Decimal(string: bboxN!)! as NSNumber): nil, 
-            bboxS: bboxS != nil ? CLLocationDegrees(truncating: Decimal(string: bboxS!)! as NSNumber): nil
+            bboxS: bboxS != nil ? CLLocationDegrees(truncating: Decimal(string: bboxS!)! as NSNumber): nil,
+            tokenURI: tokenURI
         )
     }
     
@@ -118,7 +120,8 @@ struct WorldCameraView: View {
     }
     
     private func getNamespace(parcelIdHex: String) -> Bytes {
-        return Array("\(Int(hexString: String(parcelIdHex.dropFirst(2)))!)".makeBytes()) + Array(repeating: 0, count: 11)
+        let bytes = Array("\(Int(hexString: String(parcelIdHex.dropFirst(2)))!)".makeBytes())
+        return bytes + Array(repeating: 0, count: 14-bytes.count)
     }
     
     private func performParcelQuery(location: CLLocationCoordinate2D) async throws {

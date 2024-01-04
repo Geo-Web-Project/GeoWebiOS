@@ -53,7 +53,8 @@ struct MapNearbyView: View {
     }
     
     private func getNamespace(parcelIdHex: String) -> Bytes {
-        return Array("\(Int(hexString: String(parcelIdHex.dropFirst(2)))!)".makeBytes()) + Array(repeating: 0, count: 11)
+        let bytes = Array("\(Int(hexString: String(parcelIdHex.dropFirst(2)))!)".makeBytes())
+        return bytes + Array(repeating: 0, count: 14-bytes.count)
     }
 }
 

@@ -239,8 +239,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Geo-Web-Project/swift-mud",
       "state" : {
-        "revision" : "c4865e842e8b9a19c5f6052bb78c6d7820ee0e31",
-        "version" : "0.2.2"
+        "revision" : "ce5e3f708a6355d30487987b8be7e489e0dac13f",
+        "version" : "0.2.4"
       }
     },
     {

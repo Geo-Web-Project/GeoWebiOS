@@ -113,6 +113,8 @@
 		C3BAFAD42A81C90B00CFDC84 /* ParcelListView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */; };
 		C3C211142B460A100063094C /* MapNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C211132B460A100063094C /* MapNearbyView.swift */; };
 		C3C211152B460A100063094C /* MapNearbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C211132B460A100063094C /* MapNearbyView.swift */; };
+		C3D6FE662B4771A900D2C5BF /* AugmentListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE652B4771A900D2C5BF /* AugmentListItem.swift */; };
+		C3D6FE672B4771A900D2C5BF /* AugmentListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D6FE652B4771A900D2C5BF /* AugmentListItem.swift */; };
 		C3D9FDC02AE0CC3800DEC3BD /* AugmentCellVariant2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9FDBF2AE0CC3800DEC3BD /* AugmentCellVariant2.swift */; };
 		C3D9FDC22AE0CC4E00DEC3BD /* AugmentCellVariant1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9FDC12AE0CC4E00DEC3BD /* AugmentCellVariant1.swift */; };
 		C3D9FDC42AE0CD6300DEC3BD /* AugmentCellVariant3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9FDC32AE0CD6300DEC3BD /* AugmentCellVariant3.swift */; };
@@ -267,6 +269,7 @@
 		C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelListView2.swift; sourceTree = "<group>"; };
 		C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelListView3.swift; sourceTree = "<group>"; };
 		C3C211132B460A100063094C /* MapNearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNearbyView.swift; sourceTree = "<group>"; };
+		C3D6FE652B4771A900D2C5BF /* AugmentListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentListItem.swift; sourceTree = "<group>"; };
 		C3D9FDBF2AE0CC3800DEC3BD /* AugmentCellVariant2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentCellVariant2.swift; sourceTree = "<group>"; };
 		C3D9FDC12AE0CC4E00DEC3BD /* AugmentCellVariant1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentCellVariant1.swift; sourceTree = "<group>"; };
 		C3D9FDC32AE0CD6300DEC3BD /* AugmentCellVariant3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentCellVariant3.swift; sourceTree = "<group>"; };
@@ -542,6 +545,7 @@
 				C3BAFAD12A81C73700CFDC84 /* ParcelListView2.swift */,
 				C3BAFAD32A81C90B00CFDC84 /* ParcelListView3.swift */,
 				C3F9DB202ADE07A5007EDDD6 /* AugmentListView.swift */,
+				C3D6FE652B4771A900D2C5BF /* AugmentListItem.swift */,
 				C331C8F32A82EB81004B1238 /* AddWorldFormView.swift */,
 			);
 			path = WorldListView;
@@ -803,6 +807,7 @@
 				C3EBACCA2AEC8F9000D0695F /* ModelCom.swift in Sources */,
 				C34B35312A9FF3C20079A314 /* EnterARButton.swift in Sources */,
 				C3A41CEE2AFF40E2008E0BFC /* USDZModelSystem.swift in Sources */,
+				C3D6FE662B4771A900D2C5BF /* AugmentListItem.swift in Sources */,
 				C36CF5042B30EC2F002D50DA /* GeoWebParcel.swift in Sources */,
 				C3EBACD12AEDA88A00D0695F /* AugmentPreviewView.swift in Sources */,
 				C335444B2AEF4C3C007FFD1B /* NFTCom.swift in Sources */,
@@ -879,6 +884,7 @@
 				C3BAFAB52A81C28300CFDC84 /* ModelSceneView.swift in Sources */,
 				C3BAFAC52A81C28300CFDC84 /* WebViewCellVariant1.swift in Sources */,
 				C3386F312AEC593900720F7A /* AugmentCameraView.swift in Sources */,
+				C3D6FE672B4771A900D2C5BF /* AugmentListItem.swift in Sources */,
 				C3EBACBD2AEC7B9900D0695F /* FramedImageSystem.swift in Sources */,
 				C335444E2AEF5CDD007FFD1B /* FramedNFTImageSystem.swift in Sources */,
 				C31E0AC12AC4E2A100051DFF /* ImageTargetARView.swift in Sources */,
@@ -1282,7 +1288,7 @@
 			repositoryURL = "https://github.com/Geo-Web-Project/swift-mud";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.2;
+				minimumVersion = 0.2.4;
 			};
 		};
 		C3B65E942B03F70C00909CA2 /* XCRemoteSwiftPackageReference "Geohash" */ = {
