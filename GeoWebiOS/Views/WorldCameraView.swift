@@ -113,19 +113,20 @@ struct WorldCameraView: View {
             if arView.session.currentFrame?.geoTrackingStatus?.state == .initializing || arView.session.currentFrame?.geoTrackingStatus?.state == .localizing {
                 CoachingOverlayView(arView: arView)
             } else {
-                VStack {
-                    Spacer()
-                    
-                    HStack {
+                HStack {
+                    VStack {
+                        Spacer()
+
+                        AnchorCountView(anchorCount: arView.session.currentFrame?.anchors.count ?? 0)
+
                         GeoAccuracyView(
                             state: arView.session.currentFrame?.geoTrackingStatus?.state ?? .initializing,
                             accuracy: arView.session.currentFrame?.geoTrackingStatus?.accuracy ?? .undetermined
                         )
-                        .padding(.leading)
                         .padding(.bottom, 100)
-                        
-                        Spacer()
-                    }
+                    }.padding(.leading)
+                    
+                    Spacer()
                 }
             }
         }

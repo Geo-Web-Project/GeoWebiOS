@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C30895012B48AD7000F74503 /* GeoAccuracyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30895002B48AD7000F74503 /* GeoAccuracyView.swift */; };
 		C30895022B48AD7000F74503 /* GeoAccuracyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30895002B48AD7000F74503 /* GeoAccuracyView.swift */; };
+		C30895042B48BC1500F74503 /* AnchorCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30895032B48BC1500F74503 /* AnchorCountView.swift */; };
+		C30895052B48BC1500F74503 /* AnchorCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30895032B48BC1500F74503 /* AnchorCountView.swift */; };
 		C308E7D72A9437CB00EEC111 /* WorldCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C308E7D62A9437CB00EEC111 /* WorldCameraView.swift */; };
 		C308E7DA2A9438A300EEC111 /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAA52A81C28300CFDC84 /* MapViewCell.swift */; };
 		C308E7DB2A9438A800EEC111 /* WebViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAAC2A81C28300CFDC84 /* WebViewCell.swift */; };
@@ -209,6 +211,7 @@
 
 /* Begin PBXFileReference section */
 		C30895002B48AD7000F74503 /* GeoAccuracyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoAccuracyView.swift; sourceTree = "<group>"; };
+		C30895032B48BC1500F74503 /* AnchorCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorCountView.swift; sourceTree = "<group>"; };
 		C308E7D62A9437CB00EEC111 /* WorldCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldCameraView.swift; sourceTree = "<group>"; };
 		C31ABFCF2A9D644100F3368C /* WorldListItemView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldListItemView1.swift; sourceTree = "<group>"; };
 		C31D00B02AB8EC1100AC0CA4 /* GLTFKit2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLTFKit2.xcodeproj; path = GLTFKit2/GLTFKit2/GLTFKit2.xcodeproj; sourceTree = "<group>"; };
@@ -425,6 +428,7 @@
 				C3552C4D2AF7EFE600E0BC45 /* GeoModelAugmentView.swift */,
 				C3386F352AEC68B600720F7A /* ImageAugmentPreview.swift */,
 				C30895002B48AD7000F74503 /* GeoAccuracyView.swift */,
+				C30895032B48BC1500F74503 /* AnchorCountView.swift */,
 			);
 			path = ARViews;
 			sourceTree = "<group>";
@@ -820,6 +824,7 @@
 				C335444B2AEF4C3C007FFD1B /* NFTCom.swift in Sources */,
 				C308E7D72A9437CB00EEC111 /* WorldCameraView.swift in Sources */,
 				C3EBACC22AEC870800D0695F /* Data+SaveTemp.swift in Sources */,
+				C30895042B48BC1500F74503 /* AnchorCountView.swift in Sources */,
 				C30895012B48AD7000F74503 /* GeoAccuracyView.swift in Sources */,
 				C39AB2012B312DC600F83ABE /* AugmentListView.swift in Sources */,
 				C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */,
@@ -910,6 +915,7 @@
 				C35A33752AB384E6007A163D /* ImageCaptureARView.swift in Sources */,
 				C331C8F42A82EB81004B1238 /* AddWorldFormView.swift in Sources */,
 				C3EBACC02AEC7BE000D0695F /* ImageCom.swift in Sources */,
+				C30895052B48BC1500F74503 /* AnchorCountView.swift in Sources */,
 				C3B65E992B04002D00909CA2 /* OrientationCom.swift in Sources */,
 				C3BAFAC22A81C28300CFDC84 /* MapViewCell.swift in Sources */,
 			);
