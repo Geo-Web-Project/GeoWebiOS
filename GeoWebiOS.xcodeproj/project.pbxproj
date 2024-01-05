@@ -15,6 +15,7 @@
 		C308E7DE2A9438C200EEC111 /* FullMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFAB02A81C28300CFDC84 /* FullMapView.swift */; };
 		C308E7E12A9438D400EEC111 /* ModelSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BAFA942A81C28300CFDC84 /* ModelSceneView.swift */; };
 		C308E7E32A94394900EEC111 /* SwiftGLTF in Frameworks */ = {isa = PBXBuildFile; productRef = C308E7E22A94394900EEC111 /* SwiftGLTF */; };
+		C30E70262B47AC0E0048212A /* Turf in Frameworks */ = {isa = PBXBuildFile; productRef = C30E70252B47AC0E0048212A /* Turf */; };
 		C31ABFD02A9D644100F3368C /* WorldListItemView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31ABFCF2A9D644100F3368C /* WorldListItemView1.swift */; };
 		C31D00B62AB8EC2300AC0CA4 /* GLTFKit2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31D00B52AB8EC1100AC0CA4 /* GLTFKit2.framework */; };
 		C31D00B72AB8EC2300AC0CA4 /* GLTFKit2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C31D00B52AB8EC1100AC0CA4 /* GLTFKit2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -319,6 +320,7 @@
 				C33682932A79BA4C00CA5F43 /* SwiftGLTF in Frameworks */,
 				C34114562B0ED71D004BC70A /* SwiftMUD in Frameworks */,
 				C31D00B82AB8EC2900AC0CA4 /* GLTFKit2.framework in Frameworks */,
+				C30E70262B47AC0E0048212A /* Turf in Frameworks */,
 				C3552C4A2AF7E3A100E0BC45 /* CID in Frameworks */,
 				C39AB1FD2B31214100F83ABE /* Geohash in Frameworks */,
 			);
@@ -690,6 +692,7 @@
 				C3552C492AF7E3A100E0BC45 /* CID */,
 				C34114552B0ED71D004BC70A /* SwiftMUD */,
 				C39AB1FC2B31214100F83ABE /* Geohash */,
+				C30E70252B47AC0E0048212A /* Turf */,
 			);
 			productName = HubbleDesigns;
 			productReference = C386B5782A7312BB008F6473 /* GeoWebiOSDesigns.app */;
@@ -1314,6 +1317,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C33682912A79BA4C00CA5F43 /* XCRemoteSwiftPackageReference "SwiftGLTF" */;
 			productName = SwiftGLTF;
+		};
+		C30E70252B47AC0E0048212A /* Turf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C38D918A2B3258D400F94D9F /* XCRemoteSwiftPackageReference "turf-swift" */;
+			productName = Turf;
 		};
 		C33544482AEF41A9007FFD1B /* CID */ = {
 			isa = XCSwiftPackageProductDependency;

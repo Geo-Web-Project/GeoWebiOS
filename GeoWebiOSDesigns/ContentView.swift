@@ -34,8 +34,6 @@ struct ContentView: View {
                     }
                     NavigationLink(destination: {
                         TabSheetView {
-                            Color.orange
-                        } overContent: {
                             Color.green
                         }
                     }) {
