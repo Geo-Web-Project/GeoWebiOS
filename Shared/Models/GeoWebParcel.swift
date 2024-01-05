@@ -10,6 +10,7 @@ import SwiftData
 import CoreLocation
 import SwiftMUD
 import Turf
+import CID
 
 @Model
 final class GeoWebParcel {
@@ -22,6 +23,8 @@ final class GeoWebParcel {
     var tokenURI: String?
     
     var distanceAway: CLLocationDistance?
+    var name: String?
+    var externalURL: String?
     
     @Transient
     var clCoordinates: [CLLocationCoordinate2D]? {
@@ -83,6 +86,28 @@ final class GeoWebParcel {
             LocationCoordinate2D(latitude: bboxS, longitude: bboxW)
         ])
     }
+    
+    @Transient
+    var isLoadingMetadata: Bool = false
+    
+    @Transient
+    lazy var metadataUrl: URL? = {
+        guard tokenURI != nil, let tokenURI = URL(string: tokenURI!) else {
+            return nil
+        }
+        
+        switch tokenURI.scheme {
+        case "ipfs":
+            do {
+                let cid = try CID(tokenURI.host()!)
+                return URL(string: "https://ipfs.io/ipfs/\(cid.toBaseEncodedString)")
+            } catch {
+                return nil
+            }
+        default:
+            return tokenURI
+        }
+    }()
     
     init(id: String, coordinates: [CLLocationDegrees]? = nil, bboxE: CLLocationDegrees? = nil, bboxW: CLLocationDegrees? = nil, bboxN: CLLocationDegrees? = nil, bboxS: CLLocationDegrees? = nil, tokenURI: String? = nil) {
         self.id = id
@@ -157,5 +182,32 @@ extension StoreActor {
         }
         
         try modelContext.save()
+    }
+    
+    func updateParcelMetadata(parcel: GeoWebParcel) async throws {
+        guard let metadataUrl = parcel.metadataUrl else { return }
+        
+        let id = parcel.id
+        let latestValue = FetchDescriptor<GeoWebParcel>(
+            predicate: #Predicate { $0.id == id }
+        )
+        let results = try modelContext.fetch(latestValue)
+        
+        guard let existingRecord = results.first else { return }
+                
+        let request = NSMutableURLRequest(url: metadataUrl, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = ["accept": "application/json"]
+
+        let session = URLSession.shared
+        do {
+            let (data, _) = try await session.data(for: request as URLRequest)
+            guard let res = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { return }
+
+            existingRecord.name = res["name"] as? String
+            existingRecord.externalURL = res["external_url"] as? String
+        } catch {
+            print(error)
+        }
     }
 }

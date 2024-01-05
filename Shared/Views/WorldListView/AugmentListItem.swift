@@ -19,20 +19,25 @@ struct AugmentListItem: View {
         HStack {
             Image(systemName: iconName)
                 .imageScale(.large)
+            
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.headline)
+                
                 if let subtitle {
                     Text(subtitle)
                         .font(.subheadline)
-                        .tint(.secondary)
+                        .lineLimit(1)
                 }
             }
             .fontWeight(.semibold)
 
             Spacer()
-
-            if let distanceAway {
+            
+            if isLoading {
+                ProgressView()
+                    .padding(.trailing, 5)
+            } else if let distanceAway {
                 VStack {
                     Image(systemName: "mappin.and.ellipse")
                     if distanceAway == 0 {
@@ -45,16 +50,27 @@ struct AugmentListItem: View {
                 }
             }
         }
+        .foregroundStyle(isLoading ? .tertiary : .primary)
         .padding()
     }
 }
 
 #Preview {
     AugmentListItem(
-        title: "Geo Web",
+        title: "Central Park",
         subtitle: "https://geoweb.network",
         distanceAway: CLLocationDistance(),
         isLoading: false,
+        iconName: "square.2.layers.3d.top.filled"
+    )
+}
+
+#Preview {
+    AugmentListItem(
+        title: "Central Park",
+        subtitle: "https://geoweb.network",
+        distanceAway: CLLocationDistance(),
+        isLoading: true,
         iconName: "square.2.layers.3d.top.filled"
     )
 }
