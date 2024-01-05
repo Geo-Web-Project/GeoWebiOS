@@ -81,36 +81,53 @@ struct WorldCameraView: View {
                 modelComs: modelComs.filter{ filterParcelIds(record: $0) },
                 imageComs: imageComs.filter{ filterParcelIds(record: $0) }
             )
-                .task {
-                    syncParcelNamespaces()
-
-                    if self.locationManager.authorizationStatus == .notDetermined {
-                        self.locationManager.requestWhenInUseAuthorization()
-                    }
-                                        
-                    do {
-                        let updates = CLLocationUpdate.liveUpdates()
-                        for try await update in updates {
-                            guard let loc = update.location else { continue }
-                                                        
-                            try await storeActor?.updateParcelsDistanceAway(currentUserLocation: loc.coordinate)
-
-                            if self.lastLocation.distance(from: loc) > 50 && loc.speed < 10 {
-                                // Query graph
-                                try await performParcelQuery(location: loc.coordinate)
-                                                                
-                                self.lastLocation = loc
-                            }
+            .task {
+                syncParcelNamespaces()
+                
+                if self.locationManager.authorizationStatus == .notDetermined {
+                    self.locationManager.requestWhenInUseAuthorization()
+                }
+                
+                do {
+                    let updates = CLLocationUpdate.liveUpdates()
+                    for try await update in updates {
+                        guard let loc = update.location else { continue }
+                        
+                        try await storeActor?.updateParcelsDistanceAway(currentUserLocation: loc.coordinate)
+                        
+                        if self.lastLocation.distance(from: loc) > 50 && loc.speed < 10 {
+                            // Query graph
+                            try await performParcelQuery(location: loc.coordinate)
+                            
+                            self.lastLocation = loc
                         }
-                    } catch {
-                        print("Parcel Query Error: \(error)")
+                    }
+                } catch {
+                    print("Parcel Query Error: \(error)")
+                }
+            }
+            .onChange(of: parcels) {
+                syncParcelNamespaces()
+            }
+            
+            if arView.session.currentFrame?.geoTrackingStatus?.state == .initializing || arView.session.currentFrame?.geoTrackingStatus?.state == .localizing {
+                CoachingOverlayView(arView: arView)
+            } else {
+                VStack {
+                    Spacer()
+                    
+                    HStack {
+                        GeoAccuracyView(
+                            state: arView.session.currentFrame?.geoTrackingStatus?.state ?? .initializing,
+                            accuracy: arView.session.currentFrame?.geoTrackingStatus?.accuracy ?? .undetermined
+                        )
+                        .padding(.leading)
+                        .padding(.bottom, 100)
+                        
+                        Spacer()
                     }
                 }
-                .onChange(of: parcels) {
-                    syncParcelNamespaces()
-                }
-            
-            CoachingOverlayView(arView: arView)
+            }
         }
     }
     
