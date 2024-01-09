@@ -39,7 +39,7 @@ struct WorldCameraView: View {
             return StoreSync(web3: web3, store: store)
         }
     }
-    private static let parcelSelection = Selection.GeoWebParcel<GeoWebParcel> {
+    static let parcelSelection = Selection.GeoWebParcel<GeoWebParcel> {
         let bboxE = try? $0.bboxE()
         let bboxS = try? $0.bboxS()
         let bboxN = try? $0.bboxN()
