@@ -45,7 +45,7 @@ struct AugmentPreviewView: View {
 
     var body: some View {
         if let overrideLogs, let inputComponentTypes {
-            AugmentCameraViewRepresentable(arView: arView, inputComponents: inputComponentTypes)
+            AugmentCameraViewRepresentable(arView: arView, inputComponents: inputComponentTypes, geoTrackingStatus: Binding.constant(nil), anchorDisplayCount: Binding.constant(0))
                 .task {
                     Task {
                         do {

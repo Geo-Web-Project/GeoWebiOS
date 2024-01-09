@@ -19,7 +19,10 @@ struct AugmentCameraViewRepresentable: UIViewRepresentable {
     let modelComs: [ModelCom]
     let imageComs: [ImageCom]
     
-    init(arView: ARView, inputComponents: [[Component.Type]], positionComs: [PositionCom], orientationComs: [OrientationCom], scaleComs: [ScaleCom], modelComs: [ModelCom], imageComs: [ImageCom]) {
+    @Binding var geoTrackingStatus: ARGeoTrackingStatus?
+    @Binding var anchorDisplayCount: Int
+    
+    init(arView: ARView, inputComponents: [[Component.Type]], positionComs: [PositionCom], orientationComs: [OrientationCom], scaleComs: [ScaleCom], modelComs: [ModelCom], imageComs: [ImageCom], geoTrackingStatus: Binding<ARGeoTrackingStatus?> = Binding.constant(nil), anchorDisplayCount: Binding<Int> = Binding.constant(0)) {
         self.arView = arView
         self.inputComponents = inputComponents
         self.positionComs = positionComs
@@ -27,9 +30,11 @@ struct AugmentCameraViewRepresentable: UIViewRepresentable {
         self.scaleComs = scaleComs
         self.modelComs = modelComs
         self.imageComs = imageComs
+        self._geoTrackingStatus = geoTrackingStatus
+        self._anchorDisplayCount = anchorDisplayCount
     }
     
-    init(arView: ARView, inputComponents: [[Component.Type]]) {
+    init(arView: ARView, inputComponents: [[Component.Type]], geoTrackingStatus: Binding<ARGeoTrackingStatus?> = Binding.constant(nil), anchorDisplayCount: Binding<Int> = Binding.constant(0)) {
         self.arView = arView
         self.inputComponents = inputComponents
         self.positionComs = []
@@ -37,6 +42,8 @@ struct AugmentCameraViewRepresentable: UIViewRepresentable {
         self.scaleComs = []
         self.modelComs = []
         self.imageComs = []
+        self._geoTrackingStatus = geoTrackingStatus
+        self._anchorDisplayCount = anchorDisplayCount
     }
     
 //    @Binding var overlayText: String
@@ -175,14 +182,23 @@ class AugmentCameraViewCoordinator: NSObject, ARSessionDelegate {
     }
 
     func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
+        var geoAnchorCount = 0
         for anchor in anchors {
             guard let geoAnchor = anchor as? ARGeoAnchor else { continue }
+            geoAnchorCount += 1
+            
             guard let name = geoAnchor.name else { continue }
             
             guard let anchorEntity = self.parent.arView.scene.findEntity(named: name) as? AnchorEntity else { return }
             guard let positionCom = anchorEntity.components[PositionCom.self] as? PositionCom else { return }
             positionCom.geoAnchor = geoAnchor
         }
+        
+        self.parent.anchorDisplayCount = geoAnchorCount
+    }
+    
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        self.parent.geoTrackingStatus = frame.geoTrackingStatus
     }
 }
 

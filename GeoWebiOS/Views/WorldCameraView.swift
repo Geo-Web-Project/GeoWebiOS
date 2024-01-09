@@ -22,6 +22,9 @@ struct WorldCameraView: View {
     @Environment(\.storeActor) private var storeActor: StoreActor?
     @Environment(\.graphQLClient) private var graphQLClient: SwiftGraphQLClient.Client
     
+    @State private var geoTrackingStatus: ARGeoTrackingStatus?
+    @State private var anchorDisplayCount: Int = 0
+    
     private let arView: ARView = ARView(frame: .zero)
     private var storeSync: Task<StoreSync, Error> {
         Task.init {
@@ -79,7 +82,9 @@ struct WorldCameraView: View {
                 orientationComs: orientationComs.filter{ filterParcelIds(record: $0) },
                 scaleComs: scaleComs.filter{ filterParcelIds(record: $0) },
                 modelComs: modelComs.filter{ filterParcelIds(record: $0) },
-                imageComs: imageComs.filter{ filterParcelIds(record: $0) }
+                imageComs: imageComs.filter{ filterParcelIds(record: $0) },
+                geoTrackingStatus: $geoTrackingStatus,
+                anchorDisplayCount: $anchorDisplayCount
             )
             .task {
                 syncParcelNamespaces()
@@ -92,15 +97,15 @@ struct WorldCameraView: View {
                     let updates = CLLocationUpdate.liveUpdates()
                     for try await update in updates {
                         guard let loc = update.location else { continue }
-                        
-                        try await storeActor?.updateParcelsDistanceAway(currentUserLocation: loc.coordinate)
-                        
+                                                
                         if self.lastLocation.distance(from: loc) > 50 && loc.speed < 10 {
                             // Query graph
                             try await performParcelQuery(location: loc.coordinate)
                             
                             self.lastLocation = loc
                         }
+                        
+                        try await storeActor?.updateParcelsDistanceAway(currentUserLocation: loc.coordinate)
                     }
                 } catch {
                     print("Parcel Query Error: \(error)")
@@ -109,19 +114,19 @@ struct WorldCameraView: View {
             .onChange(of: parcels) {
                 syncParcelNamespaces()
             }
-            
-            if arView.session.currentFrame?.geoTrackingStatus?.state == .initializing || arView.session.currentFrame?.geoTrackingStatus?.state == .localizing {
+                        
+            if geoTrackingStatus == nil || geoTrackingStatus?.state == .initializing || geoTrackingStatus?.state == .localizing {
                 CoachingOverlayView(arView: arView)
             } else {
                 HStack {
                     VStack {
                         Spacer()
 
-                        AnchorCountView(anchorCount: arView.session.currentFrame?.anchors.count ?? 0)
+                        AnchorCountView(anchorCount: anchorDisplayCount)
 
                         GeoAccuracyView(
-                            state: arView.session.currentFrame?.geoTrackingStatus?.state ?? .initializing,
-                            accuracy: arView.session.currentFrame?.geoTrackingStatus?.accuracy ?? .undetermined
+                            state: geoTrackingStatus?.state ?? .initializing,
+                            accuracy: geoTrackingStatus?.accuracy ?? .undetermined
                         )
                         .padding(.bottom, 100)
                     }.padding(.leading)
@@ -168,7 +173,7 @@ struct WorldCameraView: View {
                 print("Syncing logs \(parcel.id)...")
                 try await storeSync.value.syncLogs(worldAddress: EthereumAddress(hexString: WorldCameraView.worldAddress)!, namespace: getNamespace(parcelIdHex: parcel.id))
                 print("Synced logs \(parcel.id)")
-                
+                                
                 // Subscribe to logs
                 //                    try await storeSync.value.subscribeToLogs(worldAddress: EthereumAddress(hexString: worldAddress)!, namespace: namespace)
             }

@@ -40,6 +40,9 @@ class USDZModelSystem : System {
                 // Download in detached task to not block parent actor
                 Task.detached {
                     do {
+                        modelCom.isLoaded = false
+                        let loadingEntity = try await self.addLoadingAssetToScene(entity: entity)
+
                         print("Downloading USDZ asset: \(contentUrl)")
                         let (url, response) =  try await URLSession.shared.download(from: contentUrl)
                         var tmpUrl = url
@@ -54,7 +57,9 @@ class USDZModelSystem : System {
                         
                         // Add asset back on main actor
                         try await self.addAssetToScene(contentUrl: tmpUrl, entity: entity)
-                        
+                        await self.removeAssetFromScene(entity: loadingEntity)
+                        modelCom.isLoaded = true
+
                         print("Added USDZ asset to entity: \(await entity.name)")
                     } catch {
                         print("Error adding USDZ asset (\(await entity.name)): \(error)")
@@ -68,5 +73,20 @@ class USDZModelSystem : System {
     private func addAssetToScene(contentUrl: URL, entity: Entity) throws {
         let usdzEntity = try Entity.load(contentsOf: contentUrl)
         entity.addChild(usdzEntity)
+    }
+    
+    @MainActor
+    private func addLoadingAssetToScene(entity: Entity) throws -> Entity {
+        let usdzEntity = try Entity.load(named: "loading")
+        entity.addChild(usdzEntity)
+        
+        usdzEntity.playAnimation(usdzEntity.availableAnimations[0].repeat())
+        
+        return usdzEntity
+    }
+    
+    @MainActor
+    private func removeAssetFromScene(entity: Entity) {
+        entity.removeFromParent()
     }
 }

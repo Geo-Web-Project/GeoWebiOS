@@ -29,6 +29,7 @@ class GeoAnchorSystem : System {
             let positionCom = entity.components[PositionCom.self] as? PositionCom
             let orientationCom = entity.components[OrientationCom.self] as? OrientationCom
             let scaleCom = entity.components[ScaleCom.self] as? ScaleCom
+            let modelCom = entity.components[ModelCom.self] as? ModelCom
             
             guard let geoAnchor = positionCom?.geoAnchor else { return }
             
@@ -40,9 +41,15 @@ class GeoAnchorSystem : System {
             entity.transform.translation.y = altitudeMillimeters / 1000
             
             // Scale
-            entity.transform.scale.x = Float(scaleCom?.x ?? 1000) / 1000
-            entity.transform.scale.y = Float(scaleCom?.y ?? 1000) / 1000
-            entity.transform.scale.z = Float(scaleCom?.z ?? 1000) / 1000
+            if modelCom?.isLoaded == true {
+                entity.transform.scale.x = Float(scaleCom?.x ?? 1000) / 1000
+                entity.transform.scale.y = Float(scaleCom?.y ?? 1000) / 1000
+                entity.transform.scale.z = Float(scaleCom?.z ?? 1000) / 1000
+            } else {
+                entity.transform.scale.x = 1
+                entity.transform.scale.y = 1
+                entity.transform.scale.z = 1
+            }
             
             // Orientation
             let x = Float(orientationCom?.x ?? 0) / 1000

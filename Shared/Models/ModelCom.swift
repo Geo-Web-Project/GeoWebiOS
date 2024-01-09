@@ -59,6 +59,9 @@ final class ModelCom: Component, Record {
         }
     }()
     
+    @Transient
+    var isLoaded: Bool = false
+    
     init(uniqueKey: String, lastUpdatedAtBlock: UInt, key: Data, contentURI: String, encodingFormat: ModelEncodingFormat) {
         self.uniqueKey = uniqueKey
         self.lastUpdatedAtBlock = lastUpdatedAtBlock
