@@ -59,7 +59,7 @@ struct WorldCameraView: View {
     private let locationManager: CLLocationManager = CLLocationManager()
     @State private var lastLocation = CLLocation()
     
-    private static let worldAddress: String = "0x3904285496739BF5030d79C0CF259A569806F759"
+    private static let worldAddress: String = "0x943e0b3F1926008f2e1bEFCBc55FA2A75CeC2452"
     
     @Query(filter: #Predicate<GeoWebParcel> {
         $0.distanceAway ?? 100 < 100

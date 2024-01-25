@@ -15,7 +15,7 @@ import SwiftGraphQLClient
 private struct Web3Key: EnvironmentKey {
     static let defaultValue: Task<Web3, Swift.Error> = Task.detached {
 //        try Web3(wsUrl: "ws://localhost:8545")
-        try Web3(wsUrl: "wss://opt-goerli.g.alchemy.com/v2/\(Bundle.main.infoDictionary!["ALCHEMY_API_KEY"] as! String)")
+        try Web3(wsUrl: Bundle.main.infoDictionary!["ETH_RPC_WS"] as! String)
     }
 }
 
@@ -42,7 +42,7 @@ private struct GraphQLClientKey: EnvironmentKey {
         case NotImplemented
     }
     
-    static let defaultValue: SwiftGraphQLClient.Client = SwiftGraphQLClient.Client(request: URLRequest(url:  URL(string: "https://api.thegraph.com/subgraphs/name/geo-web-project/geo-web-testnet")!))
+    static let defaultValue: SwiftGraphQLClient.Client = SwiftGraphQLClient.Client(request: URLRequest(url:  URL(string: Bundle.main.infoDictionary!["SUBGRAPH_URI"] as! String)!))
 }
 
 extension EnvironmentValues {
