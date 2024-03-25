@@ -941,7 +941,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GeoWebiOS/Preview Content\"";
 				DEVELOPMENT_TEAM = GYAS34R77H;
 				ENABLE_PREVIEWS = YES;
-				ETH_RPC_WS = "wss://opt-sepolia.g.alchemy.com/v2/oBoDqEvL3RI6zSvm77BXCP26Lb2G3BhJ";
+				ETH_RPC_WS = "wss://opt-sepolia.g.alchemy.com/v2/bY2N5Rb0PnCM74Z8_nbtE_FXJMfpHdAt";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -987,7 +987,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GeoWebiOS/Preview Content\"";
 				DEVELOPMENT_TEAM = GYAS34R77H;
 				ENABLE_PREVIEWS = YES;
-				ETH_RPC_WS = "wss://opt-sepolia.g.alchemy.com/v2/oBoDqEvL3RI6zSvm77BXCP26Lb2G3BhJ";
+				ETH_RPC_WS = "wss://opt-sepolia.g.alchemy.com/v2/bY2N5Rb0PnCM74Z8_nbtE_FXJMfpHdAt";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
