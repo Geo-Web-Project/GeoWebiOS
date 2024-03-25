@@ -139,7 +139,8 @@ struct WorldCameraView: View {
     
     private func filterParcelIds(record: Record) -> Bool {
         guard let namespaceId = record.table?.namespace?.namespaceId else { return false }
-        return namespaces.contains(Bytes(hex: namespaceId))
+        guard let worldAddress = record.table?.namespace?.world?.worldAddress else { return false }
+        return namespaces.contains(Bytes(hex: namespaceId)) && worldAddress == WorldCameraView.worldAddress
     }
     
     private func getNamespace(parcelIdHex: String) -> Bytes {
